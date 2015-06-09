@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DirectedGraph xmlns="http://schemas.microsoft.com/vs/2009/dgml">
+  <Nodes>
+    <Node Id="(@1 @2 Type=GrevitCommand Member=created_Elements)" Category="CodeSchema_Field" Bounds="239.537497651043,566.989270644966,301.61,26" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsStatic="True" Icon="Microsoft.VisualStudio.Field.Public" Label="created_Elements ‎: Dictionary‎&lt;string‎, ElementId‎&gt;" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" SourceLocation="(Assembly=file:///c:/users/mthumfart/documents/github/grevit/grevit.revit/revit.cs StartLineNumber=98 StartCharacterOffset=52 EndLineNumber=98 EndCharacterOffset=52)" UseManualLocation="True" />
+    <Node Id="@10" Category="CodeSchema_Method" Bounds="220.838111738231,-147.617457385424,308.756666666667,26" CodeSchemaProperty_IsExtension="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsStatic="True" CommonLabel="GetFamilies" FunctionTypeFlags="Method" Icon="Microsoft.VisualStudio.ExtensionMethod.Public" Label="GetFamilies‎(this Document‎) ‎: RevitFamilyCollection" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" SourceLocation="(Assembly=file:///C:/Users/MThumfart/Documents/GitHub/Grevit/Grevit.Revit/Utilities.cs StartLineNumber=30 StartCharacterOffset=8 EndLineNumber=30 EndCharacterOffset=8)" UseManualLocation="True" />
+    <Node Id="@14" Category="CodeSchema_Method" Bounds="259.397878011068,124.253299621582,234.583333333333,26" CodeSchemaProperty_IsPrivate="True" CommonLabel="ConnectCallback" FunctionTypeFlags="Method" Icon="Microsoft.VisualStudio.Method.Private" Label="ConnectCallback‎(IAsyncResult‎) ‎: void" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" SourceLocation="(Assembly=file:///C:/Users/MThumfart/Documents/GitHub/Grevit/Grevit.Types/Serialization/Client.cs StartLineNumber=207 StartCharacterOffset=8 EndLineNumber=207 EndCharacterOffset=8)" UseManualLocation="True" />
+    <Node Id="@15" Category="CodeSchema_Method" Bounds="292.792231445312,-64.7241302503211,163.74,26" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsStatic="True" CommonLabel="Serialize" FunctionTypeFlags="Method" Icon="Microsoft.VisualStudio.Method.Public" Label="Serialize‎(object‎) ‎: string" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" SourceLocation="(Assembly=file:///c:/users/mthumfart/documents/github/grevit/grevit.types/serialization/utilities.cs StartLineNumber=36 StartCharacterOffset=8 EndLineNumber=36 EndCharacterOffset=8)" UseManualLocation="True" />
+    <Node Id="@17" Category="CodeSchema_Method" Bounds="276.196725647163,431.628525899374,221.566666666667,26" CodeSchemaProperty_IsExtension="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsStatic="True" CommonLabel="Build" FunctionTypeFlags="Method" Icon="Microsoft.VisualStudio.ExtensionMethod.Public" Label="Build‎(this Component‎, bool‎) ‎: void" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" SourceLocation="(Assembly=file:///c:/users/mthumfart/documents/github/grevit/grevit.revit/componentextension.cs StartLineNumber=29 StartCharacterOffset=8 EndLineNumber=29 EndCharacterOffset=8)" UseManualLocation="True" />
+    <Node Id="@18" Category="CodeSchema_Method" Bounds="244.382952779134,12.253099621582,264.563333333333,26" CodeSchemaProperty_IsPrivate="True" CommonLabel="GrevitClient_Load" FunctionTypeFlags="Method" Icon="Microsoft.VisualStudio.Method.Private" Label="GrevitClient_Load‎(object‎, EventArgs‎) ‎: void" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" SourceLocation="(Assembly=file:///C:/Users/MThumfart/Documents/GitHub/Grevit/Grevit.Types/Serialization/Client.cs StartLineNumber=81 StartCharacterOffset=8 EndLineNumber=81 EndCharacterOffset=8)" UseManualLocation="True" />
+    <Node Id="@20" Category="CodeSchema_Method" Bounds="238.019381595188,180.253448486328,290.513333333333,26" CodeSchemaProperty_IsPrivate="True" CommonLabel="HandleRecieve" FunctionTypeFlags="Method" Icon="Microsoft.VisualStudio.Method.Private" Label="HandleRecieve‎(IAsyncResult‎, TcpListener‎) ‎: void" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" SourceLocation="(Assembly=file:///C:/Users/MThumfart/Documents/GitHub/Grevit/Grevit.Types/Serialization/Client.cs StartLineNumber=226 StartCharacterOffset=8 EndLineNumber=226 EndCharacterOffset=8)" UseManualLocation="True" />
+    <Node Id="@21" Category="CodeSchema_Method" Bounds="281.088267822266,359.028001969227,208.46,26" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsStatic="True" CommonLabel="Deserialize" FunctionTypeFlags="Method" Icon="Microsoft.VisualStudio.Method.Public" Label="Deserialize‎(string‎, Type‎) ‎: object" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" SourceLocation="(Assembly=file:///c:/users/mthumfart/documents/github/grevit/grevit.types/serialization/utilities.cs StartLineNumber=19 StartCharacterOffset=8 EndLineNumber=19 EndCharacterOffset=8)" UseManualLocation="True" />
+    <Node Id="@22" Category="CodeSchema_Method" Bounds="255.310240071615,68.253199621582,243.413333333333,26" CodeSchemaProperty_IsPrivate="True" CommonLabel="ListenForIncomingConnections" FunctionTypeFlags="Method" Icon="Microsoft.VisualStudio.Method.Private" Label="ListenForIncomingConnections‎(‎) ‎: void" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" SourceLocation="(Assembly=file:///C:/Users/MThumfart/Documents/GitHub/Grevit/Grevit.Types/Serialization/Client.cs StartLineNumber=170 StartCharacterOffset=8 EndLineNumber=170 EndCharacterOffset=8)" UseManualLocation="True" />
+    <Node Id="@3" Category="CodeSchema_Class" Bounds="327.090188942369,497.411310598412,125.86,25.9999999999999" CodeSchemaProperty_IsAbstract="True" CodeSchemaProperty_IsFinal="True" CodeSchemaProperty_IsPublic="True" CommonLabel="CreateExtension" Icon="Microsoft.VisualStudio.Class.Public" Label="CreateExtension" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" SourceLocation="(Assembly=file:///c:/users/mthumfart/documents/github/grevit/grevit.revit/createextension.cs StartLineNumber=26 StartCharacterOffset=4 EndLineNumber=26 EndCharacterOffset=4)" UseManualLocation="True" />
+    <Node Id="@5" Category="CodeSchema_Class" Bounds="-139.272633117902,-20.6981469719038,90.8533333333334,26" CodeSchemaProperty_IsPublic="True" CommonLabel="Senddata" Icon="Microsoft.VisualStudio.Class.Public" Label="Senddata" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" SourceLocation="(Assembly=file:///C:/Users/MThumfart/Documents/GitHub/Grevit/Grevit.Grasshopper/Utilities.cs StartLineNumber=160 StartCharacterOffset=4 EndLineNumber=160 EndCharacterOffset=4)" UseManualLocation="True" />
+    <Node Id="@8" Category="CodeSchema_Method" Bounds="-229.216742808024,35.5152982839786,267.113333333333,26" CodeSchemaProperty_IsPrivate="True" CommonLabel="ComponentsToString" FunctionTypeFlags="Method" Icon="Microsoft.VisualStudio.Method.Private" Label="ComponentsToString‎(List‎&lt;object‎&gt;‎) ‎: string" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" SourceLocation="(Assembly=file:///C:/Users/MThumfart/Documents/GitHub/Grevit/Grevit.Grasshopper/Utilities.cs StartLineNumber=375 StartCharacterOffset=8 EndLineNumber=375 EndCharacterOffset=8)" UseManualLocation="True" />
+    <Node Id="DeserializeResponse" Bounds="-157.51638710022,378.939556530762,126.49,25.96" Label="deserialize response" UseManualLocation="True" />
+    <Node Id="Grevit.Grasshopper" Bounds="-153.125559558891,-97.6869089232914,121.08,25.96" UseManualLocation="True" />
+    <Node Id="Grevit.Revit" Bounds="335.676974082037,-216.376558979865,80.11,25.96" UseManualLocation="True" />
+    <Node Id="IfTheResponseDoesntMatchSentData" Category="Comment" Bounds="-426.727774992466,183.488134938978,226.043333333333,25.96" Label="if the response doesnt match sent data" UseManualLocation="True" />
+    <Node Id="OutputResponse" Bounds="-143.099762496948,434.899656530762,106.87,25.96" Label="output response" UseManualLocation="True" />
+    <Node Id="ReadData" Bounds="318.668086751302,243.74946777444,120.283333333333,25.96" Label="write received data" UseManualLocation="True" />
+    <Node Id="ReadResponse" Bounds="-143.728454564412,248.019356530762,94.6966666666667,25.96" Label="read response" UseManualLocation="True" />
+    <Node Id="ReadResponse1" Bounds="-143.030714009603,310.328918340479,94.6966666666667,25.96" Label="read response" UseManualLocation="True" />
+    <Node Id="ResponsesTheReceivedDataDirectly" Category="Comment" Bounds="-1.5006184048123,228.253497619629,209.52,25.96" Label="responses the received data directly" UseManualLocation="True" />
+    <Node Id="TcpClientConnect" Bounds="-152.883940684001,116.515398283979,116.473333333333,25.96" Label="TcpClient Connect" UseManualLocation="True" />
+    <Node Id="WriteFamiliesAndTypes" Bounds="312.584191080729,299.70956777444,144.506666666667,25.96" Label="write families and types" UseManualLocation="True" />
+    <Node Id="WriteSerializedData" Bounds="-156.657285071479,180.809505004883,125.156666666667,25.96" Label="write serialized data" UseManualLocation="True" />
+    <Node Id="XmlString" Category="Comment" Bounds="49.3087768554687,166.269523123982,72.1333333333333,25.96" Label="xml string" UseManualLocation="True" />
+  </Nodes>
+  <Links>
+    <Link Source="@10" Target="@15" Bounds="374.809319356323,-121.617462158203,0.320210188067335,47.8935330553148" />
+    <Link Source="@14" Target="@20" Bounds="378.218527151431,150.253307342529,2.4772073323486,21.0617538924166" />
+    <Link Source="@15" Target="@18" Bounds="375.000422314888,-38.7241306304932,1.09200493044216,41.9802735947438" />
+    <Link Source="@17" Target="@3" Bounds="387.580835851179,457.628540039063,1.42306766654303,30.7923663879776" />
+    <Link Source="@18" Target="@22" Bounds="376.746400278375,38.253099621582,0.132109248131087,21.0002780803393" />
+    <Link Source="@20" Target="ReadData" Bounds="380.354747072067,206.253448486328,2.00659598010054,28.5182017824613" />
+    <Link Source="@21" Target="@17" Bounds="385.615856691728,385.028015136719,0.86069594311823,37.6028674365468" />
+    <Link Source="@22" Target="@14" Bounds="376.818150072949,94.253199621582,0.122762036981726,21.0002537731353" />
+    <Link Source="@3" Target="(@1 @2 Type=GrevitCommand Member=created_Elements)" Bounds="390.080395662823,523.41130065918,0.160185669367763,34.5780665578322" />
+    <Link Source="@5" Target="@8" Category="Contains" Bounds="-94.9502519016016,5.30184936523438,0.684743221262195,21.2181318162052" />
+    <Link Source="@8" Target="TcpClientConnect" Bounds="-95.4974877104572,61.5152969360352,0.575322979264456,46.0008051558529" />
+    <Link Source="DeserializeResponse" Target="OutputResponse" Bounds="-93.2028760119539,404.899556530762,1.73122178103858,21.0304403619728" />
+    <Link Source="Grevit.Grasshopper" Target="@5" Bounds="-93.4859196014858,-71.7269091796875,0.687911883408873,42.0299637830463" />
+    <Link Source="Grevit.Revit" Target="@10" Bounds="375.381344936552,-190.416560668945,0.253342897467803,33.7993513211506" />
+    <Link Source="ReadData" Target="ReadResponse" Bounds="-40.0321512169068,257.269867930513,358.700237968209,3.22316626198096" />
+    <Link Source="ReadData" Target="WriteFamiliesAndTypes" Bounds="380.207900656552,269.709454040527,2.26761253756672,21.0518677327913" />
+    <Link Source="ReadResponse" Target="ReadResponse1" Bounds="-96.2347715846314,273.979359130859,0.306265852937571,27.3501234319199" />
+    <Link Source="ReadResponse" Target="TcpClientConnect" Bounds="-167.363891601563,146.927597045898,49.8141860961914,101.091766357422" />
+    <Link Source="ReadResponse1" Target="DeserializeResponse" Bounds="-95.4154440590179,336.28891418457,0.692072445674114,33.6525593129232" />
+    <Link Source="TcpClientConnect" Target="@14" Bounds="-36.4106073506673,130.453938477014,286.809673695787,4.72070731551335" />
+    <Link Source="TcpClientConnect" Target="WriteSerializedData" Bounds="-94.5325388157114,142.475399475098,0.25929852477806,29.3344571153582" />
+    <Link Source="WriteFamiliesAndTypes" Target="@21" Bounds="384.942684732142,325.669559936523,0.197347655761291,24.3587373885224" />
+    <Link Source="WriteFamiliesAndTypes" Target="ReadResponse1" Bounds="-39.336244327067,314.286338205521,351.920435407796,7.77734227267808" />
+    <Link Source="WriteSerializedData" Target="@20" Bounds="-31.5006204096476,193.426684796116,260.520006170384,0.292548464259596" />
+    <Link Source="WriteSerializedData" Target="ReadResponse" Bounds="-95.6277384826049,206.769505004883,1.10436843282686,32.2551221430235" />
+  </Links>
+  <Categories>
+    <Category Id="CodeSchema_Class" Label="Class" BasedOn="CodeSchema_Type" CanBeDataDriven="True" DefaultAction="Node:Both:CodeSchema_Member" Icon="CodeSchema_Class" NavigationActionLabel="Classes" />
+    <Category Id="CodeSchema_Field" Label="Field" BasedOn="CodeSchema_Member" CanBeDataDriven="True" DefaultAction="Microsoft.Contains" Icon="CodeSchema_Field" NavigationActionLabel="Fields" />
+    <Category Id="CodeSchema_Member" Label="Member" CanBeDataDriven="True" DefaultAction="Microsoft.Contains" Icon="CodeSchema_Field" NavigationActionLabel="Members" />
+    <Category Id="CodeSchema_Method" Label="Method" BasedOn="CodeSchema_Member" CanBeDataDriven="True" DefaultAction="Link:Forward:CodeSchema_Calls" Icon="CodeSchema_Method" NavigationActionLabel="Methods" />
+    <Category Id="CodeSchema_Type" Label="Type" CanBeDataDriven="True" DefaultAction="Node:Both:CodeSchema_Member" Icon="CodeSchema_Class" NavigationActionLabel="Types" />
+    <Category Id="Comment" Label="Comment" Description="Represents a user defined comment on the diagram" CanBeDataDriven="True" IsProviderRoot="False" NavigationActionLabel="Comments" />
+    <Category Id="Contains" Label="Contains" Description="Whether the source of the link contains the target object" CanBeDataDriven="False" CanLinkedNodesBeDataDriven="True" IncomingActionLabel="Contained By" IsContainment="True" OutgoingActionLabel="Contains" />
+  </Categories>
+  <Properties>
+    <Property Id="Bounds" DataType="System.Windows.Rect" />
+    <Property Id="CanBeDataDriven" Label="CanBeDataDriven" Description="CanBeDataDriven" DataType="System.Boolean" />
+    <Property Id="CanLinkedNodesBeDataDriven" Label="CanLinkedNodesBeDataDriven" Description="CanLinkedNodesBeDataDriven" DataType="System.Boolean" />
+    <Property Id="CodeSchemaProperty_IsAbstract" Label="Is Abstract" Description="Flag to indicate member is 'Abstract' does not provide a full implementation" DataType="System.Boolean" />
+    <Property Id="CodeSchemaProperty_IsExtension" Label="Is Extension" Description="Flag indicating if the method is an extension method" DataType="System.Boolean" />
+    <Property Id="CodeSchemaProperty_IsFinal" Label="Is Final" Description="Flag to indicate the member is 'Final' and cannot be derived from" DataType="System.Boolean" />
+    <Property Id="CodeSchemaProperty_IsPrivate" Label="Is Private" Description="Flag to indicate the scope is Private" DataType="System.Boolean" />
+    <Property Id="CodeSchemaProperty_IsPublic" Label="Is Public" Description="Flag to indicate the scope is Public" DataType="System.Boolean" />
+    <Property Id="CodeSchemaProperty_IsStatic" Label="Is Static" Description="Flag to indicate the member is a static member" DataType="System.Boolean" />
+    <Property Id="CommonLabel" DataType="System.String" />
+    <Property Id="DefaultAction" Label="DefaultAction" Description="DefaultAction" DataType="System.String" />
+    <Property Id="Expression" DataType="System.String" />
+    <Property Id="FunctionTypeFlags" Label="FunctionTypeFlags" Description="FunctionTypeFlags" DataType="System.String" />
+    <Property Id="GroupLabel" DataType="System.String" />
+    <Property Id="Icon" Label="Icon" Description="Icon" DataType="System.String" />
+    <Property Id="IncomingActionLabel" Label="IncomingActionLabel" Description="IncomingActionLabel" DataType="System.String" />
+    <Property Id="IsContainment" DataType="System.Boolean" />
+    <Property Id="IsEnabled" DataType="System.Boolean" />
+    <Property Id="IsProviderRoot" Label="IsProviderRoot" Description="IsProviderRoot" DataType="System.Boolean" />
+    <Property Id="Label" Label="Label" Description="Displayable label of an Annotatable object" DataType="System.String" />
+    <Property Id="Language" Label="Language" Description="Language" DataType="System.String" />
+    <Property Id="NavigationActionLabel" Label="NavigationActionLabel" Description="NavigationActionLabel" DataType="System.String" />
+    <Property Id="OutgoingActionLabel" Label="OutgoingActionLabel" Description="OutgoingActionLabel" DataType="System.String" />
+    <Property Id="SourceLocation" Label="Start Line Number" DataType="Microsoft.VisualStudio.GraphModel.CodeSchema.SourceLocation" />
+    <Property Id="TargetType" DataType="System.Type" />
+    <Property Id="UseManualLocation" DataType="System.Boolean" />
+    <Property Id="Value" DataType="System.String" />
+    <Property Id="ValueLabel" DataType="System.String" />
+  </Properties>
+  <QualifiedNames>
+    <Name Id="Assembly" Label="Assembly" ValueType="Uri" />
+    <Name Id="GenericArguments" Label="Generic Arguments" ValueType="Microsoft.VisualStudio.GraphModel.GraphNodeIdCollection" />
+    <Name Id="GenericParameterCount" Label="Generic Parameter Count" ValueType="System.String" />
+    <Name Id="Member" Label="Member" ValueType="System.Object" />
+    <Name Id="Name" Label="Name" ValueType="System.String" />
+    <Name Id="Namespace" Label="Namespace" ValueType="System.String" />
+    <Name Id="OverloadingParameters" Label="Parameter" ValueType="Microsoft.VisualStudio.GraphModel.GraphNodeIdCollection" Formatter="NameValueNoEscape" />
+    <Name Id="Type" Label="Type" ValueType="System.Object" />
+  </QualifiedNames>
+  <IdentifierAliases>
+    <Alias n="1" Uri="Assembly=$(f696ec24-de61-4bf2-ae01-a22994b220f5.OutputPathUri)" />
+    <Alias n="2" Id="Namespace=Grevit.Revit" />
+    <Alias n="3" Id="(@1 @2 Type=CreateExtension)" />
+    <Alias n="4" Uri="Assembly=$(b34038f6-82a6-428c-9d1b-d8fa40527ef9.OutputPathUri)" />
+    <Alias n="5" Id="(@4 Namespace=Grevit.GrassHopper Type=Senddata)" />
+    <Alias n="6" Uri="Assembly=$(FxReferenceAssembliesUri)/.NETFramework/v4.0/mscorlib.dll" />
+    <Alias n="7" Id="Namespace=System" />
+    <Alias n="8" Id="(@4 Namespace=Grevit.GrassHopper Type=Senddata Member=(Name=ComponentsToString OverloadingParameters=[(@6 Namespace=System.Collections.Generic Type=(Name=List GenericParameterCount=1 GenericArguments=[(@6 @7 Type=Object)]))]))" />
+    <Alias n="9" Uri="Assembly=$(VsSolutionUri)/Grevit.Revit/bin/x64/Debug/RevitAPI.dll" />
+    <Alias n="10" Id="(@1 @2 Type=Utilities Member=(Name=GetFamilies OverloadingParameters=[(@9 Namespace=Autodesk.Revit.DB Type=Document)]))" />
+    <Alias n="11" Uri="Assembly=$(4e16464a-4495-4a27-b810-a54f9ce3d191.OutputPathUri)" />
+    <Alias n="12" Id="Namespace=Grevit.Serialization" />
+    <Alias n="13" Id="Type=Client" />
+    <Alias n="14" Id="(@11 @12 @13 Member=(Name=ConnectCallback OverloadingParameters=[(@6 @7 Type=IAsyncResult)]))" />
+    <Alias n="15" Id="(@11 @12 Type=Utilities Member=(Name=Serialize OverloadingParameters=[(@6 @7 Type=Object)]))" />
+    <Alias n="16" Uri="Assembly=$(FxReferenceAssembliesUri)/.NETFramework/v4.5/mscorlib.dll" />
+    <Alias n="17" Id="(@1 @2 Type=ComponentExtension Member=(Name=Build OverloadingParameters=[(@11 Namespace=Grevit.Types Type=Component),(@16 @7 Type=Boolean)]))" />
+    <Alias n="18" Id="(@11 @12 @13 Member=(Name=GrevitClient_Load OverloadingParameters=[(@6 @7 Type=Object),(@6 @7 Type=EventArgs)]))" />
+    <Alias n="19" Uri="Assembly=$(FxReferenceAssembliesUri)/.NETFramework/v4.0/System.dll" />
+    <Alias n="20" Id="(@11 @12 @13 Member=(Name=HandleRecieve OverloadingParameters=[(@6 @7 Type=IAsyncResult),(@19 Namespace=System.Net.Sockets Type=TcpListener)]))" />
+    <Alias n="21" Id="(@11 @12 Type=Utilities Member=(Name=Deserialize OverloadingParameters=[(@6 @7 Type=String),(@6 @7 Type=Type)]))" />
+    <Alias n="22" Id="(@11 @12 @13 Member=ListenForIncomingConnections)" />
+  </IdentifierAliases>
+  <Styles>
+    <Style TargetType="Node" GroupLabel="Comment" ValueLabel="Has comment">
+      <Condition Expression="HasCategory('Comment')" />
+      <Setter Property="Background" Value="#FFFFFACD" />
+      <Setter Property="Stroke" Value="#FFE5C365" />
+      <Setter Property="StrokeThickness" Value="1" />
+      <Setter Property="NodeRadius" Value="2" />
+      <Setter Property="MaxWidth" Value="250" />
+    </Style>
+  </Styles>
+  <Paths>
+    <Path Id="4e16464a-4495-4a27-b810-a54f9ce3d191.OutputPathUri" Value="file:///C:/Users/MThumfart/Documents/GitHub/Grevit/Grevit.Types/bin/x64/Debug/Grevit.Types.dll" />
+    <Path Id="b34038f6-82a6-428c-9d1b-d8fa40527ef9.OutputPathUri" Value="file:///C:/Users/MThumfart/Documents/GitHub/Grevit/Grevit.Grasshopper/bin/x64/Debug/Grevit.GrassHopper.dll" />
+    <Path Id="f696ec24-de61-4bf2-ae01-a22994b220f5.OutputPathUri" Value="file:///C:/Users/MThumfart/Documents/GitHub/Grevit/Grevit.Revit/bin/x64/Debug/Grevit.Revit.dll" />
+    <Path Id="FxReferenceAssembliesUri" Value="file:///C:/Program Files (x86)/Reference Assemblies/Microsoft/Framework" />
+    <Path Id="VsSolutionUri" Value="file:///C:/Users/MThumfart/Documents/GitHub/Grevit" />
+  </Paths>
+</DirectedGraph>

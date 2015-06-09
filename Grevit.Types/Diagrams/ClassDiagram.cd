@@ -1,0 +1,310 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Grevit.Types.ComponentCollection" Collapsed="true">
+    <Position X="2.75" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAACAAAAAAAAQAAAAAAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>Types\Grevit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grevit.Types.Component" Collapsed="true">
+    <Position X="7" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAgAAAAAAABAEAAAAAAgAAAAAAAAgAAAAAACAAAA=</HashCode>
+      <FileName>Types\Grevit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grevit.Types.Wall" Collapsed="true">
+    <Position X="9.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAQAIAAAAIACAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Types\Grevit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grevit.Types.SimpleExtrusion" Collapsed="true">
+    <Position X="11.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIAAAAAAAAAAAAAQAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Types\Grevit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grevit.Types.Faces" Collapsed="true">
+    <Position X="4.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Types\Grevit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grevit.Types.WallProfileBased" Collapsed="true">
+    <Position X="4.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Types\Grevit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grevit.Types.Hatch" Collapsed="true">
+    <Position X="9.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAAAAAAAAAAAAAAAEAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Types\Grevit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grevit.Types.Slab" Collapsed="true">
+    <Position X="2.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAABQAAAQAAAgAIAAAAAAEAAAAQAAAAAA=</HashCode>
+      <FileName>Types\Grevit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grevit.Types.Surface" Collapsed="true">
+    <Position X="9.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Types\Grevit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grevit.Types.Extrusion" Collapsed="true">
+    <Position X="2.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAQAAAAIAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Types\Grevit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grevit.Types.Column" Collapsed="true">
+    <Position X="4.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAACIAAAAAAFAAAAAAAAAAA=</HashCode>
+      <FileName>Types\Grevit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grevit.Types.Parameter" Collapsed="true">
+    <Position X="2.75" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAEACAAAAAAAAAAAAA=</HashCode>
+      <FileName>Types\Grevit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grevit.Types.Adaptive" Collapsed="true">
+    <Position X="6.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Types\Grevit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grevit.Types.Familyinstance" Collapsed="true">
+    <Position X="11.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAACAACAAAAAAAAEAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Types\Grevit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grevit.Types.Topography" Collapsed="true">
+    <Position X="4.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Types\Grevit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grevit.Types.CurtainGridLine" Collapsed="true">
+    <Position X="2.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAECAAAAAAAAAAKAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Types\Grevit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grevit.Types.SetCurtainPanel" Collapsed="true">
+    <Position X="11.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAAAAAAAAAAAAAAAAAABAAAIAAgAAAAAA=</HashCode>
+      <FileName>Types\Grevit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grevit.Types.Grid" Collapsed="true">
+    <Position X="6.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Types\Grevit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grevit.Types.SpotCoordinate" Collapsed="true">
+    <Position X="6.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAECAGAAACEAAACAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Types\Grevit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grevit.Types.Door" Collapsed="true">
+    <Position X="8" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAACAAAAAAAACAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Types\Grevit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grevit.Types.Line" Collapsed="true">
+    <Position X="11.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAgAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Types\Grevit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grevit.Types.Stair" Collapsed="true">
+    <Position X="6.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAABAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>Types\Grevit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grevit.Types.Arc" Collapsed="true">
+    <Position X="4.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAACCAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Types\Grevit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grevit.Types.TextNote" Collapsed="true">
+    <Position X="9.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAACAAAAAAAIAQAAAAAAAAA=</HashCode>
+      <FileName>Types\Grevit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grevit.Types.PLine" Collapsed="true">
+    <Position X="2.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>Types\Grevit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grevit.Types.Spline" Collapsed="true">
+    <Position X="8" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAQAAAAABAACAAQAAAUAAABAAAAAAAAAA=</HashCode>
+      <FileName>Types\Grevit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grevit.Types.Curve3Points" Collapsed="true">
+    <Position X="2.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAACgAQAAAAAAAAA=</HashCode>
+      <FileName>Types\Grevit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grevit.Types.DrawingPoint" Collapsed="true">
+    <Position X="8" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Types\Grevit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grevit.Types.Point" Collapsed="true">
+    <Position X="4.5" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABgAQAAAgA=</HashCode>
+      <FileName>Types\Grevit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grevit.Types.Face" Collapsed="true">
+    <Position X="6.25" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAApAEAAAA=</HashCode>
+      <FileName>Types\Grevit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grevit.Types.RevitFamilyCollection" Collapsed="true">
+    <Position X="4.5" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Types\Grevit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grevit.Types.RevitFamily" Collapsed="true">
+    <Position X="2.75" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAAAAEAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Types\Grevit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grevit.Types.RevitCategory" Collapsed="true">
+    <Position X="6.25" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAEAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Types\Grevit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grevit.Types.ReferencePlane" Collapsed="true">
+    <Position X="6.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAQAAAAAAAEQAAAABAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Types\Grevit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grevit.Types.RevitLine" Collapsed="true">
+    <Position X="9.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAAAAAAAAAAAAEAAAAACABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Types\Grevit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grevit.Types.Level" Collapsed="true">
+    <Position X="8" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAAAAQAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Types\Grevit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grevit.Types.Room" Collapsed="true">
+    <Position X="8" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAQAAAAAAAAAAAAAAEAAAAAAAFAAAAAAA=</HashCode>
+      <FileName>Types\Grevit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grevit.Types.ElementID" Collapsed="true">
+    <Position X="4.5" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Types\Grevit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grevit.Types.SearchElementID" Collapsed="true">
+    <Position X="6.25" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Types\Grevit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grevit.Serialization.Client" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <NestedTypes>
+      <Delegate Name="Grevit.Serialization.Client.SetTextCallback" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Serialization\Client.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Delegate Name="Grevit.Serialization.Client.SetComponentsCallback" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Serialization\Client.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAABICEAACQACAQACACAAQITCIAAEgAgAAAAEQJABAA=</HashCode>
+      <FileName>Serialization\Client.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grevit.Serialization.Utilities" Collapsed="true">
+    <Position X="0.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAACBAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Serialization\Utilities.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="Grevit.Types.StructuralType" Collapsed="true">
+    <Position X="8" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAACAABAgAYAQAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Types\Grevit.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

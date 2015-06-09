@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Application">
+    <Name>Grevit_RVT</Name>
+    <Assembly>C:\ProgramData\Autodesk\Revit\Addins\2015\Grevit.Revit.dll</Assembly>
+    <FullClassName>Grevit_RVT.CreateButton</FullClassName>
+    <ClientId>ee5e6c73-6907-46e7-b588-1845bc7d0d3f</ClientId>
+    <VendorId>MTT</VendorId>
+    <VendorDescription>MTT</VendorDescription>
+  </AddIn>
+</RevitAddIns>
