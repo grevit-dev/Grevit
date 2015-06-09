@@ -2,7 +2,6 @@
 Grevit - Build your BIM Model in Grasshopper
 
 Please visit Grevit.Types\Diagrams first where you will find an activity and class diagram explaining the basic structure 
-
 Grevit - Create Autodesk Revit (R) Models in McNeel's Rhino Grassopper 3D (R)
 For more Information visit grevit.net or food4rhino.com/project/grevit
 Copyright (C) 2015
