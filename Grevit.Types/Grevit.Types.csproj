@@ -63,6 +63,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Reflection\Utilities.cs" />
     <Compile Include="Serialization\Utilities.cs" />
     <Compile Include="Types\Grevit.cs" />
     <Compile Include="Serialization\Client.cs">

@@ -1,13 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Autodesk.Revit.ApplicationServices;
-using Autodesk.Revit.Attributes;
-using Autodesk.Revit.DB;
-using Autodesk.Revit.UI;
-using Autodesk.Revit.UI.Selection;
-//
+﻿//
 //  Grevit - Create Autodesk Revit (R) Models in McNeel's Rhino Grassopper 3D (R)
 //  For more Information visit grevit.net or food4rhino.com/project/grevit
 //  Copyright (C) 2015
@@ -27,6 +18,15 @@ using Autodesk.Revit.UI.Selection;
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 //
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using Autodesk.Revit.ApplicationServices;
+using Autodesk.Revit.Attributes;
+using Autodesk.Revit.DB;
+using Autodesk.Revit.UI;
+using Autodesk.Revit.UI.Selection;
 using System.Diagnostics;
 using System.Xml;
 using System.Net.Sockets;
@@ -57,7 +57,7 @@ namespace Grevit.Revit
             Type type = component.GetType();
 
             // Get the Create extension Method using reflection
-            IEnumerable<System.Reflection.MethodInfo> methods = Utilities.GetExtensionMethods(component.GetType().Assembly, type);
+            IEnumerable<System.Reflection.MethodInfo> methods = Grevit.Reflection.Utilities.GetExtensionMethods(component.GetType().Assembly, type);
 
             // Check all extensions methods (should only be Create() anyway)
             foreach (System.Reflection.MethodInfo method in methods)
