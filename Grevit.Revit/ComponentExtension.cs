@@ -57,7 +57,7 @@ namespace Grevit.Revit
             Type type = component.GetType();
 
             // Get the Create extension Method using reflection
-            IEnumerable<System.Reflection.MethodInfo> methods = Grevit.Reflection.Utilities.GetExtensionMethods(component.GetType().Assembly, type);
+            IEnumerable<System.Reflection.MethodInfo> methods = Grevit.Reflection.Utilities.GetExtensionMethods(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Assembly, type);
 
             // Check all extensions methods (should only be Create() anyway)
             foreach (System.Reflection.MethodInfo method in methods)
@@ -120,5 +120,6 @@ namespace Grevit.Revit
             transaction.Dispose();
 
         }
+
     }
 }

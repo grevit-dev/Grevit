@@ -46,6 +46,59 @@ namespace Grevit.Revit
     public static class Utilities
     {
         /// <summary>
+        /// Translate to Revit Rule
+        /// </summary>
+        /// <param name="rule"></param>
+        /// <param name="parameterId"></param>
+        /// <returns></returns>
+        public static Autodesk.Revit.DB.FilterRule ToRevitRule(this Grevit.Types.Rule rule, ElementId parameterId)
+        {
+            switch (rule.equalityComparer)
+            {
+                case "=":
+                    if (rule.value.GetType() == typeof(int))
+                        return ParameterFilterRuleFactory.CreateEqualsRule(parameterId, (int)rule.value);
+                    else if (rule.value.GetType() == typeof(double))
+                        return ParameterFilterRuleFactory.CreateEqualsRule(parameterId, (double)rule.value, 0);
+                    else if (rule.value.GetType() == typeof(string))
+                        return ParameterFilterRuleFactory.CreateEqualsRule(parameterId, (string)rule.value, true);
+                    break;
+
+                case ">":
+                    if (rule.value.GetType() == typeof(int))
+                        return ParameterFilterRuleFactory.CreateGreaterRule(parameterId, (int)rule.value);
+                    else if (rule.value.GetType() == typeof(double))
+                        return ParameterFilterRuleFactory.CreateGreaterRule(parameterId, (double)rule.value, 0);
+                    else if (rule.value.GetType() == typeof(string))
+                        return ParameterFilterRuleFactory.CreateGreaterRule(parameterId, (string)rule.value, true);
+                    break;
+
+                case "<":
+                    if (rule.value.GetType() == typeof(int))
+                        return ParameterFilterRuleFactory.CreateLessRule(parameterId, (int)rule.value);
+                    else if (rule.value.GetType() == typeof(double))
+                        return ParameterFilterRuleFactory.CreateLessRule(parameterId, (double)rule.value, 0);
+                    else if (rule.value.GetType() == typeof(string))
+                        return ParameterFilterRuleFactory.CreateLessRule(parameterId, (string)rule.value, true);
+                    break;
+
+                default: return null;
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// Get Revit Color
+        /// </summary>
+        /// <param name="color"></param>
+        /// <returns></returns>
+        public static Autodesk.Revit.DB.Color ToRevitColor(this Grevit.Types.Color color)
+        {
+            return new Autodesk.Revit.DB.Color((byte)color.R, (byte)color.G, (byte)color.B);
+        }
+
+
+        /// <summary>
         /// Get Revit Families from the active Document
         /// </summary>
         public static RevitFamilyCollection GetFamilies(this Document document)
@@ -535,8 +588,11 @@ namespace Grevit.Revit
                     if (cat.AllowsBoundParameters) categories.Insert(cat);
                 
                 // Create and External Definition in a Group called Grevit and a Parameter called GID
+#if (Revit2016)
+                ExternalDefinition def = document.Application.OpenSharedParameterFile().Groups.Create("Grevit").Definitions.Create(new ExternalDefinitionCreationOptions(parameterName, parameterType)) as ExternalDefinition;
+#else
                 ExternalDefinition def = document.Application.OpenSharedParameterFile().Groups.Create("Grevit").Definitions.Create(new ExternalDefinitonCreationOptions(parameterName, parameterType)) as ExternalDefinition;
-                
+#endif
                 // Apply the Binding to almost all Categories
                 Autodesk.Revit.DB.Binding bin = document.Application.Create.NewInstanceBinding(categories);
                 BindingMap map = (new UIApplication(document.Application)).ActiveUIDocument.Document.ParameterBindings;
@@ -647,7 +703,7 @@ namespace Grevit.Revit
 
             foreach (Element em in myfilter)
             {
-                Autodesk.Revit.DB.Parameter p = em.get_Parameter("GID");
+                Autodesk.Revit.DB.Parameter p = em.LookupParameter("GID");
                 if (p != null && p.AsString() != null && p.AsString() != string.Empty && em.Id != ElementId.InvalidElementId)
                 {
                     if (!banned.Contains(p.AsString()))

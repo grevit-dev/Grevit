@@ -75,7 +75,7 @@ namespace Grevit.Revit
 
             RibbonPanel grevitPanel = application.CreateRibbonPanel("Grevit");
             
-            PushButton commandButton = grevitPanel.AddItem(new PushButtonData("GrevitCommand", "Grevit", @"C:\ProgramData\Autodesk\Revit\Addins\2015\Grevit.Revit.dll", "Grevit.Revit.GrevitCommand")) as PushButton;
+            PushButton commandButton = grevitPanel.AddItem(new PushButtonData("GrevitCommand", "Grevit", @"C:\ProgramData\Autodesk\Revit\Addins\" + GrevitCommand.Version + @"\Grevit.Revit.dll", "Grevit.Revit.GrevitCommand")) as PushButton;
             commandButton.LargeImage = System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(
                 Properties.Resources.paper_airplane.GetHbitmap(),
                 IntPtr.Zero,
@@ -83,7 +83,7 @@ namespace Grevit.Revit
                 BitmapSizeOptions.FromWidthAndHeight(32, 32));
 
 
-            PushButton parameterButton = grevitPanel.AddItem(new PushButtonData("ParameterNames", "Parameter names", @"C:\ProgramData\Autodesk\Revit\Addins\2015\Grevit.Revit.dll", "Grevit.Revit.ParameterNames")) as PushButton;
+            PushButton parameterButton = grevitPanel.AddItem(new PushButtonData("ParameterNames", "Parameter names", @"C:\ProgramData\Autodesk\Revit\Addins\" + GrevitCommand.Version + @"\Grevit.Revit.dll", "Grevit.Revit.ParameterNames")) as PushButton;
             parameterButton.LargeImage = System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(
                 Properties.Resources.tag_hash.GetHbitmap(),
                 IntPtr.Zero,
@@ -126,8 +126,11 @@ namespace Grevit.Revit
         /// <summary>
         /// Version of the API being used
         /// </summary>
+#if (Revit2016)
+        public static string Version = "2016";
+#else
         public static string Version = "2015";
-
+#endif
         /// <summary>
         /// Revit Template Folder for creating template based family instances
         /// </summary>

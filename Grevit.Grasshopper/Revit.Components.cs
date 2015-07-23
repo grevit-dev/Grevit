@@ -1053,6 +1053,170 @@ namespace Grevit.GrassHopper
 
     }
 
+    public class G_FilterRule : GrevitGrasshopperComponent
+    {
+        public G_FilterRule() : base("Grevit Revit Filter Rule", "Revit Filter Rule", "Grevit Revit Filter Rule", "Grevit", "Components Revit") { }
+
+        protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
+        {
+            pManager.AddTextParameter("Name", "Name", "Parameter Name", GH_ParamAccess.item);
+            pManager.AddTextParameter("Operator", "Equality", "Equality [=,<,>]", GH_ParamAccess.item);
+            pManager.AddTextParameter("Value", "Value", "Parameter Value", GH_ParamAccess.item);
+        }
+
+        protected override void SolveInstance(IGH_DataAccess DA)
+        {
+            GH_String name = new GH_String("");
+            GH_String value = new GH_String("");
+            GH_String eq = new GH_String("=");
+
+            DA.GetData<GH_String>("Name", ref name);
+            DA.GetData<GH_String>("Value", ref value);
+            DA.GetData<GH_String>("Operator", ref eq);
+
+            Grevit.Types.Rule rule = new Rule()
+            {
+                name = name.Value,
+                value = value.Value,
+                equalityComparer = eq.Value
+            };
+
+            DA.SetData("GrevitComponent", rule);
+        }
+
+
+        // Properties
+        public override Guid ComponentGuid
+        {
+            get
+            {
+                return new Guid("{5ea1aa3d-d221-4a4f-a777-4111bfff4b1d}");
+            }
+        }
+        protected override Bitmap Internal_Icon_24x24
+        {
+            get
+            {
+                return Properties.Resources.filter;
+            }
+        }
+
+
+    }
+
+    public class G_Filter : GrevitGrasshopperComponent
+    {
+        public G_Filter() : base("Grevit Revit Filter", "Revit Filter", "Grevit Revit Filter", "Grevit", "Components Revit") { }
+
+        protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
+        {
+            List<int> optionals = new List<int>();
+
+            pManager.AddTextParameter("Name", "Name", "Parameter Name", GH_ParamAccess.item);
+            pManager.AddTextParameter("View", "View", "View Name", GH_ParamAccess.item);
+            pManager.AddGenericParameter("Rules", "Rules", "Rules", GH_ParamAccess.list);
+
+            optionals.Add(pManager.AddTextParameter("Categories", "Categories", "Category Names", GH_ParamAccess.list));
+            
+
+            optionals.Add(pManager.AddColourParameter("CutFillColor", "CutFillColor", "CutFillColor", GH_ParamAccess.item));
+            optionals.Add(pManager.AddColourParameter("CutLineColor", "CutLineColor", "CutLineColor", GH_ParamAccess.item));
+            optionals.Add(pManager.AddColourParameter("ProjectionFillColor", "ProjectionFillColor", "ProjectionFillColor", GH_ParamAccess.item));
+            optionals.Add(pManager.AddColourParameter("ProjectionLineColor", "ProjectionLineColor", "ProjectionLineColor", GH_ParamAccess.item));
+            optionals.Add(pManager.AddIntegerParameter("CutLineWeight", "CutLineWeight", "CutLineWeight", GH_ParamAccess.item));
+            optionals.Add(pManager.AddIntegerParameter("ProjectionLineWeight", "ProjectionLineWeight", "ProjectionLineWeight", GH_ParamAccess.item));
+            optionals.Add(pManager.AddTextParameter("CutFillPattern", "CutFillPattern", "CutFillPattern", GH_ParamAccess.item));
+            optionals.Add(pManager.AddTextParameter("CutLinePattern", "CutLinePattern", "CutLinePattern", GH_ParamAccess.item));
+            optionals.Add(pManager.AddTextParameter("ProjectionFillPattern", "ProjectionFillPattern", "ProjectionFillPattern", GH_ParamAccess.item));
+            optionals.Add(pManager.AddTextParameter("ProjectionLinePattern", "ProjectionLinePattern", "ProjectionLinePattern", GH_ParamAccess.item));
+
+            foreach (int i in optionals) pManager[i].Optional = true;
+        }
+
+        protected override void SolveInstance(IGH_DataAccess DA)
+        {
+            GH_String name = new GH_String("");
+            GH_String view = new GH_String("");
+            List<Rule> rules = new List<Rule>();
+            List<GH_String> cats = new List<GH_String>();
+            List<string> categories = new List<string>();
+
+            GH_Colour CutFillColor = null;
+            GH_Colour CutLineColor = null;
+            GH_Colour ProjectionFillColor = null;
+            GH_Colour ProjectionLineColor = null;
+            GH_Integer CutLineWeight = new GH_Integer(-1);
+            GH_Integer ProjectionLineWeight = new GH_Integer(-1);
+            GH_String CutFillPattern = null;
+            GH_String CutLinePattern = null;
+            GH_String ProjectionFillPattern = null;
+            GH_String ProjectionLinePattern = null;
+
+            DA.GetData<GH_Colour>("CutFillColor", ref CutFillColor);
+            DA.GetData<GH_Colour>("CutLineColor", ref CutLineColor);
+            DA.GetData<GH_Colour>("ProjectionFillColor", ref ProjectionFillColor);
+            DA.GetData<GH_Colour>("ProjectionLineColor", ref ProjectionLineColor);
+            DA.GetData<GH_Integer>("CutLineWeight", ref CutLineWeight);
+            DA.GetData<GH_Integer>("ProjectionLineWeight", ref ProjectionLineWeight);
+            DA.GetData<GH_String>("CutFillPattern", ref CutFillPattern);
+            DA.GetData<GH_String>("CutLinePattern", ref CutLinePattern);
+            DA.GetData<GH_String>("ProjectionFillPattern", ref ProjectionFillPattern);
+            DA.GetData<GH_String>("ProjectionLinePattern", ref ProjectionLinePattern);
+
+            DA.GetData<GH_String>("Name", ref name);
+            DA.GetData<GH_String>("View", ref view);
+            DA.GetDataList<Rule>("Rules",rules);
+            DA.GetDataList<GH_String>("Categories",cats);
+
+            foreach (GH_String cat in cats) categories.Add(cat.Value);
+
+            Grevit.Types.Filter filter = new Filter()
+            {
+                name = name.Value,
+                view = view.Value,
+                categories = categories,
+                Rules = rules
+            };
+            
+
+            if (CutFillColor != null) filter.CutFillColor = CutFillColor.ToGrevitColor();
+            if (CutLineColor != null) filter.CutLineColor = CutLineColor.ToGrevitColor();
+            if (ProjectionFillColor != null) filter.ProjectionFillColor = ProjectionFillColor.ToGrevitColor();
+            if (ProjectionLineColor != null) filter.ProjectionLineColor = ProjectionLineColor.ToGrevitColor();
+
+            filter.CutLineWeight = CutLineWeight.Value;
+            filter.ProjectionLineWeight = ProjectionLineWeight.Value;
+
+            if (CutFillPattern != null) filter.CutFillPattern = CutFillPattern.Value;
+            if (CutLinePattern != null) filter.CutLinePattern = CutLinePattern.Value;
+            if (ProjectionFillPattern != null) filter.ProjectionFillPattern = ProjectionFillPattern.Value;
+            if (ProjectionLinePattern != null) filter.ProjectionLinePattern = ProjectionLinePattern.Value;
+
+            
+
+            DA.SetData("GrevitComponent", filter);
+        }
+
+
+        // Properties
+        public override Guid ComponentGuid
+        {
+            get
+            {
+                return new Guid("{5ea5aa3d-d221-4a4f-a771-4114bfff3b2d}");
+            }
+        }
+        protected override Bitmap Internal_Icon_24x24
+        {
+            get
+            {
+                return Properties.Resources.filter;
+            }
+        }
+
+
+    }
+
     public class G_Slab : GrevitGrasshopperComponent
     {
         public G_Slab() : base("Grevit Revit Slab", "Revit Slab", "Grevit Revit Slab", "Grevit", "Components Revit") { }

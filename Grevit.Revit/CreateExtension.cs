@@ -47,6 +47,93 @@ namespace Grevit.Revit
     public static class CreateExtension
     {
 
+        public static Element Create(this Grevit.Types.Filter filter)
+        {
+            List<ElementId> categories = new List<ElementId>();
+
+            Dictionary<string,ElementId> parameters = new Dictionary<string,ElementId>();
+
+            foreach (Category category in GrevitCommand.document.Settings.Categories)
+            {
+                if (filter.categories.Contains(category.Name) || filter.categories.Count == 0) categories.Add(category.Id);
+
+                FilteredElementCollector collector = new FilteredElementCollector(GrevitCommand.document).OfCategoryId(category.Id);
+                if (collector.Count() > 0)
+                {
+                    foreach (Autodesk.Revit.DB.Parameter parameter in collector.FirstElement().Parameters)
+                        if (!parameters.ContainsKey(parameter.Definition.Name)) parameters.Add(parameter.Definition.Name, parameter.Id);
+                }
+            }
+
+            ParameterFilterElement parameterFilter = ParameterFilterElement.Create(GrevitCommand.document, filter.name, categories);
+            View view = (View)Utilities.GetElementByName(GrevitCommand.document, typeof(View), filter.view);
+            view.AddFilter(parameterFilter.Id);            
+
+            #region Apply Rules
+
+            List<FilterRule> filterRules = new List<FilterRule>();
+
+            foreach (Grevit.Types.Rule rule in filter.Rules)
+            {
+                if (parameters.ContainsKey(rule.name))
+                {
+                    FilterRule filterRule = rule.ToRevitRule(parameters[rule.name]);
+                    if (filterRule != null) filterRules.Add(filterRule);
+                }
+            }
+
+            parameterFilter.SetRules(filterRules);
+
+            #endregion
+
+            #region Apply Overrides
+
+            OverrideGraphicSettings filterSettings = new OverrideGraphicSettings();
+
+            // Apply Colors
+            if (filter.CutFillColor != null) filterSettings.SetCutFillColor(filter.CutFillColor.ToRevitColor());
+            if (filter.ProjectionFillColor != null) filterSettings.SetProjectionFillColor(filter.ProjectionFillColor.ToRevitColor());
+            if (filter.CutLineColor != null) filterSettings.SetCutLineColor(filter.CutLineColor.ToRevitColor());
+            if (filter.ProjectionLineColor != null) filterSettings.SetProjectionLineColor(filter.ProjectionLineColor.ToRevitColor());
+
+            // Apply Lineweight
+            if (filter.CutLineWeight != -1) filterSettings.SetCutLineWeight(filter.CutLineWeight);
+            if (filter.ProjectionLineWeight != -1) filterSettings.SetProjectionLineWeight(filter.ProjectionLineWeight);
+
+            // Apply Patterns          
+            if (filter.CutFillPattern != null)
+            {
+                FillPatternElement pattern = (FillPatternElement)Utilities.GetElementByName(GrevitCommand.document, typeof(FillPatternElement), filter.CutFillPattern);
+                filterSettings.SetCutFillPatternId(pattern.Id);
+            }
+
+            if (filter.ProjectionFillPattern != null)
+            {
+                FillPatternElement pattern = (FillPatternElement)Utilities.GetElementByName(GrevitCommand.document, typeof(FillPatternElement), filter.ProjectionFillPattern);
+                filterSettings.SetProjectionFillPatternId(pattern.Id);
+            }
+
+            if (filter.CutLinePattern != null)
+            {
+                LinePatternElement pattern = (LinePatternElement)Utilities.GetElementByName(GrevitCommand.document, typeof(LinePatternElement), filter.CutLinePattern);
+                filterSettings.SetCutLinePatternId(pattern.Id);
+            }
+
+            if (filter.ProjectionLinePattern != null)
+            {
+                LinePatternElement pattern = (LinePatternElement)Utilities.GetElementByName(GrevitCommand.document, typeof(LinePatternElement), filter.ProjectionLinePattern);
+                filterSettings.SetProjectionLinePatternId(pattern.Id);
+            }
+
+            view.SetFilterOverrides(parameterFilter.Id, filterSettings);
+
+            #endregion
+
+            return parameterFilter;
+        }
+
+
+
 
         /// <summary>
         /// Set a Revit Curtain Panel
@@ -311,9 +398,9 @@ namespace Grevit.Revit
 
             // Get the first family symbol
             FamilySymbol symbol = null;
-            foreach (FamilySymbol s in family.Symbols)
+            foreach (ElementId s in family.GetFamilySymbolIds())
             {
-                symbol = s;
+                symbol = (FamilySymbol)GrevitCommand.document.GetElement(s);
                 break;
             }
 

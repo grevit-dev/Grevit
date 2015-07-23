@@ -43,6 +43,13 @@ namespace Grevit.GrassHopper
     /// </summary>
     public static class ComponentExtensions
     {
+        public static Grevit.Types.Color ToGrevitColor(this GH_Colour color)
+        {
+            return
+                new Types.Color() { R = color.Value.R, B = color.Value.B, G = color.Value.G };
+        }
+
+
         /// <summary>
         /// Get Grevit Point
         /// </summary>

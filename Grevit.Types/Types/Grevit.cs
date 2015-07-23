@@ -31,12 +31,18 @@ using System.Runtime.Serialization;
 namespace Grevit.Types
 {
     // Set Known Types for serialization
+    /// <summary>
+    /// Component Collection, container for components
+    /// </summary>
     [DataContract]
     [XmlSerializerFormat]
     [KnownType(typeof(Component))]
     [KnownType(typeof(Adaptive))]
     [KnownType(typeof(Wall))]
     [KnownType(typeof(Slab))]
+    [KnownType(typeof(Rule))]
+    [KnownType(typeof(Color))]
+    [KnownType(typeof(Filter))]
     [KnownType(typeof(Column))]
     [KnownType(typeof(Level))]
     [KnownType(typeof(TextNote))]
@@ -70,10 +76,6 @@ namespace Grevit.Types
     [KnownType(typeof(CurtainGridLine))]
     [KnownType(typeof(Surface))]
     [KnownType(typeof(Parameter))]
-
-    /// <summary>
-    /// Component Collection, container for components
-    /// </summary>
     public class ComponentCollection
     {
         [DataMember]
@@ -251,6 +253,56 @@ namespace Grevit.Types
             this.view = viewName;
             this.pattern = patternName;
         }
+    }
+
+
+    /// <summary>
+    /// Filter
+    /// </summary>
+    [DataContract]
+    public class Filter : Component
+    {
+        [DataMember]
+        public List<string> categories { get; set; }
+        [DataMember]
+        public string view { get; set; }
+        [DataMember]
+        public string name { get; set; }
+        [DataMember]
+        public Color CutFillColor { get; set; }
+        [DataMember]
+        public Color CutLineColor { get; set; }
+        [DataMember]
+        public Color ProjectionFillColor { get; set; }
+        [DataMember]
+        public Color ProjectionLineColor { get; set; }
+        [DataMember]
+        public int CutLineWeight { get; set; }
+        [DataMember]
+        public int ProjectionLineWeight { get; set; }
+        [DataMember]
+        public string CutFillPattern { get; set; }
+        [DataMember]
+        public string CutLinePattern { get; set; }
+        [DataMember]
+        public string ProjectionFillPattern { get; set; }
+        [DataMember]
+        public string ProjectionLinePattern { get; set; }
+        [DataMember]
+        public List<Rule> Rules { get; set; }
+    }
+
+    /// <summary>
+    /// Filter Rule
+    /// </summary>
+    public class Rule
+    {
+        [DataMember]
+        public string name;
+        [DataMember]
+        public string equalityComparer;
+        [DataMember]
+        public object value;
     }
 
 
@@ -786,6 +838,20 @@ namespace Grevit.Types
     {
         [DataMember]
         public int ID { get; set; }
+    }
+
+    /// <summary>
+    /// Color
+    /// </summary>
+    [DataContract]
+    public class Color
+    {
+        [DataMember]
+        public byte R { get; set; }
+        [DataMember]
+        public byte G { get; set; }
+        [DataMember]
+        public byte B { get; set; }
     }
 
     /// <summary>

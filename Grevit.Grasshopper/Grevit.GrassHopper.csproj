@@ -54,19 +54,18 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="GH_IO, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6a29997d2e6b4f97, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\GH_IO.dll</HintPath>
+    <Reference Include="GH_IO">
+      <HintPath>..\..\..\..\AppData\Roaming\McNeel\Rhinoceros\5.0\Plug-ins\Grasshopper (b45a29b1-4343-4035-989e-044e8580d9cf)\0.9.76.0\GH_IO.dll</HintPath>
     </Reference>
     <Reference Include="Grasshopper">
-      <HintPath>bin\Debug\Grasshopper.dll</HintPath>
+      <HintPath>..\..\..\..\AppData\Roaming\McNeel\Rhinoceros\5.0\Plug-ins\Grasshopper (b45a29b1-4343-4035-989e-044e8580d9cf)\0.9.76.0\Grasshopper.dll</HintPath>
     </Reference>
     <Reference Include="RhinoCommon, Version=5.1.30000.4, Culture=neutral, PublicKeyToken=552281e97c755530, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\RhinoCommon.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files\McNeel\Rhinoceros 5.0\System\RhinoCommon.dll</HintPath>
     </Reference>
     <Reference Include="Rhino_DotNet">
-      <HintPath>bin\Debug\Rhino_DotNet.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files\McNeel\Rhinoceros 5.0\System\Rhino_DotNet.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -239,6 +238,9 @@
       <Project>{4e16464a-4495-4a27-b810-a54f9ce3d191}</Project>
       <Name>Grevit.Types</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\filter.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

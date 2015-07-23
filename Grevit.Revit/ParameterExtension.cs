@@ -52,7 +52,7 @@ namespace Grevit.Revit
                         {
                             foreach (Autodesk.Revit.DB.Parameter p in element.Parameters) if (p.Id.IntegerValue == iid) elementParameter = p;
                         }
-                        else elementParameter = element.get_Parameter(componentParameter.name);
+                        else elementParameter = element.LookupParameter(componentParameter.name);
 
                         if (elementParameter != null)
                         {
@@ -94,7 +94,7 @@ namespace Grevit.Revit
 
                 if (GrevitCommand.document.GrevitAddSharedParameter())
                 {
-                    Autodesk.Revit.DB.Parameter pram = element.get_Parameter("GID");
+                    Autodesk.Revit.DB.Parameter pram = element.LookupParameter("GID");
                     if (pram != null && !pram.IsReadOnly) pram.Set(component.GID);
                 }
             }
