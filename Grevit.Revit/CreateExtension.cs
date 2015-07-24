@@ -65,9 +65,27 @@ namespace Grevit.Revit
                 }
             }
 
-            ParameterFilterElement parameterFilter = ParameterFilterElement.Create(GrevitCommand.document, filter.name, categories);
+
+
+
+            ParameterFilterElement parameterFilter = null;
+
+            FilteredElementCollector collect = new FilteredElementCollector(GrevitCommand.document).OfClass(typeof(ParameterFilterElement));
+            foreach (ParameterFilterElement existingFilter in collect.ToElements())
+            {
+                if (existingFilter.Name == filter.name)
+                {
+                    existingFilter.ClearRules();
+                    parameterFilter = existingFilter;
+                }
+            }
+
+            if (parameterFilter == null) parameterFilter = ParameterFilterElement.Create(GrevitCommand.document, filter.name, categories);
+
+
             View view = (View)Utilities.GetElementByName(GrevitCommand.document, typeof(View), filter.view);
-            view.AddFilter(parameterFilter.Id);            
+            view.AddFilter(parameterFilter.Id);
+           
 
             #region Apply Rules
 

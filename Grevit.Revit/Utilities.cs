@@ -54,32 +54,46 @@ namespace Grevit.Revit
         public static Autodesk.Revit.DB.FilterRule ToRevitRule(this Grevit.Types.Rule rule, ElementId parameterId)
         {
             string methodname = "Create" + rule.equalityComparer + "Rule";
-            System.Reflection.MethodInfo methodInfo = typeof(ParameterFilterRuleFactory).GetMethod(methodname);
 
-            if (methodInfo != null)
+
+            if (
+                rule.equalityComparer == "Equals" ||
+                rule.equalityComparer == "NotEquals" ||
+                rule.equalityComparer == "Greater" ||
+                rule.equalityComparer == "Less" ||
+                rule.equalityComparer == "GreaterOrEqual" ||
+                rule.equalityComparer == "LessOrEqual"
+                )
             {
-                if (
-                    rule.equalityComparer == "Equals" ||
-                    rule.equalityComparer == "NotEquals" ||
-                    rule.equalityComparer == "Greater" ||
-                    rule.equalityComparer == "Less" ||
-                    rule.equalityComparer == "GreaterOrEqual" ||
-                    rule.equalityComparer == "LessOrEqual" 
-                    )
+                if (rule.value.GetType() == typeof(int))
                 {
-                    if (rule.value.GetType() == typeof(int))
+                    System.Reflection.MethodInfo methodInfo = typeof(ParameterFilterRuleFactory).GetMethod(methodname, new[] { typeof(ElementId), typeof(int) });
+                    if (methodInfo != null)
                         return (FilterRule)methodInfo.Invoke(null, new object[] { parameterId, (int)rule.value });
-                    else if (rule.value.GetType() == typeof(double))
-                        return (FilterRule)methodInfo.Invoke(null, new object[] { parameterId, (double)rule.value, 0 });
-                    else if (rule.value.GetType() == typeof(string))
-                        return (FilterRule)methodInfo.Invoke(null, new object[] { parameterId, (string)rule.value, true });
                 }
-                else
+                else if (rule.value.GetType() == typeof(double))
                 {
-                    if (rule.value.GetType() == typeof(string))
+                    System.Reflection.MethodInfo methodInfo = typeof(ParameterFilterRuleFactory).GetMethod(methodname, new[] { typeof(ElementId), typeof(double), typeof(double) });
+                    if (methodInfo != null)
+                        return (FilterRule)methodInfo.Invoke(null, new object[] { parameterId, (double)rule.value, 0 });
+                }
+                else if (rule.value.GetType() == typeof(string))
+                {
+                    System.Reflection.MethodInfo methodInfo = typeof(ParameterFilterRuleFactory).GetMethod(methodname, new[] { typeof(ElementId), typeof(string), typeof(bool) });
+                    if (methodInfo != null)
                         return (FilterRule)methodInfo.Invoke(null, new object[] { parameterId, (string)rule.value, true });
                 }
             }
+            else
+            {
+                if (rule.value.GetType() == typeof(string))
+                {
+                    System.Reflection.MethodInfo methodInfo = typeof(ParameterFilterRuleFactory).GetMethod(methodname, new[] { typeof(ElementId), typeof(string), typeof(bool) });
+                    if (methodInfo != null)
+                        return (FilterRule)methodInfo.Invoke(null, new object[] { parameterId, (string)rule.value, true });
+                }
+            }
+            
 
             return null;
         }
