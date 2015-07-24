@@ -53,37 +53,34 @@ namespace Grevit.Revit
         /// <returns></returns>
         public static Autodesk.Revit.DB.FilterRule ToRevitRule(this Grevit.Types.Rule rule, ElementId parameterId)
         {
-            switch (rule.equalityComparer)
+            string methodname = "Create" + rule.equalityComparer + "Rule";
+            System.Reflection.MethodInfo methodInfo = typeof(ParameterFilterRuleFactory).GetMethod(methodname);
+
+            if (methodInfo != null)
             {
-                case "=":
+                if (
+                    rule.equalityComparer == "Equals" ||
+                    rule.equalityComparer == "NotEquals" ||
+                    rule.equalityComparer == "Greater" ||
+                    rule.equalityComparer == "Less" ||
+                    rule.equalityComparer == "GreaterOrEqual" ||
+                    rule.equalityComparer == "LessOrEqual" 
+                    )
+                {
                     if (rule.value.GetType() == typeof(int))
-                        return ParameterFilterRuleFactory.CreateEqualsRule(parameterId, (int)rule.value);
+                        return (FilterRule)methodInfo.Invoke(null, new object[] { parameterId, (int)rule.value });
                     else if (rule.value.GetType() == typeof(double))
-                        return ParameterFilterRuleFactory.CreateEqualsRule(parameterId, (double)rule.value, 0);
+                        return (FilterRule)methodInfo.Invoke(null, new object[] { parameterId, (double)rule.value, 0 });
                     else if (rule.value.GetType() == typeof(string))
-                        return ParameterFilterRuleFactory.CreateEqualsRule(parameterId, (string)rule.value, true);
-                    break;
-
-                case ">":
-                    if (rule.value.GetType() == typeof(int))
-                        return ParameterFilterRuleFactory.CreateGreaterRule(parameterId, (int)rule.value);
-                    else if (rule.value.GetType() == typeof(double))
-                        return ParameterFilterRuleFactory.CreateGreaterRule(parameterId, (double)rule.value, 0);
-                    else if (rule.value.GetType() == typeof(string))
-                        return ParameterFilterRuleFactory.CreateGreaterRule(parameterId, (string)rule.value, true);
-                    break;
-
-                case "<":
-                    if (rule.value.GetType() == typeof(int))
-                        return ParameterFilterRuleFactory.CreateLessRule(parameterId, (int)rule.value);
-                    else if (rule.value.GetType() == typeof(double))
-                        return ParameterFilterRuleFactory.CreateLessRule(parameterId, (double)rule.value, 0);
-                    else if (rule.value.GetType() == typeof(string))
-                        return ParameterFilterRuleFactory.CreateLessRule(parameterId, (string)rule.value, true);
-                    break;
-
-                default: return null;
+                        return (FilterRule)methodInfo.Invoke(null, new object[] { parameterId, (string)rule.value, true });
+                }
+                else
+                {
+                    if (rule.value.GetType() == typeof(string))
+                        return (FilterRule)methodInfo.Invoke(null, new object[] { parameterId, (string)rule.value, true });
+                }
             }
+
             return null;
         }
 

@@ -99,6 +99,9 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Filter Rule Comparer.ghuser">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Resources\flood_it.png" />
   </ItemGroup>
   <ItemGroup>

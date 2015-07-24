@@ -22,13 +22,13 @@
         "Entry"
         {
         "MsmKey" = "8:_00AB6C721870B11E1E3EB12B0CCAB8E5"
-        "OwnerKey" = "8:_FBD0FA31890C4D4BBA8EDA700F3F96FA"
+        "OwnerKey" = "8:_447B92D6FA964C1E9A656DEACC052997"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_00AB6C721870B11E1E3EB12B0CCAB8E5"
-        "OwnerKey" = "8:_447B92D6FA964C1E9A656DEACC052997"
+        "OwnerKey" = "8:_FBD0FA31890C4D4BBA8EDA700F3F96FA"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1521,6 +1521,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_F14D65C1759E4A618FED6DC6D7D67B94"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_F1DB6BC59E97D490B96E4434FEB51D73"
         "OwnerKey" = "8:_FBD0FA31890C4D4BBA8EDA700F3F96FA"
         "MsmSig" = "8:_UNDEFINED"
@@ -1756,7 +1762,61 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_E068B048E9824B2299E0B41AB0C14434"
+        "OwnerKey" = "8:_447B92D6FA964C1E9A656DEACC052997"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_EEBAC5C5A39EC3ED8A5E26FC31F407E5"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_EEBAC5C5A39EC3ED8A5E26FC31F407E5"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_016274A2F8809C7B21B4AD0A608B474C"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_AEAA4AA86788F2E5DB7CD19442C2F28B"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_A46309CDE916FAE71E4924E31E47A1AA"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_B419DE93962D0A297F4A5CD9423C7CB0"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_94F15B37B7D1EE1E4A43753BF4D82B23"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_E2C4A1C3597A073E4B1302F1A15DDC9F"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_4F8C3161932171FC04A1E7F1C88A4685"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -2026,61 +2086,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_447B92D6FA964C1E9A656DEACC052997"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_EEBAC5C5A39EC3ED8A5E26FC31F407E5"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_EEBAC5C5A39EC3ED8A5E26FC31F407E5"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_016274A2F8809C7B21B4AD0A608B474C"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_AEAA4AA86788F2E5DB7CD19442C2F28B"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_A46309CDE916FAE71E4924E31E47A1AA"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_B419DE93962D0A297F4A5CD9423C7CB0"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_94F15B37B7D1EE1E4A43753BF4D82B23"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_E2C4A1C3597A073E4B1302F1A15DDC9F"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_4F8C3161932171FC04A1E7F1C88A4685"
+        "OwnerKey" = "8:_E068B048E9824B2299E0B41AB0C14434"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -2705,7 +2711,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Grevit.GrassHopper, Version=0.6.0.1, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Grevit.GrassHopper, Version=0.6.0.2, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_447B92D6FA964C1E9A656DEACC052997"
@@ -4085,6 +4091,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F14D65C1759E4A618FED6DC6D7D67B94"
+            {
+            "SourcePath" = "8:..\\Grevit.Grasshopper\\Filter Rule Comparer.ghuser"
+            "TargetName" = "8:Filter Rule Comparer.ghuser"
+            "Tag" = "8:"
+            "Folder" = "8:_C6B0A2FBA2A949EC9E0DABBE36603BA7"
+            "Condition" = "8:CHECKBOXGH=1"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_F1DB6BC59E97D490B96E4434FEB51D73"
             {
             "AssemblyRegister" = "3:1"
@@ -4380,6 +4406,17 @@
                             "Condition" = "8:CHECKBOXGH=1"
                             "Transitive" = "11:FALSE"
                             "Property" = "8:_E53CDA6A53934F329D8E5D91FC21D8C5"
+                                "Folders"
+                                {
+                                }
+                            }
+                            "{9EF0B969-E518-4E46-987F-47570745A589}:_C6B0A2FBA2A949EC9E0DABBE36603BA7"
+                            {
+                            "Name" = "8:UserObjects"
+                            "AlwaysCreate" = "11:FALSE"
+                            "Condition" = "8:CHECKBOXGH=1"
+                            "Transitive" = "11:FALSE"
+                            "Property" = "8:_5C9A43BDC44040D9A52CE325098C18DA"
                                 "Folders"
                                 {
                                 }

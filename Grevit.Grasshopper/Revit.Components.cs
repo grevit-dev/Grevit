@@ -1055,7 +1055,7 @@ namespace Grevit.GrassHopper
 
     public class G_FilterRule : GrevitGrasshopperComponent
     {
-        public G_FilterRule() : base("Grevit Revit Filter Rule", "Revit Filter Rule", "Grevit Revit Filter Rule", "Grevit", "Components Revit") { }
+        public G_FilterRule() : base("Grevit Revit Filter Rule", "Revit Filter Rule", "Grevit Revit Filter Rule", "Grevit", "Revit Filter") { }
 
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
@@ -1104,9 +1104,10 @@ namespace Grevit.GrassHopper
 
     }
 
+
     public class G_Filter : GrevitGrasshopperComponent
     {
-        public G_Filter() : base("Grevit Revit Filter", "Revit Filter", "Grevit Revit Filter", "Grevit", "Components Revit") { }
+        public G_Filter() : base("Grevit Revit Filter", "Revit Filter", "Grevit Revit Filter", "Grevit", "Revit Filter") { }
 
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
