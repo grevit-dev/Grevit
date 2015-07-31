@@ -143,10 +143,12 @@ namespace Grevit.Revit
             document = uiApp.ActiveUIDocument.Document;
 
             // Create new Grevit Client sending existing Families 
-            Grevit.Serialization.Client grevitClientDialog = new Grevit.Serialization.Client(document.GetFamilies());
-
+            Grevit.Client.ClientWindow grevitClientDialog = new Grevit.Client.ClientWindow(document.GetFamilies());
+            //Grevit.Serialization.Client grevitClientDialog = new Grevit.Serialization.Client(document.GetFamilies());
+            
             // Show Client Dialog
-            if (grevitClientDialog.ShowDialog() == System.Windows.Forms.DialogResult.Cancel) return Result.Cancelled;
+            grevitClientDialog.ShowWindow();
+            //if (grevitClientDialog.ShowDialog() == System.Windows.Forms.DialogResult.Cancel) return Result.Cancelled;
 
             // Set the received component collection
             Grevit.Types.ComponentCollection components = grevitClientDialog.componentCollection;
