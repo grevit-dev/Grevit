@@ -263,11 +263,10 @@ namespace Grevit.Client
                 listener.Stop();
 
                 // Wait until processes are stopped
-                Thread.Sleep(2000);
+                Thread.Sleep(1000);
 
                 // close the dialog automatically
-                this.DialogResult = true;
-                this.Close();
+                this.Dispatcher.Invoke(new Action(() => { this.DialogResult = true; this.Close(); }));
             }
 
         }

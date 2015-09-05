@@ -325,7 +325,7 @@ namespace Grevit.Revit
         public static Element Create(this Grevit.Types.RevitLine line)
         {
             // get revit curves from grevit curve
-            foreach (Curve c in Utilities.GrevitCurvesToRevitCurves(line))
+            foreach (Curve c in Utilities.GrevitCurvesToRevitCurves(line.curve))
             {               
                 if (line.isModelCurve)
                     GrevitCommand.document.Create.NewModelCurve(c, Utilities.NewSketchPlaneFromCurve(GrevitCommand.document, c));
