@@ -2311,7 +2311,7 @@
             "SharedLegacy" = "11:FALSE"
             "PackageAs" = "3:1"
             "Register" = "3:1"
-            "Exclude" = "11:TRUE"
+            "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
@@ -2523,7 +2523,7 @@
             "SharedLegacy" = "11:FALSE"
             "PackageAs" = "3:1"
             "Register" = "3:1"
-            "Exclude" = "11:TRUE"
+            "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
@@ -4535,7 +4535,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:GrevitInstaller"
         "ProductCode" = "8:{8FA498A4-2C0B-42DE-B50D-4A5FF5AC8EBE}"
-        "PackageCode" = "8:{3134555E-FAC3-423F-9A42-82C0F2A0C31A}"
+        "PackageCode" = "8:{80D90AC5-209D-4FDE-9875-EF71B477DD42}"
         "UpgradeCode" = "8:{5306D090-1AD9-4AE8-BDCA-A9725C3D3642}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"

@@ -52,44 +52,32 @@ namespace Grevit.Revit
         static string path = typeof(GrevitUI).Assembly.Location;
 
         /// <summary>
-        /// Singleton external application class instance.
-        /// </summary>
-        internal static GrevitUI grevitUI = null;
-
-        /// <summary>
-        /// Provide access to singleton class instance.
-        /// </summary>
-        public static GrevitUI Instance
-        {
-            get { return grevitUI; }
-        }
-
-        /// <summary>
         /// Create UI on StartUp
         /// </summary>
         /// <param name="application"></param>
         /// <returns></returns>
         public Result OnStartup(UIControlledApplication application)
         {
-            grevitUI = this;
 
             RibbonPanel grevitPanel = application.CreateRibbonPanel("Grevit");
-            
-            PushButton commandButton = grevitPanel.AddItem(new PushButtonData("GrevitCommand", "Grevit", @"C:\ProgramData\Autodesk\Revit\Addins\" + GrevitCommand.Version + @"\Grevit.Revit.dll", "Grevit.Revit.GrevitCommand")) as PushButton;
+
+            PushButton commandButton = grevitPanel.AddItem(new PushButtonData("GrevitCommand", "Grevit", path, "Grevit.Revit.GrevitCommand")) as PushButton;
             commandButton.LargeImage = System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(
                 Properties.Resources.paper_airplane.GetHbitmap(),
                 IntPtr.Zero,
                 System.Windows.Int32Rect.Empty,
                 BitmapSizeOptions.FromWidthAndHeight(32, 32));
 
+            commandButton.SetContextualHelp(new ContextualHelp(ContextualHelpType.Url, "http://grevit.net/"));
 
-            PushButton parameterButton = grevitPanel.AddItem(new PushButtonData("ParameterNames", "Parameter names", @"C:\ProgramData\Autodesk\Revit\Addins\" + GrevitCommand.Version + @"\Grevit.Revit.dll", "Grevit.Revit.ParameterNames")) as PushButton;
+            PushButton parameterButton = grevitPanel.AddItem(new PushButtonData("ParameterNames", "Parameter names", path, "Grevit.Revit.ParameterNames")) as PushButton;
             parameterButton.LargeImage = System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(
                 Properties.Resources.tag_hash.GetHbitmap(),
                 IntPtr.Zero,
                 System.Windows.Int32Rect.Empty,
                 BitmapSizeOptions.FromWidthAndHeight(32, 32));
-            
+
+            parameterButton.SetContextualHelp(new ContextualHelp(ContextualHelpType.Url, "http://grevit.net/"));
 
             return Result.Succeeded;
         }
