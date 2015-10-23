@@ -584,12 +584,12 @@ namespace Grevit.Revit
 
                 ParameterType parameterType = ParameterType.Text;
 
-                // If there is a GID Definition in any Group return true
-                foreach (DefinitionGroup group in document.Application.OpenSharedParameterFile().Groups)               
-                    if (group.ContainsDefinition(parameterName)) return true;
-                
-                // If there is no shared parameter file do not continue
-                if (document.Application.SharedParametersFilename == string.Empty) return false;
+                string sharedParameterFile = document.Application.SharedParametersFilename;
+
+                string tempSharedParameterFile = System.IO.Path.GetTempFileName() + ".txt";
+                using (System.IO.File.Create(tempSharedParameterFile)) { }
+
+                document.Application.SharedParametersFilename = tempSharedParameterFile;
 
                 // Create a new Category Set to apply the parameter to
                 CategorySet categories = document.Application.Create.NewCategorySet();
@@ -604,6 +604,10 @@ namespace Grevit.Revit
 #else
                 ExternalDefinition def = document.Application.OpenSharedParameterFile().Groups.Create("Grevit").Definitions.Create(new ExternalDefinitonCreationOptions(parameterName, parameterType)) as ExternalDefinition;
 #endif
+
+                document.Application.SharedParametersFilename = sharedParameterFile;
+                System.IO.File.Delete(tempSharedParameterFile);
+
                 // Apply the Binding to almost all Categories
                 Autodesk.Revit.DB.Binding bin = document.Application.Create.NewInstanceBinding(categories);
                 BindingMap map = (new UIApplication(document.Application)).ActiveUIDocument.Document.ParameterBindings;
