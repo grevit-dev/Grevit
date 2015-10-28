@@ -541,6 +541,7 @@ namespace Grevit.GrassHopper
             optionals.Add(pManager.AddGenericParameter("Host", "Host", "Host", GH_ParamAccess.item));
             optionals.Add(pManager.AddGenericParameter("Parameters", "Param", "Parameters", GH_ParamAccess.list));
             optionals.Add(pManager.AddGenericParameter("StructuralType", "Struct", "Structural Type [Not Structural]", GH_ParamAccess.item));
+            optionals.Add(pManager.AddGenericParameter("Loops", "Loops", "Loops", GH_ParamAccess.list));
             foreach (int a in optionals) pManager[a].Optional = true;
         }
 
@@ -578,6 +579,16 @@ namespace Grevit.GrassHopper
             {
                 faimlyInstance.referenceGID = host.GID;
                 faimlyInstance.stalledForReference = true;
+            }
+
+            List<Loop> profile = new List<Loop>();
+            if (!DA.GetDataList<Loop>("Loops", profile)) profile = new List<Loop>();
+
+            if (profile.Count > 0)
+            {
+                faimlyInstance.profile = new Profile() { profile = new List<Loop>() };
+                foreach (Loop loop in profile)
+                    faimlyInstance.profile.profile.Add(loop);
             }
 
             SetGID(faimlyInstance);
@@ -1271,14 +1282,18 @@ namespace Grevit.GrassHopper
             slab.TypeOrLayer = type.Value;
             slab.levelbottom = level.Value;
             slab.structural = structural.Value;
-            slab.surface = new Surface();
-            slab.surface.outline = new List<Component>();
+            slab.surface = new Profile();
+            slab.surface.profile = new List<Loop>();
+            
+            Loop loop = new Loop();
+            loop.outline = new List<Component>();
 
             foreach (Rhino.Geometry.BrepEdge be in surface.Value.Edges)
-            { 
-                slab.surface.outline.Add(be.ToNurbsCurve().ToGrevitCurve());
+            {
+                loop.outline.Add(be.ToNurbsCurve().ToGrevitCurve());
             }
-  
+
+            slab.surface.profile.Add(loop);
 
             slab.parameters = parameters;
             slab.top = slopeTopPoint.ToGrevitPoint();
@@ -1373,7 +1388,7 @@ namespace Grevit.GrassHopper
 
             optional.Add(pManager.AddGenericParameter("Parameters", "Param", "Parameters", GH_ParamAccess.list));
             optional.Add(pManager.AddTextParameter("GID", "GID", "Optional GID override", GH_ParamAccess.item));
-            
+            optional.Add(pManager.AddGenericParameter("Loops", "Loops", "Loops", GH_ParamAccess.list));
             foreach(int a in optional) pManager[a].Optional = true;
             
         }
@@ -1391,6 +1406,8 @@ namespace Grevit.GrassHopper
             List<Parameter> parameters = new List<Parameter>();
             if (!DA.GetDataList<Parameter>("Parameters", parameters)) parameters = new List<Parameter>();
 
+
+
             DA.GetData<GH_String>("Family", ref family);
             DA.GetData<GH_String>("Type", ref type);
             DA.GetData<GH_String>("Level", ref level);
@@ -1399,7 +1416,17 @@ namespace Grevit.GrassHopper
             DA.GetData<GH_String>("GID", ref gid);
 
             Column column = new Column(family.Value,type.Value,parameters, topPoint.ToGrevitPoint(), bottomPoint.ToGrevitPoint(),level.Value,true);
-            
+
+            List<Loop> profile = new List<Loop>();
+            if (!DA.GetDataList<Loop>("Loops", profile)) profile = new List<Loop>();
+
+            if (profile.Count > 0)
+            {
+                column.profile = new Profile(){ profile = new List<Loop>() };   
+                foreach (Loop loop in profile)
+                    column.profile.profile.Add(loop);
+            }
+
             SetGID(column);
 
             Rhino.Geometry.Circle circle = new Rhino.Geometry.Circle(bottomPoint.Value,0.5);

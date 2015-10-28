@@ -381,13 +381,16 @@ namespace Grevit.GrassHopper
             s.TypeOrLayer = layer.Value;
             s.levelbottom = lvlbtm.Value;
             s.structural = structural.Value;
-            s.surface = new Surface();
-            s.surface.outline = new List<Component>();
+            s.surface = new Profile();
+            s.surface.profile = new List<Loop>();
+            Loop loop = new Loop() { outline = new List<Component>() };
 
             foreach (Rhino.Geometry.BrepEdge be in surface.Value.Edges)
             {
-                s.surface.outline.Add(be.ToNurbsCurve().ToGrevitCurve());
+                loop.outline.Add(be.ToNurbsCurve().ToGrevitCurve());
             }
+            s.surface.profile.Add(loop);
+
 
             s.height = height.Value;
             s.parameters = param;

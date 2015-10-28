@@ -565,6 +565,55 @@ namespace Grevit.GrassHopper
     }
 
     /// <summary>
+    /// CurveLoop
+    /// </summary>
+    public class GrevitCurveLoop : GH_Component
+    {
+        public GrevitCurveLoop() : base("Grevit Curve Loop", "Curve Loop", "Grevit Curve Loop", "Grevit", "Info") { }
+
+
+        protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
+        {
+            pManager.AddCurveParameter("Curves", "C", "Curves", GH_ParamAccess.list);
+        }
+
+        protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
+        {
+            pManager.AddGenericParameter("Loop", "L", "Loop", GH_ParamAccess.item);
+        }
+
+        protected override void SolveInstance(IGH_DataAccess DA)
+        {
+            List<GH_Curve> curves = new List<GH_Curve>();
+            DA.GetDataList<GH_Curve>(0, curves);
+
+            Loop loop = new Loop();
+            loop.outline = new List<Component>();
+            foreach (GH_Curve curve in curves) loop.outline.Add(curve.Value.ToGrevitCurve());
+
+            DA.SetData(0,loop);
+        }
+
+        // Properties
+        public override Guid ComponentGuid
+        {
+            get
+            {
+                return new Guid("{5ea7ce4d-d245-4d7f-a137-4583beeb4b5d}");
+            }
+        }
+        protected override Bitmap Internal_Icon_24x24
+        {
+            get
+            {
+                return Properties.Resources.modelline;
+            }
+        }
+
+
+    }
+
+    /// <summary>
     /// Grevit Category Component
     /// </summary>
     public class GrevitRevitCategory : GH_Component

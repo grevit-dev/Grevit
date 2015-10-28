@@ -197,7 +197,14 @@ namespace Grevit.Revit
         public static Element Create(this Familyinstance familyInstance)
         {
             // Get the FamilySymbol
-            Element familySymbolElement = GrevitCommand.document.GetElementByName(typeof(FamilySymbol), familyInstance.FamilyOrStyle, familyInstance.TypeOrLayer);
+            bool found = false;
+            Element familySymbolElement = GrevitCommand.document.GetElementByName(typeof(FamilySymbol), familyInstance.FamilyOrStyle, familyInstance.TypeOrLayer, out found);
+
+            if (!found && familyInstance.profile != null)
+            {
+                familySymbolElement = familyInstance.profile.ToRevitFamilyType(GrevitCommand.RevitTemplateFolder + @"\Metric Structural Framing - Beams and Braces.rft", false, familyInstance.FamilyOrStyle, familyInstance.TypeOrLayer);
+            }
+
 
             // Setup a new Family Instance
             Autodesk.Revit.DB.FamilyInstance newFamilyInstance = null;
@@ -210,6 +217,8 @@ namespace Grevit.Revit
 
                 // Cast the familySymbolElement
                 FamilySymbol familySymbol = (FamilySymbol)familySymbolElement;
+
+
 
                 // Create a reference Element
                 Element referenceElement = null;
@@ -279,7 +288,10 @@ namespace Grevit.Revit
         public static Element Create(this Familyinstance familyInstance, Element hostElement)
         {
             // Get the Family Symbol 
-            Element familySymbolElement = GrevitCommand.document.GetElementByName(typeof(FamilySymbol), familyInstance.FamilyOrStyle, familyInstance.TypeOrLayer);
+            bool found = false;
+            Element familySymbolElement = GrevitCommand.document.GetElementByName(typeof(FamilySymbol), familyInstance.FamilyOrStyle, familyInstance.TypeOrLayer, out found);
+
+            
 
             // Set up a new family Instance
             Autodesk.Revit.DB.FamilyInstance newFamilyInstance = null;
@@ -475,23 +487,41 @@ namespace Grevit.Revit
         public static Element Create(this Grevit.Types.Column column)
         {
             // Get the Family, Type and Level
-            Element familyElement = GrevitCommand.document.GetElementByName(Autodesk.Revit.DB.BuiltInCategory.OST_StructuralColumns, column.FamilyOrStyle, column.TypeOrLayer);
+            bool found = false;
+            Element familyElement = GrevitCommand.document.GetElementByName(Autodesk.Revit.DB.BuiltInCategory.OST_StructuralColumns, column.FamilyOrStyle, column.TypeOrLayer, out found);
             Element levelElement = GrevitCommand.document.GetElementByName(typeof(Autodesk.Revit.DB.Level), column.levelbottom);
 
             Autodesk.Revit.DB.FamilyInstance familyInstance = null;
+
+            if (!found && column.profile != null)
+            {
+                familyElement = column.profile.ToRevitFamilyType(GrevitCommand.RevitTemplateFolder + @"\Metric Structural Column.rft", true, column.FamilyOrStyle, column.TypeOrLayer);
+            }
+
+
 
             if (familyElement != null && levelElement != null)
             {
                 // Cast the FamilySymbol and the Level
                 FamilySymbol sym = (FamilySymbol)familyElement;
+
+
+
+
                 Autodesk.Revit.DB.Level level = (Autodesk.Revit.DB.Level)levelElement;
+
+                XYZ location = column.location.ToXYZ();
+                XYZ top = column.locationTop.ToXYZ();
+
+                XYZ lower = (location.Z < top.Z) ? location : top;
+                XYZ upper = (location.Z < top.Z) ? top : location;
 
                 // If the column already exists update it
                 // Otherwise create a new one
                 if (GrevitCommand.existing_Elements.ContainsKey(column.GID))         
                     familyInstance = (Autodesk.Revit.DB.FamilyInstance)GrevitCommand.document.GetElement(GrevitCommand.existing_Elements[column.GID]);            
                 else
-                    familyInstance = GrevitCommand.document.Create.NewFamilyInstance(column.location.ToXYZ(), sym, level, Autodesk.Revit.DB.Structure.StructuralType.Column);
+                    familyInstance = GrevitCommand.document.Create.NewFamilyInstance(lower, sym, level, Autodesk.Revit.DB.Structure.StructuralType.Column);
 
                 #region slantedColumn
 
@@ -507,7 +537,7 @@ namespace Grevit.Revit
                 if (elementCurve != null)
                 {
                     // Create a new line brom bottom to top
-                    Autodesk.Revit.DB.Line line = Autodesk.Revit.DB.Line.CreateBound(column.location.ToXYZ(), column.locationTop.ToXYZ());
+                    Autodesk.Revit.DB.Line line = Autodesk.Revit.DB.Line.CreateBound(lower, upper);
                     
                     // Apply this line to the location curve
                     elementCurve.Curve = line;
@@ -697,9 +727,9 @@ namespace Grevit.Revit
             List<Curve> curves = new List<Curve>();
 
             // Translate Grevit Curves to Revit Curves
-            for (int i = 0; i < slab.surface.outline.Count; i++)
+            for (int i = 0; i < slab.surface.profile[0].outline.Count; i++)
             {
-                foreach (Curve curve in Utilities.GrevitCurvesToRevitCurves(slab.surface.outline[i])) curves.Add(curve);
+                foreach (Curve curve in Utilities.GrevitCurvesToRevitCurves(slab.surface.profile[0].outline[i])) curves.Add(curve);
             }
 
             // Get the two slope points
@@ -831,7 +861,8 @@ namespace Grevit.Revit
         public static Element Create(this Adaptive adaptive)
         {
             // Get the family Symbol
-            Element faimlyElement = GrevitCommand.document.GetElementByName(typeof(FamilySymbol), adaptive.FamilyOrStyle, adaptive.TypeOrLayer);
+            bool found = false;
+            Element faimlyElement = GrevitCommand.document.GetElementByName(typeof(FamilySymbol), adaptive.FamilyOrStyle, adaptive.TypeOrLayer, out found);
             FamilySymbol faimlySymbol = (FamilySymbol)faimlyElement;
           
             if (faimlySymbol != null)

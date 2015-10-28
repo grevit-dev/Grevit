@@ -74,7 +74,8 @@ namespace Grevit.Types
     [KnownType(typeof(Stair))]
     [KnownType(typeof(SetCurtainPanel))]
     [KnownType(typeof(CurtainGridLine))]
-    [KnownType(typeof(Surface))]
+    [KnownType(typeof(Profile))]
+    [KnownType(typeof(Loop))]
     [KnownType(typeof(Parameter))]
     public class ComponentCollection
     {
@@ -314,7 +315,7 @@ namespace Grevit.Types
     public class Slab : Component
     {
         [DataMember]
-        public Surface surface { get; set; }
+        public Profile surface { get; set; }
         [DataMember]
         public string levelbottom { get; set; }
         [DataMember]
@@ -335,7 +336,14 @@ namespace Grevit.Types
     /// Surface, outline based
     /// </summary>
     [DataContract]
-    public class Surface : Component
+    public class Profile : Component
+    {
+        [DataMember]
+        public List<Loop> profile { get; set; }
+    }
+
+    [DataContract]
+    public class Loop : Component
     {
         [DataMember]
         public List<Component> outline { get; set; }
@@ -379,6 +387,8 @@ namespace Grevit.Types
         public Point locationTop { get; set; }
         [DataMember]
         public bool structural { get; set; }
+        [DataMember]
+        public Profile profile { get; set; }
 
         public Column(string familyOrStyle, string typeOrLayer, List<Parameter> parameters, Point bottomPoint, Point topPoint, string levelName, bool isStructural)
         {
@@ -432,6 +442,8 @@ namespace Grevit.Types
     [DataContract]
     public class Familyinstance : Component
     {
+        [DataMember]
+        public Profile profile { get; set; }
         [DataMember]
         public List<Point> points { get; set; }
         [DataMember]
@@ -870,11 +882,17 @@ namespace Grevit.Types
     [DataContract]
     public enum StructuralType
     {
+        [EnumMember]
         Beam,
+        [EnumMember]
         Brace,
+        [EnumMember]
         Column,
+        [EnumMember]
         Footing,
+        [EnumMember]
         NonStructural,
+        [EnumMember]
         UnknownFraming
     }
 }

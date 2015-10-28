@@ -45,6 +45,9 @@ namespace Grevit.Revit
     /// </summary>
     public static class Utilities
     {
+
+
+
         /// <summary>
         /// Translate to Revit Rule
         /// </summary>
@@ -203,7 +206,7 @@ namespace Grevit.Revit
         /// <param name="document">Active Document</param>
         /// <param name="grevitCurves">List of Grevit Curves</param>
         /// <returns>List of Revit Curves</returns>
-        public static List<Curve> GrevitCurvesToRevitCurves(Component component)
+        public static List<Curve> GrevitCurvesToRevitCurves(Component component, CoordinatesOverride coords = null)
         {
             List<Curve> curvesOut = new List<Curve>();
 
@@ -211,17 +214,17 @@ namespace Grevit.Revit
             if (component.GetType() == typeof(Grevit.Types.Line))
             {
                 Grevit.Types.Line line = (Grevit.Types.Line)component;
-                curvesOut.Add(Autodesk.Revit.DB.Line.CreateBound(line.from.ToXYZ(), line.to.ToXYZ()));
+                curvesOut.Add(Autodesk.Revit.DB.Line.CreateBound(line.from.ToXYZ(coords), line.to.ToXYZ(coords)));
             }
             else if (component.GetType() == typeof(Grevit.Types.Arc))
             {
                 Grevit.Types.Arc arc = (Grevit.Types.Arc)component;
-                curvesOut.Add(Autodesk.Revit.DB.Arc.Create(arc.center.ToXYZ(), arc.radius, arc.start, arc.end, XYZ.BasisX, XYZ.BasisY));
+                curvesOut.Add(Autodesk.Revit.DB.Arc.Create(arc.center.ToXYZ(coords), arc.radius, arc.start, arc.end, XYZ.BasisX, XYZ.BasisY));
             }
             else if (component.GetType() == typeof(Grevit.Types.Curve3Points))
             {
                 Grevit.Types.Curve3Points curve3points = (Grevit.Types.Curve3Points)component;
-                curvesOut.Add(Autodesk.Revit.DB.Arc.Create(curve3points.a.ToXYZ(), curve3points.c.ToXYZ(), curve3points.b.ToXYZ()));
+                curvesOut.Add(Autodesk.Revit.DB.Arc.Create(curve3points.a.ToXYZ(coords), curve3points.c.ToXYZ(coords), curve3points.b.ToXYZ(coords)));
             }
             else if (component.GetType() == typeof(Grevit.Types.PLine))
             {
@@ -229,14 +232,14 @@ namespace Grevit.Revit
 
                 for (int i = 0; i < pline.points.Count - 1; i++)
                 {
-                    curvesOut.Add(Autodesk.Revit.DB.Line.CreateBound(pline.points[i].ToXYZ(), pline.points[i + 1].ToXYZ()));
+                    curvesOut.Add(Autodesk.Revit.DB.Line.CreateBound(pline.points[i].ToXYZ(coords), pline.points[i + 1].ToXYZ(coords)));
                 }
             }
             else if (component.GetType() == typeof(Spline))
             {
                 Spline spline = (Spline)component;
                 IList<XYZ> points = new List<XYZ>();
-                foreach (Grevit.Types.Point point in spline.controlPoints) points.Add(point.ToXYZ());
+                foreach (Grevit.Types.Point point in spline.controlPoints) points.Add(point.ToXYZ(coords));
                 NurbSpline ns = NurbSpline.Create(points, spline.weights);
                 ns.isClosed = spline.isClosed;
                 curvesOut.Add(ns);
@@ -455,6 +458,15 @@ namespace Grevit.Revit
             return new XYZ(p.x, p.y, p.z);
         }
 
+        public static XYZ ToXYZ(this Grevit.Types.Point p, CoordinatesOverride coordoverride)
+        {
+            if (coordoverride != null)
+                return coordoverride.ApplyOverride(p);
+            else
+                return new XYZ(p.x, p.y, p.z);
+        }
+
+
         /// <summary>
         /// Gets an Element by Class and Name
         /// </summary>
@@ -507,7 +519,7 @@ namespace Grevit.Revit
         /// <param name="family">Family Name</param>
         /// <param name="familyType">Type Name</param>
         /// <returns></returns>
-        public static Element GetElementByName(this Document document, Type type, string family, string familyType)
+        public static Element GetElementByName(this Document document, Type type, string family, string familyType, out bool found)
         {
             FilteredElementCollector collector = new FilteredElementCollector(document).OfClass(type);
             foreach (Element e in collector.ToElements())
@@ -528,11 +540,12 @@ namespace Grevit.Revit
                     typeName = fs.Name;
                 }
 
-                if (familyName == family && typeName == familyType) return e;
+                if (familyName == family && typeName == familyType) { found = true;  return e; }
 
 
             }
 
+            found = false;
             return collector.FirstElement();
         }
 
@@ -544,8 +557,9 @@ namespace Grevit.Revit
         /// <param name="family">Family Name</param>
         /// <param name="type">Type Name</param>
         /// <returns></returns>
-        public static Element GetElementByName(this Document document, BuiltInCategory category, string family, string type)
+        public static Element GetElementByName(this Document document, BuiltInCategory category, string family, string type, out bool found)
         {
+            
             FilteredElementCollector collector = new FilteredElementCollector(document).OfCategory(category);
             foreach (Element e in collector.ToElements())
             {
@@ -565,9 +579,10 @@ namespace Grevit.Revit
                     typeName = fs.Name;
                 }
 
-                if (familyName == family && typeName == type) return e;
+                if (familyName == family && typeName == type) { found = true; return e; }
             }
 
+            found = false;
             return collector.FirstElement();
         }      
 
@@ -732,5 +747,232 @@ namespace Grevit.Revit
             return elems;
         }
 
+    }
+
+    public static class Profile
+    {
+        public static List<Reference> FamilyCurve(Grevit.Types.Component curve, Autodesk.Revit.DB.Document familyDocument)
+        {
+            List<Curve> revitCurves = Utilities.GrevitCurvesToRevitCurves(curve);
+            List<Reference> refs = new List<Reference>();
+
+            foreach (Curve revitcurve in revitCurves)
+            {
+                SketchPlane plane = Utilities.NewSketchPlaneFromCurve(GrevitCommand.document, revitcurve);
+                SymbolicCurve symCurve = familyDocument.FamilyCreate.NewSymbolicCurve(revitcurve, plane);
+                refs.Add(symCurve.GeometryCurve.Reference);
+            }
+            return refs;
+        }
+
+        public static Dictionary<string, string> pathlibrary = new Dictionary<string, string>();
+
+        public static FamilySymbol ToRevitFamilyType(this Grevit.Types.Profile profile, string defaultFamilyTemplatePath, bool column, string familyName, string typeName)
+        {
+            // If nothing worked, create a new family
+            #region Create new Family
+
+            // Get the Massing template file
+            //string templateFile = @"C:\ProgramData\Autodesk\RVT 2016\Family Templates\English\Metric Structural Column.rft";
+
+            // If the file doesnt exist ask the user for a new template
+            if (!System.IO.File.Exists(defaultFamilyTemplatePath))
+            {
+                if (pathlibrary.ContainsKey(defaultFamilyTemplatePath))
+                    defaultFamilyTemplatePath = pathlibrary[defaultFamilyTemplatePath];
+                else
+                {
+                    System.Windows.Forms.OpenFileDialog ofd = new System.Windows.Forms.OpenFileDialog();
+                    ofd.Multiselect = false;
+                    ofd.Title = defaultFamilyTemplatePath + " not found.";
+                    System.Windows.Forms.DialogResult dr = ofd.ShowDialog();
+                    if (dr != System.Windows.Forms.DialogResult.OK) return null;
+
+                    pathlibrary.Add(defaultFamilyTemplatePath, ofd.FileName);
+                    defaultFamilyTemplatePath = ofd.FileName;
+                }
+            }
+
+            // Create a new family Document
+            Autodesk.Revit.DB.Document familyDocument = GrevitCommand.document.Application.NewFamilyDocument(defaultFamilyTemplatePath);
+
+            // Create a new family transaction
+            Transaction familyTransaction = new Transaction(familyDocument, "Transaction in Family");
+            familyTransaction.Start();
+
+            // Create a reference Array for the Profile
+            CurveArrArray profileArray = new CurveArrArray();
+
+            CoordinatesOverride coords = (column) ? null : CoordinatesOverride.OverrideX(4.10105);
+
+            foreach (Types.Loop loop in profile.profile)
+            {
+                CurveArray array = new CurveArray();
+
+                foreach (Component comp in loop.outline)
+                {
+                    foreach (Curve curve in Utilities.GrevitCurvesToRevitCurves(comp, coords))
+                        array.Append(curve);
+                }
+
+                profileArray.Append(array);
+            }
+
+
+            if (column)
+            {
+                // Create a new Extrusion
+                Autodesk.Revit.DB.Level upperLevel = familyDocument.GetElementByName(typeof(Autodesk.Revit.DB.Level), "Upper Ref Level") as Autodesk.Revit.DB.Level;
+                Autodesk.Revit.DB.Level lowerLevel = familyDocument.GetElementByName(typeof(Autodesk.Revit.DB.Level), "Lower Ref. Level") as Autodesk.Revit.DB.Level;
+
+                SketchPlane zero = SketchPlane.Create(familyDocument, new Plane(XYZ.BasisZ, new XYZ(0, 0, lowerLevel.Elevation)));
+
+                Autodesk.Revit.DB.Extrusion extrudedMass = familyDocument.FamilyCreate.NewExtrusion(true, profileArray, zero, upperLevel.Elevation);
+#if (Revit2016)
+                Alignments(familyDocument, findFace(extrudedMass, new XYZ(0.0, 0.0, 1.0)).Reference, upperLevel.GetPlaneReference());
+                Alignments(familyDocument, findFace(extrudedMass, new XYZ(0.0, 0.0, -1.0)).Reference, lowerLevel.GetPlaneReference());
+#else
+                Alignments(familyDocument, findFace(extrudedMass, new XYZ(0.0, 0.0, 1.0)).Reference, upperLevel.PlaneReference);
+                Alignments(familyDocument, findFace(extrudedMass, new XYZ(0.0, 0.0, -1.0)).Reference, lowerLevel.PlaneReference);
+#endif
+            }
+
+            else
+            {
+                FilteredElementCollector extrusions = new FilteredElementCollector(familyDocument).OfClass(typeof(Autodesk.Revit.DB.Extrusion));
+                familyDocument.Delete(extrusions.ToElementIds());
+
+                // Create a new Extrusion
+                Autodesk.Revit.DB.ReferencePlane leftRef = familyDocument.GetElementByName(typeof(Autodesk.Revit.DB.ReferencePlane), "Member Left") as Autodesk.Revit.DB.ReferencePlane;
+                Autodesk.Revit.DB.ReferencePlane rightRef = familyDocument.GetElementByName(typeof(Autodesk.Revit.DB.ReferencePlane), "Member Right") as Autodesk.Revit.DB.ReferencePlane;
+
+                SketchPlane zero = SketchPlane.Create(familyDocument, new Plane(XYZ.BasisX, new XYZ(leftRef.BubbleEnd.X, 0, 0)));
+
+
+                Autodesk.Revit.DB.Extrusion extrudedMass = familyDocument.FamilyCreate.NewExtrusion(true, profileArray, zero, Math.Abs(leftRef.BubbleEnd.X) + Math.Abs(rightRef.BubbleEnd.X));
+#if (Revit2016)
+                Alignments(familyDocument, findFace(extrudedMass, new XYZ(-1.0, 0.0, 0)).Reference, leftRef.GetReference());
+                Alignments(familyDocument, findFace(extrudedMass, new XYZ(1.0, 0.0, 0)).Reference, rightRef.GetReference());
+#else
+                Alignments(familyDocument, findFace(extrudedMass, new XYZ(-1.0, 0.0, 0)).Reference, leftRef.Reference);
+                Alignments(familyDocument, findFace(extrudedMass, new XYZ(1.0, 0.0, 0)).Reference, rightRef.Reference);
+#endif
+            }
+
+            FamilyManager familyMgr = familyDocument.FamilyManager;
+            familyMgr.NewType(typeName);
+
+
+            // Commit the Family Transaction
+            familyTransaction.Commit();
+
+            // Assemble a filename to save the family to
+            string filename = System.IO.Path.Combine(System.IO.Path.GetTempPath(), familyName + ".rfa");
+
+            // Save Family to Temp path and close it
+            SaveAsOptions opt = new SaveAsOptions();
+            opt.OverwriteExistingFile = true;
+            familyDocument.SaveAs(filename, opt);
+            familyDocument.Close(false);
+
+            // Load the created family to the document
+            Family revitFamily = null;
+            GrevitCommand.document.LoadFamily(filename, out revitFamily);
+
+            if (revitFamily == null)
+            {
+                return null;
+            }
+            else
+            {
+                // Get the first family symbol
+                FamilySymbol familySymbol = null;
+                foreach (ElementId id in revitFamily.GetFamilySymbolIds())
+                {
+                    FamilySymbol fs = (FamilySymbol)GrevitCommand.document.GetElement(id);
+                    if (fs.Name == typeName) familySymbol = fs;
+
+                }
+
+                if (!familySymbol.IsActive) familySymbol.Activate();
+
+                return familySymbol;
+            }
+            #endregion
+        }
+
+
+        static void Alignments(Autodesk.Revit.DB.Document document, Reference reference1, Reference reference2)
+        {
+            View pView = document.GetElementByName(typeof(View), "Front") as View;
+            document.FamilyCreate.NewAlignment(pView, reference1, reference2);
+        }
+
+        static PlanarFace findFace(Autodesk.Revit.DB.Extrusion pBox, XYZ normal)
+        {
+            // get the geometry object of the given element
+            //
+            Options op = new Options();
+            op.ComputeReferences = true;
+            GeometryElement geomElem = pBox.get_Geometry(op);
+            // loop through the array and find a face with the given normal
+            //
+            foreach (GeometryObject geomObj in geomElem)
+            {
+                if (geomObj is Solid) // solid is what we are interested in.
+                {
+                    Solid pSolid = geomObj as Solid;
+                    FaceArray faces = pSolid.Faces;
+                    foreach (Autodesk.Revit.DB.Face pFace in faces)
+                    {
+                        PlanarFace pPlanarFace = pFace as PlanarFace;
+#if (Revit2016)
+                        if ((pPlanarFace != null) && pPlanarFace.FaceNormal.IsAlmostEqualTo(normal))
+#else
+                        if ((pPlanarFace != null) && pPlanarFace.Normal.IsAlmostEqualTo(normal))
+#endif
+                        {
+                            return pPlanarFace;
+                        }
+                    }
+                }
+            }
+            // if we come here, we did not find any.
+            return null;
+        }
+
+    }
+
+    public class CoordinatesOverride
+    {
+        public double Value;
+        public Coordinate Coordinate;
+
+        public static CoordinatesOverride OverrideX(double value) { return new CoordinatesOverride() { Value = value, Coordinate = Revit.Coordinate.X }; }
+        public static CoordinatesOverride OverrideY(double value) { return new CoordinatesOverride() { Value = value, Coordinate = Revit.Coordinate.Y }; }
+        public static CoordinatesOverride OverrideZ(double value) { return new CoordinatesOverride() { Value = value, Coordinate = Revit.Coordinate.Z }; }
+
+        public XYZ ApplyOverride(Grevit.Types.Point point)
+        {
+            switch (Coordinate)
+            {
+                case Revit.Coordinate.X:
+                    return new XYZ(Value, point.y, point.z);
+                case Revit.Coordinate.Y:
+                    return new XYZ(point.x, Value, point.z);
+                case Revit.Coordinate.Z:
+                    return new XYZ(point.x, point.y, Value);
+                default:
+                    return new XYZ(point.x, point.y, point.z);
+            }
+
+        }
+    }
+
+    public enum Coordinate
+    { 
+        X,
+        Y,
+        Z
     }
 }
