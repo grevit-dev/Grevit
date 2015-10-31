@@ -588,8 +588,12 @@ namespace Grevit.GrassHopper
             DA.GetDataList<GH_Curve>(0, curves);
 
             Loop loop = new Loop();
+            List<Rhino.Geometry.Curve> curveInfo = new List<Rhino.Geometry.Curve>();
             loop.outline = new List<Component>();
-            foreach (GH_Curve curve in curves) loop.outline.Add(curve.Value.ToGrevitCurve());
+            foreach (GH_Curve curve in curves) {
+                curveInfo.Add(curve.Value);
+                loop.outline.Add(curve.Value.ToGrevitCurve());}
+            loop.Custom = curveInfo;
 
             DA.SetData(0,loop);
         }
