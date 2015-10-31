@@ -347,6 +347,8 @@ namespace Grevit.Types
     {
         [DataMember]
         public List<Component> outline { get; set; }
+        
+        public object Custom;
     }
 
     /// <summary>
