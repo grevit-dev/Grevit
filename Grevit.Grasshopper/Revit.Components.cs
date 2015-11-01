@@ -1419,21 +1419,36 @@ namespace Grevit.GrassHopper
 
             List<Loop> profile = new List<Loop>();
             if (!DA.GetDataList<Loop>("Loops", profile)) profile = new List<Loop>();
-
+            SetGID(column);
             if (profile.Count > 0)
             {
-                column.profile = new Profile(){ profile = new List<Loop>() };   
+                bool hasPreview = false;
+
+                column.profile = new Profile() { profile = new List<Loop>() };
                 foreach (Loop loop in profile)
+                {
                     column.profile.profile.Add(loop);
+
+                    Rhino.Geometry.Curve[] array = Rhino.Geometry.Curve.JoinCurves((List<Rhino.Geometry.Curve>)loop.Custom);
+                    if (!hasPreview && array != null && array.Length > 0)
+                    {
+                        Rhino.Geometry.Curve curve = array[0];
+                        curve.Translate(new Rhino.Geometry.Vector3d(bottomPoint.Value));
+                        Rhino.Geometry.Surface srf = Rhino.Geometry.NurbsSurface.CreateExtrusion(curve, new Rhino.Geometry.Vector3d(new Rhino.Geometry.Point3d(topPoint.Value.X - bottomPoint.Value.X, topPoint.Value.Y - bottomPoint.Value.Y, topPoint.Value.Z - bottomPoint.Value.Z)));
+                        SetPreview(column.GID, srf.ToBrep());
+                        hasPreview = true;
+                    }
+                }
+
             }
+            else
+            {
+                Rhino.Geometry.Circle circle = new Rhino.Geometry.Circle(bottomPoint.Value, 0.5);
+                Rhino.Geometry.Surface srf = Rhino.Geometry.NurbsSurface.CreateExtrusion(circle.ToNurbsCurve(), new Rhino.Geometry.Vector3d(new Rhino.Geometry.Point3d(topPoint.Value.X - bottomPoint.Value.X, topPoint.Value.Y - bottomPoint.Value.Y, topPoint.Value.Z - bottomPoint.Value.Z)));
+                SetPreview(column.GID, srf.ToBrep());
+            }
+            
 
-            SetGID(column);
-
-            Rhino.Geometry.Circle circle = new Rhino.Geometry.Circle(bottomPoint.Value,0.5);
-  
-            Rhino.Geometry.Surface srf = Rhino.Geometry.NurbsSurface.CreateExtrusion(circle.ToNurbsCurve(), new Rhino.Geometry.Vector3d(new Rhino.Geometry.Point3d(topPoint.Value.X-bottomPoint.Value.X,topPoint.Value.Y-bottomPoint.Value.Y,topPoint.Value.Z-bottomPoint.Value.Z)));
-
-            SetPreview(column.GID, srf.ToBrep());
 
             DA.SetData("GrevitComponent", column);
         }
