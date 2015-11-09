@@ -53,11 +53,11 @@ namespace Grevit.Revit
 
             Dictionary<string,ElementId> parameters = new Dictionary<string,ElementId>();
 
-            foreach (Category category in GrevitCommand.document.Settings.Categories)
+            foreach (Category category in GrevitBuildModel.document.Settings.Categories)
             {
                 if (filter.categories.Contains(category.Name) || filter.categories.Count == 0) categories.Add(category.Id);
 
-                FilteredElementCollector collector = new FilteredElementCollector(GrevitCommand.document).OfCategoryId(category.Id);
+                FilteredElementCollector collector = new FilteredElementCollector(GrevitBuildModel.document).OfCategoryId(category.Id);
                 if (collector.Count() > 0)
                 {
                     foreach (Autodesk.Revit.DB.Parameter parameter in collector.FirstElement().Parameters)
@@ -70,7 +70,7 @@ namespace Grevit.Revit
 
             ParameterFilterElement parameterFilter = null;
 
-            FilteredElementCollector collect = new FilteredElementCollector(GrevitCommand.document).OfClass(typeof(ParameterFilterElement));
+            FilteredElementCollector collect = new FilteredElementCollector(GrevitBuildModel.document).OfClass(typeof(ParameterFilterElement));
             foreach (ParameterFilterElement existingFilter in collect.ToElements())
             {
                 if (existingFilter.Name == filter.name)
@@ -80,10 +80,10 @@ namespace Grevit.Revit
                 }
             }
 
-            if (parameterFilter == null) parameterFilter = ParameterFilterElement.Create(GrevitCommand.document, filter.name, categories);
+            if (parameterFilter == null) parameterFilter = ParameterFilterElement.Create(GrevitBuildModel.document, filter.name, categories);
 
 
-            View view = (View)Utilities.GetElementByName(GrevitCommand.document, typeof(View), filter.view);
+            View view = (View)Utilities.GetElementByName(GrevitBuildModel.document, typeof(View), filter.view);
             view.AddFilter(parameterFilter.Id);
            
 
@@ -121,25 +121,25 @@ namespace Grevit.Revit
             // Apply Patterns          
             if (filter.CutFillPattern != null)
             {
-                FillPatternElement pattern = (FillPatternElement)Utilities.GetElementByName(GrevitCommand.document, typeof(FillPatternElement), filter.CutFillPattern);
+                FillPatternElement pattern = (FillPatternElement)Utilities.GetElementByName(GrevitBuildModel.document, typeof(FillPatternElement), filter.CutFillPattern);
                 filterSettings.SetCutFillPatternId(pattern.Id);
             }
 
             if (filter.ProjectionFillPattern != null)
             {
-                FillPatternElement pattern = (FillPatternElement)Utilities.GetElementByName(GrevitCommand.document, typeof(FillPatternElement), filter.ProjectionFillPattern);
+                FillPatternElement pattern = (FillPatternElement)Utilities.GetElementByName(GrevitBuildModel.document, typeof(FillPatternElement), filter.ProjectionFillPattern);
                 filterSettings.SetProjectionFillPatternId(pattern.Id);
             }
 
             if (filter.CutLinePattern != null)
             {
-                LinePatternElement pattern = (LinePatternElement)Utilities.GetElementByName(GrevitCommand.document, typeof(LinePatternElement), filter.CutLinePattern);
+                LinePatternElement pattern = (LinePatternElement)Utilities.GetElementByName(GrevitBuildModel.document, typeof(LinePatternElement), filter.CutLinePattern);
                 filterSettings.SetCutLinePatternId(pattern.Id);
             }
 
             if (filter.ProjectionLinePattern != null)
             {
-                LinePatternElement pattern = (LinePatternElement)Utilities.GetElementByName(GrevitCommand.document, typeof(LinePatternElement), filter.ProjectionLinePattern);
+                LinePatternElement pattern = (LinePatternElement)Utilities.GetElementByName(GrevitBuildModel.document, typeof(LinePatternElement), filter.ProjectionLinePattern);
                 filterSettings.SetProjectionLinePatternId(pattern.Id);
             }
 
@@ -164,7 +164,7 @@ namespace Grevit.Revit
             if (setCurtainPanel.panelID == 0 || setCurtainPanel.panelType == "") return null;
 
             // Get the panel to change
-            Panel panel = (Panel)GrevitCommand.document.GetElement(new ElementId(setCurtainPanel.panelID));
+            Panel panel = (Panel)GrevitBuildModel.document.GetElement(new ElementId(setCurtainPanel.panelID));
             
             // get its host wall
             Element wallElement = panel.Host;
@@ -175,7 +175,7 @@ namespace Grevit.Revit
                 Autodesk.Revit.DB.Wall wall = (Autodesk.Revit.DB.Wall)wallElement;
 
                 // Try to get the curtain panel type
-                FilteredElementCollector collector = new FilteredElementCollector(GrevitCommand.document).OfClass(typeof(PanelType));
+                FilteredElementCollector collector = new FilteredElementCollector(GrevitBuildModel.document).OfClass(typeof(PanelType));
                 Element paneltype = collector.FirstElement();
                 foreach (Element em in collector.ToElements()) if (em.Name == setCurtainPanel.panelType) paneltype = em;
                 
@@ -198,13 +198,7 @@ namespace Grevit.Revit
         {
             // Get the FamilySymbol
             bool found = false;
-            Element familySymbolElement = GrevitCommand.document.GetElementByName(typeof(FamilySymbol), familyInstance.FamilyOrStyle, familyInstance.TypeOrLayer, out found);
-
-            if (!found && familyInstance.profile != null)
-            {
-                familySymbolElement = familyInstance.profile.ToRevitFamilyType(GrevitCommand.RevitTemplateFolder + @"\Metric Structural Framing - Beams and Braces.rft", false, familyInstance.FamilyOrStyle, familyInstance.TypeOrLayer);
-            }
-
+            Element familySymbolElement = GrevitBuildModel.document.GetElementByName(typeof(FamilySymbol), familyInstance.FamilyOrStyle, familyInstance.TypeOrLayer, out found);
 
             // Setup a new Family Instance
             Autodesk.Revit.DB.FamilyInstance newFamilyInstance = null;
@@ -226,16 +220,16 @@ namespace Grevit.Revit
                 // If the view property is not set, the reference should be a level
                 // Otherwise the family is view dependent
                 if (familyInstance.view == null || familyInstance.view == string.Empty)                
-                    referenceElement = GrevitCommand.document.GetElementByName(typeof(Autodesk.Revit.DB.Level), familyInstance.level);                
+                    referenceElement = GrevitBuildModel.document.GetElementByName(typeof(Autodesk.Revit.DB.Level), familyInstance.level);                
                 else                
-                    referenceElement = GrevitCommand.document.GetElementByName(typeof(Autodesk.Revit.DB.View), familyInstance.view);
+                    referenceElement = GrevitBuildModel.document.GetElementByName(typeof(Autodesk.Revit.DB.View), familyInstance.view);
                               
 
                 // If there is an element with the same GID existing, update it
                 // Otherwise create a new one
-                if (GrevitCommand.existing_Elements.ContainsKey(familyInstance.GID))
+                if (GrevitBuildModel.existing_Elements.ContainsKey(familyInstance.GID))
                 {
-                    newFamilyInstance = (Autodesk.Revit.DB.FamilyInstance)GrevitCommand.document.GetElement(GrevitCommand.existing_Elements[familyInstance.GID]);
+                    newFamilyInstance = (Autodesk.Revit.DB.FamilyInstance)GrevitBuildModel.document.GetElement(GrevitBuildModel.existing_Elements[familyInstance.GID]);
                     if (newFamilyInstance.Location.GetType() == typeof(LocationPoint))
                     {
                         LocationPoint lp = (LocationPoint)newFamilyInstance.Location;
@@ -252,24 +246,24 @@ namespace Grevit.Revit
                 {
                     // If there is no reference element just create the family without
                     if (referenceElement == null)                    
-                        if (familyInstance.points.Count == 1) newFamilyInstance = GrevitCommand.document.Create.NewFamilyInstance(familyInstance.points[0].ToXYZ(), familySymbol, stype);                    
+                        if (familyInstance.points.Count == 1) newFamilyInstance = GrevitBuildModel.document.Create.NewFamilyInstance(familyInstance.points[0].ToXYZ(), familySymbol, stype);                    
                     else
                     {
                         if (familyInstance.points.Count == 1)
                         {
                             if (referenceElement.GetType() == typeof(Autodesk.Revit.DB.View))
-                                newFamilyInstance = GrevitCommand.document.Create.NewFamilyInstance(familyInstance.points[0].ToXYZ(), familySymbol, (Autodesk.Revit.DB.View)referenceElement);
+                                newFamilyInstance = GrevitBuildModel.document.Create.NewFamilyInstance(familyInstance.points[0].ToXYZ(), familySymbol, (Autodesk.Revit.DB.View)referenceElement);
                             else
-                                newFamilyInstance = GrevitCommand.document.Create.NewFamilyInstance(familyInstance.points[0].ToXYZ(), familySymbol, (Autodesk.Revit.DB.Level)referenceElement, stype);
+                                newFamilyInstance = GrevitBuildModel.document.Create.NewFamilyInstance(familyInstance.points[0].ToXYZ(), familySymbol, (Autodesk.Revit.DB.Level)referenceElement, stype);
                         }
                         else if (familyInstance.points.Count == 2)
                         {
                             Autodesk.Revit.DB.Line c = Autodesk.Revit.DB.Line.CreateBound(familyInstance.points[0].ToXYZ(), familyInstance.points[1].ToXYZ());
 
                             if (referenceElement.GetType() == typeof(Autodesk.Revit.DB.View))
-                                newFamilyInstance = GrevitCommand.document.Create.NewFamilyInstance(c, familySymbol, (Autodesk.Revit.DB.View)referenceElement);
+                                newFamilyInstance = GrevitBuildModel.document.Create.NewFamilyInstance(c, familySymbol, (Autodesk.Revit.DB.View)referenceElement);
                             else
-                                newFamilyInstance = GrevitCommand.document.Create.NewFamilyInstance(c, familySymbol, (Autodesk.Revit.DB.Level)referenceElement, stype);
+                                newFamilyInstance = GrevitBuildModel.document.Create.NewFamilyInstance(c, familySymbol, (Autodesk.Revit.DB.Level)referenceElement, stype);
                         }
                     }
                 }
@@ -289,7 +283,7 @@ namespace Grevit.Revit
         {
             // Get the Family Symbol 
             bool found = false;
-            Element familySymbolElement = GrevitCommand.document.GetElementByName(typeof(FamilySymbol), familyInstance.FamilyOrStyle, familyInstance.TypeOrLayer, out found);
+            Element familySymbolElement = GrevitBuildModel.document.GetElementByName(typeof(FamilySymbol), familyInstance.FamilyOrStyle, familyInstance.TypeOrLayer, out found);
 
             
 
@@ -306,13 +300,13 @@ namespace Grevit.Revit
                 FamilySymbol familySymbol = (FamilySymbol)familySymbolElement;
 
                 // Get the placement level
-                Autodesk.Revit.DB.Level level = (Autodesk.Revit.DB.Level)GrevitCommand.document.GetElementByName(typeof(Autodesk.Revit.DB.Level), familyInstance.level);
+                Autodesk.Revit.DB.Level level = (Autodesk.Revit.DB.Level)GrevitBuildModel.document.GetElementByName(typeof(Autodesk.Revit.DB.Level), familyInstance.level);
 
                 // If the element already exists just update it
                 // Otherwise create a new one
-                if (GrevitCommand.existing_Elements.ContainsKey(familyInstance.GID))
+                if (GrevitBuildModel.existing_Elements.ContainsKey(familyInstance.GID))
                 {
-                    newFamilyInstance = (Autodesk.Revit.DB.FamilyInstance)GrevitCommand.document.GetElement(GrevitCommand.existing_Elements[familyInstance.GID]);
+                    newFamilyInstance = (Autodesk.Revit.DB.FamilyInstance)GrevitBuildModel.document.GetElement(GrevitBuildModel.existing_Elements[familyInstance.GID]);
                     if (newFamilyInstance.Location.GetType() == typeof(LocationPoint))
                     {
                         LocationPoint lp = (LocationPoint)newFamilyInstance.Location;
@@ -322,7 +316,7 @@ namespace Grevit.Revit
                 else
                 {
                     if (familyInstance.points.Count == 1)
-                        newFamilyInstance = GrevitCommand.document.Create.NewFamilyInstance(familyInstance.points[0].ToXYZ(), familySymbol, hostElement, level, structuralType);
+                        newFamilyInstance = GrevitBuildModel.document.Create.NewFamilyInstance(familyInstance.points[0].ToXYZ(), familySymbol, hostElement, level, structuralType);
                 }
 
             }
@@ -340,16 +334,16 @@ namespace Grevit.Revit
             foreach (Curve c in Utilities.GrevitCurvesToRevitCurves(line.curve))
             {               
                 if (line.isModelCurve)
-                    GrevitCommand.document.Create.NewModelCurve(c, Utilities.NewSketchPlaneFromCurve(GrevitCommand.document, c));
+                    GrevitBuildModel.document.Create.NewModelCurve(c, Utilities.NewSketchPlaneFromCurve(GrevitBuildModel.document, c));
                 
                 if (line.isDetailCurve)            
-                    GrevitCommand.document.Create.NewDetailCurve(GrevitCommand.document.ActiveView, c);
+                    GrevitBuildModel.document.Create.NewDetailCurve(GrevitBuildModel.document.ActiveView, c);
                 
                 if (line.isRoomBounding)
                 {
                     CurveArray tmpca = new CurveArray();
                     tmpca.Append(c);
-                    GrevitCommand.document.Create.NewRoomBoundaryLines(Utilities.NewSketchPlaneFromCurve(GrevitCommand.document, c), tmpca, GrevitCommand.document.ActiveView);
+                    GrevitBuildModel.document.Create.NewRoomBoundaryLines(Utilities.NewSketchPlaneFromCurve(GrevitBuildModel.document, c), tmpca, GrevitBuildModel.document.ActiveView);
                 }
 
             }
@@ -364,7 +358,7 @@ namespace Grevit.Revit
         public static Element Create(this Grevit.Types.SimpleExtrusion extrusion)
         {
             // Get the Massing template file
-            string templateFile = GrevitCommand.RevitTemplateFolder + @"\Conceptual Mass\Metric Mass.rft";
+            string templateFile = GrevitBuildModel.RevitTemplateFolder + @"\Conceptual Mass\Metric Mass.rft";
 
             // If the file doesnt exist ask the user for a new template
             if (!File.Exists(templateFile))
@@ -378,7 +372,7 @@ namespace Grevit.Revit
             }
 
             // Create a new family Document
-            Document familyDocument = GrevitCommand.document.Application.NewFamilyDocument(templateFile);
+            Document familyDocument = GrevitBuildModel.document.Application.NewFamilyDocument(templateFile);
 
             // Create a new family transaction
             Transaction familyTransaction = new Transaction(familyDocument, "Transaction in Family");
@@ -424,21 +418,21 @@ namespace Grevit.Revit
 
             // Load the created family to the document
             Family family = null;
-            GrevitCommand.document.LoadFamily(filename, out family);
+            GrevitBuildModel.document.LoadFamily(filename, out family);
 
             // Get the first family symbol
             FamilySymbol symbol = null;
             foreach (ElementId s in family.GetFamilySymbolIds())
             {
-                symbol = (FamilySymbol)GrevitCommand.document.GetElement(s);
+                symbol = (FamilySymbol)GrevitBuildModel.document.GetElement(s);
                 break;
             }
 
             // Create a new Family Instance origin based
-            FamilyInstance familyInstance = GrevitCommand.document.Create.NewFamilyInstance(new XYZ(0, 0, 0), symbol, Autodesk.Revit.DB.Structure.StructuralType.NonStructural);
+            FamilyInstance familyInstance = GrevitBuildModel.document.Create.NewFamilyInstance(new XYZ(0, 0, 0), symbol, Autodesk.Revit.DB.Structure.StructuralType.NonStructural);
 
             // Activate Mass visibility
-            GrevitCommand.document.SetMassVisibilityOn();
+            GrevitBuildModel.document.SetMassVisibilityOn();
 
             return familyInstance;
 
@@ -452,13 +446,13 @@ namespace Grevit.Revit
         public static Element Create(this Grevit.Types.Level level)
         {
             // Get all Levels from the document
-            FilteredElementCollector sollector = new FilteredElementCollector(GrevitCommand.document).OfClass(typeof(Autodesk.Revit.DB.Level));
+            FilteredElementCollector sollector = new FilteredElementCollector(GrevitBuildModel.document).OfClass(typeof(Autodesk.Revit.DB.Level));
 
             // If there is any level with the same name that we are going to create return null because that level already exists
             foreach (Element e in sollector.ToElements()) if (e.Name == level.name) return null;
 
             // Create the new Level
-            Autodesk.Revit.DB.Level newLevel = GrevitCommand.document.Create.NewLevel(level.height);
+            Autodesk.Revit.DB.Level newLevel = GrevitBuildModel.document.Create.NewLevel(level.height);
             
             // Set the Levels name
             newLevel.Name = level.name;
@@ -467,13 +461,13 @@ namespace Grevit.Revit
             if (level.addView)
             {
                 // Get all View Family Types of familyType Floor plan
-                IEnumerable<ViewFamilyType> viewFamilyTypes = from elem in new FilteredElementCollector(GrevitCommand.document).OfClass(typeof(ViewFamilyType))
+                IEnumerable<ViewFamilyType> viewFamilyTypes = from elem in new FilteredElementCollector(GrevitBuildModel.document).OfClass(typeof(ViewFamilyType))
                                                               let type = elem as ViewFamilyType
                                                               where type.ViewFamily == ViewFamily.FloorPlan
                                                               select type;
 
                 // Create a new view
-                ViewPlan.Create(GrevitCommand.document, viewFamilyTypes.First().Id, newLevel.Id);
+                ViewPlan.Create(GrevitBuildModel.document, viewFamilyTypes.First().Id, newLevel.Id);
             }
 
             return newLevel;
@@ -488,15 +482,10 @@ namespace Grevit.Revit
         {
             // Get the Family, Type and Level
             bool found = false;
-            Element familyElement = GrevitCommand.document.GetElementByName(Autodesk.Revit.DB.BuiltInCategory.OST_StructuralColumns, column.FamilyOrStyle, column.TypeOrLayer, out found);
-            Element levelElement = GrevitCommand.document.GetElementByName(typeof(Autodesk.Revit.DB.Level), column.levelbottom);
+            Element familyElement = GrevitBuildModel.document.GetElementByName(Autodesk.Revit.DB.BuiltInCategory.OST_StructuralColumns, column.FamilyOrStyle, column.TypeOrLayer, out found);
+            Element levelElement = GrevitBuildModel.document.GetElementByName(typeof(Autodesk.Revit.DB.Level), column.levelbottom);
 
             Autodesk.Revit.DB.FamilyInstance familyInstance = null;
-
-            if (!found && column.profile != null)
-            {
-                familyElement = column.profile.ToRevitFamilyType(GrevitCommand.RevitTemplateFolder + @"\Metric Structural Column.rft", true, column.FamilyOrStyle, column.TypeOrLayer);
-            }
 
 
 
@@ -518,10 +507,10 @@ namespace Grevit.Revit
 
                 // If the column already exists update it
                 // Otherwise create a new one
-                if (GrevitCommand.existing_Elements.ContainsKey(column.GID))         
-                    familyInstance = (Autodesk.Revit.DB.FamilyInstance)GrevitCommand.document.GetElement(GrevitCommand.existing_Elements[column.GID]);            
+                if (GrevitBuildModel.existing_Elements.ContainsKey(column.GID))         
+                    familyInstance = (Autodesk.Revit.DB.FamilyInstance)GrevitBuildModel.document.GetElement(GrevitBuildModel.existing_Elements[column.GID]);            
                 else
-                    familyInstance = GrevitCommand.document.Create.NewFamilyInstance(lower, sym, level, Autodesk.Revit.DB.Structure.StructuralType.Column);
+                    familyInstance = GrevitBuildModel.document.Create.NewFamilyInstance(lower, sym, level, Autodesk.Revit.DB.Structure.StructuralType.Column);
 
                 #region slantedColumn
 
@@ -558,7 +547,7 @@ namespace Grevit.Revit
         public static Element Create(this Grevit.Types.ReferencePlane plane)
         {
             // Get the supposed view element
-            Element view = GrevitCommand.document.GetElementByName(typeof(Autodesk.Revit.DB.View), plane.View);
+            Element view = GrevitBuildModel.document.GetElementByName(typeof(Autodesk.Revit.DB.View), plane.View);
 
             // If its valid
             if (view != null)
@@ -567,7 +556,7 @@ namespace Grevit.Revit
                 View v = (View)view;
 
                 // Create a new plane
-                Autodesk.Revit.DB.ReferencePlane newPlane = GrevitCommand.document.Create.NewReferencePlane2(plane.EndA.ToXYZ(), plane.EndB.ToXYZ(), plane.cutVector.ToXYZ(), v);
+                Autodesk.Revit.DB.ReferencePlane newPlane = GrevitBuildModel.document.Create.NewReferencePlane2(plane.EndA.ToXYZ(), plane.EndB.ToXYZ(), plane.cutVector.ToXYZ(), v);
                 
                 // Set its name
                 plane.Name = plane.Name;
@@ -587,7 +576,7 @@ namespace Grevit.Revit
         public static Element Create(this Grevit.Types.Grid grid)
         {
             // Create a new gridline
-            Autodesk.Revit.DB.Grid gridline = GrevitCommand.document.Create.NewGrid(Autodesk.Revit.DB.Line.CreateBound(grid.from.ToXYZ(), grid.to.ToXYZ()));
+            Autodesk.Revit.DB.Grid gridline = GrevitBuildModel.document.Create.NewGrid(Autodesk.Revit.DB.Line.CreateBound(grid.from.ToXYZ(), grid.to.ToXYZ()));
             
             // If a name is supplied, set the name
             if (grid.Name != null && grid.Name != "") gridline.Name = grid.Name;
@@ -603,16 +592,16 @@ namespace Grevit.Revit
         public static Element Create(this Grevit.Types.Hatch hatch)
         {
             // Get all Filled region types
-            FilteredElementCollector collector = new FilteredElementCollector(GrevitCommand.document).OfClass(typeof(Autodesk.Revit.DB.FilledRegionType));
+            FilteredElementCollector collector = new FilteredElementCollector(GrevitBuildModel.document).OfClass(typeof(Autodesk.Revit.DB.FilledRegionType));
             
             // Get the View to place the hatch on
-            Element viewElement = GrevitCommand.document.GetElementByName(typeof(Autodesk.Revit.DB.View), hatch.view);
+            Element viewElement = GrevitBuildModel.document.GetElementByName(typeof(Autodesk.Revit.DB.View), hatch.view);
 
             // Get the hatch pattern name and set it to solid if the hatch pattern name is invalid
             string patternname = (hatch.pattern == null || hatch.pattern == string.Empty) ? patternname = "Solid fill" : hatch.pattern;
 
             // Get the fill pattern element and filled region type
-            FillPatternElement fillPatternElement = FillPatternElement.GetFillPatternElementByName(GrevitCommand.document, FillPatternTarget.Drafting, patternname);
+            FillPatternElement fillPatternElement = FillPatternElement.GetFillPatternElementByName(GrevitBuildModel.document, FillPatternTarget.Drafting, patternname);
             FilledRegionType filledRegionType = collector.FirstElement() as FilledRegionType;
 
             // Setup a new curveloop for the outline
@@ -634,7 +623,7 @@ namespace Grevit.Revit
             listOfCurves.Add(curveLoop);
             
             // Create a filled region from the loop
-            return FilledRegion.Create(GrevitCommand.document, filledRegionType.Id, viewElement.Id, listOfCurves);
+            return FilledRegion.Create(GrevitBuildModel.document, filledRegionType.Id, viewElement.Id, listOfCurves);
 
         }
 
@@ -647,7 +636,7 @@ namespace Grevit.Revit
         public static Element Create(this Grevit.Types.SpotCoordinate spotCoordinate, Element reference)
         {
             // get View to place the spot coordinate on
-            Element viewElement = GrevitCommand.document.GetElementByName(typeof(Autodesk.Revit.DB.View), spotCoordinate.view);
+            Element viewElement = GrevitBuildModel.document.GetElementByName(typeof(Autodesk.Revit.DB.View), spotCoordinate.view);
             if (viewElement != null)
             {
                 View view = (View)viewElement;
@@ -670,9 +659,9 @@ namespace Grevit.Revit
 
                 // Create Spot Elevation as elevation or standard
                 if (spotCoordinate.isElevation)
-                    return GrevitCommand.document.Create.NewSpotElevation(view, new Reference(reference), spotCoordinate.locationPoint.ToXYZ(), spotCoordinate.bendPoint.ToXYZ(), spotCoordinate.endPoint.ToXYZ(), pointref, spotCoordinate.hasLeader);
+                    return GrevitBuildModel.document.Create.NewSpotElevation(view, new Reference(reference), spotCoordinate.locationPoint.ToXYZ(), spotCoordinate.bendPoint.ToXYZ(), spotCoordinate.endPoint.ToXYZ(), pointref, spotCoordinate.hasLeader);
                 else
-                    return GrevitCommand.document.Create.NewSpotCoordinate(view, new Reference(reference), spotCoordinate.locationPoint.ToXYZ(), spotCoordinate.bendPoint.ToXYZ(), spotCoordinate.endPoint.ToXYZ(), pointref, spotCoordinate.hasLeader);
+                    return GrevitBuildModel.document.Create.NewSpotCoordinate(view, new Reference(reference), spotCoordinate.locationPoint.ToXYZ(), spotCoordinate.bendPoint.ToXYZ(), spotCoordinate.endPoint.ToXYZ(), pointref, spotCoordinate.hasLeader);
             }
             return null;
         }
@@ -689,7 +678,7 @@ namespace Grevit.Revit
             foreach (Grevit.Types.Point point in topography.points)  points.Add(point.ToXYZ());
             
             // Create a new Topography based on this
-            return Autodesk.Revit.DB.Architecture.TopographySurface.Create(GrevitCommand.document, points);        
+            return Autodesk.Revit.DB.Architecture.TopographySurface.Create(GrevitBuildModel.document, points);        
 
         }
 
@@ -701,7 +690,7 @@ namespace Grevit.Revit
         public static Element Create(this Grevit.Types.TextNote textnote)
         {
             // Get the View Element to place the note on
-            Element viewElement = GrevitCommand.document.GetElementByName(typeof(Autodesk.Revit.DB.View), textnote.view);
+            Element viewElement = GrevitBuildModel.document.GetElementByName(typeof(Autodesk.Revit.DB.View), textnote.view);
             if (viewElement != null)
             {
                 // Cast to view
@@ -711,7 +700,7 @@ namespace Grevit.Revit
                 double width = textnote.text.Length * 2;
 
                 // return a new Textnote
-                return GrevitCommand.document.Create.NewTextNote(view, textnote.location.ToXYZ(), XYZ.BasisX, XYZ.BasisY, width, TextAlignFlags.TEF_ALIGN_LEFT, textnote.text);
+                return GrevitBuildModel.document.Create.NewTextNote(view, textnote.location.ToXYZ(), XYZ.BasisX, XYZ.BasisY, width, TextAlignFlags.TEF_ALIGN_LEFT, textnote.text);
             }
             return null;
         }
@@ -751,18 +740,18 @@ namespace Grevit.Revit
             Autodesk.Revit.DB.Line slopeLine = Autodesk.Revit.DB.Line.CreateBound(slopePointBottom, slopeTopPoint);
 
             // Sort the outline curves contiguous
-            Utilities.SortCurvesContiguous(GrevitCommand.document.Application.Create, curves);
+            Utilities.SortCurvesContiguous(GrevitBuildModel.document.Application.Create, curves);
 
             // Create a new surve array for creating the slab
             CurveArray outlineCurveArray = new CurveArray();
             foreach (Curve c in curves) outlineCurveArray.Append(c);
 
             // get the supposed level
-            Element levelElement = GrevitCommand.document.GetElementByName(typeof(Autodesk.Revit.DB.Level), slab.levelbottom);
+            Element levelElement = GrevitBuildModel.document.GetElementByName(typeof(Autodesk.Revit.DB.Level), slab.levelbottom);
             if (levelElement != null)
             {
                 // Create a new slab
-                return GrevitCommand.document.Create.NewSlab(outlineCurveArray, (Autodesk.Revit.DB.Level)levelElement, slopeLine, slab.slope, slab.structural);
+                return GrevitBuildModel.document.Create.NewSlab(outlineCurveArray, (Autodesk.Revit.DB.Level)levelElement, slopeLine, slab.slope, slab.structural);
             }
 
             return null;
@@ -784,20 +773,20 @@ namespace Grevit.Revit
             }
 
             // Get Wall Type
-            Element wallTypeElement = GrevitCommand.document.GetElementByName(typeof(Autodesk.Revit.DB.WallType), w.TypeOrLayer);
+            Element wallTypeElement = GrevitBuildModel.document.GetElementByName(typeof(Autodesk.Revit.DB.WallType), w.TypeOrLayer);
 
             // Get Level
-            Element levelElement = GrevitCommand.document.GetElementByName(typeof(Autodesk.Revit.DB.Level), w.level);
+            Element levelElement = GrevitBuildModel.document.GetElementByName(typeof(Autodesk.Revit.DB.Level), w.level);
 
             if (wallTypeElement != null && levelElement != null)
             {
                 Autodesk.Revit.DB.Wall wall;
 
                 // If the wall exists update it otherwise create a new one
-                if (GrevitCommand.existing_Elements.ContainsKey(w.GID))    
-                    wall = (Autodesk.Revit.DB.Wall)GrevitCommand.document.GetElement(GrevitCommand.existing_Elements[w.GID]); 
+                if (GrevitBuildModel.existing_Elements.ContainsKey(w.GID))    
+                    wall = (Autodesk.Revit.DB.Wall)GrevitBuildModel.document.GetElement(GrevitBuildModel.existing_Elements[w.GID]); 
                 else 
-                    wall = Autodesk.Revit.DB.Wall.Create(GrevitCommand.document, curves, wallTypeElement.Id, levelElement.Id, true);
+                    wall = Autodesk.Revit.DB.Wall.Create(GrevitBuildModel.document, curves, wallTypeElement.Id, levelElement.Id, true);
 
                 return wall;
             }
@@ -836,12 +825,12 @@ namespace Grevit.Revit
         {
             // Get the rooms phase
             Phase phase = null;
-            foreach (Phase p in GrevitCommand.document.Phases) if (p.Name == room.phase) phase = p;
+            foreach (Phase p in GrevitBuildModel.document.Phases) if (p.Name == room.phase) phase = p;
 
             if (phase != null)
             {
                 // Create a new Room
-                Autodesk.Revit.DB.Architecture.Room newRoom = GrevitCommand.document.Create.NewRoom(phase);
+                Autodesk.Revit.DB.Architecture.Room newRoom = GrevitBuildModel.document.Create.NewRoom(phase);
                 
                 // Set Name and Number
                 newRoom.Name = room.name;
@@ -862,7 +851,7 @@ namespace Grevit.Revit
         {
             // Get the family Symbol
             bool found = false;
-            Element faimlyElement = GrevitCommand.document.GetElementByName(typeof(FamilySymbol), adaptive.FamilyOrStyle, adaptive.TypeOrLayer, out found);
+            Element faimlyElement = GrevitBuildModel.document.GetElementByName(typeof(FamilySymbol), adaptive.FamilyOrStyle, adaptive.TypeOrLayer, out found);
             FamilySymbol faimlySymbol = (FamilySymbol)faimlyElement;
           
             if (faimlySymbol != null)
@@ -872,10 +861,10 @@ namespace Grevit.Revit
 
                 // If the adaptive component already exists get it
                 // Otherwise create a new one
-                if (GrevitCommand.existing_Elements.ContainsKey(adaptive.GID)) 
-                    adaptiveComponent = (FamilyInstance)GrevitCommand.document.GetElement(GrevitCommand.existing_Elements[adaptive.GID]); 
+                if (GrevitBuildModel.existing_Elements.ContainsKey(adaptive.GID)) 
+                    adaptiveComponent = (FamilyInstance)GrevitBuildModel.document.GetElement(GrevitBuildModel.existing_Elements[adaptive.GID]); 
                 else
-                    adaptiveComponent = Autodesk.Revit.DB.AdaptiveComponentInstanceUtils.CreateAdaptiveComponentInstance(GrevitCommand.document, faimlySymbol);
+                    adaptiveComponent = Autodesk.Revit.DB.AdaptiveComponentInstanceUtils.CreateAdaptiveComponentInstance(GrevitBuildModel.document, faimlySymbol);
 
                 // Get the Placement points of the adaptive component
                 IList<ElementId> ids = Autodesk.Revit.DB.AdaptiveComponentInstanceUtils.GetInstancePlacementPointElementRefIds(adaptiveComponent);
@@ -885,7 +874,7 @@ namespace Grevit.Revit
                 {
                     // Get the Reference Point
                     ElementId id = ids[i];
-                    Element em = GrevitCommand.document.GetElement(id);
+                    Element em = GrevitBuildModel.document.GetElement(id);
                     ReferencePoint referencePoint = (ReferencePoint)em;
 
                     // Set the reference Point to the Grevit Point
@@ -970,8 +959,8 @@ namespace Grevit.Revit
             #endregion
 
             // Get the Wall type and the level
-            Element wallTypeElement = GrevitCommand.document.GetElementByName(typeof(Autodesk.Revit.DB.WallType), grevitWall.TypeOrLayer);
-            Element levelElement = GrevitCommand.document.GetElementByName(typeof(Autodesk.Revit.DB.Level), grevitWall.levelbottom);
+            Element wallTypeElement = GrevitBuildModel.document.GetElementByName(typeof(Autodesk.Revit.DB.WallType), grevitWall.TypeOrLayer);
+            Element levelElement = GrevitBuildModel.document.GetElementByName(typeof(Autodesk.Revit.DB.Level), grevitWall.levelbottom);
 
             if (wallTypeElement != null && levelElement != null && baselineCurve != null)
             {
@@ -979,14 +968,14 @@ namespace Grevit.Revit
 
                 // If the wall already exists update the baseline curve
                 // Otherwise create a new wall
-                if (GrevitCommand.existing_Elements.ContainsKey(grevitWall.GID))
+                if (GrevitBuildModel.existing_Elements.ContainsKey(grevitWall.GID))
                 {
-                    wall = (Autodesk.Revit.DB.Wall)GrevitCommand.document.GetElement(GrevitCommand.existing_Elements[grevitWall.GID]);
+                    wall = (Autodesk.Revit.DB.Wall)GrevitBuildModel.document.GetElement(GrevitBuildModel.existing_Elements[grevitWall.GID]);
                     LocationCurve locationCurve = (LocationCurve)wall.Location;
                     locationCurve.Curve = baselineCurve;
                 }
                 else     
-                    wall = Autodesk.Revit.DB.Wall.Create(GrevitCommand.document, baselineCurve, wallTypeElement.Id, levelElement.Id, grevitWall.height, 0, false, true);
+                    wall = Autodesk.Revit.DB.Wall.Create(GrevitBuildModel.document, baselineCurve, wallTypeElement.Id, levelElement.Id, grevitWall.height, 0, false, true);
      
                 // Apply the automatic join setting
                 if (!grevitWall.join)

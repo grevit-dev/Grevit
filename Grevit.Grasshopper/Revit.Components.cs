@@ -541,7 +541,7 @@ namespace Grevit.GrassHopper
             optionals.Add(pManager.AddGenericParameter("Host", "Host", "Host", GH_ParamAccess.item));
             optionals.Add(pManager.AddGenericParameter("Parameters", "Param", "Parameters", GH_ParamAccess.list));
             optionals.Add(pManager.AddGenericParameter("StructuralType", "Struct", "Structural Type [Not Structural]", GH_ParamAccess.item));
-            optionals.Add(pManager.AddGenericParameter("Loops", "Loops", "Loops", GH_ParamAccess.list));
+
             foreach (int a in optionals) pManager[a].Optional = true;
         }
 
@@ -581,15 +581,6 @@ namespace Grevit.GrassHopper
                 faimlyInstance.stalledForReference = true;
             }
 
-            List<Loop> profile = new List<Loop>();
-            if (!DA.GetDataList<Loop>("Loops", profile)) profile = new List<Loop>();
-
-            if (profile.Count > 0)
-            {
-                faimlyInstance.profile = new Profile() { profile = new List<Loop>() };
-                foreach (Loop loop in profile)
-                    faimlyInstance.profile.profile.Add(loop);
-            }
 
             SetGID(faimlyInstance);
 
@@ -1388,7 +1379,7 @@ namespace Grevit.GrassHopper
 
             optional.Add(pManager.AddGenericParameter("Parameters", "Param", "Parameters", GH_ParamAccess.list));
             optional.Add(pManager.AddTextParameter("GID", "GID", "Optional GID override", GH_ParamAccess.item));
-            optional.Add(pManager.AddGenericParameter("Loops", "Loops", "Loops", GH_ParamAccess.list));
+
             foreach(int a in optional) pManager[a].Optional = true;
             
         }
@@ -1417,15 +1408,6 @@ namespace Grevit.GrassHopper
 
             Column column = new Column(family.Value,type.Value,parameters, topPoint.ToGrevitPoint(), bottomPoint.ToGrevitPoint(),level.Value,true);
 
-            List<Loop> profile = new List<Loop>();
-            if (!DA.GetDataList<Loop>("Loops", profile)) profile = new List<Loop>();
-
-            if (profile.Count > 0)
-            {
-                column.profile = new Profile(){ profile = new List<Loop>() };   
-                foreach (Loop loop in profile)
-                    column.profile.profile.Add(loop);
-            }
 
             SetGID(column);
 

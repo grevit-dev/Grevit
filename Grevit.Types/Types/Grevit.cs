@@ -387,8 +387,6 @@ namespace Grevit.Types
         public Point locationTop { get; set; }
         [DataMember]
         public bool structural { get; set; }
-        [DataMember]
-        public Profile profile { get; set; }
 
         public Column(string familyOrStyle, string typeOrLayer, List<Parameter> parameters, Point bottomPoint, Point topPoint, string levelName, bool isStructural)
         {
@@ -442,8 +440,6 @@ namespace Grevit.Types
     [DataContract]
     public class Familyinstance : Component
     {
-        [DataMember]
-        public Profile profile { get; set; }
         [DataMember]
         public List<Point> points { get; set; }
         [DataMember]

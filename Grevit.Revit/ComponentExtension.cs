@@ -50,7 +50,7 @@ namespace Grevit.Revit
         public static void Build(this Grevit.Types.Component component, bool useReferenceElement)
         {
             // Create a new transaction
-            Transaction transaction = new Transaction(GrevitCommand.document, "GrevitCreate");
+            Transaction transaction = new Transaction(GrevitBuildModel.document, "GrevitCreate");
             transaction.Start();
 
             // Get the components type
@@ -89,9 +89,9 @@ namespace Grevit.Revit
                     
                     // If the reference has been created already, get 
                     // the Element from the document and apply it as parameter two
-                    if (GrevitCommand.created_Elements.ContainsKey(referenceGID))
+                    if (GrevitBuildModel.created_Elements.ContainsKey(referenceGID))
                     { 
-                        Element referenceElement = GrevitCommand.document.GetElement(GrevitCommand.created_Elements[referenceGID]);
+                        Element referenceElement = GrevitBuildModel.document.GetElement(GrevitBuildModel.created_Elements[referenceGID]);
                         parameters[1] = referenceElement;
                     }
                 }

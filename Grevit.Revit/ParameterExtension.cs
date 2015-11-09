@@ -74,12 +74,12 @@ namespace Grevit.Revit
                                     {
                                         Grevit.Types.ElementID grvid = (Grevit.Types.ElementID)componentParameter.value;
                                         ElementId id = new ElementId(grvid.ID);
-                                        if (GrevitCommand.document.GetElement(id) != null) elementParameter.Set(id);
+                                        if (GrevitBuildModel.document.GetElement(id) != null) elementParameter.Set(id);
                                     }
                                     else if (componentParameter.value.GetType() == typeof(Grevit.Types.SearchElementID))
                                     {
                                         Grevit.Types.SearchElementID grvid = (Grevit.Types.SearchElementID)componentParameter.value;
-                                        Element e = GrevitCommand.document.GetElementByName(grvid.Name);
+                                        Element e = GrevitBuildModel.document.GetElementByName(grvid.Name);
                                         if (e != null) elementParameter.Set(e.Id);
                                     }
 
@@ -92,7 +92,7 @@ namespace Grevit.Revit
                     }
                 }
 
-                if (GrevitCommand.document.GrevitAddSharedParameter())
+                if (GrevitBuildModel.document.GrevitAddSharedParameter())
                 {
                     Autodesk.Revit.DB.Parameter pram = element.LookupParameter("GID");
                     if (pram != null && !pram.IsReadOnly) pram.Set(component.GID);
@@ -109,8 +109,8 @@ namespace Grevit.Revit
         {
             if (elementId != null
                 && component.GID != null
-                && !GrevitCommand.created_Elements.ContainsKey(component.GID))
-                    GrevitCommand.created_Elements.Add(component.GID, elementId);
+                && !GrevitBuildModel.created_Elements.ContainsKey(component.GID))
+                    GrevitBuildModel.created_Elements.Add(component.GID, elementId);
         }
     }
 }
