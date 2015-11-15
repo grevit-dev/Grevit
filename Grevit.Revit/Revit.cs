@@ -321,7 +321,7 @@ namespace Grevit.Revit
             UIDocument uidoc = uiApp.ActiveUIDocument;
 
             GrevitBuildModel c = new GrevitBuildModel(doc);
-            GrevitBuildModel.Scale = 0.328084;
+            GrevitBuildModel.Scale = 3.28084;
 
             System.Windows.Forms.OpenFileDialog filedialog = new System.Windows.Forms.OpenFileDialog();
             filedialog.Multiselect = false;
@@ -467,10 +467,10 @@ namespace Grevit.Revit
             if (t != null)
             {
                 SketchUpNET.Vertex vertex = t.GetTransformed(v);
-                return new Grevit.Types.Point(vertex.X * GrevitBuildModel.Scale, vertex.Y * GrevitBuildModel.Scale, vertex.Z * GrevitBuildModel.Scale);
+                return new Grevit.Types.Point(vertex.X, vertex.Y, vertex.Z);
             }
             else
-                return new Grevit.Types.Point(v.X * GrevitBuildModel.Scale, v.Y * GrevitBuildModel.Scale, v.Z * GrevitBuildModel.Scale);
+                return new Grevit.Types.Point(v.X, v.Y , v.Z );
         }
     }
 }

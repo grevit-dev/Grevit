@@ -15,104 +15,86 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_00AB6C721870B11E1E3EB12B0CCAB8E5"
-        "OwnerKey" = "8:_FBD0FA31890C4D4BBA8EDA700F3F96FA"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_00AB6C721870B11E1E3EB12B0CCAB8E5"
-        "OwnerKey" = "8:_447B92D6FA964C1E9A656DEACC052997"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_0B0558AD795EF47F68B39F69422723B9"
+        "MsmKey" = "8:_0214099BA9664BD8A93BB39CCF7D2174"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_0FB614606A5A4AEA94809BF6EF79E85A"
+        "MsmKey" = "8:_15DF656EDC797305E285CC0240AF49B1"
+        "OwnerKey" = "8:_C4C5D248DACA4F90AFEFCCCF91AF82F0"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_4DC9C4EC665E4B4C87FA71B80A5EB2BB"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_132F2E6D921442CF8BF23AE28654EFAB"
+        "MsmKey" = "8:_4E9CFFE3C3014F6EAE77F07C523924AF"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_1E9D5F97CB96BDAE962C596E69B8E274"
-        "OwnerKey" = "8:_FBD0FA31890C4D4BBA8EDA700F3F96FA"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_447B92D6FA964C1E9A656DEACC052997"
+        "MsmKey" = "8:_60643E50D6114A33813212AAE1A9FE51"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_4F8C3161932171FC04A1E7F1C88A4685"
-        "OwnerKey" = "8:_EEBAC5C5A39EC3ED8A5E26FC31F407E5"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_7307D71988324471873B16C607ADF5C5"
+        "MsmKey" = "8:_6DE58A175D254498A7483B66217D2A78"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_75001B3717839204B380711C61F7F825"
-        "OwnerKey" = "8:_FBD0FA31890C4D4BBA8EDA700F3F96FA"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_802395A5560EB562EF46A80131E738BD"
-        "OwnerKey" = "8:_447B92D6FA964C1E9A656DEACC052997"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_93519285A75A2A99A20FD457F8B883B7"
-        "OwnerKey" = "8:_FBD0FA31890C4D4BBA8EDA700F3F96FA"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_D48A852D782EE29687B29D95558B1EE4"
-        "OwnerKey" = "8:_FBD0FA31890C4D4BBA8EDA700F3F96FA"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_D48A852D782EE29687B29D95558B1EE4"
-        "OwnerKey" = "8:_75001B3717839204B380711C61F7F825"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_DB9198C606F54C32AA8EAA3F271D437A"
+        "MsmKey" = "8:_9B736096EFB64E3EAC496F7A4498CABA"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_E068B048E9824B2299E0B41AB0C14434"
+        "MsmKey" = "8:_9D6096CFF9EDD458657FA19957B68EA0"
+        "OwnerKey" = "8:_6DE58A175D254498A7483B66217D2A78"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_9D6096CFF9EDD458657FA19957B68EA0"
+        "OwnerKey" = "8:_4E9CFFE3C3014F6EAE77F07C523924AF"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_AB06C81C2BBE45C391AD10949715B209"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_EEBAC5C5A39EC3ED8A5E26FC31F407E5"
-        "OwnerKey" = "8:_447B92D6FA964C1E9A656DEACC052997"
+        "MsmKey" = "8:_B82AC2A1F74B47EBAB98DF561A6AD5C9"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_BA7C04D54C39C824F8AFDDEEA38C9128"
+        "OwnerKey" = "8:_4E9CFFE3C3014F6EAE77F07C523924AF"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_BC09DDC7FBFD4176BA18B2876C0F5FB3"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_C4C5D248DACA4F90AFEFCCCF91AF82F0"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -123,86 +105,62 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_FBD0FA31890C4D4BBA8EDA700F3F96FA"
-        "OwnerKey" = "8:_UNDEFINED"
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_9D6096CFF9EDD458657FA19957B68EA0"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_DB9198C606F54C32AA8EAA3F271D437A"
+        "OwnerKey" = "8:_BC09DDC7FBFD4176BA18B2876C0F5FB3"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_0FB614606A5A4AEA94809BF6EF79E85A"
+        "OwnerKey" = "8:_6DE58A175D254498A7483B66217D2A78"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_132F2E6D921442CF8BF23AE28654EFAB"
+        "OwnerKey" = "8:_4DC9C4EC665E4B4C87FA71B80A5EB2BB"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_00AB6C721870B11E1E3EB12B0CCAB8E5"
+        "OwnerKey" = "8:_C4C5D248DACA4F90AFEFCCCF91AF82F0"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_E068B048E9824B2299E0B41AB0C14434"
+        "OwnerKey" = "8:_15DF656EDC797305E285CC0240AF49B1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_1E9D5F97CB96BDAE962C596E69B8E274"
+        "OwnerKey" = "8:_0214099BA9664BD8A93BB39CCF7D2174"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_D48A852D782EE29687B29D95558B1EE4"
+        "OwnerKey" = "8:_AB06C81C2BBE45C391AD10949715B209"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_75001B3717839204B380711C61F7F825"
+        "OwnerKey" = "8:_4E9CFFE3C3014F6EAE77F07C523924AF"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_93519285A75A2A99A20FD457F8B883B7"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_FBD0FA31890C4D4BBA8EDA700F3F96FA"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_4F8C3161932171FC04A1E7F1C88A4685"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_447B92D6FA964C1E9A656DEACC052997"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_EEBAC5C5A39EC3ED8A5E26FC31F407E5"
+        "OwnerKey" = "8:_BA7C04D54C39C824F8AFDDEEA38C9128"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -310,18 +268,54 @@
         }
         "File"
         {
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_00AB6C721870B11E1E3EB12B0CCAB8E5"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_0214099BA9664BD8A93BB39CCF7D2174"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:SketchUpNET, Version=0.0.0.0, Culture=neutral, processorArchitecture=AMD64"
+                "ScatterAssemblies"
+                {
+                    "_0214099BA9664BD8A93BB39CCF7D2174"
+                    {
+                    "Name" = "8:SketchUpNET.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:..\\Package\\ProgramData_Autodesk_Revit_Addins_2016\\SketchUpNET.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_D4F636E9045244208E5FD43F3C91BBE5"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_15DF656EDC797305E285CC0240AF49B1"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:Grevit.Types, Version=0.8.0.2, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_15DF656EDC797305E285CC0240AF49B1"
+                    {
+                    "Name" = "8:Grevit.Types.DLL"
+                    "Attributes" = "3:512"
+                    }
                 }
-            "SourcePath" = "8:Grevit.Types.dll"
+            "SourcePath" = "8:Grevit.Types.DLL"
             "TargetName" = "8:"
             "Tag" = "8:"
-            "Folder" = "8:_89612A1E6E39491D95CB5F311424FF9A"
+            "Folder" = "8:_E438762444A746FB8E5832C6DEDF8E00"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -336,19 +330,24 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_0B0558AD795EF47F68B39F69422723B9"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_4DC9C4EC665E4B4C87FA71B80A5EB2BB"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:RhinoCommon, Version=5.1.30000.9, Culture=neutral, PublicKeyToken=552281e97c755530, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Grevit.Types, Version=0.8.0.2, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_4DC9C4EC665E4B4C87FA71B80A5EB2BB"
+                    {
+                    "Name" = "8:Grevit.Types.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
-            "SourcePath" = "8:RhinoCommon.DLL"
+            "SourcePath" = "8:..\\Package\\ProgramData_Autodesk_Revit_Addins_2015\\Grevit.Types.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
-            "Folder" = "8:_05B74C27E0584C018337EDDB7205AEDA"
-            "Condition" = "8:"
+            "Folder" = "8:_E438762444A746FB8E5832C6DEDF8E00"
+            "Condition" = "8:CHECKBOXRVT=1"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
@@ -358,19 +357,24 @@
             "SharedLegacy" = "11:FALSE"
             "PackageAs" = "3:1"
             "Register" = "3:1"
-            "Exclude" = "11:TRUE"
-            "IsDependency" = "11:TRUE"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_1E9D5F97CB96BDAE962C596E69B8E274"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_4E9CFFE3C3014F6EAE77F07C523924AF"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:System.Windows, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
+            "AssemblyAsmDisplayName" = "8:Grevit.Revit, Version=0.5.0.6, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_4E9CFFE3C3014F6EAE77F07C523924AF"
+                    {
+                    "Name" = "8:Grevit.Revit.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
-            "SourcePath" = "8:System.Windows.dll"
+            "SourcePath" = "8:..\\Package\\ProgramData_Autodesk_Revit_Addins_2016\\Grevit.Revit.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_D4F636E9045244208E5FD43F3C91BBE5"
@@ -384,27 +388,67 @@
             "SharedLegacy" = "11:FALSE"
             "PackageAs" = "3:1"
             "Register" = "3:1"
-            "Exclude" = "11:TRUE"
-            "IsDependency" = "11:TRUE"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_447B92D6FA964C1E9A656DEACC052997"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_60643E50D6114A33813212AAE1A9FE51"
+            {
+            "SourcePath" = "8:..\\Package\\ProgramData_Autodesk_Revit_Addins_2015\\Grevit.Revit.addin"
+            "TargetName" = "8:Grevit.Revit.addin"
+            "Tag" = "8:"
+            "Folder" = "8:_E438762444A746FB8E5832C6DEDF8E00"
+            "Condition" = "8:CHECKBOXRVT=1"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_6DE58A175D254498A7483B66217D2A78"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:Grevit.GrassHopper, Version=0.6.0.5, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_447B92D6FA964C1E9A656DEACC052997"
+                    "_6DE58A175D254498A7483B66217D2A78"
                     {
                     "Name" = "8:Grevit.GrassHopper.gha"
                     "Attributes" = "3:512"
                     }
                 }
-            "SourcePath" = "8:..\\Grevit.Grasshopper\\bin\\Debug\\Grevit.GrassHopper.gha"
+            "SourcePath" = "8:..\\Package\\APPDATA_Grasshopper_Libraries\\Grevit.GrassHopper.gha"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_05B74C27E0584C018337EDDB7205AEDA"
+            "Condition" = "8:CHECKBOXGH=1"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9B736096EFB64E3EAC496F7A4498CABA"
+            {
+            "SourcePath" = "8:..\\Package\\ProgramData_Autodesk_Revit_Addins_2016\\slapi.dll"
+            "TargetName" = "8:slapi.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_D4F636E9045244208E5FD43F3C91BBE5"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -419,18 +463,23 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_4F8C3161932171FC04A1E7F1C88A4685"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_9D6096CFF9EDD458657FA19957B68EA0"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:GH_IO, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6a29997d2e6b4f97, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Grevit.Types, Version=0.8.0.3, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_9D6096CFF9EDD458657FA19957B68EA0"
+                    {
+                    "Name" = "8:Grevit.Types.DLL"
+                    "Attributes" = "3:512"
+                    }
                 }
-            "SourcePath" = "8:GH_IO.DLL"
+            "SourcePath" = "8:Grevit.Types.DLL"
             "TargetName" = "8:"
             "Tag" = "8:"
-            "Folder" = "8:_05B74C27E0584C018337EDDB7205AEDA"
+            "Folder" = "8:_C875AE6A29E04D669B760EF3A6F0C6E4"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -445,13 +494,44 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7307D71988324471873B16C607ADF5C5"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_AB06C81C2BBE45C391AD10949715B209"
             {
-            "SourcePath" = "8:..\\Grevit.Revit.2016\\Grevit.Revit.addin"
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Grevit.Types, Version=0.8.0.3, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_AB06C81C2BBE45C391AD10949715B209"
+                    {
+                    "Name" = "8:Grevit.Types.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:..\\Package\\ProgramData_Autodesk_Revit_Addins_2016\\Grevit.Types.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_D4F636E9045244208E5FD43F3C91BBE5"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B82AC2A1F74B47EBAB98DF561A6AD5C9"
+            {
+            "SourcePath" = "8:..\\Package\\ProgramData_Autodesk_Revit_Addins_2016\\Grevit.Revit.addin"
             "TargetName" = "8:Grevit.Revit.addin"
             "Tag" = "8:"
             "Folder" = "8:_D4F636E9045244208E5FD43F3C91BBE5"
-            "Condition" = "8:CHECKBOXRVT2016=1"
+            "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
@@ -465,18 +545,23 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_75001B3717839204B380711C61F7F825"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_BA7C04D54C39C824F8AFDDEEA38C9128"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:RevitAPIUI, Version=16.0.0.0, Culture=neutral, processorArchitecture=AMD64"
+            "AssemblyAsmDisplayName" = "8:SketchUpNET, Version=0.0.0.0, Culture=neutral, processorArchitecture=AMD64"
                 "ScatterAssemblies"
                 {
+                    "_BA7C04D54C39C824F8AFDDEEA38C9128"
+                    {
+                    "Name" = "8:SketchUpNET.DLL"
+                    "Attributes" = "3:512"
+                    }
                 }
-            "SourcePath" = "8:RevitAPIUI.dll"
+            "SourcePath" = "8:SketchUpNET.DLL"
             "TargetName" = "8:"
             "Tag" = "8:"
-            "Folder" = "8:_D4F636E9045244208E5FD43F3C91BBE5"
+            "Folder" = "8:_C875AE6A29E04D669B760EF3A6F0C6E4"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -491,71 +576,24 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_93519285A75A2A99A20FD457F8B883B7"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_BC09DDC7FBFD4176BA18B2876C0F5FB3"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:SketchupSharp, Version=0.0.0.0, Culture=neutral, processorArchitecture=AMD64"
+            "AssemblyAsmDisplayName" = "8:Grevit.Types, Version=0.8.0.3, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_BC09DDC7FBFD4176BA18B2876C0F5FB3"
+                    {
+                    "Name" = "8:Grevit.Types.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
-            "SourcePath" = "8:SketchupSharp.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_D4F636E9045244208E5FD43F3C91BBE5"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:TRUE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_D48A852D782EE29687B29D95558B1EE4"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:RevitAPI, Version=16.0.0.0, Culture=neutral, processorArchitecture=AMD64"
-                "ScatterAssemblies"
-                {
-                }
-            "SourcePath" = "8:RevitAPI.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_D4F636E9045244208E5FD43F3C91BBE5"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:TRUE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_EEBAC5C5A39EC3ED8A5E26FC31F407E5"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Grasshopper, Version=1.0.0.20, Culture=neutral, PublicKeyToken=dda4f5ec2cd80803, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                }
-            "SourcePath" = "8:Grasshopper.DLL"
+            "SourcePath" = "8:..\\Package\\APPDATA_Grasshopper_Libraries\\Grevit.Types.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_05B74C27E0584C018337EDDB7205AEDA"
-            "Condition" = "8:"
+            "Condition" = "8:CHECKBOXGH=1"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
@@ -565,8 +603,39 @@
             "SharedLegacy" = "11:FALSE"
             "PackageAs" = "3:1"
             "Register" = "3:1"
-            "Exclude" = "11:TRUE"
-            "IsDependency" = "11:TRUE"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_C4C5D248DACA4F90AFEFCCCF91AF82F0"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Grevit.Revit, Version=0.5.0.5, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_C4C5D248DACA4F90AFEFCCCF91AF82F0"
+                    {
+                    "Name" = "8:Grevit.Revit.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:..\\Package\\ProgramData_Autodesk_Revit_Addins_2015\\Grevit.Revit.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_E438762444A746FB8E5832C6DEDF8E00"
+            "Condition" = "8:CHECKBOXRVT=1"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F14D65C1759E4A618FED6DC6D7D67B94"
@@ -641,17 +710,6 @@
                                             "Property" = "8:_58FB6492A3C04196A22FA5AF9993F804"
                                                 "Folders"
                                                 {
-                                                    "{9EF0B969-E518-4E46-987F-47570745A589}:_89612A1E6E39491D95CB5F311424FF9A"
-                                                    {
-                                                    "Name" = "8:2015"
-                                                    "AlwaysCreate" = "11:TRUE"
-                                                    "Condition" = "8:CHECKBOXRVT=1"
-                                                    "Transitive" = "11:FALSE"
-                                                    "Property" = "8:_D21E30EBDC264CAC83CBB9C976E5E87B"
-                                                        "Folders"
-                                                        {
-                                                        }
-                                                    }
                                                     "{9EF0B969-E518-4E46-987F-47570745A589}:_D4F636E9045244208E5FD43F3C91BBE5"
                                                     {
                                                     "Name" = "8:2016"
@@ -659,6 +717,17 @@
                                                     "Condition" = "8:CHECKBOXRVT2016=1"
                                                     "Transitive" = "11:FALSE"
                                                     "Property" = "8:_A9FD9C8C4E0544C6A637AC27A205161B"
+                                                        "Folders"
+                                                        {
+                                                        }
+                                                    }
+                                                    "{9EF0B969-E518-4E46-987F-47570745A589}:_E438762444A746FB8E5832C6DEDF8E00"
+                                                    {
+                                                    "Name" = "8:2015"
+                                                    "AlwaysCreate" = "11:TRUE"
+                                                    "Condition" = "8:CHECKBOXRVT=1"
+                                                    "Transitive" = "11:FALSE"
+                                                    "Property" = "8:_A5B46BAF55174FABB6C2453426A8640E"
                                                         "Folders"
                                                         {
                                                         }
@@ -711,50 +780,6 @@
                             "Property" = "8:_5C9A43BDC44040D9A52CE325098C18DA"
                                 "Folders"
                                 {
-                                }
-                            }
-                        }
-                    }
-                    "{9EF0B969-E518-4E46-987F-47570745A589}:_4D17611509B749319881D27293DCE45A"
-                    {
-                    "Name" = "8:Autodesk"
-                    "AlwaysCreate" = "11:FALSE"
-                    "Condition" = "8:CHECKBOXACA=1"
-                    "Transitive" = "11:FALSE"
-                    "Property" = "8:_4C5480C033E140C1A16E8CD78536F2F9"
-                        "Folders"
-                        {
-                            "{9EF0B969-E518-4E46-987F-47570745A589}:_146DB3F22860435A985C4A55965E2A8E"
-                            {
-                            "Name" = "8:ACA 2013"
-                            "AlwaysCreate" = "11:FALSE"
-                            "Condition" = "8:CHECKBOXACA=1"
-                            "Transitive" = "11:FALSE"
-                            "Property" = "8:_42743ABCD1024225BB33DA39FB0DA68E"
-                                "Folders"
-                                {
-                                    "{9EF0B969-E518-4E46-987F-47570745A589}:_E9EAE4588EF04AFEBFF52403AF5CFF21"
-                                    {
-                                    "Name" = "8:enu"
-                                    "AlwaysCreate" = "11:FALSE"
-                                    "Condition" = "8:CHECKBOXACA=1"
-                                    "Transitive" = "11:FALSE"
-                                    "Property" = "8:_832BD17804444DBD95E2581F5BFB5168"
-                                        "Folders"
-                                        {
-                                            "{9EF0B969-E518-4E46-987F-47570745A589}:_37C7D942118B4F35BAAB1C26176A7125"
-                                            {
-                                            "Name" = "8:Support"
-                                            "AlwaysCreate" = "11:TRUE"
-                                            "Condition" = "8:CHECKBOXACA=1"
-                                            "Transitive" = "11:FALSE"
-                                            "Property" = "8:_4ECE98C9B83F4223B47731DEFF9AD999"
-                                                "Folders"
-                                                {
-                                                }
-                                            }
-                                        }
-                                    }
                                 }
                             }
                         }
@@ -910,48 +935,6 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_3EBF1D8D935742B796B7653844967CE1"
-            {
-            "Name" = "8:Shortcut to Support"
-            "Arguments" = "8:"
-            "Description" = "8:"
-            "ShowCmd" = "3:1"
-            "IconIndex" = "3:0"
-            "Transitive" = "11:FALSE"
-            "Target" = "8:_37C7D942118B4F35BAAB1C26176A7125"
-            "Folder" = "8:_C875AE6A29E04D669B760EF3A6F0C6E4"
-            "WorkingFolder" = "8:_E9EAE4588EF04AFEBFF52403AF5CFF21"
-            "Icon" = "8:"
-            "Feature" = "8:"
-            }
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_506907DF742E41CD8B0C154A19192E7E"
-            {
-            "Name" = "8:Shortcut to Libraries"
-            "Arguments" = "8:"
-            "Description" = "8:"
-            "ShowCmd" = "3:1"
-            "IconIndex" = "3:0"
-            "Transitive" = "11:FALSE"
-            "Target" = "8:_05B74C27E0584C018337EDDB7205AEDA"
-            "Folder" = "8:_C875AE6A29E04D669B760EF3A6F0C6E4"
-            "WorkingFolder" = "8:_356E672490DA405FA90B41ED7B126F5A"
-            "Icon" = "8:"
-            "Feature" = "8:"
-            }
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_89DC0E104D2A41208D2187C5D69A0497"
-            {
-            "Name" = "8:Shortcut to 2015"
-            "Arguments" = "8:"
-            "Description" = "8:"
-            "ShowCmd" = "3:1"
-            "IconIndex" = "3:0"
-            "Transitive" = "11:FALSE"
-            "Target" = "8:_89612A1E6E39491D95CB5F311424FF9A"
-            "Folder" = "8:_C875AE6A29E04D669B760EF3A6F0C6E4"
-            "WorkingFolder" = "8:_B2A3E7B6B7404553A6F8454192425B9A"
-            "Icon" = "8:"
-            "Feature" = "8:"
-            }
         }
         "UserInterface"
         {
@@ -1348,7 +1331,7 @@
                             "ContextData" = "8:1;True=1;False=0"
                             "Attributes" = "3:0"
                             "Setting" = "3:0"
-                            "Value" = "3:1"
+                            "Value" = "3:0"
                             "DefaultValue" = "3:1"
                             "UsePlugInResources" = "11:TRUE"
                             }
@@ -1607,146 +1590,6 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_0FB614606A5A4AEA94809BF6EF79E85A"
-            {
-            "SourcePath" = "8:..\\Grevit.Types\\obj\\Debug\\Grevit.Types.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_89612A1E6E39491D95CB5F311424FF9A"
-            "Condition" = "8:CHECKBOXRVT=1"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            "ProjectOutputGroupRegister" = "3:1"
-            "OutputConfiguration" = "8:"
-            "OutputGroupCanonicalName" = "8:Built"
-            "OutputProjectGuid" = "8:{4E16464A-4495-4A27-B810-A54F9CE3D191}"
-            "ShowKeyOutput" = "11:TRUE"
-                "ExcludeFilters"
-                {
-                }
-            }
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_132F2E6D921442CF8BF23AE28654EFAB"
-            {
-            "SourcePath" = "8:..\\Grevit.Types\\obj\\Debug\\Grevit.Types.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_C875AE6A29E04D669B760EF3A6F0C6E4"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            "ProjectOutputGroupRegister" = "3:1"
-            "OutputConfiguration" = "8:"
-            "OutputGroupCanonicalName" = "8:Built"
-            "OutputProjectGuid" = "8:{4E16464A-4495-4A27-B810-A54F9CE3D191}"
-            "ShowKeyOutput" = "11:TRUE"
-                "ExcludeFilters"
-                {
-                }
-            }
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_DB9198C606F54C32AA8EAA3F271D437A"
-            {
-            "SourcePath" = "8:..\\Grevit.Types\\obj\\Debug\\Grevit.Types.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_05B74C27E0584C018337EDDB7205AEDA"
-            "Condition" = "8:CHECKBOXGH=1"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            "ProjectOutputGroupRegister" = "3:1"
-            "OutputConfiguration" = "8:"
-            "OutputGroupCanonicalName" = "8:Built"
-            "OutputProjectGuid" = "8:{4E16464A-4495-4A27-B810-A54F9CE3D191}"
-            "ShowKeyOutput" = "11:TRUE"
-                "ExcludeFilters"
-                {
-                }
-            }
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_E068B048E9824B2299E0B41AB0C14434"
-            {
-            "SourcePath" = "8:..\\Grevit.Types\\obj\\Debug\\Grevit.Types.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_D4F636E9045244208E5FD43F3C91BBE5"
-            "Condition" = "8:CHECKBOXRVT2016=1"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            "ProjectOutputGroupRegister" = "3:1"
-            "OutputConfiguration" = "8:"
-            "OutputGroupCanonicalName" = "8:Built"
-            "OutputProjectGuid" = "8:{4E16464A-4495-4A27-B810-A54F9CE3D191}"
-            "ShowKeyOutput" = "11:TRUE"
-                "ExcludeFilters"
-                {
-                }
-            }
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_FBD0FA31890C4D4BBA8EDA700F3F96FA"
-            {
-            "SourcePath" = "8:..\\Grevit.Revit.2016\\obj\\Debug\\Grevit.Revit.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_D4F636E9045244208E5FD43F3C91BBE5"
-            "Condition" = "8:CHECKBOXRVT2016=1"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            "ProjectOutputGroupRegister" = "3:1"
-            "OutputConfiguration" = "8:"
-            "OutputGroupCanonicalName" = "8:Built"
-            "OutputProjectGuid" = "8:{9E52B6AD-6F0E-4D36-8E81-4E0C76B5C5D3}"
-            "ShowKeyOutput" = "11:TRUE"
-                "ExcludeFilters"
-                {
-                }
-            }
         }
     }
 }

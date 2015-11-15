@@ -41,8 +41,9 @@
     <Reference Include="RevitAPIUI">
       <HintPath>..\..\..\..\..\..\Program Files\Autodesk\Revit Architecture 2016\RevitAPIUI.dll</HintPath>
     </Reference>
-    <Reference Include="SketchUpNET">
-      <HintPath>..\..\SketchUpNET\SketchUp\SketchUpNET\x64\Debug\SketchUpNET.dll</HintPath>
+    <Reference Include="SketchUpNET, Version=0.0.0.0, Culture=neutral, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\SketchUpNET\SketchUp\SketchUpNET\x64\Release\SketchUpNET.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
