@@ -455,7 +455,7 @@ namespace Grevit.Revit
         /// <returns></returns>
         public static XYZ ToXYZ(this Grevit.Types.Point p)
         {
-            return new XYZ(p.x, p.y, p.z);
+            return new XYZ(p.x * GrevitBuildModel.Scale, p.y * GrevitBuildModel.Scale, p.z * GrevitBuildModel.Scale);
         }
 
         public static XYZ ToXYZ(this Grevit.Types.Point p, CoordinatesOverride coordoverride)
@@ -463,7 +463,7 @@ namespace Grevit.Revit
             if (coordoverride != null)
                 return coordoverride.ApplyOverride(p);
             else
-                return new XYZ(p.x, p.y, p.z);
+                return new XYZ(p.x * GrevitBuildModel.Scale, p.y * GrevitBuildModel.Scale, p.z * GrevitBuildModel.Scale);
         }
 
 
@@ -484,6 +484,38 @@ namespace Grevit.Revit
             
 
             return collector.FirstElement();
+        }
+
+
+        public static Autodesk.Revit.DB.Level GetLevelByName(this Document document, string name, double elevation)
+        {
+            FilteredElementCollector collector = new FilteredElementCollector(document).OfClass(typeof(Autodesk.Revit.DB.Level));
+            
+            Autodesk.Revit.DB.Level result = (Autodesk.Revit.DB.Level)collector.FirstElement();
+            
+            List<Autodesk.Revit.DB.Level> levels = new List<Autodesk.Revit.DB.Level>();
+
+            foreach (Autodesk.Revit.DB.Level e in collector.ToElements())
+            {
+                if (e.Name == name) return e;
+                levels.Add(e);
+            }
+
+            List<Autodesk.Revit.DB.Level> ordered = levels.OrderBy(e => e.Elevation).ToList();
+
+            for (int i = 0; i < ordered.Count(); i++)
+            {
+                if (i < ordered.Count - 1)
+                {
+                    if (ordered[i].Elevation <= elevation && ordered[i + 1].Elevation > elevation)
+                        result = ordered[i];
+                }
+                else
+                    result = ordered[i];
+            }
+
+
+            return result;
         }
 
         /// <summary>

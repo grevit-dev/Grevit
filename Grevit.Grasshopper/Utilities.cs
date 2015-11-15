@@ -222,6 +222,8 @@ namespace Grevit.GrassHopper
         /// </summary>
         public bool Erase = false;
 
+        public double Scale;
+
         /// <summary>
         /// FamilyCollection from the Target Document
         /// </summary>
@@ -239,7 +241,7 @@ namespace Grevit.GrassHopper
             optional.Add(pManager.AddIntegerParameter("TimeOut", "Tout", "TimeOut [10000 ms]", GH_ParamAccess.item)); 
             optional.Add(pManager.AddBooleanParameter("Update", "Update", "Updatemode [true]", GH_ParamAccess.item)); 
             optional.Add(pManager.AddBooleanParameter("Erase", "Erase", "Erase not updated Elements [false]", GH_ParamAccess.item));
-           
+            optional.Add(pManager.AddNumberParameter("Scale", "Scale", "Scale [3.28084]", GH_ParamAccess.item));
             foreach(int i in optional) pManager[i].Optional = true;
         }
         
@@ -268,7 +270,9 @@ namespace Grevit.GrassHopper
             DA.GetData<GH_Boolean>("Erase", ref erase);
             this.Erase = erase.Value;
             this.Update = update.Value;
-
+            GH_Number scale = new GH_Number(3.28084);
+            DA.GetData<GH_Number>("Scale", ref scale);
+            this.Scale = scale.Value;
 
             if (send.Value)
             {
@@ -399,6 +403,7 @@ namespace Grevit.GrassHopper
             componentCollection.Items = new List<Component>();
             componentCollection.update = this.Update;
             componentCollection.delete = this.Erase;
+            componentCollection.scale = this.Scale;
             foreach (GH_Goo<object> component in components)
             {
                 Component cmp = (Component)component.Value;

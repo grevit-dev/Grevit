@@ -217,10 +217,12 @@ namespace Grevit.Revit
                 // Create a reference Element
                 Element referenceElement = null;
 
+                double elevation = familyInstance.points[0].z;
+
                 // If the view property is not set, the reference should be a level
                 // Otherwise the family is view dependent
                 if (familyInstance.view == null || familyInstance.view == string.Empty)                
-                    referenceElement = GrevitBuildModel.document.GetElementByName(typeof(Autodesk.Revit.DB.Level), familyInstance.level);                
+                    referenceElement = GrevitBuildModel.document.GetLevelByName(familyInstance.level,elevation);                
                 else                
                     referenceElement = GrevitBuildModel.document.GetElementByName(typeof(Autodesk.Revit.DB.View), familyInstance.view);
                               
@@ -298,9 +300,9 @@ namespace Grevit.Revit
 
                 // Cast the family Symbol
                 FamilySymbol familySymbol = (FamilySymbol)familySymbolElement;
-
+                double elevation = familyInstance.points[0].z;
                 // Get the placement level
-                Autodesk.Revit.DB.Level level = (Autodesk.Revit.DB.Level)GrevitBuildModel.document.GetElementByName(typeof(Autodesk.Revit.DB.Level), familyInstance.level);
+                Autodesk.Revit.DB.Level level = (Autodesk.Revit.DB.Level)GrevitBuildModel.document.GetLevelByName(familyInstance.level,elevation);
 
                 // If the element already exists just update it
                 // Otherwise create a new one
@@ -482,8 +484,16 @@ namespace Grevit.Revit
         {
             // Get the Family, Type and Level
             bool found = false;
+
+            XYZ location = column.location.ToXYZ();
+            XYZ top = column.locationTop.ToXYZ();
+
+            XYZ lower = (location.Z < top.Z) ? location : top;
+            XYZ upper = (location.Z < top.Z) ? top : location;
+
+
             Element familyElement = GrevitBuildModel.document.GetElementByName(Autodesk.Revit.DB.BuiltInCategory.OST_StructuralColumns, column.FamilyOrStyle, column.TypeOrLayer, out found);
-            Element levelElement = GrevitBuildModel.document.GetElementByName(typeof(Autodesk.Revit.DB.Level), column.levelbottom);
+            Element levelElement = GrevitBuildModel.document.GetLevelByName(column.levelbottom,lower.Z);
 
             Autodesk.Revit.DB.FamilyInstance familyInstance = null;
 
@@ -499,11 +509,7 @@ namespace Grevit.Revit
 
                 Autodesk.Revit.DB.Level level = (Autodesk.Revit.DB.Level)levelElement;
 
-                XYZ location = column.location.ToXYZ();
-                XYZ top = column.locationTop.ToXYZ();
 
-                XYZ lower = (location.Z < top.Z) ? location : top;
-                XYZ upper = (location.Z < top.Z) ? top : location;
 
                 // If the column already exists update it
                 // Otherwise create a new one
@@ -747,7 +753,7 @@ namespace Grevit.Revit
             foreach (Curve c in curves) outlineCurveArray.Append(c);
 
             // get the supposed level
-            Element levelElement = GrevitBuildModel.document.GetElementByName(typeof(Autodesk.Revit.DB.Level), slab.levelbottom);
+            Element levelElement = GrevitBuildModel.document.GetLevelByName(slab.levelbottom,slopePointBottom.Z);
             if (levelElement != null)
             {
                 // Create a new slab
@@ -765,18 +771,23 @@ namespace Grevit.Revit
         /// <returns></returns>
         public static Element Create(this Grevit.Types.WallProfileBased w)
         {
+            double elevation = 90000000;
             // Translate Profile Curves
             List<Curve> curves = new List<Curve>();
             foreach (Component component in w.curves)
             {
-                foreach(Curve curve in Utilities.GrevitCurvesToRevitCurves(component)) curves.Add(curve);
+                foreach (Curve curve in Utilities.GrevitCurvesToRevitCurves(component))
+                {
+                    curves.Add(curve);
+                    if (curve.GetEndPoint(0).Z < elevation) elevation = curve.GetEndPoint(0).Z;
+                }
             }
 
             // Get Wall Type
             Element wallTypeElement = GrevitBuildModel.document.GetElementByName(typeof(Autodesk.Revit.DB.WallType), w.TypeOrLayer);
 
             // Get Level
-            Element levelElement = GrevitBuildModel.document.GetElementByName(typeof(Autodesk.Revit.DB.Level), w.level);
+            Element levelElement = GrevitBuildModel.document.GetLevelByName(w.level,elevation);
 
             if (wallTypeElement != null && levelElement != null)
             {
@@ -960,10 +971,14 @@ namespace Grevit.Revit
 
             // Get the Wall type and the level
             Element wallTypeElement = GrevitBuildModel.document.GetElementByName(typeof(Autodesk.Revit.DB.WallType), grevitWall.TypeOrLayer);
-            Element levelElement = GrevitBuildModel.document.GetElementByName(typeof(Autodesk.Revit.DB.Level), grevitWall.levelbottom);
+            
 
-            if (wallTypeElement != null && levelElement != null && baselineCurve != null)
+            if (wallTypeElement != null && baselineCurve != null)
             {
+                Element levelElement = GrevitBuildModel.document.GetLevelByName(grevitWall.levelbottom, baselineCurve.GetEndPoint(0).Z);
+
+                if (levelElement == null) return null;
+
                 Autodesk.Revit.DB.Wall wall;
 
                 // If the wall already exists update the baseline curve

@@ -142,6 +142,8 @@ namespace Grevit.Revit
         /// </summary>
         public static Dictionary<string, ElementId> existing_Elements;
 
+        public static double Scale;
+
         /// <summary>
         /// Version of the API being used
         /// </summary>
@@ -173,6 +175,8 @@ namespace Grevit.Revit
                 components = grevitClientDialog.componentCollection;
 
                 delete = grevitClientDialog.componentCollection.delete;
+
+                Scale = grevitClientDialog.componentCollection.scale;
             }
 
 
@@ -303,174 +307,172 @@ namespace Grevit.Revit
     }
 
 
-    ///// <summary>
-    ///// Imports a SketchUp Model
-    ///// </summary>
-    //[Transaction(TransactionMode.Manual)]
-    //public class ImportSketchUp : IExternalCommand
-    //{
-    //    public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
-    //    {
-    //        // Get Revit Environment
-    //        UIApplication uiApp = commandData.Application;
-    //        Document doc = uiApp.ActiveUIDocument.Document;
-    //        UIDocument uidoc = uiApp.ActiveUIDocument;
+    /// <summary>
+    /// Imports a SketchUp Model
+    /// </summary>
+    [Transaction(TransactionMode.Manual)]
+    public class ImportSketchUp : IExternalCommand
+    {
+        public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
+        {
+            // Get Revit Environment
+            UIApplication uiApp = commandData.Application;
+            Document doc = uiApp.ActiveUIDocument.Document;
+            UIDocument uidoc = uiApp.ActiveUIDocument;
 
-    //        GrevitBuildModel c = new GrevitBuildModel(doc);
+            GrevitBuildModel c = new GrevitBuildModel(doc);
+            GrevitBuildModel.Scale = 0.328084;
+
+            System.Windows.Forms.OpenFileDialog filedialog = new System.Windows.Forms.OpenFileDialog();
+            filedialog.Multiselect = false;
+            if (filedialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                SketchUpNET.SketchUp skp = new SketchUpNET.SketchUp();
+                if (skp.LoadModel(filedialog.FileName))
+                {
+                    Grevit.Types.ComponentCollection components = new ComponentCollection() { Items = new List<Component>() };
+
+                    foreach (SketchUpNET.Instance instance in skp.Instances)
+                    {
+                        if (instance.Name.ToLower().Contains("wall"))
+                        {
+                            foreach (SketchUpNET.Surface surface in instance.Parent.Surfaces)
+                            {
+                                components.Items.Add(new WallProfileBased(instance.Parent.Name, instance.Parent.Name, new List<Types.Parameter>(), surface.ToGrevitOutline(instance.Transformation), "") { GID = instance.Guid });
+                            }
+                        }
+
+
+                        if (instance.Name.ToLower().Contains("floor"))
+                        {
+                            foreach (SketchUpNET.Surface surface in instance.Parent.Surfaces)
+                            {
+                                Types.Point bottom = instance.Transformation.GetTransformed(surface.Vertices[0]).ToGrevitPoint();
+                                int ctr = surface.Vertices.Count / 2;
+                                Types.Point top = instance.Transformation.GetTransformed(surface.Vertices[ctr]).ToGrevitPoint();
+
+
+
+                                components.Items.Add(new Slab()
+                                {
+                                    FamilyOrStyle = instance.Parent.Name,
+                                    TypeOrLayer = instance.Parent.Name,
+                                    parameters = new List<Types.Parameter>(),
+                                    structural = true,
+                                    height = 1,
+                                    surface =
+                                        surface.ToGrevitProfile(instance.Transformation),
+                                    bottom = bottom,
+                                    top = top,
+                                    slope = top.z - bottom.z,
+                                    GID = instance.Guid,
+                                    levelbottom = "",
+                                });
+                            }
+                        }
+
+                        if (instance.Name.ToLower().Contains("column"))
+                        {
+                            Grevit.Types.Profile profile = null;
+                            Grevit.Types.Point top = null;
+                            Grevit.Types.Point btm = new Types.Point(instance.Transformation.X, instance.Transformation.Y, instance.Transformation.Z);
+
+                            foreach (SketchUpNET.Surface surface in instance.Parent.Surfaces)
+                            {
+
+                                if (surface.Normal.Z == 1)
+                                {
+                                    top = new Types.Point(instance.Transformation.X, instance.Transformation.Y,
+                                        surface.Vertices[0].ToGrevitPoint(instance.Transformation).z);
+                                }
+
+                            }
+
+                            components.Items.Add(new Grevit.Types.Column(instance.Parent.Name, instance.Parent.Name, new List<Types.Parameter>(), btm, top, "", true)
+                            {
+                                GID = instance.Guid
+                            });
+                        }
+
+
+
+                    }
+
+                    c.BuildModel(components);
+
+                }
+
+            }
+
+
+
+            // Return Success
+            return Result.Succeeded;
+        }
+    }
+
+    public static class Geometry
+    {
+
+        public static Grevit.Types.Profile ToGrevitProfile(this SketchUpNET.Surface surface, SketchUpNET.Transform t = null)
+        {
+            Types.Profile profile = new Types.Profile();
+            profile.profile = new List<Loop>();
+
+            Loop outerloop = new Loop();
+
+            outerloop.outline = new List<Types.Component>();
+            foreach (SketchUpNET.Edge corner in surface.OuterEdges.Edges)
+                outerloop.outline.Add(corner.ToGrevitLine(t));
+
+            profile.profile.Add(outerloop);
+
+
+            foreach (SketchUpNET.Loop skploop in surface.InnerEdges)
+            {
+                Loop innerloop = new Loop();
+
+                innerloop.outline = new List<Types.Component>();
+                foreach (SketchUpNET.Edge corner in skploop.Edges)
+                    innerloop.outline.Add(corner.ToGrevitLine(t));
+
+                profile.profile.Add(innerloop);
+            }
+
+            return profile;
+        }
+
+        public static List<Grevit.Types.Component> ToGrevitOutline(this SketchUpNET.Surface surface, SketchUpNET.Transform t = null)
+        {
+            List<Grevit.Types.Component> lines = new List<Types.Component>();
+            foreach (SketchUpNET.Edge corner in surface.OuterEdges.Edges)
+            {
+                lines.Add(corner.ToGrevitLine(t));
+            }
+            return lines;
+        }
+
+        public static Grevit.Types.Line ToGrevitLine(this SketchUpNET.Edge corner, SketchUpNET.Transform t = null)
+        {
+            return new Grevit.Types.Line()
+            {
+                from = corner.Start.ToGrevitPoint(t),
+                to = corner.End.ToGrevitPoint(t)
+            };
+        }
+
+        public static Grevit.Types.Point ToGrevitPoint(this SketchUpNET.Vertex v, SketchUpNET.Transform t = null)
+        {
             
-
-    //        System.Windows.Forms.OpenFileDialog filedialog = new System.Windows.Forms.OpenFileDialog();
-    //        filedialog.Multiselect = false;
-    //        if (filedialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-    //        {
-    //            SketchUpSharp.SketchUp skp = new SketchUpSharp.SketchUp();
-    //            if (skp.LoadModel(filedialog.FileName))
-    //            {
-    //                Grevit.Types.ComponentCollection components = new ComponentCollection() {  Items = new  List<Component>()};
-
-    //                foreach (SketchUpSharp.Instance instance in skp.Instances)
-    //                {
-    //                    if (instance.Name.ToLower().Contains("wall"))
-    //                    {
-    //                        foreach (SketchUpSharp.Surface surface in instance.Parent.Surfaces)
-    //                        {
-    //                            components.Items.Add(new WallProfileBased(instance.Parent.Name, instance.Parent.Name, new List<Types.Parameter>(), surface.ToGrevitOutline(instance.Transformation), "") {  GID = instance.Guid});
-    //                        }                            
-    //                    }
-
-
-    //                    if (instance.Name.ToLower().Contains("floor"))
-    //                    {
-    //                        foreach (SketchUpSharp.Surface surface in instance.Parent.Surfaces)
-    //                        {
-    //                            Types.Point bottom = instance.Transformation.GetTransformed(surface.Vertices[0]).ToGrevitPoint();
-    //                            int ctr = surface.Vertices.Count / 2;
-    //                            Types.Point top = instance.Transformation.GetTransformed(surface.Vertices[ctr]).ToGrevitPoint();
-
-
-
-    //                            components.Items.Add(new Slab()
-    //                            { 
-    //                                FamilyOrStyle = instance.Parent.Name, TypeOrLayer = instance.Parent.Name,
-    //                                parameters = new List<Types.Parameter>(),structural = true,height = 1, surface =
-    //                                surface.ToGrevitProfile(instance.Transformation), bottom = bottom, top = top, slope = top.z - bottom.z,
-    //                                GID = instance.Guid, levelbottom = "", 
-    //                            });
-    //                        }
-    //                    }
-
-    //                    if (instance.Name.ToLower().Contains("column"))
-    //                    {
-    //                        Grevit.Types.Profile profile = null;
-    //                        Grevit.Types.Point top = null;
-    //                        Grevit.Types.Point btm = null;
-
-    //                        foreach (SketchUpSharp.Surface surface in instance.Parent.Surfaces)
-    //                        {
-    //                            if (surface.Normal.Z == -1)
-    //                            {
-    //                                //profile = new Types.Profile() { profile = new List<Loop>() };
-    //                                //profile.profile.Add(new Loop() { outline = surface.ToGrevitOutline() });  
-    //                                profile = surface.ToGrevitProfile();
-    //                                btm = surface.Centroid.ToGrevitPoint(instance.Transformation);
-    //                            }
-
-    //                            if (surface.Normal.Z == 1)
-    //                            {
-    //                                top = surface.Centroid.ToGrevitPoint(instance.Transformation);
-    //                            }
-
-
-
-
-    //                        }
-
-    //                        components.Items.Add(new Grevit.Types.Column(instance.Parent.Name, instance.Parent.Name,new List<Types.Parameter>(),btm,top,"",true)
-    //                        {
-    //                            profile = profile,
-    //                            GID = instance.Guid 
-    //                        });
-    //                    }
-
-
-
-    //                }
-
-    //                c.BuildModel(components);
-                    
-    //            }
-
-    //        }
-
-
-
-    //        // Return Success
-    //        return Result.Succeeded;
-    //    }
-    //}
-
-    //public static class Geometry
-    //{
-
-    //    public static Grevit.Types.Profile ToGrevitProfile(this SketchUpSharp.Surface surface, SketchUpSharp.Transform t = null)
-    //    {
-    //        Types.Profile profile = new Types.Profile();
-    //        profile.profile = new List<Loop>();
-
-    //        Loop outerloop = new Loop();
-
-    //        outerloop.outline = new List<Types.Component>();
-    //        foreach (SketchUpSharp.Corner corner in surface.OuterEdges.Corners)
-    //            outerloop.outline.Add(corner.ToGrevitLine(t));
-
-    //        profile.profile.Add(outerloop);
-
-
-    //        foreach (SketchUpSharp.Loop skploop in surface.InnerEdges)
-    //        {
-    //            Loop innerloop = new Loop();
-
-    //            innerloop.outline = new List<Types.Component>();
-    //            foreach (SketchUpSharp.Corner corner in skploop.Corners)
-    //                innerloop.outline.Add(corner.ToGrevitLine(t));
-
-    //            profile.profile.Add(innerloop);
-    //        }
-
-    //        return profile;
-    //    }
-
-    //    public static List<Grevit.Types.Component> ToGrevitOutline(this SketchUpSharp.Surface surface, SketchUpSharp.Transform t = null)
-    //    {
-    //        List<Grevit.Types.Component> lines = new List<Types.Component>();
-    //        foreach (SketchUpSharp.Corner corner in surface.OuterEdges.Corners)
-    //        {
-    //            lines.Add(corner.ToGrevitLine(t));
-    //        }
-    //        return lines;
-    //    }
-
-    //    public static Grevit.Types.Line ToGrevitLine(this SketchUpSharp.Corner corner, SketchUpSharp.Transform t = null)
-    //    {
-    //        return new Grevit.Types.Line()
-    //        {
-    //            from = corner.Start.ToGrevitPoint(t),
-    //            to = corner.End.ToGrevitPoint(t)
-    //        };
-    //    }
-
-    //    public static Grevit.Types.Point ToGrevitPoint(this SketchUpSharp.Vertex v, SketchUpSharp.Transform t = null)
-    //    {
-    //        double factor = 0.1;
-    //        if (t != null)
-    //        {
-    //            SketchUpSharp.Vertex vertex = t.GetTransformed(v);
-    //            return new Grevit.Types.Point(vertex.X * factor, vertex.Y * factor, vertex.Z * factor );
-    //        }                
-    //        else
-    //            return new Grevit.Types.Point(v.X * factor, v.Y * factor, v.Z * factor);
-    //    }
-    //}
+            if (t != null)
+            {
+                SketchUpNET.Vertex vertex = t.GetTransformed(v);
+                return new Grevit.Types.Point(vertex.X * GrevitBuildModel.Scale, vertex.Y * GrevitBuildModel.Scale, vertex.Z * GrevitBuildModel.Scale);
+            }
+            else
+                return new Grevit.Types.Point(v.X * GrevitBuildModel.Scale, v.Y * GrevitBuildModel.Scale, v.Z * GrevitBuildModel.Scale);
+        }
+    }
 }
 
 

@@ -85,6 +85,8 @@ namespace Grevit.Types
         public bool update { get; set; }
         [DataMember]
         public bool delete { get; set; }
+        [DataMember]
+        public double scale { get; set; }
 
         public ComponentCollection()
         {
@@ -683,6 +685,7 @@ namespace Grevit.Types
         public double z { get; set; }
         [DataMember]
         public string id { get; set; }
+
 
         public Point(double X, double Y, double Z)
         {

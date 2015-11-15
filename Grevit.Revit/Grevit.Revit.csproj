@@ -55,10 +55,13 @@
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="RevitAPI">
-      <HintPath>..\..\..\..\..\..\Program Files\Autodesk\Revit 2015\RevitAPI.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files\Autodesk\Revit Architecture 2016\RevitAPI.dll</HintPath>
     </Reference>
     <Reference Include="RevitAPIUI">
-      <HintPath>..\..\..\..\..\..\Program Files\Autodesk\Revit 2015\RevitAPIUI.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files\Autodesk\Revit Architecture 2016\RevitAPIUI.dll</HintPath>
+    </Reference>
+    <Reference Include="SketchUpNET">
+      <HintPath>..\..\SketchUpNET\SketchUp\SketchUpNET\x64\Debug\SketchUpNET.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -117,8 +120,8 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
+    <PostBuildEvent>copy $(TargetDir)$(TargetFileName) $(SolutionDir)Package\ProgramData_Autodesk_Revit_Addins_2015\$(TargetFileName)
+copy $(TargetDir)Grevit.Types.dll $(SolutionDir)Package\ProgramData_Autodesk_Revit_Addins_2015\Grevit.Types.dll</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
