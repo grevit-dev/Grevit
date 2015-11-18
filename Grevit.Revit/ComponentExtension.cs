@@ -50,8 +50,8 @@ namespace Grevit.Revit
         public static void Build(this Grevit.Types.Component component, bool useReferenceElement)
         {
             // Create a new transaction
-            Transaction transaction = new Transaction(GrevitBuildModel.document, "GrevitCreate");
-            transaction.Start();
+            //Transaction transaction = new Transaction(GrevitBuildModel.document, "GrevitCreate");
+            //transaction.Start();
 
             // Get the components type
             Type type = component.GetType();
@@ -116,8 +116,8 @@ namespace Grevit.Revit
             }
 
             // commit and dispose the transaction
-            transaction.Commit();
-            transaction.Dispose();
+            //transaction.Commit();
+            //transaction.Dispose();
 
         }
 

@@ -194,6 +194,9 @@ namespace Grevit.Revit
 
             #region createComponents
 
+            Transaction trans = new Transaction(GrevitBuildModel.document, "GrevitCreate");
+            trans.Start();
+
             // Walk thru all received components
             foreach (Component component in components.Items)
             {
@@ -207,7 +210,12 @@ namespace Grevit.Revit
 
             // Walk thru all elements which are stalled because they are depending on
             // an Element which needed to be created first
+
+
             foreach (Component component in componentsWithReferences) component.Build(true);
+
+            trans.Commit();
+            trans.Dispose();
 
             #endregion
 

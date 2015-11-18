@@ -212,7 +212,7 @@ namespace Grevit.Revit
                 // Cast the familySymbolElement
                 FamilySymbol familySymbol = (FamilySymbol)familySymbolElement;
 
-
+                if (!familySymbol.IsActive) familySymbol.Activate();
 
                 // Create a reference Element
                 Element referenceElement = null;
@@ -247,8 +247,10 @@ namespace Grevit.Revit
                 else
                 {
                     // If there is no reference element just create the family without
-                    if (referenceElement == null)                    
-                        if (familyInstance.points.Count == 1) newFamilyInstance = GrevitBuildModel.document.Create.NewFamilyInstance(familyInstance.points[0].ToXYZ(), familySymbol, stype);                    
+                    if (referenceElement == null)
+                    { 
+                        if (familyInstance.points.Count == 1) newFamilyInstance = GrevitBuildModel.document.Create.NewFamilyInstance(familyInstance.points[0].ToXYZ(), familySymbol, stype);
+                    }
                     else
                     {
                         if (familyInstance.points.Count == 1)
@@ -300,6 +302,8 @@ namespace Grevit.Revit
 
                 // Cast the family Symbol
                 FamilySymbol familySymbol = (FamilySymbol)familySymbolElement;
+                if (!familySymbol.IsActive) familySymbol.Activate();
+
                 double elevation = familyInstance.points[0].z;
                 // Get the placement level
                 Autodesk.Revit.DB.Level level = (Autodesk.Revit.DB.Level)GrevitBuildModel.document.GetLevelByName(familyInstance.level,elevation);
@@ -430,6 +434,8 @@ namespace Grevit.Revit
                 break;
             }
 
+            if (!symbol.IsActive) symbol.Activate();
+
             // Create a new Family Instance origin based
             FamilyInstance familyInstance = GrevitBuildModel.document.Create.NewFamilyInstance(new XYZ(0, 0, 0), symbol, Autodesk.Revit.DB.Structure.StructuralType.NonStructural);
 
@@ -492,18 +498,18 @@ namespace Grevit.Revit
             XYZ upper = (location.Z < top.Z) ? top : location;
 
 
-            Element familyElement = GrevitBuildModel.document.GetElementByName(Autodesk.Revit.DB.BuiltInCategory.OST_StructuralColumns, column.FamilyOrStyle, column.TypeOrLayer, out found);
+            Element familyElement = GrevitBuildModel.document.GetElementByName(typeof(FamilySymbol), column.FamilyOrStyle, column.TypeOrLayer, out found);
             Element levelElement = GrevitBuildModel.document.GetLevelByName(column.levelbottom,lower.Z);
 
             Autodesk.Revit.DB.FamilyInstance familyInstance = null;
 
 
 
-            if (familyElement != null && levelElement != null)
+            if (familyElement != null && levelElement != null && familyElement != null)
             {
                 // Cast the FamilySymbol and the Level
                 FamilySymbol sym = (FamilySymbol)familyElement;
-
+                if (!sym.IsActive) sym.Activate();
 
 
 
@@ -867,6 +873,7 @@ namespace Grevit.Revit
           
             if (faimlySymbol != null)
             {
+                if (!faimlySymbol.IsActive) faimlySymbol.Activate();
 
                 FamilyInstance adaptiveComponent = null;
 
