@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Grevit.Types", "Grevit.Types\Grevit.Types.csproj", "{4E16464A-4495-4A27-B810-A54F9CE3D191}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Grevit.Installer", "Grevit.Installer\GrevitInstaller.vdproj", "{FC8F9BB5-5915-4EB9-B1B5-BBFE02058115}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Grevit.Revit.2016", "Grevit.Revit.2016\Grevit.Revit.2016.csproj", "{9E52B6AD-6F0E-4D36-8E81-4E0C76B5C5D3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Grevit.Revit", "Grevit.Revit\Grevit.Revit.csproj", "{F696EC24-DE61-4BF2-AE01-A22994B220F5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -49,6 +51,14 @@ Global
 		{9E52B6AD-6F0E-4D36-8E81-4E0C76B5C5D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9E52B6AD-6F0E-4D36-8E81-4E0C76B5C5D3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9E52B6AD-6F0E-4D36-8E81-4E0C76B5C5D3}.Release|x64.ActiveCfg = Release|Any CPU
+		{F696EC24-DE61-4BF2-AE01-A22994B220F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F696EC24-DE61-4BF2-AE01-A22994B220F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F696EC24-DE61-4BF2-AE01-A22994B220F5}.Debug|x64.ActiveCfg = Debug|x64
+		{F696EC24-DE61-4BF2-AE01-A22994B220F5}.Debug|x64.Build.0 = Debug|x64
+		{F696EC24-DE61-4BF2-AE01-A22994B220F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F696EC24-DE61-4BF2-AE01-A22994B220F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F696EC24-DE61-4BF2-AE01-A22994B220F5}.Release|x64.ActiveCfg = Release|x64
+		{F696EC24-DE61-4BF2-AE01-A22994B220F5}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

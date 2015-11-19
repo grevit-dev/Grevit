@@ -92,11 +92,17 @@ namespace Grevit.Revit
                     }
                 }
 
-                if (GrevitBuildModel.document.GrevitAddSharedParameter())
+
+                Autodesk.Revit.DB.Parameter grevitIdParameter = element.LookupParameter("GID");
+                
+                if (grevitIdParameter == null)
                 {
-                    Autodesk.Revit.DB.Parameter pram = element.LookupParameter("GID");
-                    if (pram != null && !pram.IsReadOnly) pram.Set(component.GID);
+                    GrevitBuildModel.document.GrevitAddSharedParameter();
+                    grevitIdParameter = element.LookupParameter("GID");
                 }
+                
+                if (grevitIdParameter != null && !grevitIdParameter.IsReadOnly) grevitIdParameter.Set(component.GID);
+                
             }
         }
 
