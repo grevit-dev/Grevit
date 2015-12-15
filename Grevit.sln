@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Grevit.Revit.2016", "Grevit
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Grevit.Revit", "Grevit.Revit\Grevit.Revit.csproj", "{F696EC24-DE61-4BF2-AE01-A22994B220F5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Grevit.AutoCad", "Grevit.AutoCad\Grevit.AutoCad.csproj", "{BD218AED-E5BA-4F20-86D7-711F659A636B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,6 +61,14 @@ Global
 		{F696EC24-DE61-4BF2-AE01-A22994B220F5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F696EC24-DE61-4BF2-AE01-A22994B220F5}.Release|x64.ActiveCfg = Release|x64
 		{F696EC24-DE61-4BF2-AE01-A22994B220F5}.Release|x64.Build.0 = Release|x64
+		{BD218AED-E5BA-4F20-86D7-711F659A636B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD218AED-E5BA-4F20-86D7-711F659A636B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD218AED-E5BA-4F20-86D7-711F659A636B}.Debug|x64.ActiveCfg = Debug|x64
+		{BD218AED-E5BA-4F20-86D7-711F659A636B}.Debug|x64.Build.0 = Debug|x64
+		{BD218AED-E5BA-4F20-86D7-711F659A636B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD218AED-E5BA-4F20-86D7-711F659A636B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD218AED-E5BA-4F20-86D7-711F659A636B}.Release|x64.ActiveCfg = Release|x64
+		{BD218AED-E5BA-4F20-86D7-711F659A636B}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

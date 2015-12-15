@@ -10,8 +10,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Grevit.AutoCad</RootNamespace>
     <AssemblyName>Grevit.AutoCad</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -21,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -29,6 +31,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <DebugSymbols>true</DebugSymbols>
@@ -38,6 +41,7 @@
     <PlatformTarget>x64</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
     <OutputPath>bin\x64\Release\</OutputPath>
@@ -47,41 +51,62 @@
     <PlatformTarget>x64</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AcCoreMgd">
-      <HintPath>..\..\..\..\..\..\..\..\ObjectARX 2013\inc\AcCoreMgd.dll</HintPath>
+    <Reference Include="accoremgd, Version=19.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files\Autodesk\AutoCAD 2015\accoremgd.dll</HintPath>
+      <Private>False</Private>
     </Reference>
-    <Reference Include="AcCui">
-      <HintPath>..\..\..\..\..\..\..\..\ObjectARX 2013\inc\AcCui.dll</HintPath>
+    <Reference Include="AcCui, Version=19.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files\Autodesk\AutoCAD 2015\AcCui.dll</HintPath>
+      <Private>False</Private>
     </Reference>
-    <Reference Include="AcDbMgd">
-      <HintPath>..\..\..\..\..\..\..\..\ObjectARX 2013\inc\AcDbMgd.dll</HintPath>
+    <Reference Include="acdbmgd, Version=19.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files\Autodesk\AutoCAD 2015\acdbmgd.dll</HintPath>
+      <Private>False</Private>
     </Reference>
-    <Reference Include="AcMgd">
-      <HintPath>..\..\..\..\..\..\..\..\ObjectARX 2013\inc\AcMgd.dll</HintPath>
+    <Reference Include="acmgd, Version=19.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files\Autodesk\AutoCAD 2015\acmgd.dll</HintPath>
+      <Private>False</Private>
     </Reference>
-    <Reference Include="AecArchMgd">
-      <HintPath>..\..\..\..\..\..\..\..\Program Files\Autodesk\AutoCAD 2013\ACA\AecArchMgd.dll</HintPath>
+    <Reference Include="AecArchMgd, Version=7.0.110.0, Culture=neutral, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files\Autodesk\AutoCAD 2015\ACA\AecArchMgd.dll</HintPath>
+      <Private>False</Private>
     </Reference>
-    <Reference Include="AecBaseMgd">
-      <HintPath>..\..\..\..\..\..\..\..\Program Files\Autodesk\AutoCAD 2013\ACA\AecBaseMgd.dll</HintPath>
+    <Reference Include="AecBaseMgd, Version=7.0.110.0, Culture=neutral, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files\Autodesk\AutoCAD 2015\ACA\AecBaseMgd.dll</HintPath>
+      <Private>False</Private>
     </Reference>
-    <Reference Include="AecPropDataMgd">
-      <HintPath>..\..\..\..\..\..\..\..\Program Files\Autodesk\AutoCAD 2013\ACA\AecPropDataMgd.dll</HintPath>
+    <Reference Include="AecPropDataMgd, Version=7.0.110.0, Culture=neutral, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files\Autodesk\AutoCAD 2015\ACA\AecPropDataMgd.dll</HintPath>
+      <Private>False</Private>
     </Reference>
-    <Reference Include="AecStructureMgd">
-      <HintPath>..\..\..\..\..\..\..\..\Program Files\Autodesk\AutoCAD 2013\ACA\AecStructureMgd.dll</HintPath>
+    <Reference Include="AecStructureMgd, Version=7.0.110.0, Culture=neutral, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files\Autodesk\AutoCAD 2015\ACA\AecStructureMgd.dll</HintPath>
+      <Private>False</Private>
     </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AutoCad.cs" />
@@ -108,6 +133,10 @@
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy $(TargetDir)$(TargetFileName) $(SolutionDir)"Package\APPDATA_Autodesk_ACA 2015_enu_Support"\$(TargetName).dll
+copy $(TargetDir)Grevit.Types.dll $(SolutionDir)"Package\APPDATA_Autodesk_ACA 2015_enu_Support"\Grevit.Types.dll</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

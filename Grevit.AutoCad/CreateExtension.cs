@@ -22,54 +22,54 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using Autodesk.AutoCAD.DatabaseServices;
+using Autodesk.AutoCAD.ApplicationServices;
+using Autodesk.AutoCAD.EditorInput;
+using Autodesk.AutoCAD.Runtime;
+using Autodesk.AutoCAD.Geometry;
+using Autodesk.Aec.Structural.DatabaseServices;
+using Autodesk.Aec.Arch.DatabaseServices;
+using System.Xml;
+using System.Xml.Serialization;
+using System.ServiceModel;
+using System.Runtime.Serialization;
+using Autodesk.Aec.PropertyData.DatabaseServices;
 namespace Grevit.AutoCad
 {
     public static class CreateExtension
     {
-        public static void Create(Grevit.Types.DrawingPoint a)
+        public static DBObject Create(this Grevit.Types.DrawingPoint a, Transaction tr)
         {
-            Database db = Autodesk.AutoCAD.ApplicationServices.Application.DocumentManager.MdiActiveDocument.Database;
-            Transaction tr = db.TransactionManager.StartTransaction();
-            Editor ed = Autodesk.AutoCAD.ApplicationServices.Application.DocumentManager.MdiActiveDocument.Editor;
-
-
-
             try
             {
-                LayerTable lt = (LayerTable)tr.GetObject(db.LayerTableId, OpenMode.ForRead);
-                Point3d pp = GrevitPtoPoint3d(a.point);
+                LayerTable lt = (LayerTable)tr.GetObject(Command.Database.LayerTableId, OpenMode.ForRead);
+                Point3d pp = a.point.ToPoint3d();
                 DBPoint ppp = new DBPoint(pp);
-                ppp.SetDatabaseDefaults(db);
+                ppp.SetDatabaseDefaults(Command.Database);
 
                 if (a.TypeOrLayer != "") { if (lt.Has(a.TypeOrLayer)) ppp.LayerId = lt[a.TypeOrLayer]; }
-                BlockTable bt = (BlockTable)tr.GetObject(db.BlockTableId, OpenMode.ForRead);
+                BlockTable bt = (BlockTable)tr.GetObject(Command.Database.BlockTableId, OpenMode.ForRead);
                 BlockTableRecord ms = (BlockTableRecord)tr.GetObject(bt[BlockTableRecord.ModelSpace], OpenMode.ForWrite);
                 ms.AppendEntity(ppp);
                 tr.AddNewlyCreatedDBObject(ppp, true);
-                writeProperties(ppp, a.parameters, tr);
-                storeID(a, ppp.Id);
-                tr.Commit();
+                return ppp;
             }
 
             catch (Autodesk.AutoCAD.Runtime.Exception e)
             {
-                ed.WriteMessage(e.Message);
-                tr.Abort();
             }
 
-            finally
-            {
-                tr.Dispose();
-            }
+
+            return null;
 
         }
 
-        public static void Create(Database db, Grevit.Types.Door door, Wall wall, Transaction tr, BlockTableRecord ms)
+        public static DBObject Create(this Grevit.Types.Door door, Transaction tr, Wall wall)
         {
-
+            BlockTable bt = (BlockTable)tr.GetObject(Command.Database.BlockTableId, OpenMode.ForRead);
+            BlockTableRecord ms = (BlockTableRecord)tr.GetObject(bt[BlockTableRecord.ModelSpace], OpenMode.ForWrite);
             Door d = new Door();
-            DictionaryDoorStyle dds = new DictionaryDoorStyle(db);
+            DictionaryDoorStyle dds = new DictionaryDoorStyle(Command.Database);
             bool newEnt = false;
             if (Command.existing_objects.ContainsKey(door.GID))
             {
@@ -77,11 +77,11 @@ namespace Grevit.AutoCad
             }
             else
             {
-                d.SetDatabaseDefaults(db);
-                d.SetToStandard(db);
+                d.SetDatabaseDefaults(Command.Database);
+                d.SetToStandard(Command.Database);
                 AnchorOpeningBaseToWall w = new AnchorOpeningBaseToWall();
-                w.SetToStandard(db);
-                w.SubSetDatabaseDefaults(db);
+                w.SetToStandard(Command.Database);
+                w.SubSetDatabaseDefaults(Command.Database);
                 d.SetAnchor(w);
                 newEnt = true;
                 w.SetSingleReference(wall.Id, Autodesk.Aec.DatabaseServices.RelationType.OwnedBy);
@@ -93,304 +93,239 @@ namespace Grevit.AutoCad
             Point3d pkt = new Point3d(door.locationPoint.x, door.locationPoint.y + (wall.Width / 2), door.locationPoint.z);
             d.Location = pkt;
 
-            LayerTable lt = (LayerTable)tr.GetObject(db.LayerTableId, OpenMode.ForRead);
+            LayerTable lt = (LayerTable)tr.GetObject(Command.Database.LayerTableId, OpenMode.ForRead);
             if (door.TypeOrLayer != "") { if (lt.Has(door.TypeOrLayer)) d.LayerId = lt[door.TypeOrLayer]; }
             if (dds.Has(door.FamilyOrStyle, tr)) d.StyleId = dds.GetAt(door.FamilyOrStyle);
 
 
             if (newEnt)
             {
-                AddXData(door, d);
                 ms.AppendEntity(d);
                 tr.AddNewlyCreatedDBObject(d, true);
+                ms.Dispose();
             }
 
-            writeProperties(d, door.parameters, tr);
-            storeID(door, d.Id);
+            return d;
         }
 
-        public static void Create(Grevit.Types.Wall w)
+        public static DBObject Create(this Grevit.Types.Wall w, Transaction tr, Grevit.Types.Point from = null, Grevit.Types.Point to = null)
         {
-            Database db = Autodesk.AutoCAD.ApplicationServices.Application.DocumentManager.MdiActiveDocument.Database;
-            Transaction tr = db.TransactionManager.StartTransaction();
-            Editor ed = Autodesk.AutoCAD.ApplicationServices.Application.DocumentManager.MdiActiveDocument.Editor;
-            DictionaryWallStyle ws = new DictionaryWallStyle(db);
+            DictionaryWallStyle ws = new DictionaryWallStyle(Command.Database);
             try
             {
-                Wall wall = new Wall();
-                LayerTable lt = (LayerTable)tr.GetObject(db.LayerTableId, OpenMode.ForRead);
-
-                bool newEnt = false;
-
-                if (Command.existing_objects.ContainsKey(w.GID)) wall = (Wall)tr.GetObject(Command.existing_objects[w.GID], OpenMode.ForWrite);
-                else
+                if (from == null && to == null && w.curve.GetType() == typeof(Grevit.Types.PLine))
                 {
-                    wall.SetDatabaseDefaults(db);
-                    wall.SetToStandard(db);
-                    newEnt = true;
-                    wall.JustificationType = WallJustificationType.Center;
-                }
-
-                if (w.TypeOrLayer != "") { if (lt.Has(w.TypeOrLayer)) wall.LayerId = lt[w.TypeOrLayer]; }
-                if (ws.Has(w.FamilyOrStyle, tr)) wall.StyleId = ws.GetAt(w.FamilyOrStyle);
-
-
-
-                if (w.from != null && w.to != null)
-                {
-                    wall.Set(GrevitPtoPoint3d(w.from), GrevitPtoPoint3d(w.to), Vector3d.ZAxis);
-                }
-                else
-                {
-                    if (w.curve.GetType() == typeof(Grevit.Types.PLine))
+                    Grevit.Types.PLine pline = (Grevit.Types.PLine)w.curve;
+                    for (int i = 0; i < pline.points.Count; i++)
                     {
-                        Grevit.Types.PLine pline = (Grevit.Types.PLine)w.curve;
-                        for (int i = 0; i < pline.points.Count; i++)
+                        if (i == pline.points.Count - 1)
                         {
-                            if (i == pline.points.Count - 1)
+                            if (pline.closed)
                             {
-                                if (pline.closed)
-                                {
-                                    w.from = pline.points[i];
-                                    w.to = pline.points[0];
-                                    Create(w);
-                                }
-                            }
-                            else
-                            {
-                                w.from = pline.points[i];
-                                w.to = pline.points[i + 1];
-                                Create(w);
+                                w.Create(tr, pline.points[i], pline.points[0]);
                             }
                         }
-
-
-                    }
-                    else if (w.curve.GetType() == typeof(Grevit.Types.Line))
-                    {
-                        Grevit.Types.Line baseline = (Grevit.Types.Line)w.curve;
-                        wall.Set(GrevitPtoPoint3d(baseline.from), GrevitPtoPoint3d(baseline.to), Vector3d.ZAxis);
-                    }
-                    else if (w.curve.GetType() == typeof(Grevit.Types.Arc))
-                    {
-                        Grevit.Types.Arc baseline = (Grevit.Types.Arc)w.curve;
-                        CircularArc3d arc = new CircularArc3d(GrevitPtoPoint3d(baseline.center), Vector3d.ZAxis, Vector3d.ZAxis, baseline.radius, baseline.start, baseline.end);
-                        wall.Set(arc, Vector3d.ZAxis);
-                    }
-                    else if (w.curve.GetType() == typeof(Grevit.Types.Curve3Points))
-                    {
-                        Grevit.Types.Curve3Points baseline = (Grevit.Types.Curve3Points)w.curve;
-                        wall.Set(GrevitPtoPoint3d(baseline.a), GrevitPtoPoint3d(baseline.b), GrevitPtoPoint3d(baseline.c), Vector3d.ZAxis);
+                        else
+                        {
+                            w.Create(tr, pline.points[i], pline.points[i + 1]);
+                        }
                     }
                 }
-
-
-                wall.BaseHeight = w.height;
-
-                if (newEnt)
+                else
                 {
-                    BlockTable bt = (BlockTable)tr.GetObject(db.BlockTableId, OpenMode.ForRead);
-                    BlockTableRecord ms = (BlockTableRecord)tr.GetObject(bt[BlockTableRecord.ModelSpace], OpenMode.ForWrite);
-                    AddXData(w, wall);
-                    ms.AppendEntity(wall);
-                    tr.AddNewlyCreatedDBObject(wall, true);
-                    storeID(w, wall.Id);
+
+
+                    Wall wall = new Wall();
+                    LayerTable lt = (LayerTable)tr.GetObject(Command.Database.LayerTableId, OpenMode.ForRead);
+
+                    bool newEnt = false;
+
+                    if (Command.existing_objects.ContainsKey(w.GID)) wall = (Wall)tr.GetObject(Command.existing_objects[w.GID], OpenMode.ForWrite);
+                    else
+                    {
+                        wall.SetDatabaseDefaults(Command.Database);
+                        wall.SetToStandard(Command.Database);
+                        newEnt = true;
+                        wall.JustificationType = WallJustificationType.Center;
+                    }
+
+                    if (w.TypeOrLayer != "") { if (lt.Has(w.TypeOrLayer)) wall.LayerId = lt[w.TypeOrLayer]; }
+                    if (ws.Has(w.FamilyOrStyle, tr)) wall.StyleId = ws.GetAt(w.FamilyOrStyle);
+
+
+
+                    if (from != null && to != null)
+                    {
+                        wall.Set(from.ToPoint3d(), to.ToPoint3d(), Vector3d.ZAxis);
+                    }
+                    else
+                    {
+                        if (w.curve.GetType() == typeof(Grevit.Types.Line))
+                        {
+                            Grevit.Types.Line baseline = (Grevit.Types.Line)w.curve;
+                            wall.Set(baseline.from.ToPoint3d(), baseline.to.ToPoint3d(), Vector3d.ZAxis);
+                        }
+                        else if (w.curve.GetType() == typeof(Grevit.Types.Arc))
+                        {
+                            Grevit.Types.Arc baseline = (Grevit.Types.Arc)w.curve;
+                            CircularArc3d arc = new CircularArc3d(baseline.center.ToPoint3d(), Vector3d.ZAxis, Vector3d.ZAxis, baseline.radius, baseline.start, baseline.end);
+                            wall.Set(arc, Vector3d.ZAxis);
+                        }
+                        else if (w.curve.GetType() == typeof(Grevit.Types.Curve3Points))
+                        {
+                            Grevit.Types.Curve3Points baseline = (Grevit.Types.Curve3Points)w.curve;
+                            wall.Set(baseline.a.ToPoint3d(), baseline.b.ToPoint3d(), baseline.c.ToPoint3d(), Vector3d.ZAxis);
+                        }
+                    }
+
+
+                    wall.BaseHeight = w.height;
+
+                    if (newEnt)
+                    {
+                        BlockTable bt = (BlockTable)tr.GetObject(Command.Database.BlockTableId, OpenMode.ForRead);
+                        BlockTableRecord ms = (BlockTableRecord)tr.GetObject(bt[BlockTableRecord.ModelSpace], OpenMode.ForWrite);
+
+                        ms.AppendEntity(wall);
+                        tr.AddNewlyCreatedDBObject(wall, true);
+
+                    }
+
+                    return wall;
                 }
-                writeProperties(wall, w.parameters, tr);
-                tr.Commit();
             }
 
             catch (Autodesk.AutoCAD.Runtime.Exception e)
             {
-                ed.WriteMessage(e.Message);
-                tr.Abort();
+
             }
 
-            finally
-            {
-                tr.Dispose();
-            }
+            return null;
 
         }
 
 
-        public static void Create(Grevit.Types.Line l)
+        public static DBObject Create(this Grevit.Types.Line l, Transaction tr)
         {
-            Database db = Autodesk.AutoCAD.ApplicationServices.Application.DocumentManager.MdiActiveDocument.Database;
-            Transaction tr = db.TransactionManager.StartTransaction();
-            Editor ed = Autodesk.AutoCAD.ApplicationServices.Application.DocumentManager.MdiActiveDocument.Editor;
-
-            LayerTable lt = (LayerTable)tr.GetObject(db.LayerTableId, OpenMode.ForRead);
+            LayerTable lt = (LayerTable)tr.GetObject(Command.Database.LayerTableId, OpenMode.ForRead);
 
             try
             {
-                Line line = new Line(GrevitPtoPoint3d(l.from), GrevitPtoPoint3d(l.to));
+                Line line = new Line(l.from.ToPoint3d(), l.to.ToPoint3d());
 
 
-                line.SetDatabaseDefaults(db);
+                line.SetDatabaseDefaults(Command.Database);
 
-                BlockTable bt = (BlockTable)tr.GetObject(db.BlockTableId, OpenMode.ForRead);
+                BlockTable bt = (BlockTable)tr.GetObject(Command.Database.BlockTableId, OpenMode.ForRead);
                 BlockTableRecord ms = (BlockTableRecord)tr.GetObject(bt[BlockTableRecord.ModelSpace], OpenMode.ForWrite);
-                AddXData(l, line);
+                
                 if (lt.Has(l.TypeOrLayer)) line.LayerId = lt[l.TypeOrLayer];
                 ms.AppendEntity(line);
                 tr.AddNewlyCreatedDBObject(line, true);
-
-
-                writeProperties(line, l.parameters, tr);
-                storeID(l, line.Id);
-                tr.Commit();
-
+                return line;
             }
 
             catch (Autodesk.AutoCAD.Runtime.Exception e)
             {
-                ed.WriteMessage(e.Message);
-                tr.Abort();
+
             }
 
-            finally
-            {
-                tr.Dispose();
-            }
+            return null;
 
         }
 
-        public static void Create(Grevit.Types.Spline s)
+        public static DBObject Create(this Grevit.Types.Spline s, Transaction tr)
         {
-            Database db = Autodesk.AutoCAD.ApplicationServices.Application.DocumentManager.MdiActiveDocument.Database;
-            Transaction tr = db.TransactionManager.StartTransaction();
-            Editor ed = Autodesk.AutoCAD.ApplicationServices.Application.DocumentManager.MdiActiveDocument.Editor;
-
-            LayerTable lt = (LayerTable)tr.GetObject(db.LayerTableId, OpenMode.ForRead);
+            LayerTable lt = (LayerTable)tr.GetObject(Command.Database.LayerTableId, OpenMode.ForRead);
 
             try
             {
                 Point3dCollection points = new Point3dCollection();
-                foreach (Grevit.Types.Point p in s.controlPoints) points.Add(GrevitPtoPoint3d(p));
+                foreach (Grevit.Types.Point p in s.controlPoints) points.Add(p.ToPoint3d());
                 DoubleCollection dc = new DoubleCollection();
                 foreach (double dbl in s.weights) dc.Add(dbl);
                 DoubleCollection dcc = new DoubleCollection();
                 foreach (double dbl in s.knots) dcc.Add(dbl);
                 Spline sp = new Spline(s.degree, s.isRational, s.isClosed, s.isPeriodic, points, dcc, dc, 0, 0);
-                sp.SetDatabaseDefaults(db);
+                sp.SetDatabaseDefaults(Command.Database);
 
-                BlockTable bt = (BlockTable)tr.GetObject(db.BlockTableId, OpenMode.ForRead);
+                BlockTable bt = (BlockTable)tr.GetObject(Command.Database.BlockTableId, OpenMode.ForRead);
                 BlockTableRecord ms = (BlockTableRecord)tr.GetObject(bt[BlockTableRecord.ModelSpace], OpenMode.ForWrite);
-                AddXData(s, sp);
+
                 if (lt.Has(s.TypeOrLayer)) sp.LayerId = lt[s.TypeOrLayer];
                 ms.AppendEntity(sp);
                 tr.AddNewlyCreatedDBObject(sp, true);
-
-
-                writeProperties(sp, s.parameters, tr);
-                storeID(s, sp.Id);
-                tr.Commit();
-
+                ms.Dispose();
+                return sp;
             }
 
             catch (Autodesk.AutoCAD.Runtime.Exception e)
             {
-                ed.WriteMessage(e.Message);
-                tr.Abort();
             }
 
-            finally
-            {
-                tr.Dispose();
-            }
+            return null;
 
         }
 
-        public static void Create(Grevit.Types.Arc a)
+        public static DBObject Create(this Grevit.Types.Arc a, Transaction tr)
         {
-            Database db = Autodesk.AutoCAD.ApplicationServices.Application.DocumentManager.MdiActiveDocument.Database;
-            Transaction tr = db.TransactionManager.StartTransaction();
-            Editor ed = Autodesk.AutoCAD.ApplicationServices.Application.DocumentManager.MdiActiveDocument.Editor;
-
-
 
             try
             {
-                LayerTable lt = (LayerTable)tr.GetObject(db.LayerTableId, OpenMode.ForRead);
-                Arc arc = new Arc(GrevitPtoPoint3d(a.center), a.radius, a.start, a.end);
+                LayerTable lt = (LayerTable)tr.GetObject(Command.Database.LayerTableId, OpenMode.ForRead);
+                Arc arc = new Arc(a.center.ToPoint3d(), a.radius, a.start, a.end);
 
-                arc.SetDatabaseDefaults(db);
+                arc.SetDatabaseDefaults(Command.Database);
                 if (lt.Has(a.TypeOrLayer)) arc.LayerId = lt[a.TypeOrLayer];
 
-                BlockTable bt = (BlockTable)tr.GetObject(db.BlockTableId, OpenMode.ForRead);
+                BlockTable bt = (BlockTable)tr.GetObject(Command.Database.BlockTableId, OpenMode.ForRead);
                 BlockTableRecord ms = (BlockTableRecord)tr.GetObject(bt[BlockTableRecord.ModelSpace], OpenMode.ForWrite);
                 ms.AppendEntity(arc);
                 tr.AddNewlyCreatedDBObject(arc, true);
-                writeProperties(arc, a.parameters, tr);
-                storeID(a, arc.Id);
-                tr.Commit();
-            }
+                ms.Dispose();
+                return arc;
+             }
 
             catch (Autodesk.AutoCAD.Runtime.Exception e)
             {
-                ed.WriteMessage(e.Message);
-                tr.Abort();
             }
 
-            finally
-            {
-                tr.Dispose();
-            }
-
+            return null;
         }
 
-        public static void Create(Grevit.Types.PLine a)
+        public static DBObject Create(this Grevit.Types.PLine a, Transaction tr)
         {
-            Database db = Autodesk.AutoCAD.ApplicationServices.Application.DocumentManager.MdiActiveDocument.Database;
-            Transaction tr = db.TransactionManager.StartTransaction();
-            Editor ed = Autodesk.AutoCAD.ApplicationServices.Application.DocumentManager.MdiActiveDocument.Editor;
-
-
-
             try
             {
-                LayerTable lt = (LayerTable)tr.GetObject(db.LayerTableId, OpenMode.ForRead);
+                LayerTable lt = (LayerTable)tr.GetObject(Command.Database.LayerTableId, OpenMode.ForRead);
                 Point3dCollection pc = new Point3dCollection();
-                foreach (Grevit.Types.Point p in a.points) pc.Add(GrevitPtoPoint3d(p));
+                foreach (Grevit.Types.Point p in a.points) pc.Add(p.ToPoint3d());
                 Polyline3d pp = new Polyline3d(Poly3dType.SimplePoly, pc, a.closed);
-                pp.SetDatabaseDefaults(db);
+                pp.SetDatabaseDefaults(Command.Database);
                 if (lt.Has(a.TypeOrLayer)) pp.LayerId = lt[a.TypeOrLayer];
 
-                BlockTable bt = (BlockTable)tr.GetObject(db.BlockTableId, OpenMode.ForRead);
+                BlockTable bt = (BlockTable)tr.GetObject(Command.Database.BlockTableId, OpenMode.ForRead);
                 BlockTableRecord ms = (BlockTableRecord)tr.GetObject(bt[BlockTableRecord.ModelSpace], OpenMode.ForWrite);
                 ms.AppendEntity(pp);
                 tr.AddNewlyCreatedDBObject(pp, true);
-                writeProperties(pp, a.parameters, tr);
-                storeID(a, pp.Id);
-                tr.Commit();
+                return pp;
             }
-
             catch (Autodesk.AutoCAD.Runtime.Exception e)
             {
-                ed.WriteMessage(e.Message);
-                tr.Abort();
             }
 
-            finally
-            {
-                tr.Dispose();
-            }
-
+            return null;
         }
 
-        public static void Create(Grevit.Types.Room r)
+        public static DBObject Create(this Grevit.Types.Room r, Transaction tr)
         {
-            Database db = Autodesk.AutoCAD.ApplicationServices.Application.DocumentManager.MdiActiveDocument.Database;
-            Transaction tr = db.TransactionManager.StartTransaction();
-            Editor ed = Autodesk.AutoCAD.ApplicationServices.Application.DocumentManager.MdiActiveDocument.Editor;
-            DictionarySpaceStyle ss = new DictionarySpaceStyle(db);
+            DictionarySpaceStyle ss = new DictionarySpaceStyle(Command.Database);
 
 
 
             try
             {
-                BlockTable bt = (BlockTable)tr.GetObject(db.BlockTableId, OpenMode.ForRead);
+                BlockTable bt = (BlockTable)tr.GetObject(Command.Database.BlockTableId, OpenMode.ForRead);
                 BlockTableRecord ms = (BlockTableRecord)tr.GetObject(bt[BlockTableRecord.ModelSpace], OpenMode.ForWrite);
 
                 Polyline acPoly = new Polyline();
@@ -407,7 +342,7 @@ namespace Grevit.AutoCad
                 tr.AddNewlyCreatedDBObject(acPoly, true);
 
 
-                Autodesk.Aec.Geometry.Profile myProfile = Autodesk.Aec.Geometry.Profile.CreateFromEntity(acPoly, ed.CurrentUserCoordinateSystem);
+                Autodesk.Aec.Geometry.Profile myProfile = Autodesk.Aec.Geometry.Profile.CreateFromEntity(acPoly, Command.Editor.CurrentUserCoordinateSystem);
 
                 Space space;
 
@@ -422,8 +357,8 @@ namespace Grevit.AutoCad
                 {
                     newEnt = true;
                     space = new Space();
-                    space.SetDatabaseDefaults(db);
-                    space.SetToStandard(db);
+                    space.SetDatabaseDefaults(Command.Database);
+                    space.SetToStandard(Command.Database);
                 }
 
                 space.Associative = r.associative;
@@ -433,7 +368,7 @@ namespace Grevit.AutoCad
                 space.Location = new Point3d(0, 0, 0);
                 space.SetBaseProfile(myProfile, Matrix3d.Identity);
 
-                LayerTable lt = (LayerTable)tr.GetObject(db.LayerTableId, OpenMode.ForRead);
+                LayerTable lt = (LayerTable)tr.GetObject(Command.Database.LayerTableId, OpenMode.ForRead);
                 if (r.TypeOrLayer != "") { if (lt.Has(r.TypeOrLayer)) space.LayerId = lt[r.TypeOrLayer]; }
                 if (ss.Has(r.FamilyOrStyle, tr)) space.StyleId = ss.GetAt(r.FamilyOrStyle);
 
@@ -441,37 +376,24 @@ namespace Grevit.AutoCad
                 {
                     ms.AppendEntity(space);
                     tr.AddNewlyCreatedDBObject(space, true);
+                    ms.Dispose();
                 }
-                AddXData(r, space);
-                writeProperties(space, r.parameters, tr);
-                storeID(r, space.Id);
-                tr.Commit();
+                return space;
+
             }
 
             catch (Autodesk.AutoCAD.Runtime.Exception e)
             {
-                ed.WriteMessage(e.Message);
-                tr.Abort();
             }
 
-            finally
-            {
-                tr.Dispose();
-            }
-
+            return null;
         }
 
-        public static void Create(Grevit.Types.Slab s)
+        public static DBObject Create(this Grevit.Types.Slab s, Transaction tr)
         {
-            Database db = Autodesk.AutoCAD.ApplicationServices.Application.DocumentManager.MdiActiveDocument.Database;
-            Transaction tr = db.TransactionManager.StartTransaction();
-            Editor ed = Autodesk.AutoCAD.ApplicationServices.Application.DocumentManager.MdiActiveDocument.Editor;
-            // DictionarySlabStyle ss = new DictionarySlabStyle(db);
-
-
             try
             {
-                BlockTable bt = (BlockTable)tr.GetObject(db.BlockTableId, OpenMode.ForRead);
+                BlockTable bt = (BlockTable)tr.GetObject(Command.Database.BlockTableId, OpenMode.ForRead);
                 BlockTableRecord ms = (BlockTableRecord)tr.GetObject(bt[BlockTableRecord.ModelSpace], OpenMode.ForWrite);
 
                 // Polyline acPoly = new Polyline();
@@ -481,10 +403,10 @@ namespace Grevit.AutoCad
 
                 DBObjectCollection objColl = new DBObjectCollection();
                 Point3dCollection ptcol = new Point3dCollection();
-                foreach (Grevit.Types.Component p in s.surface.outline)
+                foreach (Grevit.Types.Loop loop in s.surface.profile)
                 {
-
-                    parse3dCurve(ptcol, p);
+                    foreach (Grevit.Types.Component p in loop.outline)
+                        ptcol = p.To3dPointCollection();
 
 
                     //Curve3dCollection collt = parse3dCurve(p);
@@ -497,7 +419,6 @@ namespace Grevit.AutoCad
                     //    objColl.Add(Autodesk.AutoCAD.DatabaseServices.Curve.CreateFromGeCurve(curve));
                     //}
                 }
-                ed.WriteMessage(ptcol.Count.ToString());
 
                 Polyline3d face = new Polyline3d(Poly3dType.SimplePoly, ptcol, true);
                 objColl.Add(face);
@@ -560,39 +481,26 @@ namespace Grevit.AutoCad
                 solid.Extrude(objreg, s.height, s.slope);
 
 
-                LayerTable lt = (LayerTable)tr.GetObject(db.LayerTableId, OpenMode.ForRead);
+                LayerTable lt = (LayerTable)tr.GetObject(Command.Database.LayerTableId, OpenMode.ForRead);
                 if (s.TypeOrLayer != "") { if (lt.Has(s.TypeOrLayer)) solid.LayerId = lt[s.TypeOrLayer]; }
                 //if (ss.Has(r.family, tr)) slab.StyleId = ss.GetAt(r.family);
 
 
                 ms.AppendEntity(solid);
                 tr.AddNewlyCreatedDBObject(solid, true);
-                writeProperties(solid, s.parameters, tr);
-                storeID(s, solid.Id);
-
-
-                tr.Commit();
+                return solid;
             }
 
             catch (Autodesk.AutoCAD.Runtime.Exception e)
             {
-                ed.WriteMessage(e.Message);
-                tr.Abort();
             }
 
-            finally
-            {
-                tr.Dispose();
-            }
-
+            return null;
         }
 
-        public static void Create(Grevit.Types.Column c)
+        public static DBObject Create(this Grevit.Types.Column c, Transaction tr)
         {
-            Database db = Autodesk.AutoCAD.ApplicationServices.Application.DocumentManager.MdiActiveDocument.Database;
-            Transaction tr = db.TransactionManager.StartTransaction();
-
-            DictionaryMemberStyle mst = new DictionaryMemberStyle(db);
+            DictionaryMemberStyle mst = new DictionaryMemberStyle(Command.Database);
 
             try
             {
@@ -608,36 +516,30 @@ namespace Grevit.AutoCad
                 else
                 {
 
-                    member.SetDatabaseDefaults(db);
-                    member.SetToStandard(db);
+                    member.SetDatabaseDefaults(Command.Database);
+                    member.SetToStandard(Command.Database);
 
 
-                    BlockTable bt = (BlockTable)tr.GetObject(db.BlockTableId, OpenMode.ForRead);
+                    BlockTable bt = (BlockTable)tr.GetObject(Command.Database.BlockTableId, OpenMode.ForRead);
                     BlockTableRecord ms = (BlockTableRecord)tr.GetObject(bt[BlockTableRecord.ModelSpace], OpenMode.ForWrite);
                     ms.AppendEntity(member);
                     tr.AddNewlyCreatedDBObject(member, true);
                 }
-                LayerTable lt = (LayerTable)tr.GetObject(db.LayerTableId, OpenMode.ForRead);
+
+                LayerTable lt = (LayerTable)tr.GetObject(Command.Database.LayerTableId, OpenMode.ForRead);
                 if (c.TypeOrLayer != "") { if (lt.Has(c.TypeOrLayer)) member.LayerId = lt[c.TypeOrLayer]; }
                 if (mst.Has(c.FamilyOrStyle, tr)) member.StyleId = mst.GetAt(c.FamilyOrStyle);
-                member.Set(GrevitPtoPoint3d(c.location), GrevitPtoPoint3d(c.locationTop));
+                member.Set(c.location.ToPoint3d(), c.locationTop.ToPoint3d());
 
-                writeProperties(member, c.parameters, tr);
-                AddXData(c, member);
-                storeID(c, member.Id);
-                tr.Commit();
+                return member;
             }
 
             catch (Autodesk.AutoCAD.Runtime.Exception e)
             {
-                tr.Abort();
             }
 
-            finally
-            {
-                tr.Dispose();
-            }
 
+            return null;
         }
 
 

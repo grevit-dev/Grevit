@@ -45,20 +45,28 @@ namespace Grevit.AutoCad
         public static Dictionary<string, ObjectId> created_objects;
         public static Document Document;
         public static Database Database;
+        public static Editor Editor;
 
         [CommandMethod("GREVIT")]
         public static void Start()
         {
             Command.Document = Autodesk.AutoCAD.ApplicationServices.Application.DocumentManager.MdiActiveDocument;
             Command.Database = Document.Database;
+            Command.Editor = Command.Document.Editor;
+            //Grevit.Serialization.Client grevitClientDialog = new Grevit.Serialization.Client();
 
-            Grevit.Serialization.Client grevitClientDialog = new Grevit.Serialization.Client();
+            // Create new Grevit Client sending existing Families 
+            Grevit.Client.ClientWindow grevitClientDialog = new Grevit.Client.ClientWindow();
+            //Grevit.Serialization.Client grevitClientDialog = new Grevit.Serialization.Client(document.GetFamilies());
 
-            if (grevitClientDialog.ShowDialog() == System.Windows.Forms.DialogResult.Cancel) return;
+            // Show Client Dialog
+            grevitClientDialog.ShowWindow();
+
+           // if (grevitClientDialog.ShowDialog() == System.Windows.Forms.DialogResult.Cancel) return;
 
             List<Grevit.Types.Component> stalled = new List<Grevit.Types.Component>();
 
-            existing_objects = getExistingObjectIDs(grevitClientDialog.componentCollection);
+            existing_objects = Utilities.getExistingObjectIDs(grevitClientDialog.componentCollection);
             created_objects = new Dictionary<string, ObjectId>();
 
             foreach (Grevit.Types.Component component in grevitClientDialog.componentCollection.Items)
@@ -77,7 +85,7 @@ namespace Grevit.AutoCad
             }
             catch (Autodesk.AutoCAD.Runtime.Exception e)
             {
-                ed.WriteMessage(e.Message);
+                //ed.WriteMessage(e.Message);
             }
 
         }

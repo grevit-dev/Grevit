@@ -26,7 +26,8 @@ using Autodesk.AutoCAD.DatabaseServices;
 using Autodesk.AutoCAD.ApplicationServices;
 using Autodesk.AutoCAD.EditorInput;
 using Autodesk.AutoCAD.Runtime;
-using Autodesk.AutoCAD.Geometry; 
+using Autodesk.AutoCAD.Geometry;
+using Autodesk.Aec.PropertyData.DatabaseServices;
 
 namespace Grevit.AutoCad
 {
@@ -49,38 +50,38 @@ namespace Grevit.AutoCad
             return new Point2d(p.x, p.y);
         }
 
-        public static Curve2dCollection To2dCurve(this Grevit.Types.Curve3Points curve)
+        public static Curve2dCollection To2dCurve(this Grevit.Types.Component curve)
         {
             Curve2dCollection curveArray = new Curve2dCollection();
 
             if (curve.GetType() == typeof(Grevit.Types.Line))
             {
                 Grevit.Types.Line baseline = (Grevit.Types.Line)curve;
-                curveArray.Add(new Line2d(GrevitPtoPoint2d(baseline.from), GrevitPtoPoint2d(baseline.to)));
+                curveArray.Add(new Line2d(baseline.from.ToPoint2d(), baseline.to.ToPoint2d()));
             }
             else if (curve.GetType() == typeof(Grevit.Types.Arc))
             {
                 Grevit.Types.Arc baseline = (Grevit.Types.Arc)curve;
-                curveArray.Add(new CircularArc2d(GrevitPtoPoint2d(baseline.center), baseline.radius, baseline.start, baseline.end, Vector2d.XAxis, true));
+                curveArray.Add(new CircularArc2d(baseline.center.ToPoint2d(), baseline.radius, baseline.start, baseline.end, Vector2d.XAxis, true));
             }
             else if (curve.GetType() == typeof(Grevit.Types.Curve3Points))
             {
                 Grevit.Types.Curve3Points baseline = (Grevit.Types.Curve3Points)curve;
-                curveArray.Add(new CircularArc2d(GrevitPtoPoint2d(baseline.a), GrevitPtoPoint2d(baseline.c), GrevitPtoPoint2d(baseline.b)));
+                curveArray.Add(new CircularArc2d(baseline.a.ToPoint2d(), baseline.c.ToPoint2d(), baseline.b.ToPoint2d()));
             }
             else if (curve.GetType() == typeof(Grevit.Types.PLine))
             {
                 Grevit.Types.PLine baseline = (Grevit.Types.PLine)curve;
                 for (int i = 0; i < baseline.points.Count - 1; i++)
                 {
-                    curveArray.Add(new Line2d(GrevitPtoPoint2d(baseline.points[i]), GrevitPtoPoint2d(baseline.points[i + 1])));
+                    curveArray.Add(new Line2d(baseline.points[i].ToPoint2d(), baseline.points[i + 1].ToPoint2d()));
                 }
             }
             else if (curve.GetType() == typeof(Grevit.Types.Spline))
             {
                 Grevit.Types.Spline s = (Grevit.Types.Spline)curve;
                 Point2dCollection points = new Point2dCollection();
-                foreach (Grevit.Types.Point p in s.controlPoints) points.Add(GrevitPtoPoint2d(p));
+                foreach (Grevit.Types.Point p in s.controlPoints) points.Add(p.ToPoint2d());
                 DoubleCollection dc = new DoubleCollection();
                 foreach (double dbl in s.weights) dc.Add(dbl);
                 NurbCurve2d sp = new NurbCurve2d(s.degree, new KnotCollection(), points, dc, s.isPeriodic);
@@ -90,38 +91,38 @@ namespace Grevit.AutoCad
             return curveArray;
         }
 
-        public static Curve3dCollection To3dCurve(this Grevit.Types.Curve3Points curve)
+        public static Curve3dCollection To3dCurve(this Grevit.Types.Component curve)
         {
             Curve3dCollection curveArray = new Curve3dCollection();
 
             if (curve.GetType() == typeof(Grevit.Types.Line))
             {
                 Grevit.Types.Line baseline = (Grevit.Types.Line)curve;
-                curveArray.Add(new Line3d(GrevitPtoPoint3d(baseline.from), GrevitPtoPoint3d(baseline.to)));
+                curveArray.Add(new Line3d(baseline.from.ToPoint3d(), baseline.to.ToPoint3d()));
             }
             else if (curve.GetType() == typeof(Grevit.Types.Arc))
             {
                 Grevit.Types.Arc baseline = (Grevit.Types.Arc)curve;
-                curveArray.Add(new Arc(GrevitPtoPoint3d(baseline.center), baseline.radius, baseline.start, baseline.end).GetGeCurve());
+                curveArray.Add(new Arc(baseline.center.ToPoint3d(), baseline.radius, baseline.start, baseline.end).GetGeCurve());
             }
             else if (curve.GetType() == typeof(Grevit.Types.Curve3Points))
             {
                 Grevit.Types.Curve3Points baseline = (Grevit.Types.Curve3Points)curve;
-                curveArray.Add(new CircularArc3d(GrevitPtoPoint3d(baseline.a), GrevitPtoPoint3d(baseline.c), GrevitPtoPoint3d(baseline.b)));
+                curveArray.Add(new CircularArc3d(baseline.a.ToPoint3d(), baseline.c.ToPoint3d(), baseline.b.ToPoint3d()));
             }
             else if (curve.GetType() == typeof(Grevit.Types.PLine))
             {
                 Grevit.Types.PLine baseline = (Grevit.Types.PLine)curve;
                 for (int i = 0; i < baseline.points.Count - 1; i++)
                 {
-                    curveArray.Add(new Line3d(GrevitPtoPoint3d(baseline.points[i]), GrevitPtoPoint3d(baseline.points[i + 1])));
+                    curveArray.Add(new Line3d(baseline.points[i].ToPoint3d(), baseline.points[i + 1].ToPoint3d()));
                 }
             }
             else if (curve.GetType() == typeof(Grevit.Types.Spline))
             {
                 Grevit.Types.Spline s = (Grevit.Types.Spline)curve;
                 Point3dCollection points = new Point3dCollection();
-                foreach (Grevit.Types.Point p in s.controlPoints) points.Add(GrevitPtoPoint3d(p));
+                foreach (Grevit.Types.Point p in s.controlPoints) points.Add(p.ToPoint3d());
                 DoubleCollection dc = new DoubleCollection();
                 foreach (double dbl in s.weights) dc.Add(dbl);
                 Spline sp = new Spline(s.degree, s.isRational, s.isClosed, s.isPeriodic, points, new DoubleCollection(), dc, 0, 0);
@@ -131,37 +132,51 @@ namespace Grevit.AutoCad
             return curveArray;
         }
 
-        public static void SetParameters(this DBObject dbobject, List<Grevit.Types.Parameter> parameters)
+        public static void SetParameters(this Grevit.Types.Component component, DBObject dbobject)
         {
-            if (parameters != null && parameters.Count > 0)
+            Document doc = Application.DocumentManager.MdiActiveDocument;
+            Database db = doc.Database;
+            Transaction tr = db.TransactionManager.StartTransaction();
+            using (tr)
             {
-                ObjectIdCollection source_setIds = PropertyDataServices.GetPropertySets(dbobject);
 
-                foreach (Grevit.Types.Parameter param in parameters)
+                List<Grevit.Types.Parameter> parameters = component.parameters;
+
+                if (parameters != null && parameters.Count > 0)
                 {
-                    foreach (ObjectId source_id in source_setIds)
-                    {
-                        PropertySet source_pset = (PropertySet)tr.GetObject(source_id, OpenMode.ForWrite, false, false);
-                        PropertySetDataCollection allProps = source_pset.PropertySetData;
-                        foreach (PropertySetData ii in allProps)
-                        {
-                            int id = ii.Id;
-                            string name = source_pset.PropertyIdToName(id);
-                            object value = source_pset.GetAt(id);
 
-                            if (name == param.name)
+                    ObjectIdCollection source_setIds = PropertyDataServices.GetPropertySets(dbobject);
+
+                    foreach (Grevit.Types.Parameter param in parameters)
+                    {
+                        foreach (ObjectId source_id in source_setIds)
+                        {
+                            PropertySet source_pset = (PropertySet)tr.GetObject(source_id, OpenMode.ForWrite, false, false);
+                            PropertySetDataCollection allProps = source_pset.PropertySetData;
+                            foreach (PropertySetData ii in allProps)
                             {
-                                if (value.GetType() == typeof(string)) source_pset.SetAt(id, param.value);
-                                if (value.GetType() == typeof(double)) source_pset.SetAt(id, param.value);
-                                if (value.GetType() == typeof(int)) source_pset.SetAt(id, param.value);
-                                if (value.GetType() == typeof(bool)) source_pset.SetAt(id, param.value);
+                                int id = ii.Id;
+                                string name = source_pset.PropertyIdToName(id);
+                                object value = source_pset.GetAt(id);
+
+                                if (name == param.name)
+                                {
+                                    if (value.GetType() == typeof(string)) source_pset.SetAt(id, param.value);
+                                    if (value.GetType() == typeof(double)) source_pset.SetAt(id, param.value);
+                                    if (value.GetType() == typeof(int)) source_pset.SetAt(id, param.value);
+                                    if (value.GetType() == typeof(bool)) source_pset.SetAt(id, param.value);
+                                }
+
                             }
 
                         }
-
                     }
                 }
+
+                tr.Commit();
             }
+            
+
         }
 
         public static void StoreGID(this Grevit.Types.Component c, ObjectId id)
@@ -169,15 +184,15 @@ namespace Grevit.AutoCad
             if (c.GID != null && id != ObjectId.Null && !Command.created_objects.ContainsKey(c.GID)) Command.created_objects.Add(c.GID, id);
         }
 
-        public static Point3dCollection To3dPointCollection(this Grevit.Types.Curve3Points curve)
+        public static Point3dCollection To3dPointCollection(this Grevit.Types.Component curve)
         {
             Point3dCollection points = new Point3dCollection();
 
             if (curve.GetType() == typeof(Grevit.Types.Line))
             {
                 Grevit.Types.Line baseline = (Grevit.Types.Line)curve;
-                Point3d p1 = GrevitPtoPoint3d(baseline.from);
-                Point3d p2 = GrevitPtoPoint3d(baseline.to);
+                Point3d p1 = baseline.from.ToPoint3d();
+                Point3d p2 = baseline.to.ToPoint3d();
 
                 if (!points.Contains(p1)) points.Add(p1);
                 if (!points.Contains(p2)) points.Add(p2);
@@ -189,9 +204,9 @@ namespace Grevit.AutoCad
             else if (curve.GetType() == typeof(Grevit.Types.Curve3Points))
             {
                 Grevit.Types.Curve3Points baseline = (Grevit.Types.Curve3Points)curve;
-                Point3d p1 = GrevitPtoPoint3d(baseline.a);
-                Point3d p2 = GrevitPtoPoint3d(baseline.b);
-                Point3d p3 = GrevitPtoPoint3d(baseline.c);
+                Point3d p1 = baseline.a.ToPoint3d();
+                Point3d p2 = baseline.b.ToPoint3d();
+                Point3d p3 = baseline.c.ToPoint3d();
 
                 if (!points.Contains(p1)) points.Add(p1);
                 if (!points.Contains(p2)) points.Add(p2);
@@ -202,7 +217,7 @@ namespace Grevit.AutoCad
                 Grevit.Types.PLine baseline = (Grevit.Types.PLine)curve;
                 for (int i = 0; i < baseline.points.Count; i++)
                 {
-                    Point3d p1 = GrevitPtoPoint3d(baseline.points[i]);
+                    Point3d p1 = baseline.points[i].ToPoint3d();
                     if (!points.Contains(p1)) points.Add(p1);
                 }
             }
@@ -213,13 +228,13 @@ namespace Grevit.AutoCad
 
                 foreach (Grevit.Types.Point p in s.controlPoints)
                 {
-                    Point3d p1 = GrevitPtoPoint3d(p);
+                    Point3d p1 = p.ToPoint3d();
                     if (!points.Contains(p1)) points.Add(p1);
                 }
 
             }
 
-
+            return points;
         }
 
         public static Dictionary<string, ObjectId> getExistingObjectIDs(Grevit.Types.ComponentCollection cs)
@@ -283,115 +298,35 @@ namespace Grevit.AutoCad
             return existingObjects;
         }
 
-        public static void AddXData(this Grevit.Types.Component comp, Entity ent)
+        public static void AddXData(this DBObject dbobject, Grevit.Types.Component comp, Transaction tr)
         {
-            AddRegAppTableRecord("Grevit");
+            AddRegAppTableRecord("Grevit",tr);
+
+            Entity ent = (Entity)tr.GetObject(dbobject.Id, OpenMode.ForWrite);
+
             ResultBuffer rbs = new ResultBuffer(new TypedValue(1001, "Grevit"), new TypedValue(1000, comp.GID));
             ent.XData = rbs;
             rbs.Dispose();
+
+            ent.Dispose();
+
         }
 
-        public static void AddRegAppTableRecord(string regAppName)
+        public static void AddRegAppTableRecord(string regAppName, Transaction tr)
         {
+            RegAppTable rat = (RegAppTable)tr.GetObject(Command.Database.RegAppTableId, OpenMode.ForRead, false);
 
-            Document doc = Application.DocumentManager.MdiActiveDocument;
-            Editor ed = doc.Editor;
-            Database db = doc.Database;
-            Transaction tr = doc.TransactionManager.StartTransaction();
-            using (tr)
+            if (!rat.Has(regAppName))
             {
-                RegAppTable rat = (RegAppTable)tr.GetObject(db.RegAppTableId, OpenMode.ForRead, false);
-
-                if (!rat.Has(regAppName))
-                {
-                    rat.UpgradeOpen();
-                    RegAppTableRecord ratr = new RegAppTableRecord();
-                    ratr.Name = regAppName;
-                    rat.Add(ratr);
-                    tr.AddNewlyCreatedDBObject(ratr, true);
-                }
-                tr.Commit();
+                rat.UpgradeOpen();
+                RegAppTableRecord ratr = new RegAppTableRecord();
+                ratr.Name = regAppName;
+                rat.Add(ratr);
+                tr.AddNewlyCreatedDBObject(ratr, true);
             }
 
         }
 
-        /// <summary>
-        /// Invoke the Components Create Method
-        /// </summary>
-        /// <param name="component"></param>
-        public static void Build(this Grevit.Types.Component component, bool useReferenceElement)
-        {
-            // Create a new transaction
-            Transaction transaction = Grevit.AutoCad.Command.Database.TransactionManager.StartTransaction();
-            using (transaction)
-            {
 
-                // Get the components type
-                Type type = component.GetType();
-
-                // Get the Create extension Method using reflection
-                IEnumerable<System.Reflection.MethodInfo> methods = Grevit.Reflection.Utilities.GetExtensionMethods(component.GetType().Assembly, type);
-
-                // Check all extensions methods (should only be Create() anyway)
-                foreach (System.Reflection.MethodInfo method in methods)
-                {
-                    // get the methods parameters
-                    object[] parameters = new object[method.GetParameters().Length];
-
-                    // As it is an extension method, the first parameter is the component itself
-                    parameters[0] = component;
-
-
-
-                    #region usingReferenceElement
-
-                    // if we should use a reference element to invoke the Create method
-                    // and parameter length equals 2
-                    // get the components referenceGID, see if it has been created already
-                    // use this element as a parameter to invoke Create(Element element)
-                    if (useReferenceElement && parameters.Length == 2)
-                    {
-                        // Get the components reference GID
-                        System.Reflection.PropertyInfo propertyReferenceGID = type.GetProperty("referenceGID");
-
-                        // Return if there is no reference GID property
-                        if (propertyReferenceGID == null) return;
-
-                        // Get the referene GID string value                    
-                        string referenceGID = (string)propertyReferenceGID.GetValue(component);
-
-                        // If the reference has been created already, get 
-                        // the Element from the document and apply it as parameter two
-                        if (GrevitCommand.created_Elements.ContainsKey(referenceGID))
-                        {
-                            Element referenceElement = GrevitCommand.document.GetElement(GrevitCommand.created_Elements[referenceGID]);
-                            parameters[1] = referenceElement;
-                        }
-                    }
-
-                    #endregion
-
-
-
-                    // If the create method exists
-                    if (method != null && method.Name.EndsWith("Create"))
-                    {
-                        // Invoke the Create Method without parameters
-                        Entity createdElement = (Entity)method.Invoke(component, parameters);
-
-                        // If the return value is valud set the parameters
-                        if (createdElement != null)
-                        {
-                            component.SetParameters(createdElement);
-                            component.StoreGID(createdElement.Id);
-                        }
-                    }
-                }
-
-                // commit and dispose the transaction
-                transaction.Commit();
-            }
-
-        }
     }
 }
