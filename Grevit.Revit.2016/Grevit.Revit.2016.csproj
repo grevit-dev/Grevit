@@ -41,10 +41,6 @@
     <Reference Include="RevitAPIUI">
       <HintPath>..\..\..\..\..\..\Program Files\Autodesk\Revit Architecture 2016\RevitAPIUI.dll</HintPath>
     </Reference>
-    <Reference Include="SketchUpNET, Version=0.0.0.0, Culture=neutral, processorArchitecture=AMD64">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\SketchUpNET\SketchUp\SketchUpNET\x64\Release\SketchUpNET.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -113,17 +109,14 @@
     <Content Include="Grevit.Revit.addin">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="slapi.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Content Include="slapi.dll" />
     <None Include="Resources\Skp.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>copy $(TargetDir)$(TargetFileName) $(SolutionDir)Package\ProgramData_Autodesk_Revit_Addins_2016\$(TargetFileName)
 copy $(TargetDir)Grevit.Types.dll $(SolutionDir)Package\ProgramData_Autodesk_Revit_Addins_2016\Grevit.Types.dll
-copy $(TargetDir)slapi.dll $(SolutionDir)Package\ProgramData_Autodesk_Revit_Addins_2016\slapi.dll
-copy $(TargetDir)SketchUpNET.dll $(SolutionDir)Package\ProgramData_Autodesk_Revit_Addins_2016\SketchUpNET.dll</PostBuildEvent>
+</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

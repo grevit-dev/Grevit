@@ -315,6 +315,8 @@ namespace Grevit.Revit
     }
 
 
+
+    /*
     /// <summary>
     /// Imports a SketchUp Model
     /// </summary>
@@ -481,6 +483,7 @@ namespace Grevit.Revit
                 return new Grevit.Types.Point(v.X, v.Y , v.Z );
         }
     }
+    */
 }
 
 
