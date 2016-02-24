@@ -356,6 +356,9 @@ namespace Grevit.Revit
             return null;
         }
 
+
+        public static string ConceptualMassTemplatePath = GrevitBuildModel.RevitTemplateFolder + @"\Conceptual Mass\Metric Mass.rft";
+
         /// <summary>
         /// Create Extrusion
         /// </summary>
@@ -363,22 +366,19 @@ namespace Grevit.Revit
         /// <returns></returns>
         public static Element Create(this Grevit.Types.SimpleExtrusion extrusion)
         {
-            // Get the Massing template file
-            string templateFile = GrevitBuildModel.RevitTemplateFolder + @"\Conceptual Mass\Metric Mass.rft";
-
             // If the file doesnt exist ask the user for a new template
-            if (!File.Exists(templateFile))
+            if (!File.Exists(ConceptualMassTemplatePath))
             {
                 System.Windows.Forms.OpenFileDialog ofd = new System.Windows.Forms.OpenFileDialog();
                 ofd.Multiselect = false;
-                ofd.Title = templateFile + " not found.";
+                ofd.Title = ConceptualMassTemplatePath + " not found.";
                 System.Windows.Forms.DialogResult dr = ofd.ShowDialog();
                 if (dr != System.Windows.Forms.DialogResult.OK) return null;
-                templateFile = ofd.FileName;
+                ConceptualMassTemplatePath = ofd.FileName;
             }
 
             // Create a new family Document
-            Document familyDocument = GrevitBuildModel.document.Application.NewFamilyDocument(templateFile);
+            Document familyDocument = GrevitBuildModel.document.Application.NewFamilyDocument(ConceptualMassTemplatePath);
 
             // Create a new family transaction
             Transaction familyTransaction = new Transaction(familyDocument, "Transaction in Family");
