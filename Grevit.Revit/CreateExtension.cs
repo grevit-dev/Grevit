@@ -888,6 +888,9 @@ namespace Grevit.Revit
                 IList<ElementId> ids = Autodesk.Revit.DB.AdaptiveComponentInstanceUtils.GetInstancePlacementPointElementRefIds(adaptiveComponent);
 
                 // Walk thru the points and set them to the grevit points coordinates
+
+                if (adaptive.points.Count != ids.Count) return null;
+
                 for (int i = 0; i < ids.Count; i++)
                 {
                     // Get the Reference Point
