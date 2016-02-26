@@ -46,8 +46,6 @@ namespace Grevit.Revit
     public static class Utilities
     {
 
-
-
         /// <summary>
         /// Translate to Revit Rule
         /// </summary>
@@ -551,9 +549,12 @@ namespace Grevit.Revit
         /// <param name="family">Family Name</param>
         /// <param name="familyType">Type Name</param>
         /// <returns></returns>
-        public static Element GetElementByName(this Document document, Type type, string family, string familyType, out bool found)
+        public static Element GetElementByName(this Document document, Type type, string family, string familyType, out bool found, BuiltInCategory category = BuiltInCategory.INVALID)
         {
             FilteredElementCollector collector = new FilteredElementCollector(document).OfClass(type);
+
+            if (category != BuiltInCategory.INVALID) collector.OfCategory(category);
+
             foreach (Element e in collector.ToElements())
             {
                 string familyName = "";

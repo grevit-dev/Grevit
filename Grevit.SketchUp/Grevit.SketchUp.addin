@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Application">
+    <Name>Grevit</Name>
+    <Assembly>Grevit.SketchUp.dll</Assembly>
+    <FullClassName>Grevit.Revit.GrevitSketchUpImporterUI</FullClassName>
+    <ClientId>71da642d-fee0-410f-b496-f63a27a488cf</ClientId>
+    <VendorId>Grevit.net</VendorId>
+    <VendorDescription>Grevit.net</VendorDescription>
+  </AddIn>
+</RevitAddIns>

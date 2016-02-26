@@ -196,9 +196,30 @@ namespace Grevit.Revit
         /// <returns></returns>
         public static Element Create(this Familyinstance familyInstance)
         {
+            // Get the structural type 
+            Autodesk.Revit.DB.Structure.StructuralType stype = familyInstance.structuralType.ToRevitStructuralType();
+
             // Get the FamilySymbol
             bool found = false;
-            Element familySymbolElement = GrevitBuildModel.document.GetElementByName(typeof(FamilySymbol), familyInstance.FamilyOrStyle, familyInstance.TypeOrLayer, out found);
+
+            Element familySymbolElement = null;
+
+            switch (stype)
+            { 
+                case Autodesk.Revit.DB.Structure.StructuralType.Beam:
+                case Autodesk.Revit.DB.Structure.StructuralType.Brace:
+                    familySymbolElement = GrevitBuildModel.document.GetElementByName(typeof(FamilySymbol), familyInstance.FamilyOrStyle, familyInstance.TypeOrLayer, out found, BuiltInCategory.OST_StructuralFraming);
+                    break;
+
+                case Autodesk.Revit.DB.Structure.StructuralType.Column:
+                    familySymbolElement = GrevitBuildModel.document.GetElementByName(typeof(FamilySymbol), familyInstance.FamilyOrStyle, familyInstance.TypeOrLayer, out found, BuiltInCategory.OST_StructuralColumns);
+                    break;
+
+                default:
+                    familySymbolElement = GrevitBuildModel.document.GetElementByName(typeof(FamilySymbol), familyInstance.FamilyOrStyle, familyInstance.TypeOrLayer, out found);
+                    break;
+            }
+
 
             // Setup a new Family Instance
             Autodesk.Revit.DB.FamilyInstance newFamilyInstance = null;
@@ -206,9 +227,8 @@ namespace Grevit.Revit
             // If the familySymbol is valid create a new instance
             if (familySymbolElement != null)
             {
-                // Get the structural type 
-                Autodesk.Revit.DB.Structure.StructuralType stype = familyInstance.structuralType.ToRevitStructuralType();
 
+                
                 // Cast the familySymbolElement
                 FamilySymbol familySymbol = (FamilySymbol)familySymbolElement;
 
@@ -498,7 +518,9 @@ namespace Grevit.Revit
             XYZ upper = (location.Z < top.Z) ? top : location;
 
 
-            Element familyElement = GrevitBuildModel.document.GetElementByName(typeof(FamilySymbol), column.FamilyOrStyle, column.TypeOrLayer, out found);
+            Element familyElement = GrevitBuildModel.document.GetElementByName(typeof(FamilySymbol), column.FamilyOrStyle, column.TypeOrLayer, out found, BuiltInCategory.OST_Columns);
+            if (familyElement == null)
+                familyElement = GrevitBuildModel.document.GetElementByName(typeof(FamilySymbol), column.FamilyOrStyle, column.TypeOrLayer, out found, BuiltInCategory.OST_StructuralColumns);
             Element levelElement = GrevitBuildModel.document.GetLevelByName(column.levelbottom,lower.Z);
 
             Autodesk.Revit.DB.FamilyInstance familyInstance = null;
@@ -703,6 +725,7 @@ namespace Grevit.Revit
         {
             // Get the View Element to place the note on
             Element viewElement = GrevitBuildModel.document.GetElementByName(typeof(Autodesk.Revit.DB.View), textnote.view);
+            
             if (viewElement != null)
             {
                 // Cast to view
@@ -711,8 +734,16 @@ namespace Grevit.Revit
                 // Set a reasonable width
                 double width = textnote.text.Length * 2;
 
+                
+
                 // return a new Textnote
+#if (Revit2016)
+                Autodesk.Revit.DB.TextNoteType type = (Autodesk.Revit.DB.TextNoteType)new FilteredElementCollector(GrevitBuildModel.document).OfClass(typeof(Autodesk.Revit.DB.TextNoteType)).FirstOrDefault();
+                return Autodesk.Revit.DB.TextNote.Create(GrevitBuildModel.document, view.Id, textnote.location.ToXYZ(), textnote.text, type.Id);
+#else
                 return GrevitBuildModel.document.Create.NewTextNote(view, textnote.location.ToXYZ(), XYZ.BasisX, XYZ.BasisY, width, TextAlignFlags.TEF_ALIGN_LEFT, textnote.text);
+#endif
+
             }
             return null;
         }
@@ -889,7 +920,12 @@ namespace Grevit.Revit
 
                 // Walk thru the points and set them to the grevit points coordinates
 
-                if (adaptive.points.Count != ids.Count) return null;
+
+                if (adaptive.points.Count != ids.Count)
+                {
+                    Grevit.Reporting.MessageBox.Show("Adaptive Component Error", String.Format("Cannot create adaptive component because the Revit family requires {0} points while only {1} have been submitted.", new object[] { ids.Count, adaptive.points.Count }));
+                    return null;
+                } 
 
                 for (int i = 0; i < ids.Count; i++)
                 {

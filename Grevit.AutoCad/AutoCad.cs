@@ -72,7 +72,13 @@ namespace Grevit.AutoCad
             foreach (Grevit.Types.Component component in grevitClientDialog.componentCollection.Items)
             {
                 if (!component.stalledForReference)
-                    component.Build(false);
+                {
+                    try
+                    {
+                        component.Build(false);
+                    }                    
+                    catch (System.Exception e) { Grevit.Reporting.MessageBox.Show("Error", e.Message + e.StackTrace); }
+                }
                 else
                     stalled.Add(component);
             }
@@ -81,7 +87,14 @@ namespace Grevit.AutoCad
 
             try
             {
-                foreach (Grevit.Types.Component c in stalled)  c.Build(true);               
+                foreach (Grevit.Types.Component c in stalled)
+                {
+                    try
+                    {
+                        c.Build(true);
+                    }
+                    catch (System.Exception e) { Grevit.Reporting.MessageBox.Show("Error", e.Message + e.StackTrace); }
+                }             
             }
             catch (Autodesk.AutoCAD.Runtime.Exception e)
             {

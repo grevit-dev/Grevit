@@ -58,9 +58,13 @@ namespace Grevit.Revit
         /// <returns></returns>
         public Result OnStartup(UIControlledApplication application)
         {
+            RibbonPanel grevitPanel = null;
 
-            RibbonPanel grevitPanel = application.CreateRibbonPanel("Grevit");
+            foreach (RibbonPanel rpanel in application.GetRibbonPanels())
+                if (rpanel.Name == "Grevit") grevitPanel = rpanel;
 
+            if (grevitPanel == null) grevitPanel = application.CreateRibbonPanel("Grevit");
+                
             PushButton commandButton = grevitPanel.AddItem(new PushButtonData("GrevitCommand", "Grevit", path, "Grevit.Revit.GrevitCommand")) as PushButton;
             commandButton.LargeImage = System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(
                 Properties.Resources.paper_airplane.GetHbitmap(),
@@ -78,15 +82,6 @@ namespace Grevit.Revit
                 BitmapSizeOptions.FromWidthAndHeight(32, 32));
 
             parameterButton.SetContextualHelp(new ContextualHelp(ContextualHelpType.Url, "http://grevit.net/"));
-
-            PushButton skpButton = grevitPanel.AddItem(new PushButtonData("ImportSketchUp", "Import SketchUp", path, "Grevit.Revit.ImportSketchUp")) as PushButton;
-            skpButton.LargeImage = System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(
-                Properties.Resources.Skp.GetHbitmap(),
-                IntPtr.Zero,
-                System.Windows.Int32Rect.Empty,
-                BitmapSizeOptions.FromWidthAndHeight(32, 32));
-
-            skpButton.SetContextualHelp(new ContextualHelp(ContextualHelpType.Url, "http://grevit.net/"));
 
             return Result.Succeeded;
         }
@@ -203,7 +198,13 @@ namespace Grevit.Revit
                 // If they are not reference dependent, create them directly
                 // Otherwise add the component to a List of stalled elements
                 if (!component.stalledForReference)
-                    component.Build(false);       
+                {
+                    try
+                    {
+                        component.Build(false);
+                    }
+                    catch (Exception e) { Grevit.Reporting.MessageBox.Show(component.GetType().Name + " Error", e.InnerException.Message); }
+                }
                 else
                     componentsWithReferences.Add(component);
             }
@@ -212,7 +213,14 @@ namespace Grevit.Revit
             // an Element which needed to be created first
 
 
-            foreach (Component component in componentsWithReferences) component.Build(true);
+            foreach (Component component in componentsWithReferences)
+            { 
+                try
+                {
+                    component.Build(true); 
+                }
+                catch (Exception e) { Grevit.Reporting.MessageBox.Show(component.GetType().Name + " Error", e.InnerException.Message); }
+            }
 
             trans.Commit();
             trans.Dispose();
@@ -255,12 +263,37 @@ namespace Grevit.Revit
     [Transaction(TransactionMode.Manual)]
     public class ParameterNames : IExternalCommand
     {
+        private UIApplication uiApp;
+
+        private System.Reflection.Assembly CurrentDomain_AssemblyResolve(object sender, ResolveEventArgs args)
+        {
+            // if the request is coming from us
+            if ((args.RequestingAssembly != null) && (args.RequestingAssembly == this.GetType().Assembly))
+            {
+                if ((args.Name != null) && (args.Name.Contains(","))) // ignore resources and such
+                {
+                    string asmName = args.Name.Split(',')[0];
+                    string targetFilename = Path.Combine(System.Reflection.Assembly.GetExecutingAssembly().Location, asmName + ".dll");
+                    uiApp.Application.WriteJournalComment("Assembly Resolve issue. Looking for: " + args.Name, false);
+                    uiApp.Application.WriteJournalComment("Looking for " + targetFilename, false);
+                    if (File.Exists(targetFilename))
+                    {
+                        uiApp.Application.WriteJournalComment("Found, and loading...", false);
+                        return System.Reflection.Assembly.LoadFrom(targetFilename);
+                    }
+                }
+            }
+            return null;
+        }
+
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
         {
             // Get Revit Environment
-            UIApplication uiApp = commandData.Application;
+            uiApp = commandData.Application;
             Document doc = uiApp.ActiveUIDocument.Document;
             UIDocument uidoc = uiApp.ActiveUIDocument;
+
+            AppDomain.CurrentDomain.AssemblyResolve += CurrentDomain_AssemblyResolve;
 
             // Initialize a new Dictionary containing 4 string fields for parameter values
             Dictionary<ElementId, Tuple<string, string, string, string>> Parameters = 

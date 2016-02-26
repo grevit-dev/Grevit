@@ -73,6 +73,9 @@
       <DependentUpon>ClientWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Reflection\Utilities.cs" />
+    <Compile Include="Reporting\MessageBox.xaml.cs">
+      <DependentUpon>MessageBox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Serialization\Utilities.cs" />
     <Compile Include="Types\Grevit.cs" />
     <Compile Include="Serialization\Client.cs">
@@ -108,6 +111,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="Client\ClientWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Reporting\MessageBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

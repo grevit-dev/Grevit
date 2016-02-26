@@ -15,6 +15,42 @@
     {
         "Entry"
         {
+        "MsmKey" = "8:_2CB4D79BA27746D0B6F6E54208E7EB81"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_4AB464B00D874E67477F05B613A42A41"
+        "OwnerKey" = "8:_4E9CFFE3C3014F6EAE77F07C523924AF"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_4AB464B00D874E67477F05B613A42A41"
+        "OwnerKey" = "8:_E8F81566E94C4F308172C408626E6D51"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_4AB464B00D874E67477F05B613A42A41"
+        "OwnerKey" = "8:_C7AE36AFA63C4AA6879057301A28C64A"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_4AB464B00D874E67477F05B613A42A41"
+        "OwnerKey" = "8:_C4C5D248DACA4F90AFEFCCCF91AF82F0"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_4AB464B00D874E67477F05B613A42A41"
+        "OwnerKey" = "8:_6DE58A175D254498A7483B66217D2A78"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_4DC9C4EC665E4B4C87FA71B80A5EB2BB"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -29,6 +65,12 @@
         {
         "MsmKey" = "8:_60643E50D6114A33813212AAE1A9FE51"
         "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_63355802F4658B36C4CC7DEBC3EC3A02"
+        "OwnerKey" = "8:_E8F81566E94C4F308172C408626E6D51"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -51,7 +93,19 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_8DA51320B7AD467D9E2A1942C1FF7466"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_AB06C81C2BBE45C391AD10949715B209"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_AB6525C0BF8A4989A6C54E4AD1C296FB"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -93,38 +147,32 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_E8F81566E94C4F308172C408626E6D51"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_F14D65C1759E4A618FED6DC6D7D67B94"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_FB0B55A157FF48A0203B9878B6654505"
+        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_4E9CFFE3C3014F6EAE77F07C523924AF"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_FB0B55A157FF48A0203B9878B6654505"
-        "OwnerKey" = "8:_C7AE36AFA63C4AA6879057301A28C64A"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_FB0B55A157FF48A0203B9878B6654505"
-        "OwnerKey" = "8:_C4C5D248DACA4F90AFEFCCCF91AF82F0"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_FB0B55A157FF48A0203B9878B6654505"
-        "OwnerKey" = "8:_6DE58A175D254498A7483B66217D2A78"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_4E9CFFE3C3014F6EAE77F07C523924AF"
+        "OwnerKey" = "8:_E8F81566E94C4F308172C408626E6D51"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_63355802F4658B36C4CC7DEBC3EC3A02"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -154,6 +202,12 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_8DA51320B7AD467D9E2A1942C1FF7466"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_75677103AB8F47398E6301D26D8B1DD0"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -166,7 +220,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_FB0B55A157FF48A0203B9878B6654505"
+        "OwnerKey" = "8:_4AB464B00D874E67477F05B613A42A41"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -280,11 +334,62 @@
         }
         "File"
         {
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_2CB4D79BA27746D0B6F6E54208E7EB81"
+            {
+            "SourcePath" = "8:..\\Package\\APPDATA_Autodesk_Revit_Addins_2016\\Grevit.SketchUp.addin"
+            "TargetName" = "8:Grevit.SketchUp.addin"
+            "Tag" = "8:"
+            "Folder" = "8:_D4F636E9045244208E5FD43F3C91BBE5"
+            "Condition" = "8:SKETCHUP=1"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_4AB464B00D874E67477F05B613A42A41"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Grevit.Types, Version=0.8.2.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_4AB464B00D874E67477F05B613A42A41"
+                    {
+                    "Name" = "8:Grevit.Types.DLL"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:Grevit.Types.DLL"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_D4F636E9045244208E5FD43F3C91BBE5"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:TRUE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_4DC9C4EC665E4B4C87FA71B80A5EB2BB"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Grevit.Types, Version=0.8.0.3, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Grevit.Types, Version=0.8.2.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_4DC9C4EC665E4B4C87FA71B80A5EB2BB"
@@ -293,7 +398,7 @@
                     "Attributes" = "3:512"
                     }
                 }
-            "SourcePath" = "8:..\\Package\\ProgramData_Autodesk_Revit_Addins_2015\\Grevit.Types.dll"
+            "SourcePath" = "8:..\\Package\\APPDATA_Autodesk_Revit_Addins_2015\\Grevit.Types.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_E438762444A746FB8E5832C6DEDF8E00"
@@ -315,7 +420,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Grevit.Revit, Version=0.5.0.6, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Grevit.Revit, Version=0.6.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_4E9CFFE3C3014F6EAE77F07C523924AF"
@@ -324,11 +429,11 @@
                     "Attributes" = "3:512"
                     }
                 }
-            "SourcePath" = "8:..\\Package\\ProgramData_Autodesk_Revit_Addins_2016\\Grevit.Revit.dll"
+            "SourcePath" = "8:..\\Package\\APPDATA_Autodesk_Revit_Addins_2016\\Grevit.Revit.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_D4F636E9045244208E5FD43F3C91BBE5"
-            "Condition" = "8:"
+            "Condition" = "8:CHECKBOXRVT2016=1"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
@@ -344,7 +449,7 @@
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_60643E50D6114A33813212AAE1A9FE51"
             {
-            "SourcePath" = "8:..\\Package\\ProgramData_Autodesk_Revit_Addins_2015\\Grevit.Revit.addin"
+            "SourcePath" = "8:..\\Package\\APPDATA_Autodesk_Revit_Addins_2015\\Grevit.Revit.addin"
             "TargetName" = "8:Grevit.Revit.addin"
             "Tag" = "8:"
             "Folder" = "8:_E438762444A746FB8E5832C6DEDF8E00"
@@ -360,6 +465,37 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_63355802F4658B36C4CC7DEBC3EC3A02"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:SketchUpNET, Version=0.0.0.0, Culture=neutral, processorArchitecture=AMD64"
+                "ScatterAssemblies"
+                {
+                    "_63355802F4658B36C4CC7DEBC3EC3A02"
+                    {
+                    "Name" = "8:SketchUpNET.DLL"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:SketchUpNET.DLL"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_D4F636E9045244208E5FD43F3C91BBE5"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:TRUE"
+            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_6DE58A175D254498A7483B66217D2A78"
@@ -397,7 +533,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Grevit.Types, Version=0.8.0.3, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Grevit.Types, Version=0.8.2.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_75677103AB8F47398E6301D26D8B1DD0"
@@ -410,7 +546,7 @@
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_34C9F5D7A72142828BFA93F9D03156D2"
-            "Condition" = "8:CHECKBOXACA"
+            "Condition" = "8:CHECKBOXACA=1"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
@@ -430,7 +566,38 @@
             "TargetName" = "8:Grevit.cuix"
             "Tag" = "8:"
             "Folder" = "8:_34C9F5D7A72142828BFA93F9D03156D2"
-            "Condition" = "8:CHECKBOXACA"
+            "Condition" = "8:CHECKBOXACA=1"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_8DA51320B7AD467D9E2A1942C1FF7466"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:SketchUpNET, Version=0.0.0.0, Culture=neutral, processorArchitecture=AMD64"
+                "ScatterAssemblies"
+                {
+                    "_8DA51320B7AD467D9E2A1942C1FF7466"
+                    {
+                    "Name" = "8:SketchUpNET.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:..\\Package\\APPDATA_Autodesk_Revit_Addins_2016\\SketchUpNET.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_D4F636E9045244208E5FD43F3C91BBE5"
+            "Condition" = "8:SKETCHUP=1"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
@@ -448,7 +615,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Grevit.Types, Version=0.8.0.3, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Grevit.Types, Version=0.8.2.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_AB06C81C2BBE45C391AD10949715B209"
@@ -457,11 +624,31 @@
                     "Attributes" = "3:512"
                     }
                 }
-            "SourcePath" = "8:..\\Package\\ProgramData_Autodesk_Revit_Addins_2016\\Grevit.Types.dll"
+            "SourcePath" = "8:..\\Package\\APPDATA_Autodesk_Revit_Addins_2016\\Grevit.Types.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_D4F636E9045244208E5FD43F3C91BBE5"
             "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_AB6525C0BF8A4989A6C54E4AD1C296FB"
+            {
+            "SourcePath" = "8:..\\Package\\APPDATA_Autodesk_Revit_Addins_2016\\slapi.dll"
+            "TargetName" = "8:slapi.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_D4F636E9045244208E5FD43F3C91BBE5"
+            "Condition" = "8:SKETCHUP=1"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
@@ -481,7 +668,7 @@
             "TargetName" = "8:Grevit.mnr"
             "Tag" = "8:"
             "Folder" = "8:_34C9F5D7A72142828BFA93F9D03156D2"
-            "Condition" = "8:CHECKBOXACA"
+            "Condition" = "8:CHECKBOXACA=1"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
@@ -497,11 +684,11 @@
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B82AC2A1F74B47EBAB98DF561A6AD5C9"
             {
-            "SourcePath" = "8:..\\Package\\ProgramData_Autodesk_Revit_Addins_2016\\Grevit.Revit.addin"
+            "SourcePath" = "8:..\\Package\\APPDATA_Autodesk_Revit_Addins_2016\\Grevit.Revit.addin"
             "TargetName" = "8:Grevit.Revit.addin"
             "Tag" = "8:"
             "Folder" = "8:_D4F636E9045244208E5FD43F3C91BBE5"
-            "Condition" = "8:"
+            "Condition" = "8:CHECKBOXRVT2016=1"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
@@ -519,7 +706,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Grevit.Types, Version=0.8.0.3, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Grevit.Types, Version=0.8.2.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_BC09DDC7FBFD4176BA18B2876C0F5FB3"
@@ -550,7 +737,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Grevit.Revit, Version=0.5.0.5, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Grevit.Revit, Version=0.6.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_C4C5D248DACA4F90AFEFCCCF91AF82F0"
@@ -559,7 +746,7 @@
                     "Attributes" = "3:512"
                     }
                 }
-            "SourcePath" = "8:..\\Package\\ProgramData_Autodesk_Revit_Addins_2015\\Grevit.Revit.dll"
+            "SourcePath" = "8:..\\Package\\APPDATA_Autodesk_Revit_Addins_2015\\Grevit.Revit.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_E438762444A746FB8E5832C6DEDF8E00"
@@ -594,7 +781,7 @@
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_34C9F5D7A72142828BFA93F9D03156D2"
-            "Condition" = "8:CHECKBOXACA"
+            "Condition" = "8:CHECKBOXACA=1"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
@@ -614,7 +801,38 @@
             "TargetName" = "8:Grevit.lsp"
             "Tag" = "8:"
             "Folder" = "8:_34C9F5D7A72142828BFA93F9D03156D2"
-            "Condition" = "8:CHECKBOXACA"
+            "Condition" = "8:CHECKBOXACA=1"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_E8F81566E94C4F308172C408626E6D51"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Grevit.SketchUp, Version=0.6.0.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_E8F81566E94C4F308172C408626E6D51"
+                    {
+                    "Name" = "8:Grevit.SketchUp.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:..\\Package\\APPDATA_Autodesk_Revit_Addins_2016\\Grevit.SketchUp.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_D4F636E9045244208E5FD43F3C91BBE5"
+            "Condition" = "8:SKETCHUP=1"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
@@ -648,121 +866,12 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_FB0B55A157FF48A0203B9878B6654505"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Grevit.Types, Version=0.8.0.3, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_FB0B55A157FF48A0203B9878B6654505"
-                    {
-                    "Name" = "8:Grevit.Types.DLL"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:Grevit.Types.DLL"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_D4F636E9045244208E5FD43F3C91BBE5"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:TRUE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
         }
         "FileType"
         {
         }
         "Folder"
         {
-            "{994432C3-9487-495D-8656-3E829A8DBDDE}:_484CB3ACE88C489385EFC304FBE145B0"
-            {
-            "DefaultLocation" = "8:C:"
-            "Name" = "8:Root"
-            "AlwaysCreate" = "11:FALSE"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Property" = "8:NEWPROPERTY1"
-                "Folders"
-                {
-                    "{9EF0B969-E518-4E46-987F-47570745A589}:_A797F20601D741E6A57E396C586232C5"
-                    {
-                    "Name" = "8:ProgramData"
-                    "AlwaysCreate" = "11:FALSE"
-                    "Condition" = "8:CHECKBOXRVT=1"
-                    "Transitive" = "11:FALSE"
-                    "Property" = "8:_1D49B7B4A49B444FBE01F2F5660F8E25"
-                        "Folders"
-                        {
-                            "{9EF0B969-E518-4E46-987F-47570745A589}:_E66FFDAFF6514901980C2BF6391B2E89"
-                            {
-                            "Name" = "8:Autodesk"
-                            "AlwaysCreate" = "11:FALSE"
-                            "Condition" = "8:CHECKBOXRVT=1"
-                            "Transitive" = "11:FALSE"
-                            "Property" = "8:_5A11C2BCA2434D66AFEBEB7F3501024B"
-                                "Folders"
-                                {
-                                    "{9EF0B969-E518-4E46-987F-47570745A589}:_4656D567850A4A6899830BF0491A9223"
-                                    {
-                                    "Name" = "8:Revit"
-                                    "AlwaysCreate" = "11:FALSE"
-                                    "Condition" = "8:CHECKBOXRVT=1"
-                                    "Transitive" = "11:FALSE"
-                                    "Property" = "8:_EF3147D06D9A44368E5FE66D67360A19"
-                                        "Folders"
-                                        {
-                                            "{9EF0B969-E518-4E46-987F-47570745A589}:_B2A3E7B6B7404553A6F8454192425B9A"
-                                            {
-                                            "Name" = "8:Addins"
-                                            "AlwaysCreate" = "11:FALSE"
-                                            "Condition" = "8:CHECKBOXRVT=1"
-                                            "Transitive" = "11:FALSE"
-                                            "Property" = "8:_58FB6492A3C04196A22FA5AF9993F804"
-                                                "Folders"
-                                                {
-                                                    "{9EF0B969-E518-4E46-987F-47570745A589}:_D4F636E9045244208E5FD43F3C91BBE5"
-                                                    {
-                                                    "Name" = "8:2016"
-                                                    "AlwaysCreate" = "11:TRUE"
-                                                    "Condition" = "8:CHECKBOXRVT2016=1"
-                                                    "Transitive" = "11:FALSE"
-                                                    "Property" = "8:_A9FD9C8C4E0544C6A637AC27A205161B"
-                                                        "Folders"
-                                                        {
-                                                        }
-                                                    }
-                                                    "{9EF0B969-E518-4E46-987F-47570745A589}:_E438762444A746FB8E5832C6DEDF8E00"
-                                                    {
-                                                    "Name" = "8:2015"
-                                                    "AlwaysCreate" = "11:TRUE"
-                                                    "Condition" = "8:CHECKBOXRVT=1"
-                                                    "Transitive" = "11:FALSE"
-                                                    "Property" = "8:_A5B46BAF55174FABB6C2453426A8640E"
-                                                        "Folders"
-                                                        {
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
             "{1525181F-901A-416C-8A58-119130FE478E}:_C1ADCE9661444CFD9FC9E1BD54D2428A"
             {
             "Name" = "8:#1915"
@@ -814,6 +923,50 @@
                     "Property" = "8:_7ACF3AD7D14A46B6A96598D486733BC0"
                         "Folders"
                         {
+                            "{9EF0B969-E518-4E46-987F-47570745A589}:_69B8B46F11FF488EB5192C9FAE182192"
+                            {
+                            "Name" = "8:Revit"
+                            "AlwaysCreate" = "11:FALSE"
+                            "Condition" = "8:CHECKBOXRVT=1"
+                            "Transitive" = "11:FALSE"
+                            "Property" = "8:_EF3147D06D9A44368E5FE66D67360A19"
+                                "Folders"
+                                {
+                                    "{9EF0B969-E518-4E46-987F-47570745A589}:_B2A3E7B6B7404553A6F8454192425B9A"
+                                    {
+                                    "Name" = "8:Addins"
+                                    "AlwaysCreate" = "11:FALSE"
+                                    "Condition" = "8:CHECKBOXRVT=1"
+                                    "Transitive" = "11:FALSE"
+                                    "Property" = "8:_58FB6492A3C04196A22FA5AF9993F804"
+                                        "Folders"
+                                        {
+                                            "{9EF0B969-E518-4E46-987F-47570745A589}:_D4F636E9045244208E5FD43F3C91BBE5"
+                                            {
+                                            "Name" = "8:2016"
+                                            "AlwaysCreate" = "11:TRUE"
+                                            "Condition" = "8:"
+                                            "Transitive" = "11:FALSE"
+                                            "Property" = "8:_A9FD9C8C4E0544C6A637AC27A205161B"
+                                                "Folders"
+                                                {
+                                                }
+                                            }
+                                            "{9EF0B969-E518-4E46-987F-47570745A589}:_E438762444A746FB8E5832C6DEDF8E00"
+                                            {
+                                            "Name" = "8:2015"
+                                            "AlwaysCreate" = "11:TRUE"
+                                            "Condition" = "8:CHECKBOXRVT=1"
+                                            "Transitive" = "11:FALSE"
+                                            "Property" = "8:_A5B46BAF55174FABB6C2453426A8640E"
+                                                "Folders"
+                                                {
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                             "{9EF0B969-E518-4E46-987F-47570745A589}:_6E672908EAAA4907B3DE9CCA9AAD24D2"
                             {
                             "Name" = "8:ACA 2015"
@@ -880,7 +1033,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:GrevitInstaller"
         "ProductCode" = "8:{8FA498A4-2C0B-42DE-B50D-4A5FF5AC8EBE}"
-        "PackageCode" = "8:{80D90AC5-209D-4FDE-9875-EF71B477DD42}"
+        "PackageCode" = "8:{AA53B4A7-EC3C-433E-9379-A767B2A88EB3}"
         "UpgradeCode" = "8:{5306D090-1AD9-4AE8-BDCA-A9725C3D3642}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -912,68 +1065,12 @@
             {
                 "Keys"
                 {
-                    "{60EA8692-D2D5-43EB-80DC-7906BF13D6EF}:_786CDD29E0E24E42AD9320B8E15AEDC3"
-                    {
-                    "Name" = "8:Software"
-                    "Condition" = "8:"
-                    "AlwaysCreate" = "11:FALSE"
-                    "DeleteAtUninstall" = "11:FALSE"
-                    "Transitive" = "11:FALSE"
-                        "Keys"
-                        {
-                            "{60EA8692-D2D5-43EB-80DC-7906BF13D6EF}:_C1537CE0DE1C44BAB83644693C211D12"
-                            {
-                            "Name" = "8:[Manufacturer]"
-                            "Condition" = "8:"
-                            "AlwaysCreate" = "11:FALSE"
-                            "DeleteAtUninstall" = "11:FALSE"
-                            "Transitive" = "11:FALSE"
-                                "Keys"
-                                {
-                                }
-                                "Values"
-                                {
-                                }
-                            }
-                        }
-                        "Values"
-                        {
-                        }
-                    }
                 }
             }
             "HKCU"
             {
                 "Keys"
                 {
-                    "{60EA8692-D2D5-43EB-80DC-7906BF13D6EF}:_33647DBD2BA1427EAB37CE8940A88DAE"
-                    {
-                    "Name" = "8:Software"
-                    "Condition" = "8:"
-                    "AlwaysCreate" = "11:FALSE"
-                    "DeleteAtUninstall" = "11:FALSE"
-                    "Transitive" = "11:FALSE"
-                        "Keys"
-                        {
-                            "{60EA8692-D2D5-43EB-80DC-7906BF13D6EF}:_BC1A7CD4CA1C4E4FB675C988B6CBB524"
-                            {
-                            "Name" = "8:[Manufacturer]"
-                            "Condition" = "8:"
-                            "AlwaysCreate" = "11:FALSE"
-                            "DeleteAtUninstall" = "11:FALSE"
-                            "Transitive" = "11:FALSE"
-                                "Keys"
-                                {
-                                }
-                                "Values"
-                                {
-                                }
-                            }
-                        }
-                        "Values"
-                        {
-                        }
-                    }
                 }
             }
             "HKCR"
@@ -1043,7 +1140,7 @@
                 {
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_0B6D6BC7932148949F4DF90B2BE274A6"
                     {
-                    "Sequence" = "3:200"
+                    "Sequence" = "3:300"
                     "DisplayName" = "8:Installation Folder"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
@@ -1078,7 +1175,7 @@
                     }
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_954A431D2053401086FFC579F6423DB2"
                     {
-                    "Sequence" = "3:300"
+                    "Sequence" = "3:400"
                     "DisplayName" = "8:Confirm Installation"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
@@ -1148,7 +1245,7 @@
                     }
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_D5588406243E49F38B9E37D0832CAD75"
                     {
-                    "Sequence" = "3:110"
+                    "Sequence" = "3:200"
                     "DisplayName" = "8:Checkboxes   (A)"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
@@ -1175,7 +1272,7 @@
                             "ContextData" = "8:"
                             "Attributes" = "3:0"
                             "Setting" = "3:2"
-                            "Value" = "8:Choose Addins"
+                            "Value" = "8:Choose Grevit Addins"
                             "DefaultValue" = "8:#1214"
                             "UsePlugInResources" = "11:TRUE"
                             }
@@ -1397,6 +1494,262 @@
                             "Attributes" = "3:0"
                             "Setting" = "3:0"
                             "Value" = "3:1"
+                            "DefaultValue" = "3:1"
+                            "UsePlugInResources" = "11:TRUE"
+                            }
+                        }
+                    }
+                    "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_F3258275E74C44F0BD1B834312A4695A"
+                    {
+                    "Sequence" = "3:210"
+                    "DisplayName" = "8:Checkboxes   (B)"
+                    "UseDynamicProperties" = "11:TRUE"
+                    "IsDependency" = "11:FALSE"
+                    "SourcePath" = "8:<VsdDialogDir>\\VsdCustomCheck2Dlg.wid"
+                        "Properties"
+                        {
+                            "BannerBitmap"
+                            {
+                            "Name" = "8:BannerBitmap"
+                            "DisplayName" = "8:#1001"
+                            "Description" = "8:#1101"
+                            "Type" = "3:8"
+                            "ContextData" = "8:Bitmap"
+                            "Attributes" = "3:4"
+                            "Setting" = "3:1"
+                            "UsePlugInResources" = "11:TRUE"
+                            }
+                            "BannerText"
+                            {
+                            "Name" = "8:BannerText"
+                            "DisplayName" = "8:#1014"
+                            "Description" = "8:#1114"
+                            "Type" = "3:3"
+                            "ContextData" = "8:"
+                            "Attributes" = "3:0"
+                            "Setting" = "3:2"
+                            "Value" = "8:Revit SketchUp Importer"
+                            "DefaultValue" = "8:#1214"
+                            "UsePlugInResources" = "11:TRUE"
+                            }
+                            "BodyText"
+                            {
+                            "Name" = "8:BodyText"
+                            "DisplayName" = "8:#1015"
+                            "Description" = "8:#1115"
+                            "Type" = "3:3"
+                            "ContextData" = "8:"
+                            "Attributes" = "3:0"
+                            "Setting" = "3:2"
+                            "Value" = "8:Install the Grevit SketchUp Importer for Revit 2016?"
+                            "DefaultValue" = "8:#1215"
+                            "UsePlugInResources" = "11:TRUE"
+                            }
+                            "Checkbox1Label"
+                            {
+                            "Name" = "8:Checkbox1Label"
+                            "DisplayName" = "8:#1034"
+                            "Description" = "8:#1134"
+                            "Type" = "3:3"
+                            "ContextData" = "8:"
+                            "Attributes" = "3:0"
+                            "Setting" = "3:2"
+                            "Value" = "8:Grevit SketchUp Importer for Revit 2016"
+                            "DefaultValue" = "8:#1234"
+                            "UsePlugInResources" = "11:TRUE"
+                            }
+                            "Checkbox1Property"
+                            {
+                            "Name" = "8:Checkbox1Property"
+                            "DisplayName" = "8:#1030"
+                            "Description" = "8:#1130"
+                            "Type" = "3:14"
+                            "ContextData" = "8:Public"
+                            "Attributes" = "3:2"
+                            "Setting" = "3:2"
+                            "Value" = "8:SKETCHUP"
+                            "DefaultValue" = "8:CHECKBOXB1"
+                            "UsePlugInResources" = "11:TRUE"
+                            }
+                            "Checkbox1Value"
+                            {
+                            "Name" = "8:Checkbox1Value"
+                            "DisplayName" = "8:#1038"
+                            "Description" = "8:#1138"
+                            "Type" = "3:2"
+                            "ContextData" = "8:Unchecked=;Checked=1"
+                            "Attributes" = "3:0"
+                            "Setting" = "3:2"
+                            "Value" = "8:"
+                            "DefaultValue" = "8:"
+                            "UsePlugInResources" = "11:TRUE"
+                            }
+                            "Checkbox1Visible"
+                            {
+                            "Name" = "8:Checkbox1Visible"
+                            "DisplayName" = "8:#1026"
+                            "Description" = "8:#1126"
+                            "Type" = "3:5"
+                            "ContextData" = "8:1;True=1;False=0"
+                            "Attributes" = "3:0"
+                            "Setting" = "3:0"
+                            "Value" = "3:1"
+                            "DefaultValue" = "3:1"
+                            "UsePlugInResources" = "11:TRUE"
+                            }
+                            "Checkbox2Label"
+                            {
+                            "Name" = "8:Checkbox2Label"
+                            "DisplayName" = "8:#1035"
+                            "Description" = "8:#1135"
+                            "Type" = "3:3"
+                            "ContextData" = "8:"
+                            "Attributes" = "3:0"
+                            "Setting" = "3:1"
+                            "Value" = "8:#1235"
+                            "DefaultValue" = "8:#1235"
+                            "UsePlugInResources" = "11:TRUE"
+                            }
+                            "Checkbox2Property"
+                            {
+                            "Name" = "8:Checkbox2Property"
+                            "DisplayName" = "8:#1031"
+                            "Description" = "8:#1131"
+                            "Type" = "3:14"
+                            "ContextData" = "8:Public"
+                            "Attributes" = "3:2"
+                            "Setting" = "3:2"
+                            "Value" = "8:CHECKBOXB2"
+                            "DefaultValue" = "8:CHECKBOXB2"
+                            "UsePlugInResources" = "11:TRUE"
+                            }
+                            "Checkbox2Value"
+                            {
+                            "Name" = "8:Checkbox2Value"
+                            "DisplayName" = "8:#1039"
+                            "Description" = "8:#1139"
+                            "Type" = "3:2"
+                            "ContextData" = "8:Unchecked=;Checked=1"
+                            "Attributes" = "3:0"
+                            "Setting" = "3:2"
+                            "Value" = "8:"
+                            "DefaultValue" = "8:"
+                            "UsePlugInResources" = "11:TRUE"
+                            }
+                            "Checkbox2Visible"
+                            {
+                            "Name" = "8:Checkbox2Visible"
+                            "DisplayName" = "8:#1027"
+                            "Description" = "8:#1127"
+                            "Type" = "3:5"
+                            "ContextData" = "8:1;True=1;False=0"
+                            "Attributes" = "3:0"
+                            "Setting" = "3:0"
+                            "Value" = "3:0"
+                            "DefaultValue" = "3:1"
+                            "UsePlugInResources" = "11:TRUE"
+                            }
+                            "Checkbox3Label"
+                            {
+                            "Name" = "8:Checkbox3Label"
+                            "DisplayName" = "8:#1036"
+                            "Description" = "8:#1136"
+                            "Type" = "3:3"
+                            "ContextData" = "8:"
+                            "Attributes" = "3:0"
+                            "Setting" = "3:1"
+                            "Value" = "8:#1236"
+                            "DefaultValue" = "8:#1236"
+                            "UsePlugInResources" = "11:TRUE"
+                            }
+                            "Checkbox3Property"
+                            {
+                            "Name" = "8:Checkbox3Property"
+                            "DisplayName" = "8:#1032"
+                            "Description" = "8:#1132"
+                            "Type" = "3:14"
+                            "ContextData" = "8:Public"
+                            "Attributes" = "3:2"
+                            "Setting" = "3:2"
+                            "Value" = "8:CHECKBOXB3"
+                            "DefaultValue" = "8:CHECKBOXB3"
+                            "UsePlugInResources" = "11:TRUE"
+                            }
+                            "Checkbox3Value"
+                            {
+                            "Name" = "8:Checkbox3Value"
+                            "DisplayName" = "8:#1040"
+                            "Description" = "8:#1140"
+                            "Type" = "3:2"
+                            "ContextData" = "8:Unchecked=;Checked=1"
+                            "Attributes" = "3:0"
+                            "Setting" = "3:2"
+                            "Value" = "8:"
+                            "DefaultValue" = "8:"
+                            "UsePlugInResources" = "11:TRUE"
+                            }
+                            "Checkbox3Visible"
+                            {
+                            "Name" = "8:Checkbox3Visible"
+                            "DisplayName" = "8:#1028"
+                            "Description" = "8:#1128"
+                            "Type" = "3:5"
+                            "ContextData" = "8:1;True=1;False=0"
+                            "Attributes" = "3:0"
+                            "Setting" = "3:0"
+                            "Value" = "3:0"
+                            "DefaultValue" = "3:1"
+                            "UsePlugInResources" = "11:TRUE"
+                            }
+                            "Checkbox4Label"
+                            {
+                            "Name" = "8:Checkbox4Label"
+                            "DisplayName" = "8:#1037"
+                            "Description" = "8:#1137"
+                            "Type" = "3:3"
+                            "ContextData" = "8:"
+                            "Attributes" = "3:0"
+                            "Setting" = "3:1"
+                            "Value" = "8:#1237"
+                            "DefaultValue" = "8:#1237"
+                            "UsePlugInResources" = "11:TRUE"
+                            }
+                            "Checkbox4Property"
+                            {
+                            "Name" = "8:Checkbox4Property"
+                            "DisplayName" = "8:#1033"
+                            "Description" = "8:#1133"
+                            "Type" = "3:14"
+                            "ContextData" = "8:Public"
+                            "Attributes" = "3:2"
+                            "Setting" = "3:2"
+                            "Value" = "8:CHECKBOXB4"
+                            "DefaultValue" = "8:CHECKBOXB4"
+                            "UsePlugInResources" = "11:TRUE"
+                            }
+                            "Checkbox4Value"
+                            {
+                            "Name" = "8:Checkbox4Value"
+                            "DisplayName" = "8:#1041"
+                            "Description" = "8:#1141"
+                            "Type" = "3:2"
+                            "ContextData" = "8:Unchecked=;Checked=1"
+                            "Attributes" = "3:0"
+                            "Setting" = "3:2"
+                            "Value" = "8:"
+                            "DefaultValue" = "8:"
+                            "UsePlugInResources" = "11:TRUE"
+                            }
+                            "Checkbox4Visible"
+                            {
+                            "Name" = "8:Checkbox4Visible"
+                            "DisplayName" = "8:#1029"
+                            "Description" = "8:#1129"
+                            "Type" = "3:5"
+                            "ContextData" = "8:1;True=1;False=0"
+                            "Attributes" = "3:0"
+                            "Setting" = "3:0"
+                            "Value" = "3:0"
                             "DefaultValue" = "3:1"
                             "UsePlugInResources" = "11:TRUE"
                             }

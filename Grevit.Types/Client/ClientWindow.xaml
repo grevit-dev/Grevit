@@ -32,7 +32,6 @@
             <DropShadowEffect BlurRadius="8" Direction="0" Color="#FF838383" RenderingBias="Quality" ShadowDepth="0"/>
         </Grid.Effect>
         <Button x:Name="close" Content="Button" Height="16" Margin="0,20,20,0" Style="{DynamicResource ButtonStyle6}" VerticalAlignment="Top" Click="close_Click" HorizontalAlignment="Right" Width="16"/>
-        <TextBlock HorizontalAlignment="Left" Margin="73,20,0,0" TextWrapping="Wrap" Text="Grevit Client" VerticalAlignment="Top" Foreground="#FF666666" FontFamily="Calibri" FontSize="13"/>
         <ListBox x:Name="protocol" Margin="20,60,20,30" BorderBrush="#FFE0E0E0" Foreground="#FF9B9B9B" FontFamily="Monospac821 BT"/>
         <Image Margin="20,10,0,0" Source="/Grevit.Types;component/2015-07-31_17h18_36.png" Stretch="Fill" HorizontalAlignment="Left" Width="41" Height="38" VerticalAlignment="Top"/>
 

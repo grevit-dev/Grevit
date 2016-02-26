@@ -134,8 +134,10 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy $(TargetDir)$(TargetFileName) $(SolutionDir)"Package\APPDATA_Autodesk_ACA 2015_enu_Support"\$(TargetName).dll
-copy $(TargetDir)Grevit.Types.dll $(SolutionDir)"Package\APPDATA_Autodesk_ACA 2015_enu_Support"\Grevit.Types.dll</PostBuildEvent>
+    <PostBuildEvent>copy $(TargetDir)*.dll $(SolutionDir)"Package\APPDATA_Autodesk_ACA 2015_enu_Support"
+copy $(TargetDir)*.lsp $(SolutionDir)"Package\APPDATA_Autodesk_ACA 2015_enu_Support"
+copy $(TargetDir)*.mnr $(SolutionDir)"Package\APPDATA_Autodesk_ACA 2015_enu_Support"
+copy $(TargetDir)*.cuix $(SolutionDir)"Package\APPDATA_Autodesk_ACA 2015_enu_Support"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
