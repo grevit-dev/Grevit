@@ -22,3 +22,5 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
 [Documentation](https://grevit.gitbooks.io/grevit-documentation/content/)
+
+[Download Installer](http://www.food4rhino.com/project/grevit)
