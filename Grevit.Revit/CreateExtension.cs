@@ -808,7 +808,9 @@ namespace Grevit.Revit
         /// <returns></returns>
         public static Element Create(this Grevit.Types.WallProfileBased w)
         {
-            double elevation = 90000000;
+            double elevation = 0;
+            bool init = false;
+
             // Translate Profile Curves
             List<Curve> curves = new List<Curve>();
             foreach (Component component in w.curves)
@@ -816,7 +818,16 @@ namespace Grevit.Revit
                 foreach (Curve curve in Utilities.GrevitCurvesToRevitCurves(component))
                 {
                     curves.Add(curve);
-                    if (curve.GetEndPoint(0).Z < elevation) elevation = curve.GetEndPoint(0).Z;
+
+                    if (!init)
+                    {
+                        elevation = curve.GetEndPoint(0).Z;
+                        init = true;
+                    }
+                    else
+                    {
+                        if (curve.GetEndPoint(0).Z < elevation) elevation = curve.GetEndPoint(0).Z;
+                    }
                 }
             }
 
@@ -824,17 +835,33 @@ namespace Grevit.Revit
             Element wallTypeElement = GrevitBuildModel.document.GetElementByName(typeof(Autodesk.Revit.DB.WallType), w.TypeOrLayer);
 
             // Get Level
-            Element levelElement = GrevitBuildModel.document.GetLevelByName(w.level,elevation);
+            Autodesk.Revit.DB.Level levelElement = (Autodesk.Revit.DB.Level)GrevitBuildModel.document.GetLevelByName(w.level, elevation);
 
             if (wallTypeElement != null && levelElement != null)
             {
                 Autodesk.Revit.DB.Wall wall;
 
                 // If the wall exists update it otherwise create a new one
-                if (GrevitBuildModel.existing_Elements.ContainsKey(w.GID))    
-                    wall = (Autodesk.Revit.DB.Wall)GrevitBuildModel.document.GetElement(GrevitBuildModel.existing_Elements[w.GID]); 
-                else 
-                    wall = Autodesk.Revit.DB.Wall.Create(GrevitBuildModel.document, curves, wallTypeElement.Id, levelElement.Id, true);
+                if (GrevitBuildModel.existing_Elements.ContainsKey(w.GID))
+                    GrevitBuildModel.document.Delete(GrevitBuildModel.existing_Elements[w.GID]);
+
+                double offset = elevation - levelElement.Elevation;
+
+                wall = Autodesk.Revit.DB.Wall.Create(GrevitBuildModel.document, curves, wallTypeElement.Id, levelElement.Id, true);
+
+                Autodesk.Revit.DB.Parameter paramtc = wall.LookupParameter("Top Constraint");
+                if (!paramtc.IsReadOnly) paramtc.Set(ElementId.InvalidElementId);
+
+                if (offset != 0)
+                {
+                    Autodesk.Revit.DB.Parameter param = wall.get_Parameter(BuiltInParameter.WALL_BASE_OFFSET);
+                    if (param != null && !param.IsReadOnly) { param.Set(offset); }
+                }
+
+                
+
+                w.SetParameters(wall);
+                w.StoreGID(wall.Id);
 
                 return wall;
             }
@@ -1021,11 +1048,13 @@ namespace Grevit.Revit
 
             if (wallTypeElement != null && baselineCurve != null)
             {
-                Element levelElement = GrevitBuildModel.document.GetLevelByName(grevitWall.levelbottom, baselineCurve.GetEndPoint(0).Z);
+                Autodesk.Revit.DB.Level levelElement = (Autodesk.Revit.DB.Level)GrevitBuildModel.document.GetLevelByName(grevitWall.levelbottom, baselineCurve.GetEndPoint(0).Z);
 
                 if (levelElement == null) return null;
 
                 Autodesk.Revit.DB.Wall wall;
+
+                double offset = baselineCurve.GetEndPoint(0).Z - levelElement.Elevation;
 
                 // If the wall already exists update the baseline curve
                 // Otherwise create a new wall
@@ -1037,12 +1066,22 @@ namespace Grevit.Revit
                 }
                 else     
                     wall = Autodesk.Revit.DB.Wall.Create(GrevitBuildModel.document, baselineCurve, wallTypeElement.Id, levelElement.Id, grevitWall.height, 0, false, true);
-     
+
+
+                Autodesk.Revit.DB.Parameter paramtc = wall.LookupParameter("Top Constraint");
+                if (!paramtc.IsReadOnly) paramtc.Set(ElementId.InvalidElementId);
+
                 // Apply the automatic join setting
                 if (!grevitWall.join)
                 {
                     WallUtils.DisallowWallJoinAtEnd(wall, 0);
                     WallUtils.DisallowWallJoinAtEnd(wall, 1);
+                }
+
+                if (offset != 0)
+                {
+                    Autodesk.Revit.DB.Parameter param = wall.get_Parameter(BuiltInParameter.WALL_BASE_OFFSET);
+                    if (param != null && !param.IsReadOnly) { param.Set(offset); }
                 }
 
                 // Apply Flipped status

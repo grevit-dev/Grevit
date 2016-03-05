@@ -506,12 +506,11 @@ namespace Grevit.Revit
                 if (i < ordered.Count - 1)
                 {
                     if (ordered[i].Elevation <= elevation && ordered[i + 1].Elevation > elevation)
-                        result = ordered[i];
+                        return ordered[i];
                 }
                 else
-                    result = ordered[i];
+                    return ordered[i];
             }
-
 
             return result;
         }
