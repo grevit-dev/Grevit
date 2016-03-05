@@ -850,7 +850,7 @@ namespace Grevit.Revit
                 wall = Autodesk.Revit.DB.Wall.Create(GrevitBuildModel.document, curves, wallTypeElement.Id, levelElement.Id, true);
 
                 Autodesk.Revit.DB.Parameter paramtc = wall.LookupParameter("Top Constraint");
-                if (!paramtc.IsReadOnly) paramtc.Set(ElementId.InvalidElementId);
+                if (paramtc != null && !paramtc.IsReadOnly) paramtc.Set(ElementId.InvalidElementId);
 
                 if (offset != 0)
                 {
@@ -1069,7 +1069,10 @@ namespace Grevit.Revit
 
 
                 Autodesk.Revit.DB.Parameter paramtc = wall.LookupParameter("Top Constraint");
-                if (!paramtc.IsReadOnly) paramtc.Set(ElementId.InvalidElementId);
+                if (paramtc != null && !paramtc.IsReadOnly) paramtc.Set(ElementId.InvalidElementId);
+
+                Autodesk.Revit.DB.Parameter heightParam = wall.get_Parameter(BuiltInParameter.WALL_USER_HEIGHT_PARAM);
+                if (heightParam != null && !heightParam.IsReadOnly) heightParam.Set(grevitWall.height);
 
                 // Apply the automatic join setting
                 if (!grevitWall.join)
