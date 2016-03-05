@@ -1,7 +1,7 @@
-﻿<Window x:Class="Grevit.Client.ClientWindow"
+﻿<Window x:Class="Grevit.SketchUp.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="ClientWindow" Height="300" Width="480" ResizeMode="NoResize" WindowStyle="None" Background="{x:Null}" AllowsTransparency="True" MouseLeftButtonDown="Window_MouseLeftButtonDown" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen">
+        Title="MainWindow" Height="300" Width="480" Loaded="Window_Loaded" ResizeMode="NoResize" WindowStyle="None" Background="{x:Null}" AllowsTransparency="True" MouseLeftButtonDown="Window_MouseLeftButtonDown" WindowStartupLocation="CenterScreen" Topmost="True">
     <Window.Resources>
         <Style x:Key="ButtonStyle6" TargetType="{x:Type Button}">
             <Setter Property="Foreground" Value="#FFA0A0A0"/>
@@ -32,9 +32,9 @@
             <DropShadowEffect BlurRadius="8" Direction="0" Color="#FF838383" RenderingBias="Quality" ShadowDepth="0"/>
         </Grid.Effect>
         <Button x:Name="close" Content="Button" Height="16" Margin="0,20,20,0" Style="{DynamicResource ButtonStyle6}" VerticalAlignment="Top" Click="close_Click" HorizontalAlignment="Right" Width="16"/>
-        <ListBox x:Name="protocol" Margin="20,90,20,30" BorderBrush="#FFE0E0E0" Foreground="#FF9B9B9B" FontFamily="Monospac821 BT"/>
         <Image Margin="20,10,0,0" Source="/Grevit.Types;component/2015-07-31_17h18_36.png" Stretch="Fill" HorizontalAlignment="Left" Width="41" Height="38" VerticalAlignment="Top"/>
-        <TextBlock x:Name="title" Margin="20,60,20,0" TextWrapping="Wrap" Text="Receiving Model" VerticalAlignment="Top" Foreground="#FF666666" FontFamily="Calibri" FontSize="16" Height="25" FontWeight="Bold"/>
+        <TextBlock x:Name="title" Margin="20,60,20,0" TextWrapping="Wrap" Text="Sending SketchUp Model" VerticalAlignment="Top" Foreground="#FF666666" FontFamily="Calibri" FontSize="16" Height="25" FontWeight="Bold"/>
+        <ListBox x:Name="protocol" Margin="20,90,20,30" BorderBrush="#FFE0E0E0" Foreground="#FF9B9B9B" FontFamily="Monospac821 BT"/>
 
     </Grid>
 </Window>
