@@ -15,20 +15,20 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_2CB4D79BA27746D0B6F6E54208E7EB81"
+        "MsmKey" = "8:_3D03022B89B74DE6A1EDB702D3E083E4"
         "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_40D1EDCEDD8DC8BF18D854DADCE709D3"
+        "OwnerKey" = "8:_3D03022B89B74DE6A1EDB702D3E083E4"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_4AB464B00D874E67477F05B613A42A41"
         "OwnerKey" = "8:_4E9CFFE3C3014F6EAE77F07C523924AF"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_4AB464B00D874E67477F05B613A42A41"
-        "OwnerKey" = "8:_E8F81566E94C4F308172C408626E6D51"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -69,8 +69,8 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_63355802F4658B36C4CC7DEBC3EC3A02"
-        "OwnerKey" = "8:_E8F81566E94C4F308172C408626E6D51"
+        "MsmKey" = "8:_6C28245C1EA223E65C1F866FB5C0B880"
+        "OwnerKey" = "8:_3D03022B89B74DE6A1EDB702D3E083E4"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -93,19 +93,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_8DA51320B7AD467D9E2A1942C1FF7466"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_AB06C81C2BBE45C391AD10949715B209"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_AB6525C0BF8A4989A6C54E4AD1C296FB"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -147,13 +135,31 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_E8F81566E94C4F308172C408626E6D51"
+        "MsmKey" = "8:_D0918979B31447B8AD7E7B43C6DC5717"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_D82ACA85308E4A28B8C7DC35229C5F46"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_F14D65C1759E4A618FED6DC6D7D67B94"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_F5671C87153B46BDB04E52548FF370A0"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_FD89AE6FA6E3437CA275EB73D30E5745"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -166,13 +172,31 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_E8F81566E94C4F308172C408626E6D51"
+        "OwnerKey" = "8:_FD89AE6FA6E3437CA275EB73D30E5745"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_63355802F4658B36C4CC7DEBC3EC3A02"
+        "OwnerKey" = "8:_D0918979B31447B8AD7E7B43C6DC5717"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_3D03022B89B74DE6A1EDB702D3E083E4"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_6C28245C1EA223E65C1F866FB5C0B880"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_40D1EDCEDD8DC8BF18D854DADCE709D3"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -197,12 +221,6 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_AB06C81C2BBE45C391AD10949715B209"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_8DA51320B7AD467D9E2A1942C1FF7466"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -334,12 +352,23 @@
         }
         "File"
         {
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_2CB4D79BA27746D0B6F6E54208E7EB81"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_3D03022B89B74DE6A1EDB702D3E083E4"
             {
-            "SourcePath" = "8:..\\Package\\APPDATA_Autodesk_Revit_Addins_2016\\Grevit.SketchUp.addin"
-            "TargetName" = "8:Grevit.SketchUp.addin"
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Grevit.SketchUp, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_3D03022B89B74DE6A1EDB702D3E083E4"
+                    {
+                    "Name" = "8:Grevit.SketchUp.exe"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:..\\Package\\APPDATA_SketchUp_SketchUp 2016_SketchUp_Plugins\\grevit_send\\Grevit.SketchUp.exe"
+            "TargetName" = "8:"
             "Tag" = "8:"
-            "Folder" = "8:_D4F636E9045244208E5FD43F3C91BBE5"
+            "Folder" = "8:_F7CDE0F9AE10495182E51B38D8D673EB"
             "Condition" = "8:SKETCHUP=1"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -354,11 +383,42 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_40D1EDCEDD8DC8BF18D854DADCE709D3"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Grevit.Types, Version=0.8.3.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_40D1EDCEDD8DC8BF18D854DADCE709D3"
+                    {
+                    "Name" = "8:Grevit.Types.DLL"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:Grevit.Types.DLL"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_F7CDE0F9AE10495182E51B38D8D673EB"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:TRUE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_4AB464B00D874E67477F05B613A42A41"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Grevit.Types, Version=0.8.2.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Grevit.Types, Version=0.8.3.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_4AB464B00D874E67477F05B613A42A41"
@@ -389,7 +449,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Grevit.Types, Version=0.8.2.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Grevit.Types, Version=0.8.3.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_4DC9C4EC665E4B4C87FA71B80A5EB2BB"
@@ -420,7 +480,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Grevit.Revit, Version=0.6.0.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Grevit.Revit, Version=0.6.1.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_4E9CFFE3C3014F6EAE77F07C523924AF"
@@ -467,14 +527,14 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_63355802F4658B36C4CC7DEBC3EC3A02"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_6C28245C1EA223E65C1F866FB5C0B880"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:SketchUpNET, Version=0.0.0.0, Culture=neutral, processorArchitecture=AMD64"
                 "ScatterAssemblies"
                 {
-                    "_63355802F4658B36C4CC7DEBC3EC3A02"
+                    "_6C28245C1EA223E65C1F866FB5C0B880"
                     {
                     "Name" = "8:SketchUpNET.DLL"
                     "Attributes" = "3:512"
@@ -483,7 +543,7 @@
             "SourcePath" = "8:SketchUpNET.DLL"
             "TargetName" = "8:"
             "Tag" = "8:"
-            "Folder" = "8:_D4F636E9045244208E5FD43F3C91BBE5"
+            "Folder" = "8:_F7CDE0F9AE10495182E51B38D8D673EB"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -533,7 +593,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Grevit.Types, Version=0.8.2.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Grevit.Types, Version=0.8.3.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_75677103AB8F47398E6301D26D8B1DD0"
@@ -580,42 +640,11 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_8DA51320B7AD467D9E2A1942C1FF7466"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:SketchUpNET, Version=0.0.0.0, Culture=neutral, processorArchitecture=AMD64"
-                "ScatterAssemblies"
-                {
-                    "_8DA51320B7AD467D9E2A1942C1FF7466"
-                    {
-                    "Name" = "8:SketchUpNET.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:..\\Package\\APPDATA_Autodesk_Revit_Addins_2016\\SketchUpNET.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_D4F636E9045244208E5FD43F3C91BBE5"
-            "Condition" = "8:SKETCHUP=1"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_AB06C81C2BBE45C391AD10949715B209"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Grevit.Types, Version=0.8.2.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Grevit.Types, Version=0.8.3.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_AB06C81C2BBE45C391AD10949715B209"
@@ -628,27 +657,7 @@
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_D4F636E9045244208E5FD43F3C91BBE5"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_AB6525C0BF8A4989A6C54E4AD1C296FB"
-            {
-            "SourcePath" = "8:..\\Package\\APPDATA_Autodesk_Revit_Addins_2016\\slapi.dll"
-            "TargetName" = "8:slapi.dll"
-            "Tag" = "8:"
-            "Folder" = "8:_D4F636E9045244208E5FD43F3C91BBE5"
-            "Condition" = "8:SKETCHUP=1"
+            "Condition" = "8:CHECKBOXRVT2016=1"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
@@ -706,7 +715,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Grevit.Types, Version=0.8.2.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Grevit.Types, Version=0.8.3.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_BC09DDC7FBFD4176BA18B2876C0F5FB3"
@@ -737,7 +746,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Grevit.Revit, Version=0.6.0.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Grevit.Revit, Version=0.6.1.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_C4C5D248DACA4F90AFEFCCCF91AF82F0"
@@ -815,23 +824,43 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_E8F81566E94C4F308172C408626E6D51"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_D0918979B31447B8AD7E7B43C6DC5717"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Grevit.SketchUp, Version=0.6.0.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Grevit.Types, Version=0.8.3.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_E8F81566E94C4F308172C408626E6D51"
+                    "_D0918979B31447B8AD7E7B43C6DC5717"
                     {
-                    "Name" = "8:Grevit.SketchUp.dll"
+                    "Name" = "8:Grevit.Types.dll"
                     "Attributes" = "3:512"
                     }
                 }
-            "SourcePath" = "8:..\\Package\\APPDATA_Autodesk_Revit_Addins_2016\\Grevit.SketchUp.dll"
+            "SourcePath" = "8:..\\Package\\APPDATA_SketchUp_SketchUp 2016_SketchUp_Plugins\\grevit_send\\Grevit.Types.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
-            "Folder" = "8:_D4F636E9045244208E5FD43F3C91BBE5"
+            "Folder" = "8:_F7CDE0F9AE10495182E51B38D8D673EB"
+            "Condition" = "8:SKETCHUP=1"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D82ACA85308E4A28B8C7DC35229C5F46"
+            {
+            "SourcePath" = "8:..\\Package\\APPDATA_SketchUp_SketchUp 2016_SketchUp_Plugins\\grevit_send\\slapi.dll"
+            "TargetName" = "8:slapi.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_F7CDE0F9AE10495182E51B38D8D673EB"
             "Condition" = "8:SKETCHUP=1"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -853,6 +882,57 @@
             "Tag" = "8:"
             "Folder" = "8:_C6B0A2FBA2A949EC9E0DABBE36603BA7"
             "Condition" = "8:CHECKBOXGH=1"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F5671C87153B46BDB04E52548FF370A0"
+            {
+            "SourcePath" = "8:..\\Package\\APPDATA_SketchUp_SketchUp 2016_SketchUp_Plugins\\grevit_send.rb"
+            "TargetName" = "8:grevit_send.rb"
+            "Tag" = "8:"
+            "Folder" = "8:_4B6117E571E44469A88B24094E5F77C1"
+            "Condition" = "8:SKETCHUP=1"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_FD89AE6FA6E3437CA275EB73D30E5745"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:SketchUpNET, Version=0.0.0.0, Culture=neutral, processorArchitecture=AMD64"
+                "ScatterAssemblies"
+                {
+                    "_FD89AE6FA6E3437CA275EB73D30E5745"
+                    {
+                    "Name" = "8:SketchUpNET.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:..\\Package\\APPDATA_SketchUp_SketchUp 2016_SketchUp_Plugins\\grevit_send\\SketchUpNET.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_F7CDE0F9AE10495182E51B38D8D673EB"
+            "Condition" = "8:SKETCHUP=1"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
@@ -945,7 +1025,7 @@
                                             {
                                             "Name" = "8:2016"
                                             "AlwaysCreate" = "11:TRUE"
-                                            "Condition" = "8:"
+                                            "Condition" = "8:CHECKBOXRVT2016=1"
                                             "Transitive" = "11:FALSE"
                                             "Property" = "8:_A9FD9C8C4E0544C6A637AC27A205161B"
                                                 "Folders"
@@ -994,6 +1074,61 @@
                                             "Property" = "8:_DA23976D1F83410ABB900A4B19CC3B57"
                                                 "Folders"
                                                 {
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_A2FC3D76EE184AA3BDDF1AAB3535D526"
+                    {
+                    "Name" = "8:SketchUp"
+                    "AlwaysCreate" = "11:FALSE"
+                    "Condition" = "8:SKETCHUP=1"
+                    "Transitive" = "11:FALSE"
+                    "Property" = "8:_B09E50A6FE2A4FA38B68DAF0EF66B0EC"
+                        "Folders"
+                        {
+                            "{9EF0B969-E518-4E46-987F-47570745A589}:_3C154B006790447190EDEAD87D7BD15A"
+                            {
+                            "Name" = "8:SketchUp 2016"
+                            "AlwaysCreate" = "11:FALSE"
+                            "Condition" = "8:SKETCHUP=1"
+                            "Transitive" = "11:FALSE"
+                            "Property" = "8:_204D3333E8B646B3AC36F34B562EF2D8"
+                                "Folders"
+                                {
+                                    "{9EF0B969-E518-4E46-987F-47570745A589}:_C384FA191FA34E2AB8A5B507A40FD555"
+                                    {
+                                    "Name" = "8:SketchUp"
+                                    "AlwaysCreate" = "11:FALSE"
+                                    "Condition" = "8:SKETCHUP=1"
+                                    "Transitive" = "11:FALSE"
+                                    "Property" = "8:_BA3851D0677E48179B21DE49F594BD63"
+                                        "Folders"
+                                        {
+                                            "{9EF0B969-E518-4E46-987F-47570745A589}:_4B6117E571E44469A88B24094E5F77C1"
+                                            {
+                                            "Name" = "8:Plugins"
+                                            "AlwaysCreate" = "11:FALSE"
+                                            "Condition" = "8:SKETCHUP=1"
+                                            "Transitive" = "11:FALSE"
+                                            "Property" = "8:_46D378C73AD6403996B26849CBB11B6C"
+                                                "Folders"
+                                                {
+                                                    "{9EF0B969-E518-4E46-987F-47570745A589}:_F7CDE0F9AE10495182E51B38D8D673EB"
+                                                    {
+                                                    "Name" = "8:grevit_send"
+                                                    "AlwaysCreate" = "11:FALSE"
+                                                    "Condition" = "8:SKETCHUP=1"
+                                                    "Transitive" = "11:FALSE"
+                                                    "Property" = "8:_1D7C7048EAE94D9CBFF12B6705D5FB21"
+                                                        "Folders"
+                                                        {
+                                                        }
+                                                    }
                                                 }
                                             }
                                         }
@@ -1528,7 +1663,7 @@
                             "ContextData" = "8:"
                             "Attributes" = "3:0"
                             "Setting" = "3:2"
-                            "Value" = "8:Revit SketchUp Importer"
+                            "Value" = "8:Choose Grevit Addins"
                             "DefaultValue" = "8:#1214"
                             "UsePlugInResources" = "11:TRUE"
                             }
@@ -1541,7 +1676,7 @@
                             "ContextData" = "8:"
                             "Attributes" = "3:0"
                             "Setting" = "3:2"
-                            "Value" = "8:Install the Grevit SketchUp Importer for Revit 2016?"
+                            "Value" = "8:Please select the Addins you want to install."
                             "DefaultValue" = "8:#1215"
                             "UsePlugInResources" = "11:TRUE"
                             }
@@ -1554,7 +1689,7 @@
                             "ContextData" = "8:"
                             "Attributes" = "3:0"
                             "Setting" = "3:2"
-                            "Value" = "8:Grevit SketchUp Importer for Revit 2016"
+                            "Value" = "8:Grevit SketchUp 2016 Plugin"
                             "DefaultValue" = "8:#1234"
                             "UsePlugInResources" = "11:TRUE"
                             }
