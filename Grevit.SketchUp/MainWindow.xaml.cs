@@ -66,7 +66,7 @@ namespace Grevit.SketchUp
                     protocol.Items.Add("Sending Components to localhost.");
 
 
-                    Utilities.Send(components, host, port, timeout);
+                    Grevit.Client.Utilities.Send(components, host, port, timeout);
 
 
                     //this.DialogResult = true;

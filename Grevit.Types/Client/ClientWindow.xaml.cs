@@ -45,7 +45,7 @@ namespace Grevit.Client
             InitializeComponent();
 
             // Prepare the Revit Familytree of the current document for sending
-            this.FamiliesToRespond = Utilities.Serialize(FamiliesToRespond);
+            this.FamiliesToRespond = Serialization.Utilities.Serialize(FamiliesToRespond);
         }
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -102,7 +102,7 @@ namespace Grevit.Client
         private static Grevit.Types.ComponentCollection StringToComponents(string dataxml)
         {
             // Deserialize xml data to an object
-            object o = Utilities.Deserialize(dataxml, typeof(Grevit.Types.ComponentCollection));
+            object o = Serialization.Utilities.Deserialize(dataxml, typeof(Grevit.Types.ComponentCollection));
 
             // Cast the object to a component collection and return it
             Grevit.Types.ComponentCollection cs = (Grevit.Types.ComponentCollection)o;

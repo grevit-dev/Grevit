@@ -72,6 +72,7 @@
     <Compile Include="Client\ClientWindow.xaml.cs">
       <DependentUpon>ClientWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Client\Send.cs" />
     <Compile Include="Reflection\Utilities.cs" />
     <Compile Include="Reporting\MessageBox.xaml.cs">
       <DependentUpon>MessageBox.xaml</DependentUpon>

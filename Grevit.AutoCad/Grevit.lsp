@@ -1,4 +1,4 @@
-(if (findfile "Grevit.AutoCad.dll")
-    (command "._netload" "Grevit.AutoCad.dll")
+(if (findfile "Grevit.AutoCAD.dll")
+    (command "._netload" "Grevit.AutoCAD.dll")
 )
 ;EOF

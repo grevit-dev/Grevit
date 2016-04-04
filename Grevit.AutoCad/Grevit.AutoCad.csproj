@@ -8,8 +8,8 @@
     <ProjectGuid>{BD218AED-E5BA-4F20-86D7-711F659A636B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Grevit.AutoCad</RootNamespace>
-    <AssemblyName>Grevit.AutoCad</AssemblyName>
+    <RootNamespace>Grevit.AutoCAD</RootNamespace>
+    <AssemblyName>Grevit.AutoCAD</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />

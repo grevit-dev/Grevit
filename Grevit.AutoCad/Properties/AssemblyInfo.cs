@@ -26,8 +26,8 @@ using System.Resources;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Grevit.AutoCad")]
-[assembly: AssemblyDescription("Grevit AutoCad Plugin")]
+[assembly: AssemblyTitle("Grevit.AutoCAD")]
+[assembly: AssemblyDescription("Grevit AutoCAD Plugin")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("grevit.net")]
 [assembly: AssemblyProduct("Grevit")]

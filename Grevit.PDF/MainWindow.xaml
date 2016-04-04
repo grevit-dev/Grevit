@@ -1,0 +1,69 @@
+﻿<Window x:Class="Grevit.PDF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="300" Width="480" Loaded="Window_Loaded" ResizeMode="NoResize" WindowStyle="None" Background="{x:Null}" AllowsTransparency="True" MouseLeftButtonDown="Window_MouseLeftButtonDown" WindowStartupLocation="CenterScreen" Topmost="True">
+    <Window.Resources>
+        <Style x:Key="ButtonStyle6" TargetType="{x:Type Button}">
+            <Setter Property="Foreground" Value="#FFA0A0A0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid>
+                            <Rectangle Fill="White"/>
+                            <Path Data="M474.25,49.333333 L492.58333,29.916999" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="10" Margin="3,3,0,0" Stretch="Fill" Stroke="{TemplateBinding Foreground}" VerticalAlignment="Top" Width="10" StrokeThickness="2"/>
+                            <Path Data="M493.41667,49.333333 L473.99966,29.750332" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="10" Margin="3,3,0,0" Stretch="Fill" Stroke="{TemplateBinding Foreground}" VerticalAlignment="Top" Width="10" StrokeThickness="2"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsFocused" Value="True"/>
+                            <Trigger Property="IsDefaulted" Value="True"/>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Foreground" Value="DarkRed"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True"/>
+                            <Trigger Property="IsEnabled" Value="False"/>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="okButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="Foreground" Value="#FFA0A0A0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid>
+                            <Rectangle Fill="White"/>
+                            <Path Data="M474.25,49.333333 L492.58333,29.916999" Fill="#FFF4F4F5" HorizontalAlignment="Right" Height="9" Margin="0,4,2,0" Stretch="Fill" Stroke="{TemplateBinding Foreground}" VerticalAlignment="Top" Width="9" StrokeThickness="2"/>
+                            <Path Data="M493.41667,49.333333 L473.99966,29.750332" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="6" Margin="2,0,0,3" Stretch="Fill" Stroke="{TemplateBinding Foreground}" VerticalAlignment="Bottom" Width="6" StrokeThickness="2"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsFocused" Value="True"/>
+                            <Trigger Property="IsDefaulted" Value="True"/>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Foreground" Value="DarkGreen"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True"/>
+                            <Trigger Property="IsEnabled" Value="False"/>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid Margin="10" Background="White">
+        <Grid.Effect>
+            <DropShadowEffect BlurRadius="8" Direction="0" Color="#FF838383" RenderingBias="Quality" ShadowDepth="0"/>
+        </Grid.Effect>
+        <Button x:Name="close" Content="Button" Height="16" Margin="0,20,20,0" Style="{DynamicResource ButtonStyle6}" VerticalAlignment="Top" Click="close_Click" HorizontalAlignment="Right" Width="16"/>
+        <Image Margin="20,10,0,0" Source="/Grevit.Types;component/2015-07-31_17h18_36.png" Stretch="Fill" HorizontalAlignment="Left" Width="41" Height="38" VerticalAlignment="Top"/>
+        <TextBlock x:Name="title" Margin="20,60,20,0" TextWrapping="Wrap" Text="Sending PDF Model" VerticalAlignment="Top" Foreground="#FF666666" FontFamily="Calibri" FontSize="16" Height="25" FontWeight="Bold"/>
+        <ListBox x:Name="protocol" Margin="20,90,20,81" BorderBrush="#FFE0E0E0" Foreground="#FF9B9B9B" FontFamily="Monospac821 BT"/>
+        <TextBox x:Name="conversion" HorizontalAlignment="Left" Height="23" Margin="238,230,0,0" TextWrapping="Wrap" Text="3.84" VerticalAlignment="Top" Width="50"/>
+        <Button x:Name="okButton" Content="Button" Height="16" Margin="0,0,20,30" Style="{DynamicResource okButtonStyle}" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="16" Click="okButton_Click"/>
+        <TextBox x:Name="server" HorizontalAlignment="Left" Height="23" Margin="20,230,0,0" TextWrapping="Wrap" Text="127.0.0.1" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="port" HorizontalAlignment="Left" Height="23" Margin="145,230,0,0" TextWrapping="Wrap" Text="8002" VerticalAlignment="Top" Width="88"/>
+        <Label Content="Server" HorizontalAlignment="Left" Margin="20,204,0,0" VerticalAlignment="Top" FontSize="10"/>
+        <Label Content="Port" HorizontalAlignment="Left" Margin="145,204,0,0" VerticalAlignment="Top" FontSize="10"/>
+        <Label Content="Scale" HorizontalAlignment="Left" Margin="238,204,0,0" VerticalAlignment="Top" FontSize="10"/>
+    </Grid>
+</Window>

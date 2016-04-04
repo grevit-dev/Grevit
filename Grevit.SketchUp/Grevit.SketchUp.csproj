@@ -112,6 +112,9 @@
     <None Include="grevit_send.rb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="grevit_send_menu.rb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -134,9 +137,10 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy $(TargetDir)*.rb $(SolutionDir)"Package\APPDATA_SketchUp_SketchUp 2016_SketchUp_Plugins"
+    <PostBuildEvent>copy $(TargetDir)grevit_send.rb $(SolutionDir)"Package\APPDATA_SketchUp_SketchUp 2016_SketchUp_Plugins"
 copy $(TargetPath) $(SolutionDir)"Package\APPDATA_SketchUp_SketchUp 2016_SketchUp_Plugins\grevit_send"
-copy $(TargetDir)*.dll $(SolutionDir)"Package\APPDATA_SketchUp_SketchUp 2016_SketchUp_Plugins\grevit_send"</PostBuildEvent>
+copy $(TargetDir)*.dll $(SolutionDir)"Package\APPDATA_SketchUp_SketchUp 2016_SketchUp_Plugins\grevit_send"
+copy $(TargetDir)grevit_send_menu.rb $(SolutionDir)"Package\APPDATA_SketchUp_SketchUp 2016_SketchUp_Plugins\grevit_send"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
