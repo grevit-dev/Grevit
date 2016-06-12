@@ -479,9 +479,12 @@ namespace Grevit.Revit
             // If there is any level with the same name that we are going to create return null because that level already exists
             foreach (Element e in sollector.ToElements()) if (e.Name == level.name) return null;
 
+#if (Revit2017)
             // Create the new Level
+            Autodesk.Revit.DB.Level newLevel = Autodesk.Revit.DB.Level.Create(GrevitBuildModel.document, level.height);
+#else
             Autodesk.Revit.DB.Level newLevel = GrevitBuildModel.document.Create.NewLevel(level.height);
-            
+#endif
             // Set the Levels name
             newLevel.Name = level.name;
 
@@ -609,9 +612,14 @@ namespace Grevit.Revit
         /// <returns></returns>
         public static Element Create(this Grevit.Types.Grid grid)
         {
+
+#if (Revit2017)
+            Autodesk.Revit.DB.Grid gridline = Autodesk.Revit.DB.Grid.Create(GrevitBuildModel.document, Autodesk.Revit.DB.Line.CreateBound(grid.from.ToXYZ(), grid.to.ToXYZ()));
+#else
             // Create a new gridline
             Autodesk.Revit.DB.Grid gridline = GrevitBuildModel.document.Create.NewGrid(Autodesk.Revit.DB.Line.CreateBound(grid.from.ToXYZ(), grid.to.ToXYZ()));
-            
+#endif
+
             // If a name is supplied, set the name
             if (grid.Name != null && grid.Name != "") gridline.Name = grid.Name;
 
@@ -737,7 +745,7 @@ namespace Grevit.Revit
                 
 
                 // return a new Textnote
-#if (Revit2016)
+#if (!Revit2015)
                 Autodesk.Revit.DB.TextNoteType type = (Autodesk.Revit.DB.TextNoteType)new FilteredElementCollector(GrevitBuildModel.document).OfClass(typeof(Autodesk.Revit.DB.TextNoteType)).FirstOrDefault();
                 return Autodesk.Revit.DB.TextNote.Create(GrevitBuildModel.document, view.Id, textnote.location.ToXYZ(), textnote.text, type.Id);
 #else

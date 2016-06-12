@@ -646,7 +646,7 @@ namespace Grevit.Revit
                     if (cat.AllowsBoundParameters) categories.Insert(cat);
                 
                 // Create and External Definition in a Group called Grevit and a Parameter called GID
-#if (Revit2016)
+#if (!Revit2015)
                 ExternalDefinition def = document.Application.OpenSharedParameterFile().Groups.Create("Grevit").Definitions.Create(new ExternalDefinitionCreationOptions(parameterName, parameterType)) as ExternalDefinition;
 #else
                 ExternalDefinition def = document.Application.OpenSharedParameterFile().Groups.Create("Grevit").Definitions.Create(new ExternalDefinitonCreationOptions(parameterName, parameterType)) as ExternalDefinition;
