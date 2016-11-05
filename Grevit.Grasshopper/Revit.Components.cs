@@ -1317,6 +1317,87 @@ namespace Grevit.GrassHopper
 
     }
 
+    public class G_Roof : GrevitGrasshopperComponent
+    {
+        public G_Roof() : base("Grevit Revit Roof", "Revit Roof", "Grevit Revit Roof", "Grevit", "Components Revit") { }
+
+        protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
+        {
+            List<int> optional = new List<int>();
+
+            pManager.AddSurfaceParameter("Surface", "S", "Slab Surface", GH_ParamAccess.item);
+            pManager.AddTextParameter("Type", "Type", "Type name", GH_ParamAccess.item);
+
+            pManager.AddTextParameter("Level", "Level", "Level name", GH_ParamAccess.item);
+
+            optional.Add(pManager.AddGenericParameter("Parameters", "Param", "Parameters", GH_ParamAccess.list));
+
+            foreach (int a in optional) pManager[a].Optional = true;
+
+        }
+
+        protected override void SolveInstance(IGH_DataAccess DA)
+        {
+            GH_Surface surface = new GH_Surface();
+            GH_String level = new GH_String();
+            GH_String family = new GH_String("");
+            GH_String type = new GH_String("");
+
+            List<Parameter> parameters = new List<Parameter>();
+            if (!DA.GetDataList<Parameter>("Parameters", parameters)) parameters = new List<Parameter>();
+            DA.GetData<GH_Surface>("Surface", ref surface);
+
+
+            DA.GetData<GH_String>("Type", ref type);
+            DA.GetData<GH_String>("Level", ref level);
+
+
+
+            Roof roof = new Roof();
+            roof.FamilyOrStyle = family.Value;
+            roof.TypeOrLayer = type.Value;
+            roof.levelbottom = level.Value;
+            roof.surface = new Profile();
+            roof.surface.profile = new List<Loop>();
+
+            Loop loop = new Loop();
+            loop.outline = new List<Component>();
+
+            foreach (Rhino.Geometry.BrepEdge be in surface.Value.Edges)
+            {
+                loop.outline.Add(be.ToNurbsCurve().ToGrevitCurve());
+            }
+
+            roof.surface.profile.Add(loop);
+
+            roof.parameters = parameters;
+            roof.GID = this.InstanceGuid.ToString();
+
+
+            DA.SetData("GrevitComponent", roof);
+        }
+
+
+        // Properties
+        public override Guid ComponentGuid
+        {
+            get
+            {
+                return new Guid("{5ea7ca3d-d271-4a4f-a777-4111beeb4b1d}");
+            }
+        }
+        protected override Bitmap Internal_Icon_24x24
+        {
+            get
+            {
+                return Properties.Resources.Grevit_Slab;
+            }
+        }
+
+
+    }
+
+    
     public class G_Level : GrevitGrasshopperComponent
     {
         public G_Level() : base("Grevit Revit Level", "Revit Level", "Grevit Revit Level", "Grevit", "Components Revit") { }

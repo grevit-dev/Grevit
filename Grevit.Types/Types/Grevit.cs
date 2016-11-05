@@ -39,6 +39,7 @@ namespace Grevit.Types
     [KnownType(typeof(Component))]
     [KnownType(typeof(Adaptive))]
     [KnownType(typeof(Wall))]
+    [KnownType(typeof(Roof))]
     [KnownType(typeof(Slab))]
     [KnownType(typeof(Rule))]
     [KnownType(typeof(Color))]
@@ -309,6 +310,19 @@ namespace Grevit.Types
     }
 
 
+
+    /// <summary>
+    /// Roof Component
+    /// </summary>
+    [DataContract]
+    public class Roof : Component
+    {
+        [DataMember]
+        public Profile surface { get; set; }
+        [DataMember]
+        public string levelbottom { get; set; }
+
+    }
 
     /// <summary>
     /// Slab Component

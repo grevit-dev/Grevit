@@ -809,6 +809,47 @@ namespace Grevit.Revit
 
         }
 
+        public static Element Create(this Grevit.Types.Roof roof)
+        {
+            // Create a List of Curves for the ouline
+            List<Curve> curves = new List<Curve>();
+
+                        // Get the Wall type and the level
+            RoofType type = (RoofType)GrevitBuildModel.document.GetElementByName(typeof(Autodesk.Revit.DB.RoofType), roof.TypeOrLayer);
+
+            if (type != null)
+            {
+                // Translate Grevit Curves to Revit Curves
+                for (int i = 0; i < roof.surface.profile[0].outline.Count; i++)
+                {
+                    foreach (Curve curve in Utilities.GrevitCurvesToRevitCurves(roof.surface.profile[0].outline[i])) curves.Add(curve);
+                }
+
+                // Get the two slope points
+                XYZ slopePointBottom = curves[0].GetEndPoint(0);
+
+                // Sort the outline curves contiguous
+                Utilities.SortCurvesContiguous(GrevitBuildModel.document.Application.Create, curves);
+
+                // Create a new surve array for creating the slab
+                CurveArray outlineCurveArray = new CurveArray();
+                foreach (Curve c in curves) outlineCurveArray.Append(c);
+
+                // get the supposed level
+                Element levelElement = GrevitBuildModel.document.GetLevelByName(roof.levelbottom, slopePointBottom.Z);
+                if (levelElement != null)
+                {
+                    ModelCurveArray mapping = new ModelCurveArray();
+                    // Create a new slab
+                    return GrevitBuildModel.document.Create.NewFootPrintRoof(outlineCurveArray,
+                        (Autodesk.Revit.DB.Level)levelElement, type, out mapping);
+                }
+            }
+
+            return null;
+
+        }
+
         /// <summary>
         /// Create Profile based wall
         /// </summary>
@@ -1081,7 +1122,7 @@ namespace Grevit.Revit
 
                 Autodesk.Revit.DB.Parameter heightParam = wall.get_Parameter(BuiltInParameter.WALL_USER_HEIGHT_PARAM);
                 if (heightParam != null && !heightParam.IsReadOnly) heightParam.Set(grevitWall.height);
-
+                
                 // Apply the automatic join setting
                 if (!grevitWall.join)
                 {
