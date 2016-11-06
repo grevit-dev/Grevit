@@ -758,6 +758,7 @@ namespace Grevit.Revit
             List<Type> types = new List<Type>();
             types.Add(typeof(Autodesk.Revit.DB.Wall));
             types.Add(typeof(Autodesk.Revit.DB.FamilyInstance));
+            types.Add(typeof(Autodesk.Revit.DB.RoofBase));
 
             List<Element> myfilter = document.GetElementsFromClasses(types);
 

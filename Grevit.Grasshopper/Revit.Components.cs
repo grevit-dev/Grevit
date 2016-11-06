@@ -1229,11 +1229,11 @@ namespace Grevit.GrassHopper
             List<int> optional = new List<int>();
 
             pManager.AddSurfaceParameter("Surface", "S", "Slab Surface", GH_ParamAccess.item);
-
+            pManager.AddTextParameter("Type", "Type", "Type name", GH_ParamAccess.item);
             pManager.AddTextParameter("Levelbottom", "Level", "Level name", GH_ParamAccess.item);
-            optional.Add(pManager.AddPointParameter("SlopeTopPoint", "STop", "Slab Slope Top Point", GH_ParamAccess.item));
-            optional.Add(pManager.AddPointParameter("SlopeBottomPoint", "SBottom", "Slab Slope Bottom Point", GH_ParamAccess.item));
-            optional.Add(pManager.AddNumberParameter("Slope", "Slope", "Slope", GH_ParamAccess.item));
+            //optional.Add(pManager.AddPointParameter("SlopeTopPoint", "STop", "Slab Slope Top Point", GH_ParamAccess.item));
+            //optional.Add(pManager.AddPointParameter("SlopeBottomPoint", "SBottom", "Slab Slope Bottom Point", GH_ParamAccess.item));
+            //optional.Add(pManager.AddNumberParameter("Slope", "Slope", "Slope", GH_ParamAccess.item));
             optional.Add(pManager.AddBooleanParameter("Structural", "Structural", "is Slab Structural? [false]", GH_ParamAccess.item));
 
             optional.Add(pManager.AddGenericParameter("Parameters", "Param", "Parameters", GH_ParamAccess.list));
@@ -1250,21 +1250,21 @@ namespace Grevit.GrassHopper
             GH_String type = new GH_String("");
 
             GH_Boolean structural = new GH_Boolean(false); 
-            GH_Number slope = new GH_Number(0.0);
+            //GH_Number slope = new GH_Number(0.0);
             List<Parameter> parameters = new List<Parameter>();
             if (!DA.GetDataList<Parameter>("Parameters", parameters)) parameters = new List<Parameter>();
             DA.GetData<GH_Surface>("Surface", ref surface);
 
-            GH_Point slopeTopPoint = new GH_Point(surface.Value.Edges[0].PointAtStart);
-            GH_Point slopeBottomPoint = new GH_Point(surface.Value.Edges[0].PointAtEnd);
+            //GH_Point slopeTopPoint = new GH_Point(surface.Value.Edges[0].PointAtStart);
+            //GH_Point slopeBottomPoint = new GH_Point(surface.Value.Edges[0].PointAtEnd);
 
             //DA.GetData<GH_String>("Family", ref family);
-            //DA.GetData<GH_String>("Type", ref type);
+            DA.GetData<GH_String>("Type", ref type);
             DA.GetData<GH_String>("Levelbottom", ref level);
             DA.GetData<GH_Boolean>("Structural", ref structural);
-            DA.GetData<GH_Point>("SlopeTopPoint", ref slopeTopPoint);
-            DA.GetData<GH_Point>("SlopeBottomPoint", ref slopeBottomPoint);
-            DA.GetData<GH_Number>("Slope", ref slope);
+//            DA.GetData<GH_Point>("SlopeTopPoint", ref slopeTopPoint);
+//            DA.GetData<GH_Point>("SlopeBottomPoint", ref slopeBottomPoint);
+//            DA.GetData<GH_Number>("Slope", ref slope);
 
             
 
@@ -1287,9 +1287,9 @@ namespace Grevit.GrassHopper
             slab.surface.profile.Add(loop);
 
             slab.parameters = parameters;
-            slab.top = slopeTopPoint.ToGrevitPoint();
-            slab.bottom = slopeBottomPoint.ToGrevitPoint();
-            slab.slope = slope.Value;
+            //slab.top = slopeTopPoint.ToGrevitPoint();
+            //slab.bottom = slopeBottomPoint.ToGrevitPoint();
+            //slab.slope = slope.Value;
             slab.GID = this.InstanceGuid.ToString();
 
 
@@ -1383,7 +1383,7 @@ namespace Grevit.GrassHopper
         {
             get
             {
-                return new Guid("{5ea7ca3d-d271-4a4f-a777-4111beeb4b1d}");
+                return new Guid("{5ea7ca3d-d211-4a4f-a777-4111beeb4b1d}");
             }
         }
         protected override Bitmap Internal_Icon_24x24

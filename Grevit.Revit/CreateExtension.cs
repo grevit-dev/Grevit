@@ -772,23 +772,27 @@ namespace Grevit.Revit
                 foreach (Curve curve in Utilities.GrevitCurvesToRevitCurves(slab.surface.profile[0].outline[i])) curves.Add(curve);
             }
 
+            FloorType type = (FloorType)GrevitBuildModel.document.GetElementByName(typeof(Autodesk.Revit.DB.FloorType), slab.TypeOrLayer);
+
+            if (type == null) return null;
+
             // Get the two slope points
-            XYZ slopePointBottom = slab.bottom.ToXYZ();
-            XYZ slopeTopPoint = slab.top.ToXYZ();
+            XYZ slopePointBottom = curves[0].GetEndPoint(0);
+//            XYZ slopeTopPoint = slab.top.ToXYZ();
 
             // get a Z Value from an outline point to check if the slope points are in this plane
-            double outlineZCheckValue = curves[0].GetEndPoint(0).Z;
+//            double outlineZCheckValue = curves[0].GetEndPoint(0).Z;
 
             // If one of the points is not in the same Z plane
             // Create new points replacing the Z value
-            if (!slopePointBottom.Z.Equals(outlineZCheckValue) || !slopeTopPoint.Z.Equals(outlineZCheckValue))
-            {
-                slopePointBottom = new XYZ(slopePointBottom.X, slopePointBottom.Y, outlineZCheckValue);
-                slopeTopPoint = new XYZ(slopeTopPoint.X, slopeTopPoint.Y, outlineZCheckValue);
-            }
+ //           if (!slopePointBottom.Z.Equals(outlineZCheckValue) || !slopeTopPoint.Z.Equals(outlineZCheckValue))
+ //           {
+//                slopePointBottom = new XYZ(slopePointBottom.X, slopePointBottom.Y, outlineZCheckValue);
+//                slopeTopPoint = new XYZ(slopeTopPoint.X, slopeTopPoint.Y, outlineZCheckValue);
+//            }
 
             // Create a new slope line between the points
-            Autodesk.Revit.DB.Line slopeLine = Autodesk.Revit.DB.Line.CreateBound(slopePointBottom, slopeTopPoint);
+//            Autodesk.Revit.DB.Line slopeLine = Autodesk.Revit.DB.Line.CreateBound(slopePointBottom, slopeTopPoint);
 
             // Sort the outline curves contiguous
             Utilities.SortCurvesContiguous(GrevitBuildModel.document.Application.Create, curves);
@@ -802,7 +806,7 @@ namespace Grevit.Revit
             if (levelElement != null)
             {
                 // Create a new slab
-                return GrevitBuildModel.document.Create.NewSlab(outlineCurveArray, (Autodesk.Revit.DB.Level)levelElement, slopeLine, slab.slope, slab.structural);
+                return GrevitBuildModel.document.Create.NewFloor(outlineCurveArray, type, (Autodesk.Revit.DB.Level)levelElement, slab.structural);
             }
 
             return null;
@@ -839,10 +843,23 @@ namespace Grevit.Revit
                 Element levelElement = GrevitBuildModel.document.GetLevelByName(roof.levelbottom, slopePointBottom.Z);
                 if (levelElement != null)
                 {
-                    ModelCurveArray mapping = new ModelCurveArray();
-                    // Create a new slab
-                    return GrevitBuildModel.document.Create.NewFootPrintRoof(outlineCurveArray,
-                        (Autodesk.Revit.DB.Level)levelElement, type, out mapping);
+                    Element rvtRoof = null;
+
+                    if (GrevitBuildModel.existing_Elements.ContainsKey(roof.GID))
+                    {
+                        rvtRoof = GrevitBuildModel.document.GetElement(GrevitBuildModel.existing_Elements[roof.GID]);
+                    }
+                    else
+                    {
+                        
+                        ModelCurveArray mapping = new ModelCurveArray();
+                        // Create a new slab
+                        rvtRoof = GrevitBuildModel.document.Create.NewFootPrintRoof(outlineCurveArray,
+                            (Autodesk.Revit.DB.Level)levelElement, type, out mapping);
+                    }
+                    GrevitBuildModel.RoofShapePoints.Add(new Tuple<ElementId, CurveArray>(rvtRoof.Id, outlineCurveArray));
+
+                    return rvtRoof;
                 }
             }
 

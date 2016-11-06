@@ -137,6 +137,11 @@ namespace Grevit.Revit
         /// </summary>
         public static Dictionary<string, ElementId> existing_Elements;
 
+        /// <summary>
+        /// List for roof shape points to apply
+        /// </summary>
+        public static List<Tuple<ElementId, CurveArray>> RoofShapePoints;
+
         public static double Scale;
 
         /// <summary>
@@ -174,6 +179,7 @@ namespace Grevit.Revit
                 Scale = grevitClientDialog.componentCollection.scale;
             }
 
+            RoofShapePoints = new List<Tuple<ElementId,CurveArray>>();
 
 
             // Set up a List for stalled components (with References)
@@ -224,6 +230,61 @@ namespace Grevit.Revit
 
             trans.Commit();
             trans.Dispose();
+
+
+
+            foreach (Tuple<ElementId,CurveArray> rsp in RoofShapePoints)
+            {
+                if (rsp.Item1 != ElementId.InvalidElementId)
+                {
+                    Autodesk.Revit.DB.RoofBase roof = (Autodesk.Revit.DB.RoofBase)document.GetElement(rsp.Item1);
+                    if (roof != null)
+                    {
+                        if (roof.SlabShapeEditor != null)
+                        {
+                            if (roof.SlabShapeEditor.IsEnabled)
+                            {
+                                Transaction pp = new Transaction(GrevitBuildModel.document, "GrevitPostProcessing");
+                                pp.Start();
+                                roof.SlabShapeEditor.Enable(); 
+                                pp.Commit();
+                                pp.Dispose();
+                            }
+
+                            List<XYZ> points = new List<XYZ>();
+                            foreach (Curve c in rsp.Item2)
+                                points.Add(c.GetEndPoint(0));
+
+                            Transaction ppx = new Transaction(GrevitBuildModel.document, "GrevitPostProcessing");
+                            ppx.Start();
+
+                            foreach (SlabShapeVertex v in roof.SlabShapeEditor.SlabShapeVertices)
+                            { 
+                                double Zdiff = 0;
+
+                                foreach (XYZ pt in points)
+                                {
+                                    if (Math.Abs(v.Position.X - pt.X) < double.Epsilon
+                                        && Math.Abs(v.Position.Y - pt.Y) < double.Epsilon
+                                        && Math.Abs(v.Position.Z - pt.Z) > double.Epsilon)
+                                        Zdiff = pt.Z;
+                                }
+
+                                if (Zdiff != 0)
+                                    roof.SlabShapeEditor.ModifySubElement(v, Zdiff);
+                            }
+
+                            ppx.Commit();
+                            ppx.Dispose();
+                        
+                        }
+                    
+                    }
+                
+                }
+            }
+
+
 
             #endregion
 
