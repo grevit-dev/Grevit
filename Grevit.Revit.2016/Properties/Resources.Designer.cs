@@ -73,6 +73,16 @@ namespace Grevit.Revit.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap radio_button {
+            get {
+                object obj = ResourceManager.GetObject("radio_button", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap Skp {
             get {
                 object obj = ResourceManager.GetObject("Skp", resourceCulture);

@@ -111,12 +111,14 @@
     <Content Include="Grevit.Revit.addin">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\radio_button.png" />
     <None Include="Resources\Skp.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>copy $(TargetDir)*.dll $(SolutionDir)"Package\APPDATA_Autodesk_Revit_Addins_2016"
-copy $(TargetDir)*.addin $(SolutionDir)"Package\APPDATA_Autodesk_Revit_Addins_2016"</PostBuildEvent>
+copy $(TargetDir)*.addin $(SolutionDir)"Package\APPDATA_Autodesk_Revit_Addins_2016"
+copy $(TargetDir)*.dll %25AppData%25\Autodesk\Revit\Addins\2016</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

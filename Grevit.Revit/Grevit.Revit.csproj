@@ -98,6 +98,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
+    <None Include="Resources\radio_button.png" />
     <None Include="Resources\Skp.png" />
     <None Include="Resources\tag_hash.png" />
     <None Include="Resources\paper_airplane.png" />
