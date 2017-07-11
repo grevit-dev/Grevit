@@ -233,7 +233,9 @@ namespace Grevit.GrassHopper
         {
             List<int> optional = new List<int>();
 
-            pManager.AddGenericParameter("Components", "C", "Connect all your components here and don't forget to flatten.", GH_ParamAccess.list);
+            int a = pManager.AddGenericParameter("Components", "C", "Connect all your components here and don't forget to flatten.", GH_ParamAccess.list);
+            pManager[a].DataMapping = GH_DataMapping.Flatten;
+
             pManager.AddBooleanParameter("Send", "Send", "Add a button to send all components by one click.", GH_ParamAccess.item);
 
             optional.Add(pManager.AddTextParameter("IP", "IP", "IP Adress [127.0.0.1]", GH_ParamAccess.item));
