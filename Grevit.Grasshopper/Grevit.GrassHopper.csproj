@@ -249,6 +249,12 @@
   <ItemGroup>
     <None Include="Resources\filter.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\id.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\selection.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>move $(TargetDir)$(TargetFileName) $(TargetDir)$(TargetName).gha
