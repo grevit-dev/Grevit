@@ -253,7 +253,9 @@
   <PropertyGroup>
     <PostBuildEvent>move $(TargetDir)$(TargetFileName) $(TargetDir)$(TargetName).gha
 copy $(TargetDir)*.dll $(SolutionDir)Package\APPDATA_Grasshopper_Libraries
-copy $(TargetDir)*.gha $(SolutionDir)Package\APPDATA_Grasshopper_Libraries</PostBuildEvent>
+copy $(TargetDir)*.gha $(SolutionDir)Package\APPDATA_Grasshopper_Libraries
+copy $(TargetDir)*.dll %25AppData%25\Grasshopper\Libraries
+copy $(TargetDir)*.gha %25AppData%25\Grasshopper\Libraries</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
