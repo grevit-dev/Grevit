@@ -1168,5 +1168,42 @@ namespace Grevit.Revit
 
         }
 
+        public static Element Create(this Grevit.Types.FaceWall faceWall)
+        {
+            Reference reference = Reference.ParseFromStableRepresentation(GrevitBuildModel.document, faceWall.Reference);
+            if (reference == null) return null;
+
+            Element wallTypeElement = GrevitBuildModel.document.GetElementByName(typeof(Autodesk.Revit.DB.WallType), faceWall.TypeOrLayer);
+            if (wallTypeElement == null) return null;
+
+            WallLocationLine loc = WallLocationLine.CoreCenterline;
+            Enum.TryParse<WallLocationLine>(faceWall.Location, out loc);
+            var fw =  Autodesk.Revit.DB.FaceWall.Create(GrevitBuildModel.document, wallTypeElement.Id,loc, reference);
+            return fw;
+        }
+
+        public static Element Create(this Grevit.Types.SelectionSet selection)
+        {
+            SelectionFilterElement filter = (SelectionFilterElement)Utilities.GetElementByName(GrevitBuildModel.document, typeof(SelectionFilterElement), selection.Name);
+
+            if (filter == null || filter.Name != selection.Name)
+                filter = Autodesk.Revit.DB.SelectionFilterElement.Create(GrevitBuildModel.document, selection.Name);
+
+            List<ElementId> elements = new List<ElementId>();
+            foreach (string id in selection.IDs)
+            {
+                if (GrevitBuildModel.created_Elements.ContainsKey(id))
+                {
+                    ElementId eid = GrevitBuildModel.created_Elements[id];
+                    if (eid != ElementId.InvalidElementId)
+                    {
+                        elements.Add(eid);
+                    }
+                }
+            }
+
+            filter.SetElementIds(elements);
+            return filter;
+        }
     }
 }
