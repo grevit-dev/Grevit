@@ -514,6 +514,54 @@ namespace Grevit.GrassHopper
 
     }
 
+
+    public class GrevitID : GH_Component
+    {
+        public GrevitID() : base("Grevit ID", "GID", "Grevit ID", "Grevit", "Assemble") { }
+
+
+        protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
+        {
+            pManager.AddGenericParameter("GrevitComponent", "C", "Grevit Component", GH_ParamAccess.item);
+        }
+
+        protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
+        {
+            pManager.AddTextParameter("ID", "ID", "ID", GH_ParamAccess.item);
+        }
+
+        protected override void SolveInstance(IGH_DataAccess DA)
+        {
+            Grevit.Types.Component component = null;
+
+            DA.GetData<Grevit.Types.Component>("GrevitComponent", ref component);
+
+            if (component == null)
+                DA.SetData("ID", new GH_String(""));
+            else
+                DA.SetData("ID", new GH_String(component.GID));
+
+        }
+
+        // Properties
+        public override Guid ComponentGuid
+        {
+            get
+            {
+                return new Guid("{5ea7ce4d-d114-4d5f-a777-4583beeb5b5d}");
+            }
+        }
+        protected override Bitmap Internal_Icon_24x24
+        {
+            get
+            {
+                return Properties.Resources.id;
+            }
+        }
+
+
+    }
+
     /// <summary>
     /// Gets The Layer of a Rhino Element
     /// </summary>
