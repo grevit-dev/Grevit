@@ -906,6 +906,117 @@ namespace Grevit.GrassHopper
 
     }
 
+    public class G_FaceWall : GrevitGrasshopperComponent
+    {
+        public G_FaceWall() : base("Grevit Revit FaceWall", "Revit FaceWall", "Grevit Revit FaceWall", "Grevit", "Components Revit") { }
+
+        protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
+        {
+            List<int> optional = new List<int>();
+            pManager.AddTextParameter("StableReference", "Ref", "Stable Reference to the Face", GH_ParamAccess.item);
+            optional.Add(pManager.AddTextParameter("Type", "Type", "Type name", GH_ParamAccess.item));
+            optional.Add(pManager.AddTextParameter("Location", "Loc", "Wall Location", GH_ParamAccess.item));
+
+            optional.Add(pManager.AddGenericParameter("Parameters", "Param", "Parameters", GH_ParamAccess.list));
+
+            foreach (int a in optional) pManager[a].Optional = true;
+
+        }
+
+
+
+        protected override void SolveInstance(IGH_DataAccess DA)
+        {
+            GH_String reference = new GH_String("");
+            GH_String location = new GH_String("");
+            GH_String type = new GH_String("");
+
+            DA.GetData<GH_String>("StableReference", ref reference);
+            DA.GetData<GH_String>("Type", ref type);
+            DA.GetData<GH_String>("Location", ref location);
+
+            List<Parameter> parameters = new List<Parameter>();
+            if (!DA.GetDataList<Parameter>("Parameters", parameters)) parameters = new List<Parameter>();
+
+            FaceWall wall = new FaceWall(reference.Value, location.Value);
+            wall.TypeOrLayer = type.Value;
+
+            SetGID(wall);
+
+            DA.SetData("GrevitComponent", wall);
+        }
+
+
+        public override Guid ComponentGuid
+        {
+            get
+            {
+                return new Guid("{5ea7ca3d-d271-4a4f-a127-4322beeb2b1d}");
+            }
+        }
+        protected override Bitmap Internal_Icon_24x24
+        {
+            get
+            {
+                return Properties.Resources.Grevit_Wall;
+            }
+        }
+
+
+    }
+
+    public class G_SelectionSet : GrevitGrasshopperComponent
+    {
+        public G_SelectionSet() : base("Grevit Revit SelectionSet", "Revit SelectionSet", "Grevit Revit SelectionSet", "Grevit", "Components Revit") { }
+
+        protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
+        {
+            pManager.AddTextParameter("Name", "Name", "Name", GH_ParamAccess.item);
+            pManager.AddTextParameter("IDs", "IDs", "IDs", GH_ParamAccess.list);
+
+        }
+
+
+
+        protected override void SolveInstance(IGH_DataAccess DA)
+        {
+            GH_String name = new GH_String("");
+            List<GH_String> IDs = new List<GH_String>();
+
+            DA.GetData<GH_String>("Name", ref name);
+            DA.GetDataList<GH_String>("IDs", IDs);
+
+            List<string> data = new List<string>();
+            foreach (GH_String id in IDs)
+                data.Add(id.Value);
+
+            SelectionSet set = new SelectionSet(name.Value, data);
+            set.stalledForReference = true;
+
+            SetGID(set);
+
+            DA.SetData("GrevitComponent", set);
+        }
+
+
+        public override Guid ComponentGuid
+        {
+            get
+            {
+                return new Guid("{5ea7ca1d-d271-1a4f-a127-4322beeb2b1d}");
+            }
+        }
+        protected override Bitmap Internal_Icon_24x24
+        {
+            get
+            {
+                return Properties.Resources.selection;
+            }
+        }
+
+
+    }
+
     public class G_Extrusion : GrevitGrasshopperComponent
     {
         public G_Extrusion() : base("Grevit Revit Extrusion", "Revit Extrusion", "Grevit Revit Extrusion", "Grevit", "Components Revit") { }
