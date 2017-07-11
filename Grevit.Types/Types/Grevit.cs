@@ -39,6 +39,8 @@ namespace Grevit.Types
     [KnownType(typeof(Component))]
     [KnownType(typeof(Adaptive))]
     [KnownType(typeof(Wall))]
+    [KnownType(typeof(FaceWall))]
+    [KnownType(typeof(SelectionSet))]
     [KnownType(typeof(Roof))]
     [KnownType(typeof(Slab))]
     [KnownType(typeof(Rule))]
@@ -153,6 +155,42 @@ namespace Grevit.Types
         }
 
 
+    }
+
+    /// <summary>
+    /// Face Wall based on stable reference
+    /// </summary>
+    [DataContract]
+    public class FaceWall : Component
+    {
+        [DataMember]
+        public string Location { get; set; }
+
+        [DataMember]
+        public string Reference { get; set; }
+
+        public FaceWall(string reference, string location)
+        {
+            this.Reference = reference;
+            this.Location = location;
+        }
+    }
+
+
+    [DataContract]
+    public class SelectionSet : Component
+    {
+        [DataMember]
+        public string Name { get; set; }
+
+        [DataMember]
+        public List<string> IDs { get; set; }
+
+        public SelectionSet(string name, List<string> ids)
+        {
+            this.Name = name;
+            this.IDs = ids;
+        }
     }
 
     /// <summary>
