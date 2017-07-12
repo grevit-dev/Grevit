@@ -1205,5 +1205,30 @@ namespace Grevit.Revit
             filter.SetElementIds(elements);
             return filter;
         }
+
+        public static Element Create(this Grevit.Types.Shaft shaft)
+        {
+            List<Curve> curves = new List<Curve>();
+
+            // Translate Grevit Curves to Revit Curves
+            for (int i = 0; i < shaft.surface.profile[0].outline.Count; i++)
+            {
+                foreach (Curve curve in Utilities.GrevitCurvesToRevitCurves(shaft.surface.profile[0].outline[i]))
+                    curves.Add(curve);
+            }
+
+            Utilities.SortCurvesContiguous(GrevitBuildModel.document.Application.Create, curves);
+
+            // Create a new surve array for creating the slab
+            CurveArray outlineCurveArray = new CurveArray();
+            foreach (Curve c in curves) outlineCurveArray.Append(c);
+
+            var bottom = Utilities.GetLevelByName(GrevitBuildModel.document, shaft.levelbottom,0);
+            var top = Utilities.GetLevelByName(GrevitBuildModel.document, shaft.levelbottom,1000);
+
+            var opening = GrevitBuildModel.document.Create.NewOpening(bottom, top, outlineCurveArray);
+            return opening;
+        }
+
     }
 }

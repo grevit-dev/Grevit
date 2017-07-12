@@ -1428,6 +1428,80 @@ namespace Grevit.GrassHopper
 
     }
 
+    public class G_Shaft : GrevitGrasshopperComponent
+    {
+        public G_Shaft() : base("Grevit Revit Shaft", "Revit Shaft", "Grevit Revit Shaft", "Grevit", "Components Revit") { }
+
+        protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
+        {
+            List<int> optional = new List<int>();
+
+            pManager.AddSurfaceParameter("Surface", "S", "Shaft Surface", GH_ParamAccess.item);
+            pManager.AddTextParameter("Leveltop", "Top", "Top Level name", GH_ParamAccess.item);
+            pManager.AddTextParameter("Levelbottom", "Bottom", "Bottom Level name", GH_ParamAccess.item);
+
+            optional.Add(pManager.AddGenericParameter("Parameters", "Param", "Parameters", GH_ParamAccess.list));
+
+            foreach (int a in optional) pManager[a].Optional = true;
+        }
+
+        protected override void SolveInstance(IGH_DataAccess DA)
+        {
+            GH_Surface surface = new GH_Surface();
+            GH_String levelbottom = new GH_String();
+            GH_String leveltop = new GH_String("");
+
+            List<Parameter> parameters = new List<Parameter>();
+            if (!DA.GetDataList<Parameter>("Parameters", parameters)) parameters = new List<Parameter>();
+            DA.GetData<GH_Surface>("Surface", ref surface);
+            DA.GetData<GH_String>("Levelbottom", ref levelbottom);
+            DA.GetData<GH_String>("Leveltop", ref leveltop);
+
+
+
+
+            Shaft shaft = new Shaft();
+            shaft.levelbottom = levelbottom.Value;
+            shaft.leveltop = leveltop.Value;
+            shaft.surface = new Profile();
+            shaft.surface.profile = new List<Loop>();
+
+            Loop loop = new Loop();
+            loop.outline = new List<Component>();
+
+            foreach (Rhino.Geometry.BrepEdge be in surface.Value.Edges)
+            {
+                loop.outline.Add(be.ToNurbsCurve().ToGrevitCurve());
+            }
+
+            shaft.surface.profile.Add(loop);
+
+            shaft.parameters = parameters;
+            shaft.GID = this.InstanceGuid.ToString();
+
+            DA.SetData("GrevitComponent", shaft);
+        }
+
+
+        // Properties
+        public override Guid ComponentGuid
+        {
+            get
+            {
+                return new Guid("{5ea7ca3d-d231-4a3f-a373-4131beeb4b1d}");
+            }
+        }
+        protected override Bitmap Internal_Icon_24x24
+        {
+            get
+            {
+                return Properties.Resources.shaft;
+            }
+        }
+
+
+    }
+
     public class G_Roof : GrevitGrasshopperComponent
     {
         public G_Roof() : base("Grevit Revit Roof", "Revit Roof", "Grevit Revit Roof", "Grevit", "Components Revit") { }

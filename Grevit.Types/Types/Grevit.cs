@@ -43,6 +43,7 @@ namespace Grevit.Types
     [KnownType(typeof(SelectionSet))]
     [KnownType(typeof(Roof))]
     [KnownType(typeof(Slab))]
+    [KnownType(typeof(Shaft))]
     [KnownType(typeof(Rule))]
     [KnownType(typeof(Color))]
     [KnownType(typeof(Filter))]
@@ -384,6 +385,21 @@ namespace Grevit.Types
         public bool structural { get; set; }
 
 
+    }
+
+
+    /// <summary>
+    /// Shaft Component
+    /// </summary>
+    [DataContract]
+    public class Shaft : Component
+    {
+        [DataMember]
+        public Profile surface { get; set; }
+        [DataMember]
+        public string levelbottom { get; set; }
+        [DataMember]
+        public string leveltop { get; set; }
     }
 
     /// <summary>
