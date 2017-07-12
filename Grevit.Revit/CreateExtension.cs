@@ -1224,7 +1224,7 @@ namespace Grevit.Revit
             foreach (Curve c in curves) outlineCurveArray.Append(c);
 
             var bottom = Utilities.GetLevelByName(GrevitBuildModel.document, shaft.levelbottom,0);
-            var top = Utilities.GetLevelByName(GrevitBuildModel.document, shaft.levelbottom,1000);
+            var top = Utilities.GetLevelByName(GrevitBuildModel.document, shaft.leveltop,1000);
 
             var opening = GrevitBuildModel.document.Create.NewOpening(bottom, top, outlineCurveArray);
             return opening;
