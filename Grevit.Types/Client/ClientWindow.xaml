@@ -33,8 +33,8 @@
         </Grid.Effect>
         <Button x:Name="close" Content="Button" Height="16" Margin="0,20,20,0" Style="{DynamicResource ButtonStyle6}" VerticalAlignment="Top" Click="close_Click" HorizontalAlignment="Right" Width="16"/>
         <ListBox x:Name="protocol" Margin="20,90,20,30" BorderBrush="#FFE0E0E0" Foreground="#FF9B9B9B" FontFamily="Monospac821 BT"/>
-        <Image Margin="20,10,0,0" Source="/Grevit.Types;component/2015-07-31_17h18_36.png" Stretch="Fill" HorizontalAlignment="Left" Width="41" Height="38" VerticalAlignment="Top"/>
         <TextBlock x:Name="title" Margin="20,60,20,0" TextWrapping="Wrap" Text="Receiving Model" VerticalAlignment="Top" Foreground="#FF666666" FontFamily="Calibri" FontSize="16" Height="25" FontWeight="Bold"/>
+        <Image x:Name="___Grevit_Types_component_Icon_64_png" Margin="20,10,399,229" Source="/Grevit.Types;component/Icon-64.png" Stretch="Fill"/>
 
     </Grid>
 </Window>

@@ -56,9 +56,10 @@
         </Grid.Effect>
         <Button x:Name="close" Content="Button" Height="16" Margin="0,20,20,0" Style="{DynamicResource ButtonStyle6}" VerticalAlignment="Top" Click="close_Click" HorizontalAlignment="Right" Width="16"/>
         <TextBlock x:Name="title" Margin="20,60,20,0" TextWrapping="Wrap" Text="Title" VerticalAlignment="Top" Foreground="#FF666666" FontFamily="Calibri" FontSize="16" Height="25" FontWeight="Bold"/>
-        <Image Margin="20,10,0,0" Source="/Grevit.Types;component/2015-07-31_17h18_36.png" Stretch="Fill" HorizontalAlignment="Left" Width="41" Height="38" VerticalAlignment="Top"/>
         <TextBlock x:Name="content" Margin="20,90,20,70" TextWrapping="Wrap" Text="Message" Foreground="#FF666666" FontFamily="Calibri" FontSize="13"/>
         <Button x:Name="okButton" Content="Button" Height="16" Margin="0,0,20,30" Style="{DynamicResource okButtonStyle}" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="16" Click="okButton_Click"/>
+        <Image x:Name="___Grevit_Types_component_Icon_64_png" Margin="20,10,479,279" Source="/Grevit.Types;component/Icon-64.png" Stretch="Fill"/>
+        <TextBox x:Name="textBox" Margin="20,90,20,70" TextWrapping="Wrap" Text="TextBox" IsReadOnly="True" Visibility="Hidden"/>
 
     </Grid>
 </Window>

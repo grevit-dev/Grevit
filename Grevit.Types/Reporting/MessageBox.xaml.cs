@@ -54,10 +54,25 @@ namespace Grevit.Reporting
             MessageBox window = new MessageBox();
             window.title.Text = title;
             window.content.Text = content;
+            window.textBox.Visibility = Visibility.Hidden;
 
             if (window.ShowDialog().Value == true) 
                 return true;
             else 
+                return false;
+        }
+
+        public static bool ShowInTextBox(string title, string content)
+        {
+            MessageBox window = new MessageBox();
+            window.title.Text = title;
+            window.content.Visibility = Visibility.Hidden;
+            window.textBox.Visibility = Visibility.Visible;
+            window.textBox.Text = content;
+
+            if (window.ShowDialog().Value == true)
+                return true;
+            else
                 return false;
         }
 
