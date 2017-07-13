@@ -51,6 +51,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_40D1EDCEDD8DC8BF18D854DADCE709D3"
+        "OwnerKey" = "8:_436C7ABF97EF43B2B84643E6B39F0DCA"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_436C7ABF97EF43B2B84643E6B39F0DCA"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -101,12 +107,6 @@
         {
         "MsmKey" = "8:_75677103AB8F47398E6301D26D8B1DD0"
         "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_78F4617CC90A151DAF2C6384015FCF02"
-        "OwnerKey" = "8:_436C7ABF97EF43B2B84643E6B39F0DCA"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -202,24 +202,6 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_4CFD5DD2B7E54194AA500BD5D9BF0D33"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_436C7ABF97EF43B2B84643E6B39F0DCA"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_78F4617CC90A151DAF2C6384015FCF02"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_FD89AE6FA6E3437CA275EB73D30E5745"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -269,6 +251,18 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_4DC9C4EC665E4B4C87FA71B80A5EB2BB"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_4CFD5DD2B7E54194AA500BD5D9BF0D33"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_436C7ABF97EF43B2B84643E6B39F0DCA"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -452,7 +446,7 @@
             "SharedLegacy" = "11:FALSE"
             "PackageAs" = "3:1"
             "Register" = "3:1"
-            "Exclude" = "11:TRUE"
+            "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
@@ -711,37 +705,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_78F4617CC90A151DAF2C6384015FCF02"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Grevit.Types, Version=0.8.3.0, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_78F4617CC90A151DAF2C6384015FCF02"
-                    {
-                    "Name" = "8:Grevit.Types.DLL"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:Grevit.Types.DLL"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_6B31E17BE5684E9D9675B7F7443F8162"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:TRUE"
-            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7D5847E6EC8C452BAFE7115A5897FA2B"
@@ -1322,15 +1285,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:GrevitInstaller"
-        "ProductCode" = "8:{8FA498A4-2C0B-42DE-B50D-4A5FF5AC8EBE}"
-        "PackageCode" = "8:{FA5022A7-E6E6-4689-B762-B6CB1ED5EA6F}"
+        "ProductCode" = "8:{7B9848DE-9507-4233-9515-3D14006405C6}"
+        "PackageCode" = "8:{D97DEEDC-802C-4833-9340-4476042E9F0D}"
         "UpgradeCode" = "8:{5306D090-1AD9-4AE8-BDCA-A9725C3D3642}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.0"
+        "ProductVersion" = "8:1.1.0"
         "Manufacturer" = "8:Grevit"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
