@@ -179,8 +179,15 @@ namespace Grevit.Revit
         /// </summary>
 #if (Revit2016)
         public static string Version = "2016";
-#else
+#endif
+#if (Revit2015)
         public static string Version = "2015";
+#endif
+#if (Revit2017)
+        public static string Version = "2017";
+#endif
+#if (Revit2018)
+        public static string Version = "2018";
 #endif
         /// <summary>
         /// Revit Template Folder for creating template based family instances
