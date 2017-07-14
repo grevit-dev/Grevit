@@ -238,7 +238,11 @@ namespace Grevit.Revit
                 Spline spline = (Spline)component;
                 IList<XYZ> points = new List<XYZ>();
                 foreach (Grevit.Types.Point point in spline.controlPoints) points.Add(point.ToXYZ(coords));
+#if (!Revit2018)
                 NurbSpline ns = NurbSpline.Create(points, spline.weights);
+#else
+                NurbSpline ns = (NurbSpline)NurbSpline.CreateCurve(points, spline.weights);
+#endif
                 ns.isClosed = spline.isClosed;
                 curvesOut.Add(ns);
             }
@@ -418,17 +422,17 @@ namespace Grevit.Revit
             // If Z Values are equal the Plane is XY
             if (startPoint.Z == endPoint.Z)
             {
-                plane = document.Application.Create.NewPlane(XYZ.BasisZ, startPoint);
+                plane = CreatePlane(document,XYZ.BasisZ, startPoint);
             }
             // If X Values are equal the Plane is YZ
             else if (startPoint.X == endPoint.X)
             {
-                plane = document.Application.Create.NewPlane(XYZ.BasisX, startPoint);
+                plane = CreatePlane(document,XYZ.BasisX, startPoint);
             }
             // If Y Values are equal the Plane is XZ
             else if (startPoint.Y == endPoint.Y)
             {
-                plane = document.Application.Create.NewPlane(XYZ.BasisY, startPoint);
+                plane = CreatePlane(document,XYZ.BasisY, startPoint);
             }
             // Otherwise the Planes Normal Vector is not X,Y or Z.
             // We draw lines from the Origin to each Point and use the Plane this one spans up.
@@ -438,7 +442,11 @@ namespace Grevit.Revit
                 curves.Append(curve);
                 curves.Append(Autodesk.Revit.DB.Line.CreateBound(new XYZ(0, 0, 0), startPoint));
                 curves.Append(Autodesk.Revit.DB.Line.CreateBound(endPoint, new XYZ(0, 0, 0)));
+#if (!Revit2018)
                 plane = document.Application.Create.NewPlane(curves);
+#else
+                plane = Plane.CreateByThreePoints(startPoint, new XYZ(0, 0, 0), endPoint);
+#endif
             }
 
 
@@ -464,6 +472,14 @@ namespace Grevit.Revit
                 return new XYZ(p.x * GrevitBuildModel.Scale, p.y * GrevitBuildModel.Scale, p.z * GrevitBuildModel.Scale);
         }
 
+        public static Plane CreatePlane(Document document, XYZ basis, XYZ startPoint)
+        {
+#if (!Revit2018)
+            return document.Application.Create.NewPlane(basis, startPoint);
+#else
+            return Plane.CreateByNormalAndOrigin(basis, startPoint);
+#endif
+        }
 
         /// <summary>
         /// Gets an Element by Class and Name

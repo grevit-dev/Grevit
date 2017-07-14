@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Grevit.Types", "Grevit.Types\Grevit.Types.csproj", "{4E16464A-4495-4A27-B810-A54F9CE3D191}"
 EndProject
@@ -24,6 +24,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Grevit.PDF", "Grevit.PDF\Grevit.PDF.csproj", "{92BBF3EB-C3CC-4779-B172-CA87C78B0FA0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Grevit.Revit.2017", "Grevit.Revit.2017\Grevit.Revit.2017.csproj", "{0997B88A-23F6-446D-BEC7-CB68AC05F820}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Grevit.Revit.2018", "Grevit.Revit.2018\Grevit.Revit.2018.csproj", "{4DA1BFFF-AFC7-4012-A241-ED5F7CDF1945}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -99,6 +101,14 @@ Global
 		{0997B88A-23F6-446D-BEC7-CB68AC05F820}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0997B88A-23F6-446D-BEC7-CB68AC05F820}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0997B88A-23F6-446D-BEC7-CB68AC05F820}.Release|x64.ActiveCfg = Release|Any CPU
+		{4DA1BFFF-AFC7-4012-A241-ED5F7CDF1945}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4DA1BFFF-AFC7-4012-A241-ED5F7CDF1945}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4DA1BFFF-AFC7-4012-A241-ED5F7CDF1945}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{4DA1BFFF-AFC7-4012-A241-ED5F7CDF1945}.Debug|x64.Build.0 = Debug|Any CPU
+		{4DA1BFFF-AFC7-4012-A241-ED5F7CDF1945}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4DA1BFFF-AFC7-4012-A241-ED5F7CDF1945}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4DA1BFFF-AFC7-4012-A241-ED5F7CDF1945}.Release|x64.ActiveCfg = Release|Any CPU
+		{4DA1BFFF-AFC7-4012-A241-ED5F7CDF1945}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -112,5 +122,6 @@ Global
 		{2891A8C7-84E9-414C-987A-B1ED73802203} = {C4D07AA9-402E-41C4-BFAD-9FA21646A621}
 		{92BBF3EB-C3CC-4779-B172-CA87C78B0FA0} = {C4D07AA9-402E-41C4-BFAD-9FA21646A621}
 		{0997B88A-23F6-446D-BEC7-CB68AC05F820} = {C4D07AA9-402E-41C4-BFAD-9FA21646A621}
+		{4DA1BFFF-AFC7-4012-A241-ED5F7CDF1945} = {C4D07AA9-402E-41C4-BFAD-9FA21646A621}
 	EndGlobalSection
 EndGlobal
