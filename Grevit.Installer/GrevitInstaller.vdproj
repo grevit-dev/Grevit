@@ -70,6 +70,12 @@
         "Entry"
         {
         "MsmKey" = "8:_5826FAF915A5B6A3540C799587EB3813"
+        "OwnerKey" = "8:_FAFBD3D59A484C09875AA1806D8A9161"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_5826FAF915A5B6A3540C799587EB3813"
         "OwnerKey" = "8:_6DE58A175D254498A7483B66217D2A78"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -220,25 +226,19 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_E6A87AF7DB3744588AEB8BB0F030F6A7"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_2A636CA388424A3E8B4CF516CE5EF538"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_BAABF99FF6FDB29A041E796627B8E4CA"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_FD89AE6FA6E3437CA275EB73D30E5745"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_FAFBD3D59A484C09875AA1806D8A9161"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_E6A87AF7DB3744588AEB8BB0F030F6A7"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -280,6 +280,12 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_5492D0A1748F4F23AF1FB319577D6298"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_4CFD5DD2B7E54194AA500BD5D9BF0D33"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -311,6 +317,18 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_A306B8EEC034D1B160CECAE76EF4E2DF"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_2A636CA388424A3E8B4CF516CE5EF538"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_BAABF99FF6FDB29A041E796627B8E4CA"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -600,6 +618,11 @@
             "AssemblyAsmDisplayName" = "8:Grevit.Types, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_5492D0A1748F4F23AF1FB319577D6298"
+                    {
+                    "Name" = "8:Grevit.Types.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:..\\Package\\APPDATA_Autodesk_Revit_Addins_2018\\Grevit.Types.dll"
             "TargetName" = "8:"
@@ -666,7 +689,7 @@
             "SharedLegacy" = "11:FALSE"
             "PackageAs" = "3:1"
             "Register" = "3:1"
-            "Exclude" = "11:TRUE"
+            "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
@@ -850,7 +873,7 @@
             "SharedLegacy" = "11:FALSE"
             "PackageAs" = "3:1"
             "Register" = "3:1"
-            "Exclude" = "11:TRUE"
+            "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
@@ -972,7 +995,7 @@
             "SharedLegacy" = "11:FALSE"
             "PackageAs" = "3:1"
             "Register" = "3:1"
-            "Exclude" = "11:TRUE"
+            "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
@@ -1167,6 +1190,11 @@
             "AssemblyAsmDisplayName" = "8:Grevit.Revit, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_FAFBD3D59A484C09875AA1806D8A9161"
+                    {
+                    "Name" = "8:Grevit.Revit.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:..\\Package\\APPDATA_Autodesk_Revit_Addins_2018\\Grevit.Revit.dll"
             "TargetName" = "8:"
@@ -1460,15 +1488,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:GrevitInstaller"
-        "ProductCode" = "8:{7B9848DE-9507-4233-9515-3D14006405C6}"
-        "PackageCode" = "8:{D97DEEDC-802C-4833-9340-4476042E9F0D}"
+        "ProductCode" = "8:{731B6353-8CF3-4873-A848-673807A77E44}"
+        "PackageCode" = "8:{5EBA3E43-320B-4670-A1B1-9130F446281E}"
         "UpgradeCode" = "8:{5306D090-1AD9-4AE8-BDCA-A9725C3D3642}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.1.0"
+        "ProductVersion" = "8:1.2.0"
         "Manufacturer" = "8:Grevit"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
