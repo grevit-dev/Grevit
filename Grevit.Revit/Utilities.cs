@@ -238,7 +238,7 @@ namespace Grevit.Revit
                 Spline spline = (Spline)component;
                 IList<XYZ> points = new List<XYZ>();
                 foreach (Grevit.Types.Point point in spline.controlPoints) points.Add(point.ToXYZ(coords));
-#if (!Revit2018)
+#if (Revit2015 || Revit2016 || Revit2017)
                 NurbSpline ns = NurbSpline.Create(points, spline.weights);
 #else
                 NurbSpline ns = (NurbSpline)NurbSpline.CreateCurve(points, spline.weights);
@@ -442,7 +442,7 @@ namespace Grevit.Revit
                 curves.Append(curve);
                 curves.Append(Autodesk.Revit.DB.Line.CreateBound(new XYZ(0, 0, 0), startPoint));
                 curves.Append(Autodesk.Revit.DB.Line.CreateBound(endPoint, new XYZ(0, 0, 0)));
-#if (!Revit2018)
+#if (Revit2015 || Revit2016 || Revit2017)
                 plane = document.Application.Create.NewPlane(curves);
 #else
                 plane = Plane.CreateByThreePoints(startPoint, new XYZ(0, 0, 0), endPoint);
@@ -474,7 +474,7 @@ namespace Grevit.Revit
 
         public static Plane CreatePlane(Document document, XYZ basis, XYZ startPoint)
         {
-#if (!Revit2018)
+#if (Revit2015 || Revit2016 || Revit2017)
             return document.Application.Create.NewPlane(basis, startPoint);
 #else
             return Plane.CreateByNormalAndOrigin(basis, startPoint);

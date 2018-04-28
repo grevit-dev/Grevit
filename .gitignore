@@ -232,3 +232,5 @@ $RECYCLE.BIN/
 .vs/Grevit/v15/Server/sqlite3/storage.ide-wal
 .vs/Grevit/v15/Server/sqlite3/db.lock
 .vs/Grevit/v15/Server/sqlite3/storage.ide
+
+\.vs/Grevit/v15/Server/sqlite3/storage\.ide-shm
