@@ -92,6 +92,16 @@ namespace Grevit.Revit
 
             getFaceRefButton.SetContextualHelp(new ContextualHelp(ContextualHelpType.Url, "http://grevit.net/"));
 
+            PushButton speckleButton = grevitPanel.AddItem( new PushButtonData( "Speckle", "Speckle", path, "Grevit.Revit.GrevitFaceReference" ) ) as PushButton;
+
+            speckleButton.LargeImage = System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(
+                Properties.Resources.radio_button.GetHbitmap(),
+                IntPtr.Zero,
+                System.Windows.Int32Rect.Empty,
+                BitmapSizeOptions.FromWidthAndHeight( 32, 32 ) );
+
+            speckleButton.SetContextualHelp( new ContextualHelp( ContextualHelpType.Url, "https://github.com/speckleworks/Grevit" ) );
+
             return Result.Succeeded;
         }
 
