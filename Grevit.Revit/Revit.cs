@@ -93,9 +93,9 @@ namespace Grevit.Revit
             getFaceRefButton.SetContextualHelp(new ContextualHelp(ContextualHelpType.Url, "http://grevit.net/"));
 
             PushButton speckleButton = grevitPanel.AddItem( new PushButtonData( "Speckle", "Speckle", path, "Grevit.Revit.GrevitFaceReference" ) ) as PushButton;
-
+            
             speckleButton.LargeImage = System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(
-                Properties.Resources.radio_button.GetHbitmap(),
+                Properties.Resources.speckle.GetHbitmap(),
                 IntPtr.Zero,
                 System.Windows.Int32Rect.Empty,
                 BitmapSizeOptions.FromWidthAndHeight( 32, 32 ) );

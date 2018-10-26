@@ -88,6 +88,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
+    <None Include="Resources\2xlogo%404x.png" />
     <None Include="Resources\radio_button.png" />
     <None Include="Resources\tag_hash.png" />
     <None Include="Resources\Skp.png" />

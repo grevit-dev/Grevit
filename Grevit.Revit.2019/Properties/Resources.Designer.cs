@@ -93,6 +93,16 @@ namespace Grevit.Revit.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap speckle {
+            get {
+                object obj = ResourceManager.GetObject("speckle", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap tag_hash {
             get {
                 object obj = ResourceManager.GetObject("tag_hash", resourceCulture);

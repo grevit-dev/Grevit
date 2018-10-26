@@ -1,129 +1,130 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-    <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
-    <PropertyGroup>
-        <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-        <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-        <ProjectGuid>{4DA1BFFF-AFC7-4012-A241-ED5F7CDF1945}</ProjectGuid>
-        <OutputType>Library</OutputType>
-        <AppDesignerFolder>Properties</AppDesignerFolder>
-        <RootNamespace>Grevit.Revit</RootNamespace>
-        <AssemblyName>Grevit.Revit</AssemblyName>
-        <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
-        <FileAlignment>512</FileAlignment>
-        <TargetFrameworkProfile />
-    </PropertyGroup>
-    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-        <DebugSymbols>true</DebugSymbols>
-        <DebugType>full</DebugType>
-        <Optimize>false</Optimize>
-        <OutputPath>bin\Debug\</OutputPath>
-        <DefineConstants>TRACE;DEBUG;Revit2018</DefineConstants>
-        <ErrorReport>prompt</ErrorReport>
-        <WarningLevel>4</WarningLevel>
-    </PropertyGroup>
-    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-        <DebugType>pdbonly</DebugType>
-        <Optimize>true</Optimize>
-        <OutputPath>bin\Release\</OutputPath>
-        <DefineConstants>TRACE</DefineConstants>
-        <ErrorReport>prompt</ErrorReport>
-        <WarningLevel>4</WarningLevel>
-    </PropertyGroup>
-    <ItemGroup>
-        <Reference Include="PresentationCore" />
-        <Reference Include="PresentationFramework" />
-        <Reference Include="RevitAPI">
-            <HintPath>C:\Program Files\Autodesk\Revit 2018\RevitAPI.dll</HintPath>
-            <Private>False</Private>
-        </Reference>
-        <Reference Include="RevitAPIUI">
-            <HintPath>C:\Program Files\Autodesk\Revit 2018\RevitAPIUI.dll</HintPath>
-            <Private>False</Private>
-        </Reference>
-        <Reference Include="System" />
-        <Reference Include="System.Core" />
-        <Reference Include="System.Drawing" />
-        <Reference Include="System.Windows.Forms" />
-        <Reference Include="System.Xaml" />
-        <Reference Include="System.Xml.Linq" />
-        <Reference Include="System.Data.DataSetExtensions" />
-        <Reference Include="Microsoft.CSharp" />
-        <Reference Include="System.Data" />
-        <Reference Include="System.Xml" />
-        <Reference Include="WindowsBase" />
-    </ItemGroup>
-    <ItemGroup>
-        <Compile Include="..\Grevit.Revit\ComponentExtension.cs">
-            <Link>ComponentExtension.cs</Link>
-        </Compile>
-        <Compile Include="..\Grevit.Revit\CreateExtension.cs">
-            <Link>CreateExtension.cs</Link>
-        </Compile>
-        <Compile Include="..\Grevit.Revit\ParameterExtension.cs">
-            <Link>ParameterExtension.cs</Link>
-        </Compile>
-        <Compile Include="..\Grevit.Revit\ParameterList.cs">
-            <Link>ParameterList.cs</Link>
-            <SubType>Form</SubType>
-        </Compile>
-        <Compile Include="..\Grevit.Revit\ParameterList.Designer.cs">
-            <Link>ParameterList.Designer.cs</Link>
-        </Compile>
-        <Compile Include="..\Grevit.Revit\Revit.cs">
-            <Link>Revit.cs</Link>
-        </Compile>
-        <Compile Include="..\Grevit.Revit\Utilities.cs">
-            <Link>Utilities.cs</Link>
-        </Compile>
-        <Compile Include="Properties\AssemblyInfo.cs" />
-        <Compile Include="Properties\Resources.Designer.cs">
-            <AutoGen>True</AutoGen>
-            <DesignTime>True</DesignTime>
-            <DependentUpon>Resources.resx</DependentUpon>
-        </Compile>
-    </ItemGroup>
-    <ItemGroup>
-        <Content Include="Grevit.Revit.addin">
-            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-            <SubType>Designer</SubType>
-        </Content>
-        <None Include="Resources\radio_button.png" />
-        <None Include="Resources\tag_hash.png" />
-        <None Include="Resources\Skp.png" />
-        <None Include="Resources\paper_airplane.png" />
-    </ItemGroup>
-    <ItemGroup>
-        <EmbeddedResource Include="..\Grevit.Revit\ParameterList.resx">
-            <Link>ParameterList.resx</Link>
-        </EmbeddedResource>
-        <EmbeddedResource Include="Properties\Resources.resx">
-            <Generator>ResXFileCodeGenerator</Generator>
-            <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-        </EmbeddedResource>
-    </ItemGroup>
-    <ItemGroup>
-        <ProjectReference Include="..\Grevit.Types\Grevit.Types.csproj">
-            <Project>{4e16464a-4495-4a27-b810-a54f9ce3d191}</Project>
-            <Name>Grevit.Types</Name>
-        </ProjectReference>
-    </ItemGroup>
-    <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-    <PropertyGroup>
-        <!--         <PostBuildEvent>
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4DA1BFFF-AFC7-4012-A241-ED5F7CDF1945}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Grevit.Revit</RootNamespace>
+    <AssemblyName>Grevit.Revit</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;Revit2018</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="RevitAPI">
+      <HintPath>C:\Program Files\Autodesk\Revit 2018\RevitAPI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="RevitAPIUI">
+      <HintPath>C:\Program Files\Autodesk\Revit 2018\RevitAPIUI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Grevit.Revit\ComponentExtension.cs">
+      <Link>ComponentExtension.cs</Link>
+    </Compile>
+    <Compile Include="..\Grevit.Revit\CreateExtension.cs">
+      <Link>CreateExtension.cs</Link>
+    </Compile>
+    <Compile Include="..\Grevit.Revit\ParameterExtension.cs">
+      <Link>ParameterExtension.cs</Link>
+    </Compile>
+    <Compile Include="..\Grevit.Revit\ParameterList.cs">
+      <Link>ParameterList.cs</Link>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="..\Grevit.Revit\ParameterList.Designer.cs">
+      <Link>ParameterList.Designer.cs</Link>
+    </Compile>
+    <Compile Include="..\Grevit.Revit\Revit.cs">
+      <Link>Revit.cs</Link>
+    </Compile>
+    <Compile Include="..\Grevit.Revit\Utilities.cs">
+      <Link>Utilities.cs</Link>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Grevit.Revit.addin">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="Resources\2xlogo%404x.png" />
+    <None Include="Resources\radio_button.png" />
+    <None Include="Resources\tag_hash.png" />
+    <None Include="Resources\Skp.png" />
+    <None Include="Resources\paper_airplane.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\Grevit.Revit\ParameterList.resx">
+      <Link>ParameterList.resx</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Grevit.Types\Grevit.Types.csproj">
+      <Project>{4e16464a-4495-4a27-b810-a54f9ce3d191}</Project>
+      <Name>Grevit.Types</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <!--         <PostBuildEvent>
             copy $(TargetDir)*.dll "$(SolutionDir)Package\APPDATA_Autodesk_Revit_Addins_2018"
             copy $(TargetDir)*.addin "$(SolutionDir)Package\APPDATA_Autodesk_Revit_Addins_2018"
             copy $(TargetDir)*.dll %25AppData%25\Autodesk\Revit\Addins\2018
         </PostBuildEvent> -->
-    </PropertyGroup>
-    <Target Name="AfterBuild">
-        <MakeDir Directories="$(AppData)\Autodesk\REVIT\Addins\2018\Grevit" />
-        <Copy SourceFiles="$(ProjectDir)Grevit.Revit.addin" DestinationFolder="$(AppData)\Autodesk\REVIT\Addins\2018" />
-        <ItemGroup>
-            <MySourceFiles Include="$(TargetDir)\**\*.*" />
-        </ItemGroup>
-        <Copy SourceFiles="@(MySourceFiles)" DestinationFiles="@(MySourceFiles->'$(AppData)\Autodesk\REVIT\Addins\2018\Grevit\%(RecursiveDir)%(Filename)%(Extension)')">
-            <Output TaskParameter="CopiedFiles" ItemName="SuccessfullyCopiedFiles" />
-        </Copy>
-    </Target>
+  </PropertyGroup>
+  <Target Name="AfterBuild">
+    <MakeDir Directories="$(AppData)\Autodesk\REVIT\Addins\2018\Grevit" />
+    <Copy SourceFiles="$(ProjectDir)Grevit.Revit.addin" DestinationFolder="$(AppData)\Autodesk\REVIT\Addins\2018" />
+    <ItemGroup>
+      <MySourceFiles Include="$(TargetDir)\**\*.*" />
+    </ItemGroup>
+    <Copy SourceFiles="@(MySourceFiles)" DestinationFiles="@(MySourceFiles->'$(AppData)\Autodesk\REVIT\Addins\2018\Grevit\%(RecursiveDir)%(Filename)%(Extension)')">
+      <Output TaskParameter="CopiedFiles" ItemName="SuccessfullyCopiedFiles" />
+    </Copy>
+  </Target>
 </Project>
