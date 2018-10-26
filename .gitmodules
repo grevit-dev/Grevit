@@ -1,0 +1,3 @@
+[submodule "SpeckleCore"]
+	path = SpeckleCore
+	url = https://github.com/speckleworks/SpeckleCore.git

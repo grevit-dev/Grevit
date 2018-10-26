@@ -105,7 +105,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
-    <None Include="Resources\Image1.bmp" />
     <None Include="Resources\2xlogo%404x.png" />
     <None Include="Resources\radio_button.png" />
     <None Include="Resources\Skp.png" />
@@ -125,6 +124,10 @@
     <ProjectReference Include="..\Grevit.Types\Grevit.Types.csproj">
       <Project>{4e16464a-4495-4a27-b810-a54f9ce3d191}</Project>
       <Name>Grevit.Types</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SpeckleCore\SpeckleCore\SpeckleCore.csproj">
+      <Project>{cfe27d3d-8a1a-43f9-9387-8fd9e119e174}</Project>
+      <Name>SpeckleCore</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

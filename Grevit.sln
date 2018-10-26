@@ -34,6 +34,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpeckleCore", "SpeckleCore\SpeckleCore\SpeckleCore.csproj", "{CFE27D3D-8A1A-43F9-9387-8FD9E119E174}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -124,6 +126,14 @@ Global
 		{09ABEC87-E1BF-4A05-9D6B-AB0F1A5428C8}.Release|Any CPU.Build.0 = Debug|Any CPU
 		{09ABEC87-E1BF-4A05-9D6B-AB0F1A5428C8}.Release|x64.ActiveCfg = Release|Any CPU
 		{09ABEC87-E1BF-4A05-9D6B-AB0F1A5428C8}.Release|x64.Build.0 = Release|Any CPU
+		{CFE27D3D-8A1A-43F9-9387-8FD9E119E174}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFE27D3D-8A1A-43F9-9387-8FD9E119E174}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFE27D3D-8A1A-43F9-9387-8FD9E119E174}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{CFE27D3D-8A1A-43F9-9387-8FD9E119E174}.Debug|x64.Build.0 = Debug|Any CPU
+		{CFE27D3D-8A1A-43F9-9387-8FD9E119E174}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFE27D3D-8A1A-43F9-9387-8FD9E119E174}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFE27D3D-8A1A-43F9-9387-8FD9E119E174}.Release|x64.ActiveCfg = Release|Any CPU
+		{CFE27D3D-8A1A-43F9-9387-8FD9E119E174}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -139,6 +149,7 @@ Global
 		{0997B88A-23F6-446D-BEC7-CB68AC05F820} = {C4D07AA9-402E-41C4-BFAD-9FA21646A621}
 		{4DA1BFFF-AFC7-4012-A241-ED5F7CDF1945} = {C4D07AA9-402E-41C4-BFAD-9FA21646A621}
 		{09ABEC87-E1BF-4A05-9D6B-AB0F1A5428C8} = {C4D07AA9-402E-41C4-BFAD-9FA21646A621}
+		{CFE27D3D-8A1A-43F9-9387-8FD9E119E174} = {E2C92A33-0613-453A-BF85-C934E2099A6C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E692DC88-C969-4267-B377-87AEAFCA44A3}
