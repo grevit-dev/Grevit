@@ -195,7 +195,7 @@ namespace Grevit.Revit
         /// <summary>
         /// Revit Template Folder for creating template based family instances
         /// </summary>
-        public static string RevitTemplateFolder = String.Format(@"C:\ProgramData\Autodesk\RAC {0}\Family Templates\English",Version);
+        public static string RevitTemplateFolder = String.Format(@"C:\ProgramData\Autodesk\RAC {0}\Family Templates\English", Version);
 
         public Result BuildModel(Grevit.Types.ComponentCollection components)
         {

@@ -2,7 +2,7 @@
 <RevitAddIns>
   <AddIn Type="Application">
     <Name>Grevit</Name>
-    <Assembly>Grevit.Revit.dll</Assembly>
+    <Assembly>Grevit\Grevit.Revit.dll</Assembly>
     <FullClassName>Grevit.Revit.GrevitUI</FullClassName>
     <ClientId>ee5e6c73-6907-46e7-b588-1845bc7d0d3f</ClientId>
     <VendorId>Grevit.net</VendorId>

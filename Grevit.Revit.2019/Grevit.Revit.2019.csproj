@@ -34,11 +34,11 @@
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="RevitAPI">
-      <HintPath>..\..\..\..\..\..\Program Files\Autodesk\Revit 2019\RevitAPI.dll</HintPath>
+      <HintPath>C:\Program Files\Autodesk\Revit 2019\RevitAPI.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="RevitAPIUI">
-      <HintPath>..\..\..\..\..\..\Program Files\Autodesk\Revit 2019\RevitAPIUI.dll</HintPath>
+      <HintPath>C:\Program Files\Autodesk\Revit 2019\RevitAPIUI.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
@@ -86,6 +86,7 @@
   <ItemGroup>
     <Content Include="Grevit.Revit.addin">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
     <None Include="Resources\radio_button.png" />
     <None Include="Resources\tag_hash.png" />
@@ -109,15 +110,22 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy $(TargetDir)*.dll "$(SolutionDir)Package\APPDATA_Autodesk_Revit_Addins_2019"
-copy $(TargetDir)*.addin "$(SolutionDir)Package\APPDATA_Autodesk_Revit_Addins_2019"
-copy $(TargetDir)*.dll %25AppData%25\Autodesk\Revit\Addins\2019</PostBuildEvent>
+    <!--         
+        <PostBuildEvent>copy $(TargetDir)*.dll 
+        "$(SolutionDir)Package\APPDATA_Autodesk_Revit_Addins_2019"
+        copy $(TargetDir)*.addin "$(SolutionDir)Package\APPDATA_Autodesk_Revit_Addins_2019"
+        copy $(TargetDir)*.dll %25AppData%25\Autodesk\Revit\Addins\2019
+        </PostBuildEvent> 
+        -->
   </PropertyGroup>
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
   <Target Name="AfterBuild">
+    <MakeDir Directories="$(AppData)\Autodesk\REVIT\Addins\2019\Grevit" />
+    <Copy SourceFiles="$(ProjectDir)Grevit.Revit.addin" DestinationFolder="$(AppData)\Autodesk\REVIT\Addins\2019" />
+    <ItemGroup>
+      <MySourceFiles Include="$(TargetDir)\**\*.*" />
+    </ItemGroup>
+    <Copy SourceFiles="@(MySourceFiles)" DestinationFiles="@(MySourceFiles->'$(AppData)\Autodesk\REVIT\Addins\2019\Grevit\%(RecursiveDir)%(Filename)%(Extension)')">
+      <Output TaskParameter="CopiedFiles" ItemName="SuccessfullyCopiedFiles" />
+    </Copy>
   </Target>
-  -->
 </Project>

@@ -483,10 +483,10 @@ namespace Grevit.Revit
             // Create the new Level
             Autodesk.Revit.DB.Level newLevel = Autodesk.Revit.DB.Level.Create(GrevitBuildModel.document, level.height);
 #else
-            Autodesk.Revit.DB.Level newLevel = GrevitBuildModel.document.Create.NewLevel(level.height);
+      Autodesk.Revit.DB.Level newLevel = GrevitBuildModel.document.Create.NewLevel( level.height );
 #endif
-            // Set the Levels name
-            newLevel.Name = level.name;
+      // Set the Levels name
+      newLevel.Name = level.name;
 
             // If we should create a view with it
             if (level.addView)
@@ -613,12 +613,12 @@ namespace Grevit.Revit
         public static Element Create(this Grevit.Types.Grid grid)
         {
 
-#if (Revit2017 || Revit2018|| Revit2019)
+//#if (Revit2017 || Revit2018|| Revit2019)
             Autodesk.Revit.DB.Grid gridline = Autodesk.Revit.DB.Grid.Create(GrevitBuildModel.document, Autodesk.Revit.DB.Line.CreateBound(grid.from.ToXYZ(), grid.to.ToXYZ()));
-#else
+//#else
             // Create a new gridline
-            Autodesk.Revit.DB.Grid gridline = GrevitBuildModel.document.Create.NewGrid(Autodesk.Revit.DB.Line.CreateBound(grid.from.ToXYZ(), grid.to.ToXYZ()));
-#endif
+//            Autodesk.Revit.DB.Grid gridline = GrevitBuildModel.document.Create.NewGrid(Autodesk.Revit.DB.Line.CreateBound(grid.from.ToXYZ(), grid.to.ToXYZ()));
+//#endif
 
             // If a name is supplied, set the name
             if (grid.Name != null && grid.Name != "") gridline.Name = grid.Name;
