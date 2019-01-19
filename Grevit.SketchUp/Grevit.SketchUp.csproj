@@ -130,11 +130,6 @@
       <Name>Grevit.Types</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="slapi.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>copy $(TargetDir)grevit_send.rb $(SolutionDir)"Package\APPDATA_SketchUp_SketchUp 2016_SketchUp_Plugins"
