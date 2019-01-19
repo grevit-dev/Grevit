@@ -58,41 +58,44 @@ namespace Grevit.SketchUp
                     transform.Data[13] /= 39.3701;
                     transform.Data[14] /= 39.3701;
 
-                    string elementType = instance.Parent.Name.ToLower();
-                    string family = instance.Parent.Name;
-                    string type = instance.Parent.Name;
+                    SketchUpNET.Component parent = instance.Parent as SketchUpNET.Component;
+                    if (parent == null) continue;
 
-                    if (instance.Parent.Description.Contains(";"))
+                    string elementType = parent.Name.ToLower();
+                    string family = parent.Name;
+                    string type = parent.Name;
+
+                    if (parent.Description.Contains(";"))
                     {
-                        string[] data = instance.Parent.Description.Split(';');
+                        string[] data = parent.Description.Split(';');
                         family = data[0];
                         type = data[1];
                     }
 
                     if (elementType.Contains("wall"))
                     {
-                        foreach (SketchUpNET.Surface surface in instance.Parent.Surfaces)
+                        foreach (SketchUpNET.Surface surface in parent.Surfaces)
                         {
                             components.Items.Add(new WallProfileBased(family, type, new List<Types.Parameter>(), surface.ToGrevitOutline(transform), "") { GID = instance.Guid });
                         }
                     }
                     else if (elementType.Contains("grid"))
                     {
-                        foreach (SketchUpNET.Edge edge in instance.Parent.Edges)
+                        foreach (SketchUpNET.Edge edge in parent.Edges)
                         {
-                            components.Items.Add(new Grid(new List<Types.Parameter>(), edge.Start.ToGrevitPoint(transform), edge.End.ToGrevitPoint(transform), instance.Parent.Name) { GID = instance.Guid });
+                            components.Items.Add(new Grid(new List<Types.Parameter>(), edge.Start.ToGrevitPoint(transform), edge.End.ToGrevitPoint(transform), parent.Name) { GID = instance.Guid });
                         }
                     }
                     else if (elementType.Contains("line"))
                     {
-                        foreach (SketchUpNET.Edge edge in instance.Parent.Edges)
+                        foreach (SketchUpNET.Edge edge in parent.Edges)
                         {
                             components.Items.Add(new RevitLine() { curve = edge.ToGrevitLine(transform), isModelCurve = true, isDetailCurve = false, isRoomBounding = false, parameters = new List<Parameter>(), GID = instance.Guid, FamilyOrStyle = family, TypeOrLayer = type });
                         }
                     }
                     else if (elementType.Contains("floor"))
                     {
-                        foreach (SketchUpNET.Surface surface in instance.Parent.Surfaces)
+                        foreach (SketchUpNET.Surface surface in parent.Surfaces)
                         {
                             Types.Point bottom = transform.GetTransformed(surface.Vertices[0]).ToGrevitPoint();
                             int ctr = surface.Vertices.Count / 2;
@@ -124,7 +127,7 @@ namespace Grevit.SketchUp
                         SketchUpNET.Vertex v = new SketchUpNET.Vertex(0, 0, 0);
                         Grevit.Types.Point btm = v.ToGrevitPoint(transform);
 
-                        foreach (SketchUpNET.Surface surface in instance.Parent.Surfaces)
+                        foreach (SketchUpNET.Surface surface in parent.Surfaces)
                         {
 
                             if (surface.Normal.Z == 1)
