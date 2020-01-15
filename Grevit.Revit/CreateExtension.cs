@@ -100,8 +100,12 @@ namespace Grevit.Revit
                 }
             }
 
+#if (Revit2020)
+            ElementParameterFilter elementParameterFilter = new ElementParameterFilter(filterRules);
+            parameterFilter.SetElementFilter(elementParameterFilter);
+#else
             parameterFilter.SetRules(filterRules);
-
+#endif
             #endregion
 
             #region Apply Overrides
@@ -109,8 +113,6 @@ namespace Grevit.Revit
             OverrideGraphicSettings filterSettings = new OverrideGraphicSettings();
 
             // Apply Colors
-            if (filter.CutFillColor != null) filterSettings.SetCutFillColor(filter.CutFillColor.ToRevitColor());
-            if (filter.ProjectionFillColor != null) filterSettings.SetProjectionFillColor(filter.ProjectionFillColor.ToRevitColor());
             if (filter.CutLineColor != null) filterSettings.SetCutLineColor(filter.CutLineColor.ToRevitColor());
             if (filter.ProjectionLineColor != null) filterSettings.SetProjectionLineColor(filter.ProjectionLineColor.ToRevitColor());
 
@@ -119,18 +121,6 @@ namespace Grevit.Revit
             if (filter.ProjectionLineWeight != -1) filterSettings.SetProjectionLineWeight(filter.ProjectionLineWeight);
 
             // Apply Patterns          
-            if (filter.CutFillPattern != null)
-            {
-                FillPatternElement pattern = (FillPatternElement)Utilities.GetElementByName(GrevitBuildModel.document, typeof(FillPatternElement), filter.CutFillPattern);
-                filterSettings.SetCutFillPatternId(pattern.Id);
-            }
-
-            if (filter.ProjectionFillPattern != null)
-            {
-                FillPatternElement pattern = (FillPatternElement)Utilities.GetElementByName(GrevitBuildModel.document, typeof(FillPatternElement), filter.ProjectionFillPattern);
-                filterSettings.SetProjectionFillPatternId(pattern.Id);
-            }
-
             if (filter.CutLinePattern != null)
             {
                 LinePatternElement pattern = (LinePatternElement)Utilities.GetElementByName(GrevitBuildModel.document, typeof(LinePatternElement), filter.CutLinePattern);
@@ -479,7 +469,7 @@ namespace Grevit.Revit
             // If there is any level with the same name that we are going to create return null because that level already exists
             foreach (Element e in sollector.ToElements()) if (e.Name == level.name) return null;
 
-#if (Revit2017 || Revit2018 || Revit2019)
+#if (Revit2017 || Revit2018 || Revit2019 || Revit2020)
             // Create the new Level
             Autodesk.Revit.DB.Level newLevel = Autodesk.Revit.DB.Level.Create(GrevitBuildModel.document, level.height);
 #else
@@ -613,7 +603,7 @@ namespace Grevit.Revit
         public static Element Create(this Grevit.Types.Grid grid)
         {
 
-#if (Revit2017 || Revit2018|| Revit2019)
+#if (Revit2017 || Revit2018|| Revit2019 || Revit2020)
             Autodesk.Revit.DB.Grid gridline = Autodesk.Revit.DB.Grid.Create(GrevitBuildModel.document, Autodesk.Revit.DB.Line.CreateBound(grid.from.ToXYZ(), grid.to.ToXYZ()));
 #else
             // Create a new gridline
