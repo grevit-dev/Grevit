@@ -4,8 +4,7 @@
 
 ### Build your BIM Model directly in Grasshopper.
 
-Grevit allows you to define BIM Elements in Grasshopper or SketchUp and translate them directly to Autodesk Revit or AutoCad Architecture. Grevit follows a one way process so your design model remains the geometrical source of truth: send geometry and attributes from Rhino/Grassopper or SketchUp to Autodesk Revit or ACA. Don't worry if your design changes, Grevit can even update existing geometries. Grevit supports a lot of BIM elements, check out the 
-[documentation](https://grevit.gitbooks.io/grevit-documentation/content/).
+Grevit allows you to define BIM Elements in Grasshopper or SketchUp and translate them directly to Autodesk Revit or AutoCad Architecture. Grevit follows a one way process so your design model remains the geometrical source of truth: send geometry and attributes from Rhino/Grassopper or SketchUp to Autodesk Revit or ACA. Don't worry if your design changes, Grevit can even update existing geometries. Grevit supports a lot of BIM elements: like walls, beams, columns, simple components, adaptive components, even topography and many more. Check out the [documentation](https://grevit.gitbooks.io/grevit-documentation/content/).
 
 Grevit is Free and Open Source and you can help to make it better: contribute on GitHub.
 
