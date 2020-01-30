@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Application">
+    <Name>Grevit</Name>
+    <Assembly>Grevit.Revit.dll</Assembly>
+    <FullClassName>Grevit.Revit.GrevitUI</FullClassName>
+    <ClientId>ee5e6c73-6907-46e7-b588-1845bc7d0d3f</ClientId>
+    <VendorId>Grevit.net</VendorId>
+    <VendorDescription>Grevit.net</VendorDescription>
+  </AddIn>
+</RevitAddIns>
+
