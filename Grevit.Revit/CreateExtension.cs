@@ -100,7 +100,7 @@ namespace Grevit.Revit
                 }
             }
 
-#if (Revit2020)
+#if (Revit2020 || Revit2021)
             ElementParameterFilter elementParameterFilter = new ElementParameterFilter(filterRules);
             parameterFilter.SetElementFilter(elementParameterFilter);
 #else
@@ -469,7 +469,7 @@ namespace Grevit.Revit
             // If there is any level with the same name that we are going to create return null because that level already exists
             foreach (Element e in sollector.ToElements()) if (e.Name == level.name) return null;
 
-#if (Revit2017 || Revit2018 || Revit2019 || Revit2020)
+#if (Revit2017 || Revit2018 || Revit2019 || Revit2020 || Revit2021)
             // Create the new Level
             Autodesk.Revit.DB.Level newLevel = Autodesk.Revit.DB.Level.Create(GrevitBuildModel.document, level.height);
 #else
@@ -603,7 +603,7 @@ namespace Grevit.Revit
         public static Element Create(this Grevit.Types.Grid grid)
         {
 
-#if (Revit2017 || Revit2018|| Revit2019 || Revit2020)
+#if (Revit2017 || Revit2018|| Revit2019 || Revit2020 || Revit2021)
             Autodesk.Revit.DB.Grid gridline = Autodesk.Revit.DB.Grid.Create(GrevitBuildModel.document, Autodesk.Revit.DB.Line.CreateBound(grid.from.ToXYZ(), grid.to.ToXYZ()));
 #else
             // Create a new gridline
