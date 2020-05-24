@@ -99,16 +99,15 @@ namespace Grevit.Revit
                     if (filterRule != null) filterRules.Add(filterRule);
                 }
             }
-
-#if (Revit2020 || Revit2021)
+#if (Revit2015 || Revit2016 || Revit2017 || Revit2018 || Revit2019)
+            parameterFilter.SetRules(filterRules);
+#else
             ElementParameterFilter elementParameterFilter = new ElementParameterFilter(filterRules);
             parameterFilter.SetElementFilter(elementParameterFilter);
-#else
-            parameterFilter.SetRules(filterRules);
 #endif
-            #endregion
+#endregion
 
-            #region Apply Overrides
+#region Apply Overrides
 
             OverrideGraphicSettings filterSettings = new OverrideGraphicSettings();
 
@@ -135,7 +134,7 @@ namespace Grevit.Revit
 
             view.SetFilterOverrides(parameterFilter.Id, filterSettings);
 
-            #endregion
+#endregion
 
             return parameterFilter;
         }
@@ -469,11 +468,11 @@ namespace Grevit.Revit
             // If there is any level with the same name that we are going to create return null because that level already exists
             foreach (Element e in sollector.ToElements()) if (e.Name == level.name) return null;
 
-#if (Revit2017 || Revit2018 || Revit2019 || Revit2020 || Revit2021)
+#if (Revit2015 || Revit2016)
+            Autodesk.Revit.DB.Level newLevel = GrevitBuildModel.document.Create.NewLevel(level.height);
+#else
             // Create the new Level
             Autodesk.Revit.DB.Level newLevel = Autodesk.Revit.DB.Level.Create(GrevitBuildModel.document, level.height);
-#else
-            Autodesk.Revit.DB.Level newLevel = GrevitBuildModel.document.Create.NewLevel(level.height);
 #endif
             // Set the Levels name
             newLevel.Name = level.name;
@@ -539,7 +538,7 @@ namespace Grevit.Revit
                 else
                     familyInstance = GrevitBuildModel.document.Create.NewFamilyInstance(lower, sym, level, Autodesk.Revit.DB.Structure.StructuralType.Column);
 
-                #region slantedColumn
+#region slantedColumn
 
                 // Get the Slanted Column parameter
                 Autodesk.Revit.DB.Parameter param = familyInstance.get_Parameter(BuiltInParameter.SLANTED_COLUMN_TYPE_PARAM);
@@ -559,7 +558,7 @@ namespace Grevit.Revit
                     elementCurve.Curve = line;
                 }
 
-                #endregion
+#endregion
 
             }
             return familyInstance;
@@ -602,12 +601,11 @@ namespace Grevit.Revit
         /// <returns></returns>
         public static Element Create(this Grevit.Types.Grid grid)
         {
-
-#if (Revit2017 || Revit2018|| Revit2019 || Revit2020 || Revit2021)
-            Autodesk.Revit.DB.Grid gridline = Autodesk.Revit.DB.Grid.Create(GrevitBuildModel.document, Autodesk.Revit.DB.Line.CreateBound(grid.from.ToXYZ(), grid.to.ToXYZ()));
-#else
+#if (Revit2015 || Revit2016)
             // Create a new gridline
             Autodesk.Revit.DB.Grid gridline = GrevitBuildModel.document.Create.NewGrid(Autodesk.Revit.DB.Line.CreateBound(grid.from.ToXYZ(), grid.to.ToXYZ()));
+#else
+            Autodesk.Revit.DB.Grid gridline = Autodesk.Revit.DB.Grid.Create(GrevitBuildModel.document, Autodesk.Revit.DB.Line.CreateBound(grid.from.ToXYZ(), grid.to.ToXYZ()));
 #endif
 
             // If a name is supplied, set the name
@@ -1036,7 +1034,7 @@ namespace Grevit.Revit
         /// <returns></returns>
         public static Element Create(this Grevit.Types.Wall grevitWall, Grevit.Types.Point from = null, Grevit.Types.Point to = null)
         {
-            #region baseLineCurve
+#region baseLineCurve
 
             // The Baseline curve for the wall
             Autodesk.Revit.DB.Curve baselineCurve = null;
@@ -1096,7 +1094,7 @@ namespace Grevit.Revit
                 }
             }
 
-            #endregion
+#endregion
 
             // Get the Wall type and the level
             Element wallTypeElement = GrevitBuildModel.document.GetElementByName(typeof(Autodesk.Revit.DB.WallType), grevitWall.TypeOrLayer);
