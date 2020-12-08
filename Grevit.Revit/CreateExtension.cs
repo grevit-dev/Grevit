@@ -469,10 +469,10 @@ namespace Grevit.Revit
             foreach (Element e in sollector.ToElements()) if (e.Name == level.name) return null;
 
 #if (Revit2015 || Revit2016)
-            Autodesk.Revit.DB.Level newLevel = GrevitBuildModel.document.Create.NewLevel(level.height);
+            Autodesk.Revit.DB.Level newLevel = GrevitBuildModel.document.Create.NewLevel(level.height * GrevitBuildModel.Scale);
 #else
             // Create the new Level
-            Autodesk.Revit.DB.Level newLevel = Autodesk.Revit.DB.Level.Create(GrevitBuildModel.document, level.height);
+            Autodesk.Revit.DB.Level newLevel = Autodesk.Revit.DB.Level.Create(GrevitBuildModel.document, level.height * GrevitBuildModel.Scale);
 #endif
             // Set the Levels name
             newLevel.Name = level.name;
