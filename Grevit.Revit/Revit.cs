@@ -198,6 +198,9 @@ namespace Grevit.Revit
 #if (Revit2021)
         public static string Version = "2021";
 #endif
+#if (Revit2022)
+        public static string Version = "2022";
+#endif
         /// <summary>
         /// Revit Template Folder for creating template based family instances
         /// </summary>
